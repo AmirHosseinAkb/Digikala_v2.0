@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\01_Framework\01_Framework.csproj" />
-    <ProjectReference Include="..\InventoryManagement.Infrastructure.Configuration\InventoryManagement.Infrastructure.Configuration.csproj" />
     <ProjectReference Include="..\ShopManagement.Application.Contracts\ShopManagement.Application.Contracts.csproj" />
     <ProjectReference Include="..\ShopManagement.Infrastructure.Configuration\ShopManagement.Infrastructure.Configuration.csproj" />
     <ProjectReference Include="..\UserManagement.Infrastructure.Configuration\UserManagement.Infrastructure.Configuration.csproj" />

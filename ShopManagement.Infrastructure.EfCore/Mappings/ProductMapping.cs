@@ -51,6 +51,7 @@ namespace ShopManagement.Infrastructure.EfCore.Mappings
 
             builder.HasOne(p => p.Inventory).WithOne(i => i.Product)
                 .HasForeignKey<Inventory>(i => i.ProductId);
+
             builder.HasMany<InventoryHistory>(p => p.InventoryHistories).WithOne(h => h.Product)
                 .HasForeignKey(h => h.ProductId);
 
