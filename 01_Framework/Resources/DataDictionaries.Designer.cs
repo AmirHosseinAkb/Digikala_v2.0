@@ -241,6 +241,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Count.
+        /// </summary>
+        public static string Count {
+            get {
+                return ResourceManager.GetString("Count", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creation Date.
         /// </summary>
         public static string CreationDate {
@@ -264,6 +273,15 @@ namespace _01_Framework.Resources {
         public static string Dashboard {
             get {
                 return ResourceManager.GetString("Dashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
             }
         }
         
@@ -583,6 +601,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Increase/Decrease.
+        /// </summary>
+        public static string IncreaseOrDecrease {
+            get {
+                return ResourceManager.GetString("IncreaseOrDecrease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please Inter The Number.
         /// </summary>
         public static string InterNumberMessage {
@@ -795,6 +822,15 @@ namespace _01_Framework.Resources {
         public static string Operations {
             get {
                 return ResourceManager.GetString("Operations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operator Name.
+        /// </summary>
+        public static string OperatorName {
+            get {
+                return ResourceManager.GetString("OperatorName", resourceCulture);
             }
         }
         

@@ -7,6 +7,7 @@ using _01_Framework.Application;
 using ShopManagement.Application.Contracts.Inventory;
 using ShopManagement.Domain.InventoryAgg;
 using ShopManagement.Domain.ProductAgg;
+using ShopManagement.Domain.Services;
 
 namespace ShopManagement.Application
 {
@@ -14,11 +15,13 @@ namespace ShopManagement.Application
     {
         private readonly IInventoryRepository _inventoryRepository;
         private IAuthenticationHelper _authenticationHelper;
+        private IShopAccountAcl _shopAccountAcl;
 
-        public InventoryApplication(IInventoryRepository inventoryRepository,IAuthenticationHelper authenticationHelper)
+        public InventoryApplication(IInventoryRepository inventoryRepository,IAuthenticationHelper authenticationHelper, IShopAccountAcl shopAccountAcl)
         {
             _inventoryRepository = inventoryRepository;
             _authenticationHelper = authenticationHelper;
+            _shopAccountAcl = shopAccountAcl;
         }
         public Tuple<List<InventoryViewModel>,int,int,int> GetInventoriesForShow(int pageId, string title = "", bool isInStock = false, int take = 10)
         {
@@ -33,6 +36,7 @@ namespace ShopManagement.Application
             var query = inventories.Skip(skip).Take(take).Select(i => new InventoryViewModel()
             {
                 InventoryId = i.InventoryId,
+                ProductId = i.ProductId,
                 ImageName = i.Product.ImageName,
                 ProductTitle = i.Product.Title,
                 ProductCount = i.ProductCount,
@@ -59,6 +63,24 @@ namespace ShopManagement.Application
                 command.Count);
             _inventoryRepository.AddInventoryHistory(inventoryHistory);
             return result.Succeeded();
+        }
+
+        public List<InventoryHistoryViewModel> GetInventoryHistories(long productId)
+        {
+            var histories = _inventoryRepository.GetInventoryHistories(productId).Select(h =>
+                new InventoryHistoryViewModel()
+                {
+                    OperatorId = h.OperatorId,
+                    Count = h.Count,
+                    Date = h.Date
+                }).ToList();
+            histories.ForEach(h =>
+            {
+                var user = _shopAccountAcl.GetUser(h.OperatorId);
+                h.OperatorName = user.fullName;
+                h.OperatorRole = user.roleTitle;
+            });
+            return histories;
         }
     }
 }

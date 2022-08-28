@@ -177,6 +177,9 @@
   <data name="Congratulations" xml:space="preserve">
     <value>تبریک میگوییم!</value>
   </data>
+  <data name="Count" xml:space="preserve">
+    <value>تعداد</value>
+  </data>
   <data name="CreationDate" xml:space="preserve">
     <value>تاریخ ایجاد</value>
   </data>
@@ -185,6 +188,9 @@
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>داشبورد</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>تاریخ</value>
   </data>
   <data name="Day" xml:space="preserve">
     <value>روز</value>
@@ -291,6 +297,9 @@
   <data name="IncreaseInventory" xml:space="preserve">
     <value>افزایش موجودی</value>
   </data>
+  <data name="IncreaseOrDecrease" xml:space="preserve">
+    <value>افزایش/کاهش</value>
+  </data>
   <data name="InterNumberMessage" xml:space="preserve">
     <value>لطفا عددی را وارد کنید</value>
   </data>
@@ -362,6 +371,9 @@
   </data>
   <data name="Operations" xml:space="preserve">
     <value>عملیات</value>
+  </data>
+  <data name="OperatorName" xml:space="preserve">
+    <value>نام اپراتور</value>
   </data>
   <data name="OrderPendingPayment" xml:space="preserve">
     <value>سفارش شما در انتظار پرداخت است. برای جلوگیری از لغو سفارش، لطفا پرداخت را انجام دهید.</value>

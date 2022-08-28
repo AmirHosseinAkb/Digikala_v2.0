@@ -38,5 +38,11 @@ namespace Server.Areas.Administration.Pages.Inventories
             var result = _inventoryApplication.ChangeInventory(command);
             return new JsonResult(result);
         }
+
+        public IActionResult OnGetShowInventoryHistories(long productId)
+        {
+            var histories = _inventoryApplication.GetInventoryHistories(productId);
+            return Partial("./InventoryHistory", histories);
+        }
     }
 }

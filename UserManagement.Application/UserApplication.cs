@@ -471,5 +471,15 @@ namespace UserManagement.Application
                 return false;
             return true;
         }
+
+        public UserViewModel GetUserBy(long userId)
+        {
+            var user= _userRepository.GetUserWithRole(userId);
+            return new UserViewModel()
+            {
+                FullName = user.FirstName + " " + user.LastName,
+                RoleTitle = user.Role.RoleTitle
+            };
+        }
     }
 }

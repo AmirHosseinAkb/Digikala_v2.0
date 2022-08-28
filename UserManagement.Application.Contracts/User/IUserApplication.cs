@@ -54,5 +54,11 @@ namespace UserManagement.Application.Contracts.User
         bool IsExistUserByRoleId(long roleId);
 
         #endregion
+
+        #region Accellerator
+
+        UserViewModel GetUserBy(long userId);
+
+        #endregion
     }
 }

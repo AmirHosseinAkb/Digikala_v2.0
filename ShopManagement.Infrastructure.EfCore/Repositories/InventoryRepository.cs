@@ -36,5 +36,10 @@ namespace ShopManagement.Infrastructure.EfCore.Repositories
             _shopContext.InventoryHistories.Add(history);
             _shopContext.SaveChanges();
         }
+
+        public List<InventoryHistory> GetInventoryHistories(long productId)
+        {
+            return _shopContext.InventoryHistories.Where(h => h.ProductId == productId).ToList();
+        }
     }
 }

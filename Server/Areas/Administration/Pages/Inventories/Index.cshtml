@@ -87,7 +87,7 @@
                                                 <td>
                                                     <a onclick="ChangeInventory(@inventory.InventoryId,false)" class="btn btn-primary smallModal">@ButtonCaptions.IncreaseInventory</a>
                                                     <a onclick="ChangeInventory(@inventory.InventoryId,true)" class="btn btn-danger smallModal">@ButtonCaptions.DecreaseInventory</a>
-                                                    <a class="btn btn-warning largeModal">@ButtonCaptions.InventoryHistory</a>
+                                                    <a onclick="ShowInventoryHistories(@inventory.ProductId)" class="btn btn-warning largeModal">@ButtonCaptions.InventoryHistory</a>
                                                 </td>
                                             </tr>
                                         }

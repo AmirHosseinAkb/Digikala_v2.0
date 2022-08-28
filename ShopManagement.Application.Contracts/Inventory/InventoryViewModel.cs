@@ -9,6 +9,7 @@ namespace ShopManagement.Application.Contracts.Inventory
     public class InventoryViewModel
     {
         public long InventoryId { get; set; }
+        public long ProductId { get; set; }
         public string ImageName { get; set; }
         public string ProductTitle { get; set; }
         public int ProductPrice { get; set; }

@@ -13,5 +13,6 @@ namespace ShopManagement.Application.Contracts.Inventory
             int take = 10);
 
         OperationResult ChangeInventory(ChangeInventoryCommand command);
+        List<InventoryHistoryViewModel> GetInventoryHistories(long productId);
     }
 }

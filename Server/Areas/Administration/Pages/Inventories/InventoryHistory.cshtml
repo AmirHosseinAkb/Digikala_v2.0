@@ -1,0 +1,60 @@
+﻿@using _01_Framework.Application
+@model List<ShopManagement.Application.Contracts.Inventory.InventoryHistoryViewModel>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">@DataDictionaries.InventoryManagement</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                            <div class="row m-t-10">
+                                <div class="col-sm-12">
+                                    <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                        <thead>
+                                        <tr role="row">
+                                            <th>@DataDictionaries.OperatorName</th>
+                                            <th>@DataDictionaries.RoleTitle</th>
+                                            <th>@DataDictionaries.Count</th>
+                                            <th>@DataDictionaries.IncreaseOrDecrease</th>
+                                            <th>@DataDictionaries.Date</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach (var history in Model)
+                                        {
+                                            <tr role="row">
+                                                <td>@history.OperatorName</td>
+                                                <td>@history.OperatorRole</td>
+                                                <td>@((history.Count>0)?history.Count:-history.Count)</td>
+                                                <td>
+                                                    @if (history.Count > 0)
+                                                    {
+                                                        <span class="text-success">
+                                                            <i class="md md-format-indent-increase"></i>
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="text-danger">
+                                                            <i class="md md-format-indent-decrease"></i>
+                                                        </span>
+                                                    }
+                                                </td>
+                                                <td>@history.Date.ToShamsi()</td>
+                                            </tr>
+                                        }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

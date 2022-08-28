@@ -13,6 +13,8 @@ using ShopManagement.Domain.InventoryAgg;
 using ShopManagement.Domain.ProductColorAgg;
 using ShopManagement.Domain.ProductGroupAgg;
 using ShopManagement.Domain.ProductImageAgg;
+using ShopManagement.Domain.Services;
+using ShopManagement.Infrastructure.AccountAcl;
 
 namespace ShopManagement.Infrastructure.Configuration
 {
@@ -30,6 +32,7 @@ namespace ShopManagement.Infrastructure.Configuration
             services.AddScoped<IProductImageApplication, ProductImageApplication>();
             services.AddScoped<IInventoryRepository, InventoryRepository>();
             services.AddScoped<IInventoryApplication, InventoryApplication>();
+            services.AddScoped<IShopAccountAcl, ShopAccountAcl>();
             services.AddDbContext<ShopContext>(options => 
                 options.UseSqlServer(connectionString));
         }

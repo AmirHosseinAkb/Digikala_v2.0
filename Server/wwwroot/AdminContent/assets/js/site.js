@@ -78,6 +78,11 @@ function ChangeInventory(inventoryId,isForDecrease) {
     $("#ModalContent").load('/Administration/Inventories/ChangeInventory?inventoryId=' + inventoryId+"&isForDecrease="+isForDecrease);
     $("#MainModal").modal('show');
 }
+
+function ShowInventoryHistories(productId) {
+    $("#ModalContent").load('/Administration/Inventories/ShowInventoryHistories?productId=' + productId);
+    $("#MainModal").modal('show');
+}
 //function DeleteImage(imageId, productId) {
 //    $(".btnDeleteImage").preventDefault();
 //    $.ajax({
@@ -103,6 +108,7 @@ function CreateGroupDetails(groupId) {
     $("#ModalContent").load('/Administration/Shop/ProductGroups/GroupDetails?groupId=' + groupId);
     $("#MainModal").modal('show');
 }
+
 var IsForEditDetail = false;
 $(document).on("submit", 'form[id="frmDetail"]', function (e) {
     e.preventDefault();
