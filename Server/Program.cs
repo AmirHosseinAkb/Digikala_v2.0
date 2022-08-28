@@ -4,7 +4,6 @@ using _01_Framework.Infrastructure.ExtensionMethods;
 using _01_Framework.Application.Email;
 using _01_Framework.Application.ZarinPal;
 using FoolProof.Core;
-using InventoryManagement.Infrastructure.Configuration;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Server;
 using ShopManagement.Infrastructure.Configuration;
@@ -18,7 +17,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 UserManagementBootstrapper.Config(builder.Services, builder.Configuration.GetConnectionString("DigikalaConnection"));
 ShopManagementBootstrapper.Config(builder.Services,builder.Configuration.GetConnectionString("DigikalaConnection"));
-InventoryManagementBootstrapper.Config(builder.Services,builder.Configuration.GetConnectionString("DigikalaConnection"));
 #endregion
 
 #region IOC
