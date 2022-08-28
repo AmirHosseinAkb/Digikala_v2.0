@@ -286,6 +286,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Decrease Inventory.
+        /// </summary>
+        public static string DecreaseInventory {
+            get {
+                return ResourceManager.GetString("DecreaseInventory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleted Users List.
         /// </summary>
         public static string DeletedUsersList {
@@ -561,6 +570,24 @@ namespace _01_Framework.Resources {
         public static string IncreaseBalance {
             get {
                 return ResourceManager.GetString("IncreaseBalance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Increase Inventory.
+        /// </summary>
+        public static string IncreaseInventory {
+            get {
+                return ResourceManager.GetString("IncreaseInventory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Inter The Number.
+        /// </summary>
+        public static string InterNumberMessage {
+            get {
+                return ResourceManager.GetString("InterNumberMessage", resourceCulture);
             }
         }
         

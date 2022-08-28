@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{handler?}"
 @model Server.Areas.Administration.Pages.Inventories.IndexModel
 @{
 }
@@ -85,8 +85,8 @@
                                                 <td>@inventory.ProductPrice.ToString("#,0")</td>
                                                 <td>@inventory.ProductCount</td>
                                                 <td>
-                                                    <a class="btn btn-primary largeModal">@ButtonCaptions.IncreaseInventory</a>
-                                                    <a class="btn btn-danger smallModal">@ButtonCaptions.DecreaseInventory</a>
+                                                    <a onclick="ChangeInventory(@inventory.InventoryId,false)" class="btn btn-primary smallModal">@ButtonCaptions.IncreaseInventory</a>
+                                                    <a onclick="ChangeInventory(@inventory.InventoryId,true)" class="btn btn-danger smallModal">@ButtonCaptions.DecreaseInventory</a>
                                                     <a class="btn btn-warning largeModal">@ButtonCaptions.InventoryHistory</a>
                                                 </td>
                                             </tr>

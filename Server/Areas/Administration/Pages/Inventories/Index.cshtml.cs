@@ -22,5 +22,21 @@ namespace Server.Areas.Administration.Pages.Inventories
             ViewData["IsInStock"] = isInStock;
             InventoryVms = _inventoryApplication.GetInventoriesForShow(pageId,title,isInStock,take);
         }
+
+
+        public IActionResult OnGetChangeInventory(long inventoryId, bool isForDecrease = false)
+        {
+
+            TempData["IsForDecrease"] = isForDecrease;
+            return Partial("./ChangeInventory",new ChangeInventoryCommand(){InventoryId = inventoryId,IsForDecrease = isForDecrease});
+        }
+
+        public IActionResult OnPostChangeInventory(ChangeInventoryCommand command)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            var result = _inventoryApplication.ChangeInventory(command);
+            return new JsonResult(result);
+        }
     }
 }

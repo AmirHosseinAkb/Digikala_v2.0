@@ -25,5 +25,16 @@ namespace ShopManagement.Infrastructure.EfCore.Repositories
                 inventories = inventories.Where(i => i.ProductCount > 0);
             return inventories.ToList();
         }
+
+        public Inventory? GetInventry(long id)
+        {
+            return _shopContext.Inventories.Find(id);
+        }
+
+        public void AddInventoryHistory(InventoryHistory history)
+        {
+            _shopContext.InventoryHistories.Add(history);
+            _shopContext.SaveChanges();
+        }
     }
 }

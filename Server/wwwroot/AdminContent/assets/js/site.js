@@ -74,6 +74,10 @@ function CreateImage(productId) {
     $("#ModalContent").load('/Administration/Shop/ProductImages/Create?productId=' + productId);
     $("#MainModal").modal('show');
 }
+function ChangeInventory(inventoryId,isForDecrease) {
+    $("#ModalContent").load('/Administration/Inventories/ChangeInventory?inventoryId=' + inventoryId+"&isForDecrease="+isForDecrease);
+    $("#MainModal").modal('show');
+}
 //function DeleteImage(imageId, productId) {
 //    $(".btnDeleteImage").preventDefault();
 //    $.ajax({

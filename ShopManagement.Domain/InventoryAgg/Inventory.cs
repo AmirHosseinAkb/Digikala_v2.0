@@ -24,5 +24,10 @@ namespace ShopManagement.Domain.InventoryAgg
             ProductId = productId;
             ProductCount = productCount;
         }
+
+        public void ChangeInventory(int count)
+        {
+            ProductCount += count;
+        }
     }
 }

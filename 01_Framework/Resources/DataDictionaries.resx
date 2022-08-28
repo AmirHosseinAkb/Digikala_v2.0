@@ -192,6 +192,9 @@
   <data name="December" xml:space="preserve">
     <value>December</value>
   </data>
+  <data name="DecreaseInventory" xml:space="preserve">
+    <value>Decrease Inventory</value>
+  </data>
   <data name="DeletedUsersList" xml:space="preserve">
     <value>Deleted Users List</value>
   </data>
@@ -284,6 +287,12 @@
   </data>
   <data name="IncreaseBalance" xml:space="preserve">
     <value>Increase Balance</value>
+  </data>
+  <data name="IncreaseInventory" xml:space="preserve">
+    <value>Increase Inventory</value>
+  </data>
+  <data name="InterNumberMessage" xml:space="preserve">
+    <value>Please Inter The Number</value>
   </data>
   <data name="Inventory" xml:space="preserve">
     <value>Inventory</value>

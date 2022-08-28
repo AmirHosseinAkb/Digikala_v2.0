@@ -1,0 +1,36 @@
+﻿@model ShopManagement.Application.Contracts.Inventory.ChangeInventoryCommand
+
+@if (Model.IsForDecrease)
+{
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">@DataDictionaries.DecreaseInventory</h4>
+    </div>
+}
+else
+{
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">@DataDictionaries.IncreaseInventory</h4>
+    </div>
+}
+
+<form asp-page="./Index"
+      asp-page-handler="ChangeInventory"
+      data-ajax="true"
+      data-action="Refresh"
+      enctype="multipart/form-data"
+      method="post">
+    <div class="modal-body">
+        <div class="form-group">
+            <input type="hidden" asp-for="@Model.IsForDecrease" />
+            <input type="hidden" asp-for="InventoryId"/>
+            <input asp-for="Count" type="number" class="form-control" placeholder="@DataDictionaries.InterNumberMessage"/>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-info waves-effect waves-light">@ButtonCaptions.Delete</button>
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">@ButtonCaptions.Cancel</button>
+    </div>
+
+</form>

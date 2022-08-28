@@ -22,12 +22,12 @@ namespace ShopManagement.Domain.InventoryAgg
 
         }
 
-        public InventoryHistory(long productId, long operatorId, int count, DateTime date)
+        public InventoryHistory(long productId, long operatorId, int count)
         {
             ProductId = productId;
             OperatorId = operatorId;
             Count = count;
-            Date = date;
+            Date = DateTime.Now;
         }
     }
 }
