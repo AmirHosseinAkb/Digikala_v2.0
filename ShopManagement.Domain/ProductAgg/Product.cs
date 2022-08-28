@@ -34,7 +34,7 @@ namespace ShopManagement.Domain.ProductAgg
 
         public List<Inventory> Inventories { get; private set; }
 
-        public List<InventoryHistory> InventoryHistories { get; private set; }
+        public List<InventoryHistory> InventoryHistories { get; private set; } 
 
         protected Product()
         {
