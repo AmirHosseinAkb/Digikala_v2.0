@@ -32,7 +32,7 @@ namespace ShopManagement.Domain.ProductAgg
         public List<ProductColor> ProductColors { get;private set; }
         public List<ProductDetail> ProductDetails { get; private set; }
 
-        public List<Inventory> Inventories { get; private set; }
+        public Inventory Inventory { get; private set; }
 
         public List<InventoryHistory> InventoryHistories { get; private set; } 
 
