@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application;
+using ShopManagement.Application.Contracts.Inventory;
 using ShopManagement.Application.Contracts.Product;
 using ShopManagement.Application.Contracts.ProductColor;
 using ShopManagement.Domain.ProductAgg;
@@ -8,6 +9,7 @@ using ShopManagement.Infrastructure.EfCore;
 using ShopManagement.Infrastructure.EfCore.Repositories;
 using ShopManagement.Application.Contracts.ProductGroup;
 using ShopManagement.Application.Contracts.ProductImage;
+using ShopManagement.Domain.InventoryAgg;
 using ShopManagement.Domain.ProductColorAgg;
 using ShopManagement.Domain.ProductGroupAgg;
 using ShopManagement.Domain.ProductImageAgg;
@@ -26,6 +28,8 @@ namespace ShopManagement.Infrastructure.Configuration
             services.AddScoped<IProductColorRepository, ProductColorRepository>();
             services.AddScoped<IProductImageRepository, ProductImageRepository>();
             services.AddScoped<IProductImageApplication, ProductImageApplication>();
+            services.AddScoped<IInventoryRepository, InventoryRepository>();
+            services.AddScoped<IInventoryApplication, InventoryApplication>();
             services.AddDbContext<ShopContext>(options => 
                 options.UseSqlServer(connectionString));
         }

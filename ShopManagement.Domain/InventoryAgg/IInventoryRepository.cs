@@ -8,5 +8,6 @@ namespace ShopManagement.Domain.InventoryAgg
 {
     public interface IInventoryRepository
     {
+        List<Inventory> GetAll(string title="",bool isInStock=false);
     }
 }

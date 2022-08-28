@@ -303,6 +303,9 @@
   <data name="June" xml:space="preserve">
     <value>June</value>
   </data>
+  <data name="JustInStock" xml:space="preserve">
+    <value>Just In Stock</value>
+  </data>
   <data name="LastName" xml:space="preserve">
     <value>Last Name</value>
   </data>

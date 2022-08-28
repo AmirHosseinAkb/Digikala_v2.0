@@ -150,17 +150,17 @@ $(document).on("submit", 'form[id="frmDetail"]', function (e) {
     }
 })
 
-function GetDetailForEdit(detailId,groupId, title) {
+function GetDetailForEdit(detailId, groupId, title) {
     $("#detailGroupId").val(groupId);
     $("#command_DetailTitle").val(title);
     $("#command_DetailId").val(detailId);
     $("#btnDetail").val("ویرایش");
-    IsForEditDetail=true;
+    IsForEditDetail = true;
 }
 
 
 function GetProductForDetails(productId) {
-     $("#ModalContent").load('/Administration/Shop/Products/ProductDetails?productId=' + productId);
+    $("#ModalContent").load('/Administration/Shop/Products/ProductDetails?productId=' + productId);
     $("#MainModal").modal('show');
 }
 $(document).on("submit", 'form[data-ajax="true"]',
@@ -258,3 +258,4 @@ $("#IndexPrimaryGroup").change(function () {
                 });
         });
 });
+

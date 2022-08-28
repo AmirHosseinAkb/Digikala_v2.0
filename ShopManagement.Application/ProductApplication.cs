@@ -7,6 +7,7 @@ using _01_Framework.Application;
 using Org.BouncyCastle.Asn1.Misc;
 using ShopManagement.Application.Contracts.Product;
 using ShopManagement.Application.Contracts.ProductGroup;
+using ShopManagement.Domain.InventoryAgg;
 using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductGroupAgg;
 
@@ -16,11 +17,13 @@ namespace ShopManagement.Application
     {
         private readonly IProductRepository _productRepository;
         private readonly IProductGroupRepository _productGroupRepository;
+        private readonly IInventoryRepository _inventoryRepository;
 
-        public ProductApplication(IProductRepository productRepository, IProductGroupRepository productGroupRepository)
+        public ProductApplication(IProductRepository productRepository, IProductGroupRepository productGroupRepository, IInventoryRepository inventoryRepository)
         {
             _productRepository = productRepository;
             _productGroupRepository = productGroupRepository;
+            _inventoryRepository = inventoryRepository;
         }
 
         public OperationResult Create(CreateProductCommand command)
@@ -51,7 +54,9 @@ namespace ShopManagement.Application
 
             var product = new Product(command.GroupId, command.PrimaryGroupId, command.SecondaryGroupId, command.Title,
                 command.Description, command.Price, command.OtherLangTitle, command.Tags, produtImage);
-            _productRepository.AddProduct(product);
+            
+            long productId=_productRepository.AddProduct(product);
+            var inventory = new Inventory(productId, 0);
             _productRepository.AddProductDetails(product);
             return result.Succeeded();
         }

@@ -619,6 +619,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Just In Stock.
+        /// </summary>
+        public static string JustInStock {
+            get {
+                return ResourceManager.GetString("JustInStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last Name.
         /// </summary>
         public static string LastName {

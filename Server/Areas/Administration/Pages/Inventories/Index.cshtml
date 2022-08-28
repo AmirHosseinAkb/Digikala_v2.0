@@ -3,113 +3,94 @@
 @{
 }
 
-@*<div class="row">
+<div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">@DataDictionaries.InventoryManagement</h3>
             </div>
-
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                            <div class="m-b-15">
-                                <a id="btnCreateProduct" class="btn btn-info largeModal">@ButtonCaptions.AddNewProduct</a>
-                            </div>
                             <form method="get">
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div id="datatable_filter" class="dataTables_filter">
-                                            <label style="display:block">@DataDictionaries.Title</label>
-                                            <input name="fullName" type="search" class="form-control input-sm" placeholder="@DataDictionaries.Title" aria-controls="datatable">
+                                            <input name="title" type="search" class="form-control input-sm" placeholder="@DataDictionaries.Title" aria-controls="datatable">
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3 m-t-10">
                                         <div id="datatable_filter" class="dataTables_filter">
-                                            <label style="display:block">@DataDictionaries.Group</label>
-                                            <select id="IndexGroup" name="groupId" asp-items="@ViewData["Groups"] as SelectList" class="form-control">
-                                                <option value="0">@DataDictionaries.SelectGroupMessage</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div id="datatable_filter" class="dataTables_filter">
-                                            <label style="display:block">@DataDictionaries.PrimaryGroup</label>
-                                            <select id="IndexPrimaryGroup" name="primaryGroupId" asp-items="@ViewData["PrimaryGroups"] as SelectList" class="form-control">
-                                                <option value="0">@DataDictionaries.SelectGroupMessage</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div id="datatable_filter" class="dataTables_filter">
-                                            <label style="display:block">@DataDictionaries.SecondaryGroup</label>
-                                            <select id="IndexSecondaryGroup" name="secondaryGroupId" asp-items="@ViewData["SecondaryGroups"] as SelectList" class="form-control">
-                                                <option value="0">@DataDictionaries.SelectGroupMessage</option>
-                                            </select>
+                                            <input id="inpStock" type="hidden" name="isInStock" value="false"/>
+                                            @if (Convert.ToBoolean(ViewData["IsInStock"]))
+                                            {
+                                                <input id="stockCheck" type="checkbox" class="checkbox checkbox-circle " checked=""/> <text>&nbsp; @DataDictionaries.JustInStock</text>
+                                            }
+                                            else
+                                            {
+                                                <input id="stockCheck" type="checkbox" class="checkbox checkbox-circle "/> <text>&nbsp; @DataDictionaries.JustInStock</text>
+                                            }
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="dataTables_length" id="datatable_length">
-                                            <label style="display:block">@DataDictionaries.Show</label>
                                             <select name="take" aria-controls="datatable" class="form-control input-sm">
                                                 @for (var i = 1; i <= 4; i++)
                                                 {
                                                     int x = 10;
-                                                    if (i * x == (int)ViewData["Take"])
+                                                    if (i * x == (int) ViewData["Take"])
                                                     {
                                                         <option value="@(i * x)" selected>@(i * x)</option>
                                                     }
                                                     else
                                                     {
-                                                        <option value="@(i*x)">@(i*x)</option>
+                                                        <option value="@(i * x)">@(i * x)</option>
                                                     }
                                                 }
                                             </select>
                                             @DataDictionaries.Record
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2 m-t-10">
+
+                                    <div class="col-md-3">
                                         <div id="datatable_filter" class="dataTables_filter">
-                                            <input type="submit" class="btn btn-primary" value="@ButtonCaptions.Search" />
-                                            &nbsp;
-                                            <a href="/Administration/Shop/Products" class="btn btn-warning">@ButtonCaptions.Clear</a>
+                                            <input type="submit" value="@ButtonCaptions.Search" class="btn btn-primary"/>
+                                            <a href="/Administration/Inventories" class="btn btn-warning">@ButtonCaptions.Clear</a>
                                         </div>
                                     </div>
                                 </div>
-                                <hr />
+
                             </form>
                             <div class="row m-t-10">
                                 <div class="col-sm-12">
                                     <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
                                         <thead>
-                                            <tr role="row">
-                                                <th>@DataDictionaries.Image</th>
-                                                <th>@DataDictionaries.Title</th>
-                                                <th>@DataDictionaries.Price</th>
-                                                <th>@DataDictionaries.Inventory</th>
-                                                <th>@DataDictionaries.Operations</th>
-                                            </tr>
+                                        <tr role="row">
+                                            <th>@DataDictionaries.Image</th>
+                                            <th>@DataDictionaries.Title</th>
+                                            <th>@DataDictionaries.Price</th>
+                                            <th>@DataDictionaries.Inventory</th>
+                                            <th>@DataDictionaries.Operations</th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach (var inventory in Model.InventoryVms.Item1)
-                                            {
-                                                <tr role="row">
-                                                    <td>
-                                                        <img src="/Products/Images/@inventory.ImageName" style="width: 200px; height: 200px" class="img-thumbnail">
-                                                    </td>
-                                                    <td>@inventory.ProductTitle</td>
-                                                    <td>@inventory.ProductPrice.ToString("#,0")</td>
-                                                    <td>@inventory.ProductCount</td>
-                                                    <td>
-                                                        <a class="btn btn-primary largeModal">@ButtonCaptions.IncreaseInventory</a>
-                                                        <a class="btn btn-danger smallModal">@ButtonCaptions.DecreaseInventory</a>
-                                                        <a class="btn btn-warning largeModal">@ButtonCaptions.InventoryHistory</a>
-                                                    </td>
-                                                </tr>
-                                            }
+                                        @foreach (var inventory in Model.InventoryVms.Item1)
+                                        {
+                                            <tr role="row">
+                                                <td>
+                                                    <img src="/Products/Images/@inventory.ImageName" style="width: 100px; height: 100px" class="img-thumbnail">
+                                                </td>
+                                                <td>@inventory.ProductTitle</td>
+                                                <td>@inventory.ProductPrice.ToString("#,0")</td>
+                                                <td>@inventory.ProductCount</td>
+                                                <td>
+                                                    <a class="btn btn-primary largeModal">@ButtonCaptions.IncreaseInventory</a>
+                                                    <a class="btn btn-danger smallModal">@ButtonCaptions.DecreaseInventory</a>
+                                                    <a class="btn btn-warning largeModal">@ButtonCaptions.InventoryHistory</a>
+                                                </td>
+                                            </tr>
+                                        }
 
                                         </tbody>
                                     </table>
@@ -137,7 +118,7 @@
                                         <ul class="pagination">
                                             @for (var i = 1; i <= Model.InventoryVms.Item3; i++)
                                             {
-                                                <li class="paginate_button @((Model.InventoryVms.Item2==i)?"active":"")" aria-controls="datatable" tabindex="0"><a href="/Admin/Users?pageId=@i">@i</a></li>
+                                                <li class="paginate_button @((Model.InventoryVms.Item2 == i) ? "active" : "")" aria-controls="datatable" tabindex="0"><a href="/Admin/Users?pageId=@i">@i</a></li>
                                             }
                                         </ul>
                                     </div>
@@ -149,4 +130,17 @@
             </div>
         </div>
     </div>
-</div>*@
+</div>
+
+@section Scripts
+{
+    <script>
+        $("#stockCheck").click(function () {
+            if (this.checked)
+                $("#inpStock").val("true");
+            else {
+                $("#inpStock").val("false");
+            }
+        });
+    </script>
+}

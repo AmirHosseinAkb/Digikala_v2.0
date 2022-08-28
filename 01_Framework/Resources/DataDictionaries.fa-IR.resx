@@ -303,6 +303,9 @@
   <data name="June" xml:space="preserve">
     <value>خرداد</value>
   </data>
+  <data name="JustInStock" xml:space="preserve">
+    <value>فقط کالاهای موجود</value>
+  </data>
   <data name="LastName" xml:space="preserve">
     <value>نام خانوادگی</value>
   </data>

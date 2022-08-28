@@ -16,5 +16,18 @@ namespace ShopManagement.Domain.InventoryAgg
         public DateTime Date { get;private set; }
 
         public Product Product { get;private set; }
+
+        protected InventoryHistory()
+        {
+
+        }
+
+        public InventoryHistory(long productId, long operatorId, int count, DateTime date)
+        {
+            ProductId = productId;
+            OperatorId = operatorId;
+            Count = count;
+            Date = date;
+        }
     }
 }

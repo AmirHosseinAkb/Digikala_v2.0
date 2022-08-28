@@ -14,5 +14,15 @@ namespace ShopManagement.Domain.InventoryAgg
         public int ProductCount { get;private set; }
 
         public Product Product { get;private set; }
+
+        protected Inventory()
+        {
+
+        }
+        public Inventory(long productId, int productCount)
+        {
+            ProductId = productId;
+            ProductCount = productCount;
+        }
     }
 }

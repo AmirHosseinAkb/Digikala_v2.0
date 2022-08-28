@@ -14,10 +14,11 @@ namespace ShopManagement.Infrastructure.EfCore.Repositories
             _context = context;
         }
 
-        public void AddProduct(Product product)
+        public long AddProduct(Product product)
         {
             _context.Products.Add(product);
             _context.SaveChanges();
+            return product.ProductId;
         }
 
         public Product GetProductById(long productId)
