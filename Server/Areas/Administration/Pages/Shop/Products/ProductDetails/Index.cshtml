@@ -1,0 +1,38 @@
+﻿@page
+@model Server.Areas.Administration.Pages.Shop.Products.ProductDetails.IndexModel
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">@DataDictionaries.ProductDetails</h3>
+            </div>
+            <div class="panel-body">
+                @{
+                    int number = 0;
+                }
+                <form asp-page="./Index" method="post"
+                      data-ajax="true"
+                      data-action="Refresh">
+                    <input type="hidden" name="productId" value="@ViewData["ProductId"]" />
+                    @foreach (var detail in Model.ProductDetailVms)
+                    {
+                        <label style="display: block">@detail.DetailTitle</label>
+                        <input type="hidden" name="details[@number].Key" value="@detail.DetailId"/>
+                        <input type="text" class="form-control" name="details[@number].Value" value="@detail.DetailValue" required/>
+                        number += 1;
+                    }
+                    <hr/>
+                    <button type="submit" class="btn btn-info waves-effect waves-light">@ButtonCaptions.Add</button>
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">@ButtonCaptions.Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/assets/js/library/jquery.validate.min.js"></script>
+<script src="~/assets/js/library/jquery.validate.unobtrusive.min.js"></script>

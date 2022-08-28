@@ -1,0 +1,54 @@
+﻿@page "{handler?}"
+@model Server.Pages.Account.RegisterAndLoginModel
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>@(ViewData["Title"]=PageTitles.LoginAndRegister)</title>
+    <partial name="PartialViews/_Styles"/>
+</head>
+<body>
+    <div class="page-wrapper">
+        <partial name="PartialViews/_AccountHeader" />
+
+        <main class="page-content page-auth">
+
+            <div class="auth-container">
+                <div class="auth-title mb-3">@DataDictionaries.RegisterAndLogin</div>
+                @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                {
+                    <div class="alert alert-warning">
+                        @Model.ErrorMessage
+                    </div>
+                }
+                <div class="auth-box ui-box">
+
+                    <form method="post">
+                        <div class="form-element-row mb-5">
+                            <input asp-for="Command.EmailOrPhone" type="text" class="form-control" placeholder="@DataDictionaries.EmailOrPhone">
+                            <span asp-validation-for="Command.EmailOrPhone" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-element-row mb-3">
+                            <button class="btn btn-primary">@ButtonCaptions.Continue</button>
+                        </div>
+
+                        <div class="form-element-row">
+                            <div>
+                                @Html.Raw(DataDictionaries.TermsOfUse)
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </main>
+        <partial name="PartialViews/_AccountFooter" />
+    </div>
+    <partial name="PartialViews/_Scripts" />
+    <partial name="PartialViews/_ValidationScriptsPartial" />
+</body>
+</html>
+

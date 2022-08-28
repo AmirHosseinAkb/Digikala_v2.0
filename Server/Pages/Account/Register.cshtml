@@ -1,0 +1,55 @@
+﻿@page
+@model Server.Pages.Account.RegisterModel
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <partial name="PartialViews/_Styles" />
+</head>
+<body>
+    <div class="page-wrapper">
+        <partial name="PartialViews/_AccountHeader" />
+
+        <main class="page-content page-auth">
+
+            <div class="auth-container">
+                <div class="auth-title mb-3">@DataDictionaries.RegisterAndLogin</div>
+                <div class="auth-box ui-box">
+
+                    <form method="post">
+                        <div class="form-element-row mb-5">
+                            <input asp-for="Command.Password" type="password" class="form-control" placeholder="@DataDictionaries.Password">
+                            <span asp-validation-for="Command.Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-element-row mb-5">
+                            <input asp-for="Command.RepeatPassword" type="password" class="form-control" placeholder="@DataDictionaries.RepeatPassword">
+                            <span asp-validation-for="Command.RepeatPassword" class="text-danger"></span>
+                        </div>
+                        <div class="form-element-row mb-3">
+                            <button class="btn btn-primary">@ButtonCaptions.JoinUs</button>
+                        </div>
+                        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                        {
+                            <hr/>
+                            <div asp-validation-summary="ModelOnly" >
+                                @ErrorMessages.EnterEmailOrPhoneNumberCorrectly
+                            </div>
+                        }
+                        <div class="form-element-row">
+                            <div>
+                                @Html.Raw(DataDictionaries.TermsOfUse)
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </main>
+        <partial name="PartialViews/_AccountFooter" />
+    </div>
+    <partial name="PartialViews/_Scripts" />
+    <partial name="PartialViews/_ValidationScriptsPartial" />
+</body>
+</html>

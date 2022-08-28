@@ -1,0 +1,31 @@
+﻿@model ShopManagement.Application.Contracts.ProductColor.CreateColorCommand
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">@DataDictionaries.AddNewGroup</h4>
+</div>
+<form asp-page="./Index"
+      asp-page-handler="Create"
+      data-ajax="true"
+      data-action="Refresh"
+      data-callback=""
+      enctype="multipart/form-data"
+      method="post">
+    <div class="modal-body">
+        <div class="form-group">
+            <input type="hidden" asp-for="ProductId" />
+            <p class="text-danger" style="display: inline">@DataDictionaries.SelectColorMessage</p>&nbsp;<input type="color" asp-for="ColorCode" style="display: inline; width:50%"/>
+            <span asp-validation-for="ColorCode"></span>
+            <hr />
+            <input type="text" class="form-control" asp-for="ColorName" placeholder="@DataDictionaries.Title">
+            <span asp-validation-for="ColorName" class="error"></span>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-info waves-effect waves-light">@ButtonCaptions.Add</button>
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">@ButtonCaptions.Cancel</button>
+    </div>
+</form>
+
+<script src="~/assets/js/library/jquery.validate.min.js"></script>
+<script src="~/assets/js/library/jquery.validate.unobtrusive.min.js"></script>

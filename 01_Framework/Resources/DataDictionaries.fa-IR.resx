@@ -1,0 +1,555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountNumber" xml:space="preserve">
+    <value>شماره حساب</value>
+  </data>
+  <data name="ActivationEmailText" xml:space="preserve">
+    <value>از اینکه در مای استور ثبت نام کرده اید متشکریم برای فعالسازی حساب کاربری خود روی فعالسازی حساب کاربری کلیک نمایید</value>
+  </data>
+  <data name="ActivationError" xml:space="preserve">
+    <value>خطای فعالسازی</value>
+  </data>
+  <data name="ActiveAccount" xml:space="preserve">
+    <value>فعالسازی حساب کاربری</value>
+  </data>
+  <data name="ActiveRegisterText" xml:space="preserve">
+    <value>برای فعال سازی حساب کاربری خود وارد ایمیل خود شده و روی لینک فعالسازی کلیک نمایید سپس میتوانید وارد حساب کاربری خود شده و با تکمیل اطلاعات حساب کاربری خود به کلیه امکانات و سرویس‌ها و سرویس‌های وابسته به آن دسترسی داشته باشید</value>
+  </data>
+  <data name="AddNewGroup" xml:space="preserve">
+    <value>افزودن گروه جدید</value>
+  </data>
+  <data name="AddNewProduct" xml:space="preserve">
+    <value>افزودن محصول جدید</value>
+  </data>
+  <data name="AddNewRole" xml:space="preserve">
+    <value>افزودن نقش جدید</value>
+  </data>
+  <data name="AddNewUser" xml:space="preserve">
+    <value>افزودن کاربر جدید</value>
+  </data>
+  <data name="AllRightsReserved" xml:space="preserve">
+    <value>کلیه حقوق این سایت متعلق به مای استور می باشد</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>مبلغ</value>
+  </data>
+  <data name="AmountPlaceHolder" xml:space="preserve">
+    <value>مبلغ به تومان</value>
+  </data>
+  <data name="April" xml:space="preserve">
+    <value>فروردین</value>
+  </data>
+  <data name="August" xml:space="preserve">
+    <value>مرداد</value>
+  </data>
+  <data name="AuthorizationMessageText" xml:space="preserve">
+    <value>به مای استور خوش آمدید برای ورود به حساب کاربری خود کد زیر را وارد کنید:</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>تاریخ تولد</value>
+  </data>
+  <data name="ChargeWallet" xml:space="preserve">
+    <value>شارژ کیف پول</value>
+  </data>
+  <data name="Colors" xml:space="preserve">
+    <value>رنگ ها</value>
+  </data>
+  <data name="ConfirmUserInformations" xml:space="preserve">
+    <value>تکمیل اطلاعات کاربری</value>
+  </data>
+  <data name="Congratulations" xml:space="preserve">
+    <value>تبریک میگوییم!</value>
+  </data>
+  <data name="CreationDate" xml:space="preserve">
+    <value>تاریخ ایجاد</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>رمز عبور فعلی</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>داشبورد</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>روز</value>
+  </data>
+  <data name="December" xml:space="preserve">
+    <value>آذر</value>
+  </data>
+  <data name="DeletedUsersList" xml:space="preserve">
+    <value>لیست کاربران حذف شده</value>
+  </data>
+  <data name="DeleteGroup" xml:space="preserve">
+    <value>حذف گروه</value>
+  </data>
+  <data name="DeleteProduct" xml:space="preserve">
+    <value>حذف محصول</value>
+  </data>
+  <data name="DeleteRole" xml:space="preserve">
+    <value>حذف نقش</value>
+  </data>
+  <data name="DeleteUser" xml:space="preserve">
+    <value>حذف کاربر</value>
+  </data>
+  <data name="Deposit" xml:space="preserve">
+    <value>واریز</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>توضیح</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>ویژگی</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>جزئیات</value>
+  </data>
+  <data name="DetailTitle" xml:space="preserve">
+    <value>عنوان ویژگی</value>
+  </data>
+  <data name="EditGroup" xml:space="preserve">
+    <value>ویرایش گروه</value>
+  </data>
+  <data name="EditPassword" xml:space="preserve">
+    <value>ویرایش رمز عبور</value>
+  </data>
+  <data name="EditPasswordMessage" xml:space="preserve">
+    <value>در صورت وارد کردن رمز عبور، رمز عبور فعلی کاربر تغییر خواهد کرد</value>
+  </data>
+  <data name="EditPhoneNumber" xml:space="preserve">
+    <value>ویرایش شماره موبایل</value>
+  </data>
+  <data name="EditRole" xml:space="preserve">
+    <value>ویرایش نقش</value>
+  </data>
+  <data name="EditUser" xml:space="preserve">
+    <value>ویرایش کاربر</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>ایمیل</value>
+  </data>
+  <data name="EmailOrPhone" xml:space="preserve">
+    <value>ایمیل یا شماره همراه</value>
+  </data>
+  <data name="Entries" xml:space="preserve">
+    <value>ورودی</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="February" xml:space="preserve">
+    <value>بهمن</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>نام </value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>فراموشی رمز عبور</value>
+  </data>
+  <data name="ForgotPasswordCaption" xml:space="preserve">
+    <value>برای تعویض رمز عبور خود ایمیل یا شماره همراهتان را وارد کنید</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>نام و نام خانوادگی</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>گروه اصلی</value>
+  </data>
+  <data name="GroupDetails" xml:space="preserve">
+    <value>ویژگی های گروه</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>سلام</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>عکس</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>تصاویر</value>
+  </data>
+  <data name="IncreaseBalance" xml:space="preserve">
+    <value>افزایش موجودی</value>
+  </data>
+  <data name="InventoryManagement" xml:space="preserve">
+    <value>مدیریت انبار</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>فعال</value>
+  </data>
+  <data name="January" xml:space="preserve">
+    <value>دی</value>
+  </data>
+  <data name="July" xml:space="preserve">
+    <value>تیر</value>
+  </data>
+  <data name="June" xml:space="preserve">
+    <value>خرداد</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>نام خانوادگی</value>
+  </data>
+  <data name="LastTransactions" xml:space="preserve">
+    <value>اخرین تراکنش ها</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>ورود</value>
+  </data>
+  <data name="ManageRolesAndPermissions" xml:space="preserve">
+    <value>مدیریت دسترسی ها</value>
+  </data>
+  <data name="ManageUsers" xml:space="preserve">
+    <value>مدیریت کاربران</value>
+  </data>
+  <data name="March" xml:space="preserve">
+    <value>اسفند</value>
+  </data>
+  <data name="May" xml:space="preserve">
+    <value>اردیبهشت</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>پیغام</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>ماه</value>
+  </data>
+  <data name="MyOrders" xml:space="preserve">
+    <value>سفارشات من</value>
+  </data>
+  <data name="NationalNumber" xml:space="preserve">
+    <value>کد ملی</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>رمز عبور جدید</value>
+  </data>
+  <data name="November" xml:space="preserve">
+    <value>آبان</value>
+  </data>
+  <data name="October" xml:space="preserve">
+    <value>مهر</value>
+  </data>
+  <data name="Of" xml:space="preserve">
+    <value>از</value>
+  </data>
+  <data name="Operations" xml:space="preserve">
+    <value>عملیات</value>
+  </data>
+  <data name="OrderPendingPayment" xml:space="preserve">
+    <value>سفارش شما در انتظار پرداخت است. برای جلوگیری از لغو سفارش، لطفا پرداخت را انجام دهید.</value>
+  </data>
+  <data name="OtherLangTitle" xml:space="preserve">
+    <value>عنوان به انگلیسی</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>رمز عبور</value>
+  </data>
+  <data name="PaymentDescription" xml:space="preserve">
+    <value>واریز به کیف پول</value>
+  </data>
+  <data name="PaymentRefundMessage" xml:space="preserve">
+    <value>چنانچه مبلغی از حساب شما کسر شده است، تا ۲۴ ساعت آینده به حساب شما باز خواهد گشت.</value>
+  </data>
+  <data name="PayToAccountNumber" xml:space="preserve">
+    <value>واریز به کارت بانکی</value>
+  </data>
+  <data name="PayToWallet" xml:space="preserve">
+    <value>واریز به کیف پول</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>شماره همراه</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>قیمت</value>
+  </data>
+  <data name="PrimaryGroup" xml:space="preserve">
+    <value>گروه فرعی اول</value>
+  </data>
+  <data name="ProductDetails" xml:space="preserve">
+    <value>مشخصات محصول</value>
+  </data>
+  <data name="ProductGroups" xml:space="preserve">
+    <value>گروه محصولات</value>
+  </data>
+  <data name="ProductGroupsList" xml:space="preserve">
+    <value>لیست گروه محصولات</value>
+  </data>
+  <data name="ProductImages" xml:space="preserve">
+    <value>عکس های محصول</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>محصولات</value>
+  </data>
+  <data name="ProductsList" xml:space="preserve">
+    <value>لیست محصولات</value>
+  </data>
+  <data name="ProductsManagement" xml:space="preserve">
+    <value>مدیریت محصولات</value>
+  </data>
+  <data name="ProductTagsMessage" xml:space="preserve">
+    <value>لطفا تگ های محصول را با (-) از هم جدا کنید</value>
+  </data>
+  <data name="Record" xml:space="preserve">
+    <value>رکورد</value>
+  </data>
+  <data name="RefundType" xml:space="preserve">
+    <value>روش بازگرداندن وجه</value>
+  </data>
+  <data name="RegisterAndLogin" xml:space="preserve">
+    <value>ورود/ثبت نام</value>
+  </data>
+  <data name="RegisterDate" xml:space="preserve">
+    <value>تاریخ عضویت</value>
+  </data>
+  <data name="ReLoginAfterEditEmail" xml:space="preserve">
+    <value>پس از ویرایش ایمیل نیاز است که دوباره وارد شوید</value>
+  </data>
+  <data name="RemainingTime" xml:space="preserve">
+    <value>زمان باقیمانده</value>
+  </data>
+  <data name="RepeatNewPassword" xml:space="preserve">
+    <value>تکرار رمز عبور جدید</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>تکرار رمز عبور</value>
+  </data>
+  <data name="ReSend" xml:space="preserve">
+    <value>ارسال مجدد</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>بازیابی رمز عبور</value>
+  </data>
+  <data name="ResetPasswordEmailText" xml:space="preserve">
+    <value>برای تغییر رمز عبور خود لطفا روی دکمه زیر کلیک نمایید.</value>
+  </data>
+  <data name="ResetUserPasswordText" xml:space="preserve">
+    <value>رمز عبور شما با موفقیت بازیابی شد حال میتوانید با استفاده از این رمز عبور وارد سایت شوید</value>
+  </data>
+  <data name="ReturnDeletedUser" xml:space="preserve">
+    <value> بازگرداندن کاربر حذف شده</value>
+  </data>
+  <data name="ReturnDeletedUsersHelp" xml:space="preserve">
+    <value>پس از حذف کاربر می توانید کاربر را از بخش "کاربران حذف شده" دوباره به قسمت کاربران سایت باز گردانید</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>نقش</value>
+  </data>
+  <data name="RolePermissions" xml:space="preserve">
+    <value>دسترسی های نقش</value>
+  </data>
+  <data name="RolesList" xml:space="preserve">
+    <value>لیست نقش ها</value>
+  </data>
+  <data name="RoleTitle" xml:space="preserve">
+    <value>عنوان نقش</value>
+  </data>
+  <data name="Row" xml:space="preserve">
+    <value>ردیف</value>
+  </data>
+  <data name="SecondaryGroup" xml:space="preserve">
+    <value>گروه فرعی دوم</value>
+  </data>
+  <data name="SelectColorMessage" xml:space="preserve">
+    <value>لطفا رنگ را انتخاب کنید:</value>
+  </data>
+  <data name="SelectGroupMessage" xml:space="preserve">
+    <value>گروهی را انتخاب کنید</value>
+  </data>
+  <data name="SelectPermissions" xml:space="preserve">
+    <value>انتخاب دسترسی ها</value>
+  </data>
+  <data name="September" xml:space="preserve">
+    <value>شهریور</value>
+  </data>
+  <data name="ShopManagement" xml:space="preserve">
+    <value>مدیریت فروشگاه</value>
+  </data>
+  <data name="ShopName" xml:space="preserve">
+    <value>مای استور</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>نمایش</value>
+  </data>
+  <data name="Showing" xml:space="preserve">
+    <value>در حال نمایش</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>زمان باقی مانده</value>
+  </data>
+  <data name="SubGroups" xml:space="preserve">
+    <value>گروه های فرعی</value>
+  </data>
+  <data name="SuccessfullTransaction" xml:space="preserve">
+    <value>تراکنش موفق</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>تگ ها</value>
+  </data>
+  <data name="TermsOfUse" xml:space="preserve">
+    <value>با ورود و یا ثبت نام در سایت شما &lt;a href="#" class="link"&gt;شرایط و  قوانین&lt;/a&gt; استفاده از تمام سرویس های سایت و &lt;a href="#" class="link"&gt;قوانین حریم خصوصی&lt;/a&gt; آن را می‌پذیرید.</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>عنوان</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>تا</value>
+  </data>
+  <data name="Toman" xml:space="preserve">
+    <value>تومان</value>
+  </data>
+  <data name="TrackingId" xml:space="preserve">
+    <value>کد پیگیری</value>
+  </data>
+  <data name="TransactionType" xml:space="preserve">
+    <value>نوع تراکنش</value>
+  </data>
+  <data name="UserAvatar" xml:space="preserve">
+    <value>تصویر کاربر</value>
+  </data>
+  <data name="UserRolesList" xml:space="preserve">
+    <value>لیست نقش های کاربر</value>
+  </data>
+  <data name="UsersList" xml:space="preserve">
+    <value>لیست کاربران سایت</value>
+  </data>
+  <data name="UserVerificationLoginMessage" xml:space="preserve">
+    <value>برای ورود به حساب کاربری خود، لطفا کد ارسال شده را وارد نمایید</value>
+  </data>
+  <data name="UserVerificationRegisterMessageS1" xml:space="preserve">
+    <value>حساب کاربری با شماره موبایل </value>
+  </data>
+  <data name="UserVerificationRegisterMessageS2" xml:space="preserve">
+    <value>وجود ندارد. برای ایجاد حساب کاربری خود کد ارسال شده را وارد نمایید</value>
+  </data>
+  <data name="Verfication" xml:space="preserve">
+    <value>تایید شماره موبایل</value>
+  </data>
+  <data name="Wallet" xml:space="preserve">
+    <value>کیف پول</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>اخطار</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>خوش آمدید!</value>
+  </data>
+  <data name="Withdraw" xml:space="preserve">
+    <value>برداشت</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>سال</value>
+  </data>
+</root>

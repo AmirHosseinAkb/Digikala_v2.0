@@ -1,0 +1,72 @@
+﻿@page "{transactionId}"
+@model Server.Pages.UserPanel.Wallet.OnlinePaymentModel
+@{
+}
+
+<main class="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- box -->
+                <div class="ui-box bg-white mb-5">
+                    <div class="ui-box-content">
+                        <div class="row">
+                            @if (Convert.ToBoolean(ViewData["PaymentSuccess"]))
+                            {
+                                <div class="col-md-8 order-md-1 order-2">
+                                    <div class="fs-5 fw-bold text-success mb-3">
+                                        @ConfirmationMessages.PaymentSuccessMessage
+                                    </div>
+                                    <div class="d-flex align-items-center flex-wrap mb-3">
+                                        <div class="text-secondary me-3">@DataDictionaries.TrackingId:</div>
+                                        <div class="font-en">@ViewData["RefId"]</div>
+                                    </div>
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <a href="/UserPanel/Wallet" class="btn btn-primary me-4">@ButtonCaptions.ReturnToWallet</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 order-md-2 order-1 mb-md-0 mb-4 text-center">
+                                    <img src="~/assets/images/theme/checkout-successful.png" class="img-fluid" alt="">
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-lg-8 mx-auto">
+                                    <!-- box -->
+                                <div class="ui-box bg-white mb-5">
+                                        <div class="ui-box-content">
+                                            <div class="row">
+                                                <div class="col-md-8 order-md-1 order-2">
+                                                    <div class="fs-5 fw-bold text-danger mb-3">
+                                                        @ErrorMessages.PaymentFailed
+                                                    </div>
+                                                    <div class="d-flex align-items-center flex-wrap">
+                                                        <a href="/UserPanel/Wallet" class="btn btn-primary me-4">@ButtonCaptions.ReturnToWallet</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 order-md-2 order-1 mb-md-0 mb-4 text-center">
+                                                    <img src="~/assets/images/theme/checkout-unsuccessful.png" class="img-fluid" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--  box -->
+                                    <!-- box -->
+                                <div class="ui-box bg-white mb-5">
+                                        <div class="ui-box-content fa-num">
+                                            <div class="d-flex align-items-center text-muted mb-4">
+                                                <i class="ri-information-fill me-3"></i>
+                                               @DataDictionaries.PaymentRefundMessage
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--  box -->
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

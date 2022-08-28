@@ -1,0 +1,66 @@
+﻿@page "{handler?}"
+@model Server.Areas.Administration.Pages.Shop.ProductGroups.GroupDetails.IndexModel
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">@DataDictionaries.GroupDetails</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <form
+                        id="frmDetail" method="post">
+                        <input id="detailGroupId" type="hidden" asp-for="command.GroupId"/>
+                        <input type="hidden" asp-for="command.DetailId"/>
+                        <div class="col-md-10">
+                            <input asp-for="command.DetailTitle" type="text" class="form-control" placeholder="@DataDictionaries.Detail"/>
+                            <span asp-validation-for="command.DetailTitle" class="error"></span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="btnDetail" type="submit" class="btn btn-success" value="@ButtonCaptions.Add"/>
+                        </div>
+                    </form>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                            <thead>
+                            <tr>
+                                <th>@DataDictionaries.Row</th>
+                                <th>@DataDictionaries.DetailTitle</th>
+                                <th>@DataDictionaries.Operations</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @{
+                                var number = 1;
+                            }
+                            @foreach (var detail in Model.GroupDetailVms)
+                            {
+                                <tr>
+                                    <td>@number</td>
+                                    <td>@detail.DetailTitle</td>
+                                    <td>
+                                        <a onclick="GetDetailForEdit(@detail.DetailId,@detail.GroupId,'@detail.DetailTitle')" class="text-primary md md-edit" title="@ButtonCaptions.Edit"></a>
+                                        <a class="text-danger md md-delete" title="@ButtonCaptions.Delete"></a>
+                                    </td>
+                                </tr>
+                                number += 1;
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/assets/js/library/jquery.validate.min.js"></script>
+<script src="~/assets/js/library/jquery.validate.unobtrusive.min.js"></script>

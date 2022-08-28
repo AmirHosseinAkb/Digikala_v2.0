@@ -1,0 +1,348 @@
+﻿@page "{handler?}"
+@using _01_Framework.Infrastructure
+@model Server.Pages.UserPanel.ConfirmInformationsModel
+
+@{
+    Layout = "Layouts/_DefaultLayout";
+    ViewData["Title"] = PageTitles.UserInformations;
+    var splitUserBirthDate = Model.UserInformationsVM.BirthDate?.Split('/');
+}
+
+<main class="page-content">
+    <div class="container">
+        <div class="row mb-5">
+
+            <partial name="PartialViews/_UserPanelSideBar"></partial>
+
+            <div class="col-xl-9 col-lg-8 col-md-7">
+                <div class="alert alert-warning alert-dismissible fade show mb-5" role="alert">
+                    <div>
+                        @DataDictionaries.OrderPendingPayment
+                        <a href="#" class="btn btn-sm btn-primary mx-3">@DataDictionaries.MyOrders</a>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <div class="ui-box bg-white mb-5">
+                    <div class="ui-box-title">اطلاعات شخصی</div>
+                    <div class="ui-box-content">
+                        <div class="row">
+                            <div class="col-lg-6 mb-3">
+                                <div class="border-bottom py-2">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="fs-7 fw-bold text-dark">@DataDictionaries.FullName</div>
+                                        <button class="btn btn-circle btn-outline-light" data-remodal-target="personal-info-fullname-modal"><i class="ri-ball-pen-fill"></i></button>
+                                    </div>
+                                    <div id="nameInp" class="fs-6 fw-bold text-muted">@(Model.UserInformationsVM.FirstName +" "+ Model.UserInformationsVM.LastName)</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <div class="border-bottom py-2">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="fs-7 fw-bold text-dark">@DataDictionaries.NationalNumber</div>
+                                        <button class="btn btn-circle btn-outline-light" data-remodal-target="personal-info-national-id-modal"><i class="ri-ball-pen-fill"></i></button>
+                                    </div>
+                                    <div id="nationalNumberInp" class="fs-6 fw-bold text-muted">@(Model.UserInformationsVM.NationalNumber)</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <div class="border-bottom py-2">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="fs-7 fw-bold text-dark">@DataDictionaries.PhoneNumber</div>
+                                        <button class="btn btn-circle btn-outline-light" data-remodal-target="personal-info-phone-number-modal"><i class="ri-ball-pen-fill"></i></button>
+                                    </div>
+                                    @if (Model.UserInformationsVM.PhoneNumber == "")
+                                    {
+                                        <div class="fs-6 fw-bold text-muted">09xxxxxxxxx</div>
+                                    }
+                                    else
+                                    {
+                                        <div id="phoneNumberInp" class="fs-6 fw-bold text-muted">@(Model.UserInformationsVM.PhoneNumber)</div>
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <div class="border-bottom py-2">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="fs-7 fw-bold text-dark">@DataDictionaries.Email</div>
+                                        <button class="btn btn-circle btn-outline-light" data-remodal-target="personal-info-email-modal"><i class="ri-ball-pen-fill"></i></button>
+                                    </div>
+                                    @if (Model.UserInformationsVM.Email == "")
+                                    {
+                                        <div class="fs-6 fw-bold text-muted">example@example.com</div>
+                                    }
+                                    else
+                                    {
+                                        <div id="emailInp" class="fs-6 fw-bold text-muted">@(Model.UserInformationsVM.Email)</div>
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <div class="border-bottom py-2">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="fs-7 fw-bold text-dark">@DataDictionaries.BirthDate</div>
+                                        <button class="btn btn-circle btn-outline-light" data-remodal-target="personal-info-birth-modal"><i class="ri-ball-pen-fill"></i></button>
+                                    </div>
+                                    <div id="birthDateInp" class="fs-6 fw-bold text-muted">@Model.UserInformationsVM.BirthDate</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <div class="border-bottom py-2">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="fs-7 fw-bold text-dark">@DataDictionaries.RefundType</div>
+                                        <button class="btn btn-circle btn-outline-light" data-remodal-target="personal-info-returned-modal"><i class="ri-ball-pen-fill"></i></button>
+                                    </div>
+                                    @if (Model.UserInformationsVM.RefundType == RefundTypes.PayToAccountNumber)
+                                    {
+                                        <div id="refundTypeInp" class="fs-6 fw-bold text-muted">@DataDictionaries.PayToAccountNumber - @Model.UserInformationsVM.AccountNumber</div>
+                                    }
+                                    else
+                                    {
+                                        <div id="refundTypeInp" class="fs-6 fw-bold text-muted">@DataDictionaries.PayToWallet</div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <div class="border-bottom py-2">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="fs-7 fw-bold text-dark">@DataDictionaries.Password</div>
+                                        <button class="btn btn-circle btn-outline-light" data-remodal-target="personal-info-change-password-modal"><i class="ri-ball-pen-fill"></i></button>
+                                    </div>
+                                    <div id="passwordInp" class="fs-6 fw-bold text-muted">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="nameModal" class="remodal remodal-xs" data-remodal-id="personal-info-fullname-modal" data-remodal-options="hashTracking: false">
+        <div class="remodal-header">
+            <div class="remodal-title">@DataDictionaries.FullName</div>
+            <button data-remodal-action="close" class="remodal-close"></button>
+        </div>
+        <form id="frmUserFullName" method="post">
+            <div id="" class="remodal-content">
+                <div class="form-element-row mb-3">
+                    <label class="label fs-7">@DataDictionaries.FirstName</label>
+                    <input asp-for="FullNameCommand.FirstName" type="text" value="@Model.UserInformationsVM.FirstName" class="form-control" placeholder="">
+                    <span asp-validation-for="FullNameCommand.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-element-row">
+                    <label class="label fs-7">@DataDictionaries.LastName</label>
+                    <input asp-for="FullNameCommand.LastName" type="text" value="@Model.UserInformationsVM.LastName" class="form-control" placeholder="">
+                    <span asp-validation-for="FullNameCommand.LastName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="remodal-footer">
+                <button id="btnName" class="btn btn-sm btn-primary px-3">@ButtonCaptions.SaveInformations</button>
+            </div>
+        </form>
+    </div>
+    <!--  personal-info-fullname-modal -->
+    <!-- personal-info-national-id-modal -->
+    <div id="nationalnumberModal" class="remodal remodal-xs" data-remodal-id="personal-info-national-id-modal" data-remodal-options="hashTracking: false">
+        <div class="remodal-header">
+            <div class="remodal-title">@DataDictionaries.NationalNumber</div>
+            <button data-remodal-action="close" class="remodal-close"></button>
+        </div>
+        <form id="frmUserNationalNumber" method="post">
+            <div class="remodal-content">
+                <div class="form-element-row mb-3">
+                    <input asp-for="NationalNumberCommand.NationalNumber" type="number" value="@Model.UserInformationsVM.NationalNumber" class="form-control" placeholder="">
+                    <span asp-validation-for="NationalNumberCommand.NationalNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="remodal-footer">
+                <button id="btnNationalNumber" class="btn btn-sm btn-primary px-3">@ButtonCaptions.SaveInformations</button>
+            </div>
+        </form>
+    </div>
+    <!--  personal-info-national-id-modal -->
+    <!-- personal-info-phone-number-modal -->
+    <div id="phoneNumberModal" class="remodal remodal-xs" data-remodal-id="personal-info-phone-number-modal" data-remodal-options="hashTracking: false">
+        <div class="remodal-header">
+            <div class="remodal-title">@DataDictionaries.PhoneNumber</div>
+            <button data-remodal-action="close" class="remodal-close"></button>
+        </div>
+        <form id="frmUserPhoneNumber" method="post">
+            <div class="remodal-content">
+                <div class="form-element-row mb-3">
+                    <input asp-for="PhoneNumberCommand.PhoneNumber" type="number" value="@Model.UserInformationsVM.PhoneNumber" class="form-control" placeholder="">
+                    <span asp-validation-for="PhoneNumberCommand.PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="remodal-footer">
+                <button id="btnPhoneNumber" class="btn btn-sm btn-primary px-3">@ButtonCaptions.Save</button>
+            </div>
+        </form>
+    </div>
+    <!--  personal-info-phone-number-modal -->
+    <!-- personal-info-email-modal -->
+    <div id="emailModal" class="remodal remodal-xs" data-remodal-id="personal-info-email-modal" data-remodal-options="hashTracking: false">
+        <div class="remodal-header">
+            <div class="remodal-title">@DataDictionaries.Email</div>
+            <button data-remodal-action="close" class="remodal-close"></button>
+        </div>
+        <form id="frmUserEmail" method="post">
+            <div class="remodal-content">
+                <div class="form-element-row mb-3">
+                    <input asp-for="EmailCommand.Email" type="text" value="@Model.UserInformationsVM.Email" class="form-control" placeholder="">
+                    <span asp-validation-for="EmailCommand.Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="remodal-footer">
+                <button id="btnEmail" class="btn btn-sm btn-primary px-3">@ButtonCaptions.Save</button>
+            </div>
+        </form>
+    </div>
+    <!--  personal-info-email-modal -->
+    <!-- personal-info-birth-modal -->
+    <div id="birthDateModal" class="remodal remodal-xs" data-remodal-id="personal-info-birth-modal" data-remodal-options="hashTracking: false">
+        <div class="remodal-header">
+            <div class="remodal-title">@DataDictionaries.BirthDate</div>
+            <button data-remodal-action="close" class="remodal-close"></button>
+        </div>
+        <form id="frmUserBirthDate" method="post">
+            <div class="remodal-content">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-element-row">
+                            <label class="label fs-7">@DataDictionaries.Year</label>
+                            <input asp-for="BirthDateCommand.BirthYear" type="number" value="@((splitUserBirthDate!=null)?splitUserBirthDate[0]:"")" class="form-control" placeholder="">
+                            <span asp-validation-for="BirthDateCommand.BirthYear" class="text-danger"></span>
+                        </div>
+                    </div>
+                    @{
+                        List<string> months = new List<string>(){
+                    DataDictionaries.April,
+                    DataDictionaries.May,
+                    DataDictionaries.June,
+                    DataDictionaries.July,
+                    DataDictionaries.August,
+                    DataDictionaries.September,
+                    DataDictionaries.October,
+                    DataDictionaries.November,
+                    DataDictionaries.December,
+                    DataDictionaries.January,
+                    DataDictionaries.February,
+                    DataDictionaries.March
+                    };
+                    }
+                    <div class="col-4">
+                        <div class="form-element-row">
+                            <label class="label fs-7">@DataDictionaries.Month</label>
+                            <select class="select2" asp-for="BirthDateCommand.BirthMonth" id="month">
+                                @for (int i = 1; i <= 12; i++)
+                                {
+                                    string index = i.ToString().PadLeft(2, '0');
+                                    if (splitUserBirthDate != null)
+                                    {
+                                        if (splitUserBirthDate[1] == index)
+                                        {
+                                            <option value="@index" selected>@months[i-1]</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@index">@months[i-1]</option>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <option value="@index">@months[i-1]</option>
+                                    }
+
+                                }
+                            </select>
+                            <span asp-validation-for="BirthDateCommand.BirthMonth" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-element-row">
+                            <label class="label fs-7">@DataDictionaries.Day</label>
+                            <input type="text" asp-for="BirthDateCommand.BirthDay" value="@((splitUserBirthDate!=null)?splitUserBirthDate[2]:"")" class="form-control" placeholder="">
+                            <span asp-validation-for="BirthDateCommand.BirthDay" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="remodal-footer">
+                <button id="btnBirthDate" class="btn btn-sm btn-primary px-3">@ButtonCaptions.SaveBirthDate</button>
+            </div>
+        </form>
+    </div>
+    <!--  personal-info-birth-modal -->
+    <!-- personal-info-returned-modal -->
+    <div id="refundTypeModal" class="remodal remodal-xs" data-remodal-id="personal-info-returned-modal" data-remodal-options="hashTracking: false">
+        <div class="remodal-header">
+            <button data-remodal-action="close" class="remodal-close"></button>
+        </div>
+        <form id="frmUserRefundType" method="post">
+            <div class="remodal-content">
+                <div class="fs-7 fw-bold mb-4">
+                    لطفا روش بازگرداندن وجوه خود را انتخاب نمایید. همچنین برای کسب اطلاعات بیشتر لطفا ملاحظات بازگشت
+                    وجه را مطالعه نمایید.
+                </div>
+
+                <div class="custom-radio-outline">
+                    <input asp-for="RefundCommand.RefundType" type="radio" value="1" class="custom-radio-outline-input" id="checkoutPayment01">
+                    <label for="checkoutPayment01" class="custom-radio-outline-label">
+                        <span class="label">
+                            <span class="icon"><i class="ri-secure-payment-fill"></i></span>
+                            <span class="detail">
+                                <span class="title">@DataDictionaries.PayToAccountNumber</span>
+                            </span>
+                        </span>
+                    </label>
+                    <input asp-for="RefundCommand.AccountNumber" type="number" class="form-control" value="@Model.UserInformationsVM.AccountNumber" placeholder="@DataDictionaries.AccountNumber" style="display:none" />
+                </div>
+                <div class="custom-radio-outline">
+                    <input asp-for="RefundCommand.RefundType" type="radio" value="2" class="custom-radio-outline-input" id="checkoutPayment02">
+                    <label for="checkoutPayment02" class="custom-radio-outline-label">
+                        <span class="label">
+                            <span class="icon"><i class="ri-wallet-3-fill"></i></span>
+                            <span class="detail">
+                                <span class="title">@DataDictionaries.PayToWallet</span>
+                            </span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="remodal-footer">
+                <button id="btnSaveRefundType" class="btn btn-sm btn-primary px-3">@ButtonCaptions.Save</button>
+            </div>
+        </form>
+    </div>
+    <!--  personal-info-returned-modal -->
+    <!-- personal-info-change-password-modal -->
+    <div id="userPasswordModal" class="remodal remodal-xs" data-remodal-id="personal-info-change-password-modal" data-remodal-options="hashTracking: false">
+        <div class="remodal-header">
+            <div class="remodal-title">@DataDictionaries.EditPassword</div>
+            <button data-remodal-action="close" class="remodal-close"></button>
+        </div>
+        <form id="frmUserPassword" method="post">
+            <div class="remodal-content">
+                <div class="form-element-row mb-3">
+                    <label class="label fs-7">@DataDictionaries.CurrentPassword</label>
+                    <input asp-for="PasswordCommand.CurrentPassword" type="password" class="form-control" placeholder="">
+                    <span asp-validation-for="PasswordCommand.CurrentPassword" class="text-danger"></span>
+                </div>
+                <div class="form-element-row mb-3">
+                    <label class="label fs-7">@DataDictionaries.NewPassword</label>
+                    <input asp-for="PasswordCommand.NewPassword" type="password" class="form-control" placeholder="">
+                    <span asp-validation-for="PasswordCommand.NewPassword" class="text-danger"></span>
+                </div>
+                <div class="form-element-row mb-3">
+                    <label class="label fs-7">@DataDictionaries.RepeatNewPassword</label>
+                    <input asp-for="PasswordCommand.RepeatNewPassword" type="password" class="form-control" placeholder="">
+                    <span asp-validation-for="PasswordCommand.RepeatNewPassword" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="remodal-footer">
+                <button id="btnSavePassword" class="btn btn-sm btn-primary px-3">@ButtonCaptions.Save</button>
+            </div>
+        </form>
+    </div>
+</main>

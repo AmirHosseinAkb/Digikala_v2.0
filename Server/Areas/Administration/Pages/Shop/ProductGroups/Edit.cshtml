@@ -1,0 +1,82 @@
+﻿@model ShopManagement.Application.Contracts.ProductGroup.EditGroupCommand
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">@DataDictionaries.EditGroup</h4>
+</div>
+
+<form asp-page="./Index"
+      asp-page-handler="Edit"
+      data-ajax="true"
+      data-action="Refresh"
+      data-callback=""
+      enctype="multipart/form-data"
+      method="post">
+    <div class="modal-body">
+        <div class="row">
+            <input type="hidden" asp-for="GroupId"/>
+            <input type="hidden" asp-for="ParentId" />
+            <input type="hidden" asp-for="ImageName" />
+            @if (!string.IsNullOrEmpty(Model.ImageName))
+            {
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input type="text" class="form-control" asp-for="Title" placeholder="@DataDictionaries.Title">
+                        <span asp-validation-for="Title" class="error"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="card">
+                            <div class="card-header-pills">
+                                <label class="control-label">@DataDictionaries.Image</label>
+                            </div>
+                            <div class="card-body">
+                                <img id="groupImage" src="/Products/ProductGroupImages/@Model.ImageName" class="card-img-top img-thumbnail" alt="ProductImage"/>
+                            </div>
+                            <div class="card-footer">
+                                <input id="imgInp" type="file" class="form-control" asp-for="GroupImage">
+                                <span asp-validation-for="GroupImage" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control" asp-for="Title" placeholder="@DataDictionaries.Title">
+                        <span asp-validation-for="Title" class="error"></span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-info waves-effect waves-light">@ButtonCaptions.Edit</button>
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">@ButtonCaptions.Cancel</button>
+    </div>
+</form>
+
+<script src="~/assets/js/library/jquery.validate.min.js"></script>
+<script src="~/assets/js/library/jquery.validate.unobtrusive.min.js"></script>
+
+
+<script>
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#groupImage').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#imgInp").change(function () {
+        readURL(this);
+    });
+</script>

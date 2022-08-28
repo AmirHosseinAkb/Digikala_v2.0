@@ -1,0 +1,173 @@
+﻿@page "{handler?}"
+@model Server.Areas.Administration.Pages.Shop.ProductGroups.IndexModel
+@{
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">@DataDictionaries.ProductGroupsList</h3>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                            <div class="m-b-15">
+                                <a onclick="CreateGroup()" class="btn btn-info">@ButtonCaptions.AddNewGroup</a>
+                            </div>
+                            <form method="get">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div id="datatable_filter" class="dataTables_filter">
+                                            <label style="display:block">@DataDictionaries.Title</label>
+                                            <input name="title" type="search" class="form-control input-sm" placeholder="@DataDictionaries.Title" aria-controls="datatable">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="dataTables_length" id="datatable_length">
+                                            <label style="display:block">@DataDictionaries.Show</label>
+                                            <select name="take" aria-controls="datatable" class="form-control input-sm">
+                                                @for (var i = 1; i <= 4; i++)
+                                                {
+                                                    int x = 10;
+                                                    if (i * x == (int)ViewData["Take"])
+                                                    {
+                                                        <option value="@(i * x)" selected>@(i * x)</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@(i*x)">@(i*x)</option>
+                                                    }
+                                                }
+                                            </select>
+                                            @DataDictionaries.Record
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div id="datatable_filter" class="dataTables_filter">
+                                            <input type="submit" class="btn btn-primary" value="@ButtonCaptions.Search" />
+                                            &nbsp;
+                                            <a href="/Administration/Shop/ProductGroups" class="btn btn-warning">@ButtonCaptions.Clear</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row m-t-10">
+                                <div class="col-sm-12">
+                                    <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th>@DataDictionaries.Image</th>
+                                                <th>@DataDictionaries.Group</th>
+                                                <th>@DataDictionaries.SubGroups</th>
+                                                <th>@DataDictionaries.Operations</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var group in Model.ProductGroupVm.Item1.Where(g => g.ParentId == null))
+                                            {
+                                                <tr role="row" >
+                                                    <td>
+                                                        <img src="/Products/ProductGroupImages/@group.ImageName" style="width: 200px; height: 200px" class="img-thumbnail">
+                                                    </td>
+                                                    <td>@group.GroupTitle</td>
+                                                    <td>
+                                                        @if (Model.ProductGroupVm.Item1.Any(g => g.ParentId == group.GroupId))
+                                                        {
+                                                            <ul>
+                                                                @foreach (var primaryGroup in Model.ProductGroupVm.Item1.Where(g => g.ParentId == group.GroupId))
+                                                                {
+                                                                    <li class="m-t-10 m-b-10">
+                                                                        @primaryGroup.GroupTitle
+                                                                        <a onclick="CreateGroup(@primaryGroup.GroupId)" class="text-black md md-add" title="@ButtonCaptions.AddSubGroup"></a>
+                                                                        <a onclick="EditGroup(@primaryGroup.GroupId)" class="text-primary md md-edit" title="@ButtonCaptions.Edit"></a>
+                                                                        @if (!Model.ProductGroupVm.Item1.Any(g => g.ParentId == primaryGroup.GroupId))
+                                                                        {
+                                                                            <a onclick="CreateGroupDetails(@primaryGroup.GroupId)" class="text-primary md md-menu" title="@ButtonCaptions.AddGroupDetails"></a>
+                                                                        }
+                                                                        <a onclick="GetGroupForDelete(@primaryGroup.GroupId)" class="text-danger md md-delete" title="@ButtonCaptions.Delete"></a>
+                                                                    </li>
+
+                                                                    @if (Model.ProductGroupVm.Item1.Any(g => g.ParentId == primaryGroup.GroupId))
+                                                                    {
+                                                                        <ul style="border: 1px dashed gray">
+                                                                            @foreach (var secondaryGroup in Model.ProductGroupVm.Item1.Where(g => g.ParentId == primaryGroup.GroupId))
+                                                                            {
+                                                                                <li>
+                                                                                    @secondaryGroup.GroupTitle 
+                                                                                    <a onclick="GetGroupForDelete(@secondaryGroup.GroupId)" class="text-danger md md-delete pull-left"></a>
+                                                                                    <a onclick="CreateGroupDetails(@secondaryGroup.GroupId)" class="text-primary md md-menu pull-left" title="@ButtonCaptions.AddGroupDetails"></a>
+                                                                                </li>
+                                                                            }
+                                                                        </ul>
+                                                                    }
+                                                                }
+                                                            </ul>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        <a onclick="CreateGroup(@group.GroupId)" class="btn btn-primary btn-block ">@ButtonCaptions.AddSubGroup</a>
+                                                        <a onclick="EditGroup(@group.GroupId)" class="btn btn-primary btn-block ">@ButtonCaptions.Edit</a>
+                                                        @if (!Model.ProductGroupVm.Item1.Any(g => g.ParentId == group.GroupId))
+                                                        {
+                                                            <a onclick="CreateGroupDetails(@group.GroupId)" class="btn btn-primary btn-block ">@ButtonCaptions.AddGroupDetails</a>
+                                                        }
+                                                        <a onclick="GetGroupForDelete(@group.GroupId)" class="btn btn-danger btn-block ">@ButtonCaptions.Delete</a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    @{
+                                        int take = Model.ProductGroupVm.Item4;
+                                        int pageId = Model.ProductGroupVm.Item2;
+                                        int totalEntries = Model.ProductGroupVm.Item1.Where(g => g.ParentId == null).Count();
+                                        int startEntry = (pageId - 1) * take;
+                                        if (totalEntries != 0)
+                                            startEntry += 1;
+                                        int endEntry = pageId * take;
+                                        if (totalEntries < endEntry)
+                                            endEntry = totalEntries;
+                                    }
+                                    <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">
+                                        @DataDictionaries.Showing @startEntry @DataDictionaries.To @endEntry @DataDictionaries.Of @totalEntries @DataDictionaries.Entries
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                                        <ul class="pagination">
+                                            @for (var i = 1; i <= Model.ProductGroupVm.Item3; i++)
+                                            {
+                                                <li class="paginate_button @((Model.ProductGroupVm.Item2==i)?"active":"")" aria-controls="datatable" tabindex="0"><a href="/Admin/Users?pageId=@i">@i</a></li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @if (Convert.ToBoolean(TempData["IsExistGroup"]))
+    {
+        <text>
+            <script>
+                sweetAlert("پیغام", "لطفا ابتدا گروه محصولی را ایجاد کنید", "error");
+            </script>
+        </text>
+    }
+}
+
+

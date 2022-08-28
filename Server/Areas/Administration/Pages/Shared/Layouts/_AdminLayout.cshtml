@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Moltran - Responsive Admin Dashboard Template</title>
+    <partial name="PartialViews/_MetaTags"></partial>
+    <partial name="PartialViews/_Styles"></partial>
+    @RenderSection("Styles",false)
+</head>
+
+<body class="fixed-left">
+
+    <div id="wrapper">
+
+        <partial name="PartialViews/_Header"></partial>
+
+        <partial name="PartialViews/_RightSideBar"></partial>
+
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                @RenderBody()
+            </div>
+            <partial name="PartialViews/_Footer"></partial>
+        </div>
+
+        <partial name="PartialViews/_LeftSideBar"></partial>
+
+    </div>
+
+    <partial name="PartialViews/_Scripts"></partial>
+    @RenderSection("Scripts",false)
+
+    <div id="MainModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div id="ModalDialog" class="modal-dialog">
+            <div class="modal-content" id="ModalContent">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

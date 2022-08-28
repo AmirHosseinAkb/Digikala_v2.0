@@ -1,0 +1,162 @@
+﻿@using ShopManagement.Application.Contracts.ProductGroup
+@model ShopManagement.Application.Contracts.Product.CreateProductCommand
+
+@inject IProductGroupApplication _productGroupApplication
+
+@{
+    var groups = _productGroupApplication.GetGroups(null);
+    var Groups = new SelectList(groups, "Value", "Text");
+
+    var primaryGroups = _productGroupApplication.GetGroups(int.Parse(groups.First().Value));
+    var PrimaryGroups = new SelectList(primaryGroups, "Value", "Text");
+
+    var secondaryGroups = new List<SelectListItem>();
+    if (primaryGroups.Count() != 0)
+        secondaryGroups = _productGroupApplication.GetGroups(int.Parse(primaryGroups.First().Value));
+    var SecondaryGroups = new SelectList(secondaryGroups, "Value", "Text");
+}
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">@DataDictionaries.AddNewProduct</h4>
+</div>
+
+<form asp-page="./Index"
+      asp-page-handler="Create"
+      data-ajax="true"
+      data-action="Refresh"
+      enctype="multipart/form-data"
+      method="post">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <input type="text" class="form-control" asp-for="Title" placeholder="@DataDictionaries.Title">
+                    <span asp-validation-for="Title" class="error"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" asp-for="OtherLangTitle" placeholder="@DataDictionaries.OtherLangTitle">
+                    <span asp-validation-for="OtherLangTitle" class="error"></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="GroupId" class="control-label">@DataDictionaries.Group</label>
+                            <select id="createGroup" class="form-control" asp-for="GroupId" asp-items="Groups"></select>
+                            <span asp-validation-for="GroupId" class="error"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="PrimaryGroupId" class="control-label">@DataDictionaries.PrimaryGroup</label>
+                            <select id="createPrimaryGroup" class="form-control" asp-for="PrimaryGroupId" asp-items="PrimaryGroups"></select>
+                            <span asp-validation-for="PrimaryGroupId" class="error"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="SecondaryGroupId" class="control-label">@DataDictionaries.SecondaryGroup</label>
+                            <select id="createSecondaryGroup" class="form-control" asp-for="SecondaryGroupId" asp-items="SecondaryGroups"></select>
+                            <span asp-validation-for="SecondaryGroupId" class="error"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <textarea id="ProductDescription" class="form-control" asp-for="Description" placeholder="@DataDictionaries.Description" rows="8"></textarea>
+                    <span asp-validation-for="Description" class="error"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="number" class="form-control" asp-for="Price" placeholder="@DataDictionaries.Price">
+                    <span asp-validation-for="Price" class="error"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" asp-for="Tags" placeholder="@DataDictionaries.Tags">
+                    <p class="help-block">@DataDictionaries.ProductTagsMessage</p>
+                    <span asp-validation-for="Tags" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="card">
+                        <div class="card-header-pills">
+                            <label class="control-label">@DataDictionaries.Image</label>
+                        </div>
+                        <div class="card-body">
+                            <img id="proImage" src="/Products/Images/Product.png" class="card-img-top img-thumbnail" alt="ProductImage" />
+                        </div>
+                        <div class="card-footer">
+                            <input id="imgInp" type="file" class="form-control" asp-for="ProductImage">
+                            <span asp-validation-for="ProductImage" class="error"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-info waves-effect waves-light">@ButtonCaptions.AddNewProduct</button>
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">@ButtonCaptions.Cancel</button>
+    </div>
+
+</form>
+
+<script src="~/assets/js/library/jquery.validate.min.js"></script>
+<script src="~/assets/js/library/jquery.validate.unobtrusive.min.js"></script>
+<script>
+        CKEDITOR.replace("ProductDescription", {
+            customConfig: '/js/Config.js'
+        });
+
+        $("#createGroup").change(function () {
+        $("#createPrimaryGroup").empty();
+        $("#createSecondaryGroup").empty();
+        $.getJSON("/Administration/Shop/Products/GetSubGroups?id=" + $("#createGroup :selected").val(),
+            function (data) {
+                $.each(data,
+                    function () {
+                        $("#createPrimaryGroup").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+                    });
+            });
+        });
+
+        $("#createPrimaryGroup").change(function () {
+            $("#createSecondaryGroup").empty();
+        $.getJSON("/Administration/Shop/Products/GetSubGroups?id=" + $("#createPrimaryGroup :selected").val(),
+            function (data) {
+
+                $.each(data,
+                    function () {
+                        $("#createSecondaryGroup").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+                    });
+            });
+    });
+</script>
+<script>
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#proImage').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#imgInp").change(function () {
+        readURL(this);
+    });
+</script>
+
+
+
+

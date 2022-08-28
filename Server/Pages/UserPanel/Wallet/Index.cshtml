@@ -1,0 +1,89 @@
+﻿@page
+@model Server.Pages.UserPanel.Wallet.IndexModel
+@{
+}
+
+<main class="page-content">
+    <div class="container">
+        <div class="row mb-5">
+            <partial name="PartialViews/_UserPanelSideBar" />
+            <div class="col-xl-9 col-lg-8 col-md-7">
+                <div class="row">
+                    <div class="col-12">
+                        <form method="post">
+                            <div class="ui-box bg-white mb-5">
+                                <div class="ui-box-title">@DataDictionaries.ChargeWallet</div>
+                                <div class="ui-box-content">
+                                    <input asp-for="TransactionCommand.Amount" type="number" class="form-control" placeholder="@DataDictionaries.AmountPlaceHolder" style="direction:rtl"/>
+                                    <span asp-validation-for="TransactionCommand.Amount" class="text-danger"></span>
+                                    <br/>
+                                    <button class="btn btn-success mt-2" >@ButtonCaptions.Pay</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="ui-box bg-white mb-5">
+                            <div class="ui-box-title">@DataDictionaries.LastTransactions</div>
+                            <div class="ui-box-content">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>@DataDictionaries.Amount</th>
+                                                <th>@DataDictionaries.TransactionType</th>
+                                                <th>@DataDictionaries.Description</th>
+                                                <th>@DataDictionaries.SuccessfullTransaction</th>
+                                                <th>@DataDictionaries.CreationDate</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var transaction in Model.TransactionVMs)
+                                            {
+                                                <tr>
+                                                    <td class="fa-num fs-6 fw-bold">@(transaction.Amount.ToString("#,0")+" "+DataDictionaries.Toman)</td>
+                                                    <td>
+                                                        @if (transaction.TypeId == TransactionTypes.Deposit)
+                                                        {
+                                                            <span class="badge bg-success rounded-pill fs-7">
+                                                                @DataDictionaries.Deposit
+                                                            </span>
+                                                        }
+                                                        @if (transaction.TypeId == TransactionTypes.Withdraw)
+                                                        {
+                                                            <span class="badge bg-warning rounded-pill fs-7">
+                                                                @DataDictionaries.Withdraw
+                                                            </span>
+                                                        }
+                                                    </td>
+                                                    <td class="fa-num text-muted">@transaction.Description</td>
+                                                    <td class="fa-num fs-6 fw-bold">
+                                                        @if (transaction.IsSucceeded)
+                                                        {
+                                                            <span class="text-success">
+                                                                <i class="ri-checkbox-circle-line"></i>
+                                                            </span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="text-danger">
+                                                                <i class="ri-close-circle-line"></i>
+                                                            </span>
+                                                        }
+                                                    </td>
+                                                    <td class="fa-num text-muted">@transaction.CreationDate</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
