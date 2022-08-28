@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShopManagement.Domain.InventoryAgg;
 using ShopManagement.Domain.ProductColorAgg;
 using ShopManagement.Domain.ProductGroupAgg;
 using ShopManagement.Domain.ProductImageAgg;
@@ -30,6 +31,10 @@ namespace ShopManagement.Domain.ProductAgg
         public List<ProductImage> ProductImages { get;private set; }
         public List<ProductColor> ProductColors { get;private set; }
         public List<ProductDetail> ProductDetails { get; private set; }
+
+        public List<Inventory> Inventories { get; private set; }
+
+        public List<InventoryHistory> InventoryHistories { get; private set; }
 
         protected Product()
         {

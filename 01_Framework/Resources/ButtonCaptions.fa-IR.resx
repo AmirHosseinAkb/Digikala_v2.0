@@ -183,6 +183,9 @@
   <data name="InventoryHistories" xml:space="preserve">
     <value>تاریخچه انبار</value>
   </data>
+  <data name="InventoryHistory" xml:space="preserve">
+    <value>تاریخچه انبار</value>
+  </data>
   <data name="JoinUs" xml:space="preserve">
     <value>پیوستن به خانواده ما</value>
   </data>

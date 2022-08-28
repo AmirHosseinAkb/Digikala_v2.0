@@ -285,6 +285,9 @@
   <data name="IncreaseBalance" xml:space="preserve">
     <value>افزایش موجودی</value>
   </data>
+  <data name="Inventory" xml:space="preserve">
+    <value>موجودی</value>
+  </data>
   <data name="InventoryManagement" xml:space="preserve">
     <value>مدیریت انبار</value>
   </data>

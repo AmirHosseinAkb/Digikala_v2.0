@@ -16,6 +16,7 @@ namespace Server.Areas.Administration.Pages.Inventories
         public Tuple<List<InventoryViewModel>,int,int,int> InventoryVms { get; set; }
         public void OnGet(int pageId=1,long productId=0,bool isInStock=false,int take=10)
         {
+            ViewData["Take"] = take;
             InventoryVms = _inventoryApplication.GetInventories(pageId, productId, isInStock, take);
         }
     }

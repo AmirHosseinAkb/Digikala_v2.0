@@ -205,6 +205,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DecreaseInventory.
+        /// </summary>
+        public static string DecreaseInventory {
+            get {
+                return ResourceManager.GetString("DecreaseInventory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string Delete {
@@ -250,11 +259,29 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IncreaseInventory.
+        /// </summary>
+        public static string IncreaseInventory {
+            get {
+                return ResourceManager.GetString("IncreaseInventory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Inventory Histories.
         /// </summary>
         public static string InventoryHistories {
             get {
                 return ResourceManager.GetString("InventoryHistories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to InventoryHistory.
+        /// </summary>
+        public static string InventoryHistory {
+            get {
+                return ResourceManager.GetString("InventoryHistory", resourceCulture);
             }
         }
         

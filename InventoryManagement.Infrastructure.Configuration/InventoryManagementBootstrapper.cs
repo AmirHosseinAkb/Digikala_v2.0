@@ -14,8 +14,8 @@ namespace InventoryManagement.Infrastructure.Configuration
     {
         public static void Config(IServiceCollection services, string connectionString)
         {
-            services.AddScoped<IInventoryRepository, IInventoryRepository>();
-            services.AddScoped<IInventoryApplication, IInventoryApplication>();
+            services.AddScoped<IInventoryRepository, InventoryRepository>();
+            services.AddScoped<IInventoryApplication, InventoryApplication>();
             services.AddScoped<IInventoryHistoryRepository,InventoryHistoryRepository>();
             services.AddScoped<IInventoryHistoryApplication, InventoryHistoryApplication>();
             services.AddDbContext<InventoryContext>(options =>

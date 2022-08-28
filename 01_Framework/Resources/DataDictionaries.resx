@@ -285,6 +285,9 @@
   <data name="IncreaseBalance" xml:space="preserve">
     <value>Increase Balance</value>
   </data>
+  <data name="Inventory" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
   <data name="InventoryManagement" xml:space="preserve">
     <value>Inventory Management</value>
   </data>

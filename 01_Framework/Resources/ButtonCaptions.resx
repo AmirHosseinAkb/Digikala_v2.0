@@ -165,6 +165,9 @@
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
   </data>
+  <data name="DecreaseInventory" xml:space="preserve">
+    <value>DecreaseInventory</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
@@ -180,8 +183,14 @@
   <data name="GroupDetails" xml:space="preserve">
     <value>Group Details</value>
   </data>
+  <data name="IncreaseInventory" xml:space="preserve">
+    <value>IncreaseInventory</value>
+  </data>
   <data name="InventoryHistories" xml:space="preserve">
     <value>Inventory Histories</value>
+  </data>
+  <data name="InventoryHistory" xml:space="preserve">
+    <value>InventoryHistory</value>
   </data>
   <data name="JoinUs" xml:space="preserve">
     <value>JoinUs</value>
