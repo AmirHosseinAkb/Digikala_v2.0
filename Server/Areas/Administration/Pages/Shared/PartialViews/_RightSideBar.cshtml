@@ -1,4 +1,5 @@
 ﻿@using _01_Framework.Application
+@using ShopManagement.Infrastructure.Configuration.Permissions
 @using UserManagement.Application.Contracts.User
 @inject IAuthenticationHelper _authenticationHelper;
 @inject IUserApplication _userApplication;
@@ -7,37 +8,66 @@
 }
 @{
     var manageUserPermissions = new int[]
-                    {
+                            {
         UserPermissions.UsersList,
         UserPermissions.CreateUser,
         UserPermissions.DeleteUser,
         UserPermissions.EditUser,
         UserPermissions.DeletedUsersList
-                    };
+                            };
     var userPermissions = new int[]
-                    {
+                            {
         UserPermissions.UsersList,
         UserPermissions.CreateUser,
         UserPermissions.DeleteUser,
         UserPermissions.EditUser
-                    };
+                            };
     var deletedUserPermissions = new int[]
-            {
+                    {
         UserPermissions.DeletedUsersList,
         UserPermissions.ReturnUser
-            };
+                    };
     var manageRolePermissions = new int[]
-    {
+            {
         RolePermissions.RolesList,
         RolePermissions.CreateRole,
         RolePermissions.EditRole,
         RolePermissions.DeleteRole
+            };
+    var manageProdcutPermissions = new int[]
+            {
+        ProductPermissions.ProductsList,
+        ProductPermissions.CreateProduct,
+        ProductPermissions.ConfirmProductDetails,
+        ProductPermissions.CreateProductColor,
+        ProductPermissions.CreateProductImage,
+        ProductPermissions.DeleteProduct,
+        ProductPermissions.DeleteProductColor,
+        ProductPermissions.DeleteProductImage,
+        ProductPermissions.EditProduct,
+        ProductPermissions.ProductImagesList
+            };
+    var manageInventoryPermissions = new int[]
+    {
+        InventoryPermissions.ChangeInventory,
+        InventoryPermissions.InventoriesList,
+        InventoryPermissions.ShowInventoryHistory
+    };
+    var manageproductGroupPermissions = new int[]
+    {
+        ProductGroupPermissions.PoductGroupsList,
+        ProductGroupPermissions.CreateGroup,
+        ProductGroupPermissions.EditGroup,
+        ProductGroupPermissions.DeleteGroup,
+        ProductGroupPermissions.GroupDetailsList,
+        ProductGroupPermissions.CreateGroupDetail,
+        ProductGroupPermissions.EditGroupDetail,
     };
 }
 <div class="left side-menu">
     <div class="sidebar-inner slimscrollleft">
         <div class="user-details">
-            <div >
+            <div>
                 <img src="~/UserAvatar/@_authenticationHelper.GetCurrentUserAvatarName()" alt="" class="img-circle center-block" style="max-width: 30%;max-height: 30% ">
             </div>
             <div class="user-info">
@@ -76,11 +106,11 @@
                     <a class="waves-effect"><i class="md md md-shopping-cart"></i><span> @DataDictionaries.ProductsManagement </span><span class="pull-right"><i class="md md-add"></i></span></a>
                     <ul class="list-unstyled">
 
-                        <li>
+                        <li permissions="manageProdcutPermissions">
                             <a id="btnProducts" href="~/Administration/Shop/Products">@DataDictionaries.Products</a>
                         </li>
 
-                        <li>
+                        <li permissions="manageproductGroupPermissions">
                             <a href="~/Administration/Shop/ProductGroups">@DataDictionaries.ProductGroups</a>
                         </li>
                     </ul>
@@ -89,7 +119,7 @@
                 <li permissions="manageRolePermissions">
                     <a href="/Administration/Roles" class="waves-effect"><i class="md-settings"></i><span> @DataDictionaries.ManageRolesAndPermissions </span></a>
                 </li>
-                <li>
+                <li permissions="manageInventoryPermissions">
                     <a href="/Administration/Inventories" class="waves-effect"><i class="md-system-update"></i><span> @DataDictionaries.InventoryManagement </span></a>
                 </li>
 

@@ -1,7 +1,10 @@
 ﻿@page "{handler?}"
+@using ShopManagement.Infrastructure.Configuration.Permissions
 @model Server.Areas.Administration.Pages.Shop.ProductGroups.GroupDetails.IndexModel
 @{
     Layout = null;
+    var createGroupDetailPermission = new int[] {ProductGroupPermissions.CreateGroupDetail};
+    var editGroupDetailPermission = new int[] {ProductGroupPermissions.EditGroupDetail};
 }
 
 <div class="row">
@@ -11,7 +14,7 @@
                 <h3 class="panel-title">@DataDictionaries.GroupDetails</h3>
             </div>
             <div class="panel-body">
-                <div class="row">
+                <div permissions="createGroupDetailPermission" class="row">
                     <form
                         id="frmDetail" method="post">
                         <input id="detailGroupId" type="hidden" asp-for="command.GroupId"/>
@@ -46,8 +49,8 @@
                                     <td>@number</td>
                                     <td>@detail.DetailTitle</td>
                                     <td>
-                                        <a onclick="GetDetailForEdit(@detail.DetailId,@detail.GroupId,'@detail.DetailTitle')" class="text-primary md md-edit" title="@ButtonCaptions.Edit"></a>
-                                        <a class="text-danger md md-delete" title="@ButtonCaptions.Delete"></a>
+                                        <a permissions="editGroupDetailPermission" onclick="GetDetailForEdit(@detail.DetailId,@detail.GroupId,'@detail.DetailTitle')" class="text-primary md md-edit" title="@ButtonCaptions.Edit"></a>
+                                        <a  class="text-danger md md-delete" title="@ButtonCaptions.Delete"></a>
                                     </td>
                                 </tr>
                                 number += 1;

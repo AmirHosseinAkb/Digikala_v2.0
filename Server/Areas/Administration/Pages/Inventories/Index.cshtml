@@ -1,6 +1,9 @@
 ﻿@page "{handler?}"
+@using ShopManagement.Infrastructure.Configuration.Permissions
 @model Server.Areas.Administration.Pages.Inventories.IndexModel
 @{
+    var changeInventoryPermission = new int[] {InventoryPermissions.ChangeInventory};
+    var showHistoryPermission = new int[] {InventoryPermissions.ShowInventoryHistory};
 }
 
 <div class="row">
@@ -85,9 +88,9 @@
                                                 <td>@inventory.ProductPrice.ToString("#,0")</td>
                                                 <td>@inventory.ProductCount</td>
                                                 <td>
-                                                    <a onclick="ChangeInventory(@inventory.InventoryId,false)" class="btn btn-primary smallModal">@ButtonCaptions.IncreaseInventory</a>
-                                                    <a onclick="ChangeInventory(@inventory.InventoryId,true)" class="btn btn-danger smallModal">@ButtonCaptions.DecreaseInventory</a>
-                                                    <a onclick="ShowInventoryHistories(@inventory.ProductId)" class="btn btn-warning largeModal">@ButtonCaptions.InventoryHistory</a>
+                                                    <a permissions="changeInventoryPermission" onclick="ChangeInventory(@inventory.InventoryId,false)" class="btn btn-primary smallModal">@ButtonCaptions.IncreaseInventory</a>
+                                                    <a permissions="changeInventoryPermission" onclick="ChangeInventory(@inventory.InventoryId,true)" class="btn btn-danger smallModal">@ButtonCaptions.DecreaseInventory</a>
+                                                    <a permissions="showHistoryPermission" onclick="ShowInventoryHistories(@inventory.ProductId)" class="btn btn-warning largeModal">@ButtonCaptions.InventoryHistory</a>
                                                 </td>
                                             </tr>
                                         }

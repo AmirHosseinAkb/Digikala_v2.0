@@ -1,6 +1,16 @@
 ﻿@page "{handler?}"
+@using ShopManagement.Infrastructure.Configuration.Permissions
 @model Server.Areas.Administration.Pages.Shop.ProductGroups.IndexModel
 @{
+    var createGroupPermission = new int[] {ProductGroupPermissions.CreateGroup};
+    var editGroupPermission = new int[] {ProductGroupPermissions.EditGroup};
+    var deleteGroupPermission = new int[] {ProductGroupPermissions.DeleteGroup};
+    var detailsListPermission = new int[]
+    {
+        ProductGroupPermissions.GroupDetailsList,
+        ProductGroupPermissions.CreateGroupDetail,
+        ProductGroupPermissions.EditGroupDetail
+    };
 }
 
 <div class="row">
@@ -15,7 +25,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                             <div class="m-b-15">
-                                <a onclick="CreateGroup()" class="btn btn-info">@ButtonCaptions.AddNewGroup</a>
+                                <a permissions="createGroupPermission" onclick="CreateGroup()" class="btn btn-info">@ButtonCaptions.AddNewGroup</a>
                             </div>
                             <form method="get">
                                 <div class="row">
@@ -82,13 +92,13 @@
                                                                 {
                                                                     <li class="m-t-10 m-b-10">
                                                                         @primaryGroup.GroupTitle
-                                                                        <a onclick="CreateGroup(@primaryGroup.GroupId)" class="text-black md md-add" title="@ButtonCaptions.AddSubGroup"></a>
-                                                                        <a onclick="EditGroup(@primaryGroup.GroupId)" class="text-primary md md-edit" title="@ButtonCaptions.Edit"></a>
+                                                                        <a permissions="createGroupPermission" onclick="CreateGroup(@primaryGroup.GroupId)" class="text-black md md-add" title="@ButtonCaptions.AddSubGroup"></a>
+                                                                        <a permissions="editGroupPermission" onclick="EditGroup(@primaryGroup.GroupId)" class="text-primary md md-edit" title="@ButtonCaptions.Edit"></a>
                                                                         @if (!Model.ProductGroupVm.Item1.Any(g => g.ParentId == primaryGroup.GroupId))
                                                                         {
-                                                                            <a onclick="CreateGroupDetails(@primaryGroup.GroupId)" class="text-primary md md-menu" title="@ButtonCaptions.AddGroupDetails"></a>
+                                                                            <a permissions="detailsListPermission" onclick="CreateGroupDetails(@primaryGroup.GroupId)" class="text-primary md md-menu" title="@ButtonCaptions.AddGroupDetails"></a>
                                                                         }
-                                                                        <a onclick="GetGroupForDelete(@primaryGroup.GroupId)" class="text-danger md md-delete" title="@ButtonCaptions.Delete"></a>
+                                                                        <a permissions="deleteGroupPermission" onclick="GetGroupForDelete(@primaryGroup.GroupId)" class="text-danger md md-delete" title="@ButtonCaptions.Delete"></a>
                                                                     </li>
 
                                                                     @if (Model.ProductGroupVm.Item1.Any(g => g.ParentId == primaryGroup.GroupId))
@@ -98,8 +108,8 @@
                                                                             {
                                                                                 <li>
                                                                                     @secondaryGroup.GroupTitle 
-                                                                                    <a onclick="GetGroupForDelete(@secondaryGroup.GroupId)" class="text-danger md md-delete pull-left"></a>
-                                                                                    <a onclick="CreateGroupDetails(@secondaryGroup.GroupId)" class="text-primary md md-menu pull-left" title="@ButtonCaptions.AddGroupDetails"></a>
+                                                                                    <a permissions="deleteGroupPermission" onclick="GetGroupForDelete(@secondaryGroup.GroupId)" class="text-danger md md-delete pull-left"></a>
+                                                                                    <a permissions="detailsListPermission" onclick="CreateGroupDetails(@secondaryGroup.GroupId)" class="text-primary md md-menu pull-left" title="@ButtonCaptions.AddGroupDetails"></a>
                                                                                 </li>
                                                                             }
                                                                         </ul>
@@ -113,9 +123,9 @@
                                                         <a onclick="EditGroup(@group.GroupId)" class="btn btn-primary btn-block ">@ButtonCaptions.Edit</a>
                                                         @if (!Model.ProductGroupVm.Item1.Any(g => g.ParentId == group.GroupId))
                                                         {
-                                                            <a onclick="CreateGroupDetails(@group.GroupId)" class="btn btn-primary btn-block ">@ButtonCaptions.AddGroupDetails</a>
+                                                            <a permissions="detailsListPermission" onclick="CreateGroupDetails(@group.GroupId)" class="btn btn-primary btn-block ">@ButtonCaptions.AddGroupDetails</a>
                                                         }
-                                                        <a onclick="GetGroupForDelete(@group.GroupId)" class="btn btn-danger btn-block ">@ButtonCaptions.Delete</a>
+                                                        <a permissions="deleteGroupPermission" onclick="GetGroupForDelete(@group.GroupId)" class="btn btn-danger btn-block ">@ButtonCaptions.Delete</a>
                                                     </td>
                                                 </tr>
                                             }

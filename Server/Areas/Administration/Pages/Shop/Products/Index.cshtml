@@ -1,6 +1,19 @@
 ﻿@page "{handler?}"
+@using ShopManagement.Infrastructure.Configuration.Permissions
 @model Server.Areas.Administration.Pages.Shop.Products.IndexModel
 @{
+    var createProductPermission = new int[] {ProductPermissions.CreateProduct};
+    var editProductPermission = new int[] {ProductPermissions.EditProduct};
+    var deleteProductPermission = new int[] {ProductPermissions.DeleteProduct};
+    var confirmDetailsPermission = new int[] {ProductPermissions.ConfirmProductDetails};
+    var createProductColorPermission = new int[] {ProductPermissions.CreateProductColor};
+    var deleteProductColorPermission = new int[] {ProductPermissions.DeleteProductColor};
+    var createProductImagePermission = new int[] {ProductPermissions.CreateProductImage};
+    var manageProductImagesPermissions=new int[]
+    {
+        ProductPermissions.ProductImagesList,
+        ProductPermissions.DeleteProductImage
+    };
 }
 
 <div class="row">
@@ -14,7 +27,7 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                            <div class="m-b-15">
+                            <div permissions="createProductPermission" class="m-b-15">
                                 <a id="btnCreateProduct" class="btn btn-info largeModal">@ButtonCaptions.AddNewProduct</a>
                             </div>
                             <form method="get">
@@ -112,18 +125,18 @@
                                                                     <br />
                                                                 </div>
                                                                 <input type="hidden" name="colorId" value="@color.ColorId" />
-                                                                <input type="submit" class="btn btn-danger btn-xs" value="@ButtonCaptions.Delete" />
+                                                                <input permissions="deleteProductColorPermission" type="submit" class="btn btn-danger btn-xs" value="@ButtonCaptions.Delete" />
                                                                 <br />
                                                             </form>
                                                         }
                                                     </td>
                                                     <td>
-                                                        <a onclick="GetProductForEdit(@product.ProductId)" class="btn btn-primary btn-block largeModal">@ButtonCaptions.Edit</a>
-                                                        <a onclick="AddProductColor(@product.ProductId)" class="btn btn-primary btn-block smallModal">@ButtonCaptions.AddColor</a>
-                                                        <a onclick="ShowProductImages(@product.ProductId)" class="btn btn-primary btn-block largeModal">@ButtonCaptions.ProductImages</a>
-                                                        <a onclick="CreateImage(@product.ProductId)" class="btn btn-primary btn-block smallModal">@ButtonCaptions.AddProductImage</a>
-                                                        <a onclick="GetProductForDetails(@product.ProductId)" class="btn btn-primary btn-block smallModal">@ButtonCaptions.ProductDetails</a>
-                                                        <a onclick="GetProductForDelete(@product.ProductId,'@product.Title')" class="btn btn-danger btn-block smallModal">@ButtonCaptions.Delete</a>
+                                                        <a permissions="editProductPermission" onclick="GetProductForEdit(@product.ProductId)" class="btn btn-primary btn-block largeModal">@ButtonCaptions.Edit</a>
+                                                        <a permissions="createProductColorPermission" onclick="AddProductColor(@product.ProductId)" class="btn btn-primary btn-block smallModal">@ButtonCaptions.AddColor</a>
+                                                        <a permissions="manageProductImagesPermissions" onclick="ShowProductImages(@product.ProductId)" class="btn btn-primary btn-block largeModal">@ButtonCaptions.ProductImages</a>
+                                                        <a permissions="createProductImagePermission" onclick="CreateImage(@product.ProductId)" class="btn btn-primary btn-block smallModal">@ButtonCaptions.AddProductImage</a>
+                                                        <a permissions="confirmDetailsPermission" onclick="GetProductForDetails(@product.ProductId)" class="btn btn-primary btn-block smallModal">@ButtonCaptions.ProductDetails</a>
+                                                        <a permissions="deleteProductPermission" onclick="GetProductForDelete(@product.ProductId,'@product.Title')" class="btn btn-danger btn-block smallModal">@ButtonCaptions.Delete</a>
                                                     </td>
                                                 </tr>
                                             }

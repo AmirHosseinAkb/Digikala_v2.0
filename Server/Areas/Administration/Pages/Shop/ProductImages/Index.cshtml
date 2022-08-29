@@ -1,7 +1,9 @@
 ﻿@page "{handler?}"
+@using ShopManagement.Infrastructure.Configuration.Permissions
 @model Server.Areas.Administration.Pages.Shop.ProductImages.IndexModel
 @{
     Layout = null;
+    var deleteProductImagePermission = new int[] {ProductPermissions.DeleteProductImage};
 }
 
 <div class="row">
@@ -25,7 +27,7 @@
                                                 <img src="/Products/ProductImages/@image.ImageName" class=" img-thumbnail card-img-top" alt="Product Image">
                                                 <input name="imageId" type="hidden" value="@image.ImageId"/>
                                                 <div class="card-footer" style="border: 1px solid lightgray">
-                                                    <input  type="submit" class="btn btn-danger btnDeleteImage" style="margin: 10px" value="@ButtonCaptions.Delete" />
+                                                    <input permissions="deleteProductImagePermission"  type="submit" class="btn btn-danger btnDeleteImage" style="margin: 10px" value="@ButtonCaptions.Delete" />
                                                 </div>
                                             </div>
                                         </div>
