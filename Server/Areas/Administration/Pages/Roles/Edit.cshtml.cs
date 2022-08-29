@@ -33,14 +33,12 @@ namespace Server.Areas.Administration.Pages.Roles
                 var exposedPermissions = exposer.Expose();
                 foreach (var (key,value) in exposedPermissions)
                 {
+                    var group = new SelectListGroup() {Name = key};
                     foreach (var permission in value)
                     {
                         var item = new SelectListItem(permission.PermissionTitle, permission.PermissionCode.ToString())
                         {
-                            Group = new SelectListGroup()
-                            {
-                                Name = key
-                            }
+                            Group = group
                         };
                         if (Command.PermissionCodes.Any(c=>c==permission.PermissionCode))
                             item.Selected = true;
