@@ -1,6 +1,8 @@
+using _01_Framework.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShopManagement.Application.Contracts.ProductGroup;
+using ShopManagement.Infrastructure.Configuration.Permissions;
 
 namespace Server.Areas.Administration.Pages.Shop.ProductGroups.GroupDetails
 {
@@ -16,6 +18,8 @@ namespace Server.Areas.Administration.Pages.Shop.ProductGroups.GroupDetails
         public List<GroupDetailViewModel> GroupDetailVms { get; set; }
         [BindProperty]
         public CreateGroupDetailCommand command { get; set; }
+
+        [NeedsPermission(ProductGroupPermissions.GroupDetailsList)]
         public void OnGet(long groupId)
         {
             command = new CreateGroupDetailCommand()
@@ -25,6 +29,7 @@ namespace Server.Areas.Administration.Pages.Shop.ProductGroups.GroupDetails
             GroupDetailVms = _productGroupApplication.GetDetailsOfGroup(groupId);
         }
 
+        [NeedsPermission(ProductGroupPermissions.CreateGroupDetail)]
         public IActionResult OnPostCreate()
         {
             ModelState.Remove("DetailId");
@@ -34,6 +39,7 @@ namespace Server.Areas.Administration.Pages.Shop.ProductGroups.GroupDetails
             return new JsonResult(result);
         }
 
+        [NeedsPermission(ProductGroupPermissions.EditGroupDetail)]
         public IActionResult OnPostEdit()
         {
             if (!ModelState.IsValid || command.DetailId==null)

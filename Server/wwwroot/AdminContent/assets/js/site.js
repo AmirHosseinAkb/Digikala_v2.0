@@ -11,7 +11,6 @@ function GetRoleForDelete(roleId) {
         type: "Get",
         success: function () {
             $("#ModalContent").load('/Administration/Roles/Delete?roleId=' + roleId);
-            $("#roleIdInp").val(roleId);
             $("#MainModal").modal('show');
         },
         error: function (error) {

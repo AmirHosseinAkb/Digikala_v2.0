@@ -32,9 +32,12 @@ namespace UserManagement.Application
                 return result.Failed(ApplicationMessages.DuplicatedRole);
 
             var permissions = new List<Permission>();
-            foreach (int permissionCode in command.PermissionCodes)
+            if (command.PermissionCodes!=null)
             {
-                permissions.Add(new Permission(permissionCode));
+                foreach (int permissionCode in command.PermissionCodes)
+                {
+                    permissions.Add(new Permission(permissionCode));
+                }
             }
             var role = new Role(command.RoleTitle,permissions);
             _roleRepository.Add(role);

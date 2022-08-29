@@ -1,9 +1,11 @@
+using _01_Framework.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ShopManagement.Application.Contracts.Product;
 using ShopManagement.Application.Contracts.ProductColor;
 using ShopManagement.Application.Contracts.ProductGroup;
+using ShopManagement.Infrastructure.Configuration.Permissions;
 
 namespace Server.Areas.Administration.Pages.Shop.Products
 {
@@ -22,6 +24,7 @@ namespace Server.Areas.Administration.Pages.Shop.Products
             _productColorApplication = productColorApplication;
         }
 
+        [NeedsPermission(ProductPermissions.ProductsList)]
         public IActionResult OnGet(int pageId = 1, string title = "", long groupId = 0, long primaryGroupId = 0, long secondaryGroupId = 0, int take = 10)
         {
             if (!_productGroupApplication.IsExistAnyGroup())
@@ -50,11 +53,13 @@ namespace Server.Areas.Administration.Pages.Shop.Products
             return Page();
         }
 
+        [NeedsPermission(ProductPermissions.CreateProduct)]
         public IActionResult OnGetCreate()
         {
             return Partial("./Create", new CreateProductCommand());
         }
 
+        [NeedsPermission(ProductPermissions.CreateProduct)]
         public IActionResult OnPostCreate(CreateProductCommand command)
         {
             if (!ModelState.IsValid)
@@ -64,12 +69,14 @@ namespace Server.Areas.Administration.Pages.Shop.Products
             return new JsonResult(result);
         }
 
+        [NeedsPermission(ProductPermissions.EditProduct)]
         public IActionResult OnGetEdit(long productId)
         {
             var product = _productApplication.GetProductForEdit(productId);
             return Partial("./Edit", product);
         }
 
+        [NeedsPermission(ProductPermissions.EditProduct)]
         public IActionResult OnPostEdit(EditProductCommand command)
         {
             if (!ModelState.IsValid)
@@ -78,12 +85,14 @@ namespace Server.Areas.Administration.Pages.Shop.Products
             return new JsonResult(result);
         }
 
+        [NeedsPermission(ProductPermissions.DeleteProduct)]
         public IActionResult OnGetDelete(long productId)
         {
             var command = _productApplication.GetProductForDelete(productId);
             return Partial("./Delete", command);
         }
 
+        [NeedsPermission(ProductPermissions.DeleteProduct)]
         public IActionResult OnPostDelete(long productId)
         {
             if (!ModelState.IsValid)

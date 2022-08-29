@@ -1,6 +1,8 @@
+using _01_Framework.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShopManagement.Application.Contracts.ProductImage;
+using ShopManagement.Infrastructure.Configuration.Permissions;
 
 namespace Server.Areas.Administration.Pages.Shop.ProductImages
 {
@@ -13,16 +15,19 @@ namespace Server.Areas.Administration.Pages.Shop.ProductImages
             _productImageApplication = productImageApplication;
         }
         public List<ProductImageViewModel> ProductImages { get; set; }
+
+        [NeedsPermission(ProductPermissions.ProductImagesList)]
         public void OnGet(long productId)
         {
             ProductImages = _productImageApplication.GetProductImages(productId);
         }
-
+        [NeedsPermission(ProductPermissions.CreateProductImage)]
         public IActionResult OnGetCreate(long productId)
         {
             return Partial("./Create",new CreateImageCommand(){ProductId = productId});
         }
 
+        [NeedsPermission(ProductPermissions.CreateProductImage)]
         public IActionResult OnPostCreate(CreateImageCommand command)
         {
             if (!ModelState.IsValid)
@@ -31,6 +36,7 @@ namespace Server.Areas.Administration.Pages.Shop.ProductImages
             return new JsonResult(result);
         }
 
+        [NeedsPermission(ProductPermissions.DeleteProductImage)]
         public IActionResult OnPostDelete(long imageId)
         {
             if (!ModelState.IsValid)

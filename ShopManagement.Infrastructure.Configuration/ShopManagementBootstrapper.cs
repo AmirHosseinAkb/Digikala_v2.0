@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using _01_Framework.Infrastructure;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application;
 using ShopManagement.Application.Contracts.Inventory;
@@ -15,6 +16,7 @@ using ShopManagement.Domain.ProductGroupAgg;
 using ShopManagement.Domain.ProductImageAgg;
 using ShopManagement.Domain.Services;
 using ShopManagement.Infrastructure.AccountAcl;
+using ShopManagement.Infrastructure.Configuration.Permissions;
 
 namespace ShopManagement.Infrastructure.Configuration
 {
@@ -32,6 +34,9 @@ namespace ShopManagement.Infrastructure.Configuration
             services.AddScoped<IProductImageApplication, ProductImageApplication>();
             services.AddScoped<IInventoryRepository, InventoryRepository>();
             services.AddScoped<IInventoryApplication, InventoryApplication>();
+            services.AddScoped<IPermissionExposer, ProductPermissionExposer>();
+            services.AddScoped<IPermissionExposer, InventoryPermissionExposer>();
+            services.AddScoped<IPermissionExposer, ProductGroupPermissionExposer>();
             services.AddScoped<IShopAccountAcl, ShopAccountAcl>();
             services.AddDbContext<ShopContext>(options => 
                 options.UseSqlServer(connectionString));

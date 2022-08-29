@@ -28,24 +28,27 @@ namespace Server.Areas.Administration.Pages.Roles
             RoleVm = _roleApplication.GetRoles();
         }
 
-
+        [NeedsPermission(RolePermissions.DeleteRole)]
         public IActionResult OnGetDelete(long roleId)
         {
             if (_userApplication.IsExistUserByRoleId(roleId))
                 return BadRequest(ErrorMessages.DeleteRoleErrorMessage);
-            return Partial("./Delete");
+            return Partial("./Delete", new DeleteRoleCommand(){RoleId = roleId});
         }
         [NeedsPermission(RolePermissions.DeleteRole)]
-        public IActionResult OnPostDelete(long roleId)
+        public IActionResult OnPostDelete(DeleteRoleCommand command)
         {
-            var result = _roleApplication.Delete(roleId);
+            if (!ModelState.IsValid)
+                return BadRequest();
+            var result = _roleApplication.Delete(command.RoleId);
             if (!result.IsSucceeded)
             {
                 RoleVm = _roleApplication.GetRoles();
                 ErrorMessage = result.Message;
                 return Page();
             }
-            return RedirectToPage();
+
+            return new JsonResult(result);
         }
     }
 }
