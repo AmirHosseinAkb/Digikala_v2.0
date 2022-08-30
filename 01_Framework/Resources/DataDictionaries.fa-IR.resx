@@ -420,6 +420,9 @@
   <data name="Products" xml:space="preserve">
     <value>محصولات</value>
   </data>
+  <data name="ProductsCategorization" xml:space="preserve">
+    <value>دسته بندی محصولات</value>
+  </data>
   <data name="ProductsList" xml:space="preserve">
     <value>لیست محصولات</value>
   </data>

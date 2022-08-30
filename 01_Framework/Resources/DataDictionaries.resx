@@ -420,6 +420,9 @@
   <data name="Products" xml:space="preserve">
     <value>Products</value>
   </data>
+  <data name="ProductsCategorization" xml:space="preserve">
+    <value>Products Categorization</value>
+  </data>
   <data name="ProductsList" xml:space="preserve">
     <value>Products List</value>
   </data>

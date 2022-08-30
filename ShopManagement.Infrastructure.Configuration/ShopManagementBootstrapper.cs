@@ -1,4 +1,6 @@
 ﻿using _01_Framework.Infrastructure;
+using DigikalaQuery.Contracts.ProductGroup;
+using DigikalaQuery.Queries;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application;
@@ -38,6 +40,9 @@ namespace ShopManagement.Infrastructure.Configuration
             services.AddScoped<IPermissionExposer, InventoryPermissionExposer>();
             services.AddScoped<IPermissionExposer, ProductGroupPermissionExposer>();
             services.AddScoped<IShopAccountAcl, ShopAccountAcl>();
+
+            services.AddScoped<IProductGroupQuery,ProductGroupQuery>();
+
             services.AddDbContext<ShopContext>(options => 
                 options.UseSqlServer(connectionString));
         }

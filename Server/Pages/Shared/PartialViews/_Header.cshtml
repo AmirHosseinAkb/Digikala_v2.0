@@ -1,5 +1,9 @@
-﻿@{
+﻿@using DigikalaQuery.Contracts.ProductGroup
+@inject IProductGroupQuery _productGroupQuery;
+
+@{
     Layout = null;
+    var groups = _productGroupQuery.GetProductGroups();
 }
 
 <!-- page-header -->
@@ -186,7 +190,7 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/Account/RegisterAndLogin/Logout"  class="nav-link">
+                                            <a href="/Account/RegisterAndLogin/Logout" class="nav-link">
 
                                                 <i class="nav-link-icon ri-logout-box-r-line"></i>
                                                 خروج
@@ -366,94 +370,34 @@
         <div class="container">
             <div class="d-flex align-items-center">
                 <div class="vertical-menu">
-                    <a href="#" class="vertical-menu-btn"><i class="ri-menu-5-fill"></i> دسته بندی محصولات</a>
+                    <a href="#" class="vertical-menu-btn"><i class="ri-menu-5-fill"></i> @DataDictionaries.ProductsCategorization</a>
                     <div class="vertical-menu-items">
                         <ul>
-                            <li class="mega-menu-category show">
-                                <a href="#"><span class="ri-macbook-line"></span>کالای دیجیتال</a>
-                                <ul class="mega-menu">
-                                    <li class="parent"><a href="#">لوازم جانبی گوشی</a></li>
-                                    <li><a href="#">کیف و کاور گوشی</a></li>
-                                    <li><a href="#">پاور بانک (شارژر همراه)</a></li>
-                                    <li><a href="#">پایه نگهدارنده گوشی</a></li>
-                                    <li class="parent"><a href="#">گوشی موبایل</a></li>
-                                    <li><a href="#">سامسونگ</a></li>
-                                    <li><a href="#">هوآوی</a></li>
-                                    <li><a href="#">اپل</a></li>
-                                    <li><a href="#"> سامسونگ</a></li>
-                                    <li><a href="#">آنر</a></li>
-                                    <li><a href="#">نوکیا</a></li>
-                                    <li class="parent"><a href="#">واقعیت مجازی</a></li>
-                                    <li class="parent"><a href="#">مچ بند و ساعت هوشمند</a></li>
-                                    <li class="parent"><a href="#">گوشی موبایل</a></li>
-                                    <li><a href="#">سامسونگ</a></li>
-                                    <li><a href="#">هوآوی</a></li>
-                                    <li><a href="#">اپل</a></li>
-                                    <li><a href="#"> سامسونگ</a></li>
-                                    <li><a href="#">آنر</a></li>
-                                    <li><a href="#">اپل</a></li>
-                                    <li><a href="#"> سامسونگ</a></li>
-                                    <li><a href="#">آنر</a></li>
-                                    <li><a href="#">نوکیا</a></li>
-                                    <li><a href="#">اپل</a></li>
-                                    <li><a href="#"> سامسونگ</a></li>
-                                    <li><a href="#">آنر</a></li>
-                                    <li><a href="#">نوکیا</a></li>
-                                    <li><a href="#">نوکیا</a></li>
-                                    <li class="parent"><a href="#">لوازم جانبی گوشی</a></li>
-                                    <li><a href="#">کیف و کاور گوشی</a></li>
-                                    <li><a href="#">پاور بانک (شارژر همراه)</a></li>
-                                    <li><a href="#">پایه نگهدارنده گوشی</a></li>
-                                    <li class="parent"><a href="#">واقعیت مجازی</a></li>
-                                    <li class="parent"><a href="#">گوشی موبایل</a></li>
-                                    <li><a href="#">سامسونگ</a></li>
-                                    <li><a href="#">هوآوی</a></li>
-                                    <li><a href="#">اپل</a></li>
-                                    <li><a href="#"> سامسونگ</a></li>
-                                    <li><a href="#">آنر</a></li>
-                                    <li><a href="#">نوکیا</a></li>
-                                </ul>
-                            </li>
-                            <li class="mega-menu-category">
-                                <a href="#"><span class="ri-t-shirt-line"></span>مد و پوشاک</a>
-                                <ul class="mega-menu">
-                                    <li class="parent"><a href="#">لباس</a></li>
-                                    <li><a href="#">سویشرت و هودی</a></li>
-                                    <li><a href="#">ژاکت و پلیور</a></li>
-                                    <li><a href="#">تی شرت و پولوشرت</a></li>
-                                    <li><a href="#">لباس راحتی و خواب</a></li>
-                                    <li><a href="#">شلوار و سرهمی</a></li>
-                                    <li><a href="#">جین</a></li>
-                                    <li><a href="#">دامن</a></li>
-                                    <li><a href="#">لباس زیر</a></li>
-                                    <li><a href="#">شلوارک</a></li>
-                                    <li class="parent"><a href="#">کیف</a></li>
-                                    <li><a href="#">کوله پشتی</a></li>
-                                    <li><a href="#">کیف پول و لوازم آرایش</a></li>
-                                    <li><a href="#">ست کیف و کفش</a></li>
-                                    <li class="parent"><a href="#">کفش</a></li>
-                                    <li><a href="#">نیم بوت</a></li>
-                                    <li><a href="#">بوت</a></li>
-                                    <li><a href="#">کالج</a></li>
-                                    <li><a href="#">صندل</a></li>
-                                    <li class="parent"><a href="#">لباس</a></li>
-                                    <li><a href="#">سویشرت و هودی</a></li>
-                                    <li><a href="#">ژاکت و پلیور</a></li>
-                                    <li><a href="#">تی شرت و پولوشرت</a></li>
-                                    <li><a href="#">لباس راحتی و خواب</a></li>
-                                    <li><a href="#">شلوار و سرهمی</a></li>
-                                    <li><a href="#">جین</a></li>
-                                    <li><a href="#">دامن</a></li>
-                                    <li><a href="#">لباس زیر</a></li>
-                                    <li><a href="#">شلوارک</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><span class="ri-store-line"></span>سوپرمارکت</a></li>
-                            <li><a href="#"><span class="ri-heart-add-line"></span>زیبایی و سلامت</a></li>
-                            <li><a href="#"><span class="ri-home-gear-line"></span>خانه و آشپزخانه</a></li>
-                            <li><a href="#"><span class="ri-bear-smile-line"></span>اسباب بازی</a></li>
-                            <li><a href="#"><span class="ri-book-line"></span>لوازم تحریر</a></li>
-                            <li><a href="#"><span class="ri-football-line"></span>ورزش و سفر</a></li>
+
+                            @foreach (var group in groups.Where(g => g.ParentId == null))
+                            {
+                                <li class="mega-menu-category">
+                                    <a href="#">@group.GroupTitle</a>
+                                    @if (groups.Any(g => g.ParentId == group.GroupId))
+                                    {
+                                        <ul class="mega-menu">
+                                            @foreach (var primaryGroup in groups.Where(g => g.ParentId == group.GroupId))
+                                            {
+                                                <li class="parent"><a href="#">@primaryGroup.GroupTitle</a></li>
+                                                @if (groups.Any(g => g.ParentId == primaryGroup.GroupId))
+                                                {
+                                                    @foreach (var secondaryGroup in groups.Where(g => g.ParentId == primaryGroup.GroupId))
+                                                    {
+                                                        <li><a href="#">@secondaryGroup.GroupTitle</a></li>
+                                                    }
+                                                }
+                                            }
+                                        </ul>
+                                    }
+                                </li>
+                            }
+
+
 
                         </ul>
                     </div>

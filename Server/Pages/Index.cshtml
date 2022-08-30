@@ -1,7 +1,11 @@
 ﻿@page
+@using DigikalaQuery.Contracts.ProductGroup
 @model IndexModel
+
+@inject IProductGroupQuery _productGroupQuery;
 @{
     ViewData["Title"] = "";
+    var groups = _productGroupQuery.GetProductGroups();
 }
 
 <main class="page-content">
@@ -805,7 +809,7 @@
         </div>
         <!-- categories-slider -->
         <div class="ui-box mb-5">
-            <div class="ui-box-title">دسته بندی محصولات</div>
+            <div class="ui-box-title">@DataDictionaries.ProductsCategorization</div>
             <div class="ui-box-content">
                 <div class="categories-container">
                     <!-- Slider main container -->
@@ -813,96 +817,17 @@
                         <!-- wrapper -->
                         <div class="swiper-wrapper">
                             <!-- Slides -->
-                            <div class="swiper-slide">
-                                <div class="category-item">
-                                    <a href="#">
-                                        <img src="./assets/images/categories/01.jpg" class="category-img"
-                                             alt="">
-                                        <span class="category-title">کالای دیجیتال</span>
-                                    </a>
+                            @foreach (var group in groups.Where(g=>g.ParentId==null))
+                            {
+                                <div class="swiper-slide">
+                                    <div class="category-item">
+                                        <a href="#">
+                                            <img src="./Products/ProductGroupImages/@group.ImageName" class="category-img" alt="">
+                                            <span class="category-title">@group.GroupTitle</span>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="category-item">
-                                    <a href="#">
-                                        <img src="./assets/images/categories/02.jpg" class="category-img"
-                                             alt="">
-                                        <span class="category-title">خودرو، ابزار و تجهیزات صنعتی</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="category-item">
-                                    <a href="#">
-                                        <img src="./assets/images/categories/03.jpg" class="category-img"
-                                             alt="">
-                                        <span class="category-title">مد و پوشاک</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="category-item">
-                                    <a href="#">
-                                        <img src="./assets/images/categories/04.jpg" class="category-img"
-                                             alt="">
-                                        <span class="category-title">کتاب، لوازم تحریر و هنر</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="category-item">
-                                    <a href="#">
-                                        <img src="./assets/images/categories/05.jpg" class="category-img"
-                                             alt="">
-                                        <span class="category-title">کالاهای سوپرمارکتی</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="category-item">
-                                    <a href="#">
-                                        <img src="./assets/images/categories/06.jpg" class="category-img"
-                                             alt="">
-                                        <span class="category-title">اسباب بازی، کودک و نوزاد</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="category-item">
-                                    <a href="#">
-                                        <img src="./assets/images/categories/07.jpg" class="category-img"
-                                             alt="">
-                                        <span class="category-title">محصولات بومی و محلی</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="category-item">
-                                    <a href="#">
-                                        <img src="./assets/images/categories/08.jpg" class="category-img"
-                                             alt="">
-                                        <span class="category-title">ورزش و سفر</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="category-item">
-                                    <a href="#">
-                                        <img src="./assets/images/categories/09.jpg" class="category-img"
-                                             alt="">
-                                        <span class="category-title">خانه و آشپزخانه</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="category-item">
-                                    <a href="#">
-                                        <img src="./assets/images/categories/10.jpg" class="category-img"
-                                             alt="">
-                                        <span class="category-title">زیبایی و سلامت</span>
-                                    </a>
-                                </div>
-                            </div>
+                            }
                         </div>
                         <!-- pagination -->
                         <div class="swiper-pagination"></div>

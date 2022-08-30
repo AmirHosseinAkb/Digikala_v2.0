@@ -970,6 +970,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Products Categorization.
+        /// </summary>
+        public static string ProductsCategorization {
+            get {
+                return ResourceManager.GetString("ProductsCategorization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Products List.
         /// </summary>
         public static string ProductsList {
