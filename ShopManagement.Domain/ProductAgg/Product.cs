@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ShopManagement.Domain.InventoryAgg;
+using ShopManagement.Domain.ProductBrandAgg;
 using ShopManagement.Domain.ProductColorAgg;
 using ShopManagement.Domain.ProductGroupAgg;
 using ShopManagement.Domain.ProductImageAgg;
@@ -13,6 +14,7 @@ namespace ShopManagement.Domain.ProductAgg
     public class Product
     {
         public long ProductId { get; private set; }
+        public long BrandId { get;private set; }
         public long GroupId { get; private set; }
         public long? PrimaryGroupId { get; private set; }
         public long? SecondaryGroupId { get;private set; }
@@ -25,16 +27,16 @@ namespace ShopManagement.Domain.ProductAgg
         public DateTime CreationDate { get;private set; }
         public bool IsDeleted { get;private set; }
 
+        public ProductBrand ProductBrand { get; set; }
         public ProductGroup ProductGroup { get;private set; }
         public ProductGroup PrimaryProductGroup { get;private set; }
-        public ProductGroup SecondaryProductGroup { get;private set; }
+        public ProductGroup SecondaryProductGroup { get; private set; }
         public List<ProductImage> ProductImages { get;private set; }
         public List<ProductColor> ProductColors { get;private set; }
         public List<ProductDetail> ProductDetails { get; private set; }
-
         public Inventory Inventory { get; private set; }
+        public List<InventoryHistory> InventoryHistories { get; private set; }
 
-        public List<InventoryHistory> InventoryHistories { get; private set; } 
 
         protected Product()
         {

@@ -45,7 +45,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Infrastructu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Infrastructure.AccountAcl", "ShopManagement.Infrastructure.AccountAcl\ShopManagement.Infrastructure.AccountAcl.csproj", "{52BC01C3-BEAD-4E71-A31A-AACD4898EAE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigikalaQuery", "DigikalaQuery\DigikalaQuery.csproj", "{2E39D510-DB83-4B7B-A4BD-2DD1537F6F16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigikalaQuery", "DigikalaQuery\DigikalaQuery.csproj", "{2E39D510-DB83-4B7B-A4BD-2DD1537F6F16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

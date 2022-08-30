@@ -1,4 +1,5 @@
 ﻿using _01_Framework.Infrastructure;
+using DigikalaQuery.Contracts.Product;
 using DigikalaQuery.Contracts.ProductGroup;
 using DigikalaQuery.Queries;
 using Microsoft.Extensions.DependencyInjection;
@@ -42,6 +43,7 @@ namespace ShopManagement.Infrastructure.Configuration
             services.AddScoped<IShopAccountAcl, ShopAccountAcl>();
 
             services.AddScoped<IProductGroupQuery,ProductGroupQuery>();
+            services.AddScoped<IProductQuery,ProductQuery>();
 
             services.AddDbContext<ShopContext>(options => 
                 options.UseSqlServer(connectionString));

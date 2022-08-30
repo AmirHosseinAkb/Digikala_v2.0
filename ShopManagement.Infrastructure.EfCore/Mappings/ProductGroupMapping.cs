@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ShopManagement.Domain.ProductAgg;
+using ShopManagement.Domain.ProductBrandAgg;
 using ShopManagement.Domain.ProductGroupAgg;
 
 namespace ShopManagement.Infrastructure.EfCore.Mappings
@@ -33,6 +34,9 @@ namespace ShopManagement.Infrastructure.EfCore.Mappings
 
             builder.HasMany<GroupDetail>(g => g.GroupDetails).WithOne(d => d.ProductGroup)
                 .HasForeignKey(d => d.GroupId);
+
+            builder.HasMany<ProductBrand>(g => g.ProductBrands).WithOne(b => b.ProductGroup)
+                .HasForeignKey(b => b.GroupId);
         }
     }
 }

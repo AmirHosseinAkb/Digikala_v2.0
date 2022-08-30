@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Administration\Pages\Shop\ProductBrand\" />
     <Folder Include="wwwroot\Products\ProductImages\" />
   </ItemGroup>
 

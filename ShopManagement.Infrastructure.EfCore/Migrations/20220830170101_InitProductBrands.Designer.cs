@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopManagement.Infrastructure.EfCore;
 
@@ -11,9 +12,10 @@ using ShopManagement.Infrastructure.EfCore;
 namespace ShopManagement.Infrastructure.EfCore.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    partial class ShopContextModelSnapshot : ModelSnapshot
+    [Migration("20220830170101_InitProductBrands")]
+    partial class InitProductBrands
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -177,17 +179,12 @@ namespace ShopManagement.Infrastructure.EfCore.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<long>("GroupId")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("OtherLangTitle")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
                     b.HasKey("BrandId");
-
-                    b.HasIndex("GroupId");
 
                     b.ToTable("ProductBrands", (string)null);
                 });
@@ -362,17 +359,6 @@ namespace ShopManagement.Infrastructure.EfCore.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("ShopManagement.Domain.ProductBrandAgg.ProductBrand", b =>
-                {
-                    b.HasOne("ShopManagement.Domain.ProductGroupAgg.ProductGroup", "ProductGroup")
-                        .WithMany("ProductBrands")
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("ProductGroup");
-                });
-
             modelBuilder.Entity("ShopManagement.Domain.ProductColorAgg.ProductColor", b =>
                 {
                     b.HasOne("ShopManagement.Domain.ProductAgg.Product", "Product")
@@ -442,8 +428,6 @@ namespace ShopManagement.Infrastructure.EfCore.Migrations
                     b.Navigation("GroupDetails");
 
                     b.Navigation("PrimaryProducts");
-
-                    b.Navigation("ProductBrands");
 
                     b.Navigation("ProductGroups");
 

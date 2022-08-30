@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Domain.InventoryAgg;
 using ShopManagement.Domain.ProductAgg;
+using ShopManagement.Domain.ProductBrandAgg;
 using ShopManagement.Domain.ProductColorAgg;
 using ShopManagement.Domain.ProductGroupAgg;
 using ShopManagement.Domain.ProductImageAgg;
@@ -29,6 +30,7 @@ namespace ShopManagement.Infrastructure.EfCore
         public DbSet<ProductDetail> ProductDetails { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
         public DbSet<InventoryHistory> InventoryHistories { get; set; }
+        public DbSet<ProductBrand> ProductBrands { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,6 +42,7 @@ namespace ShopManagement.Infrastructure.EfCore
             modelBuilder.ApplyConfiguration(new ProductDetailMapping());
             modelBuilder.ApplyConfiguration(new InventoryMapping());
             modelBuilder.ApplyConfiguration(new InventoryHistoryMapping());
+            modelBuilder.ApplyConfiguration(new ProductBrandMapping());
             base.OnModelCreating(modelBuilder);
         }
     }
