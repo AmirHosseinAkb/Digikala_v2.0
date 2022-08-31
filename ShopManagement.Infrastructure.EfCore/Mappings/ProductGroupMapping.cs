@@ -35,8 +35,6 @@ namespace ShopManagement.Infrastructure.EfCore.Mappings
             builder.HasMany<GroupDetail>(g => g.GroupDetails).WithOne(d => d.ProductGroup)
                 .HasForeignKey(d => d.GroupId);
 
-            builder.HasMany<ProductBrand>(g => g.ProductBrands).WithOne(b => b.ProductGroup)
-                .HasForeignKey(b => b.GroupId);
         }
     }
 }

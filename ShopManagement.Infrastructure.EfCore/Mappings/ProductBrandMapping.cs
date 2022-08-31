@@ -12,15 +12,12 @@ namespace ShopManagement.Infrastructure.EfCore.Mappings
         {
             builder.ToTable("ProductBrands");
             builder.HasKey(b => b.BrandId);
-            builder.Property(b => b.GroupId);
             builder.Property(b => b.BrandTitle).HasMaxLength(200);
             builder.Property(b => b.OtherLangTitle).HasMaxLength(200);
 
             builder.HasMany<Product>(b => b.Products).WithOne(p => p.ProductBrand)
                 .HasForeignKey(p => p.BrandId);
 
-            builder.HasOne<ProductGroup>(b => b.ProductGroup).WithMany(g => g.ProductBrands)
-                .HasForeignKey(b => b.GroupId).OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

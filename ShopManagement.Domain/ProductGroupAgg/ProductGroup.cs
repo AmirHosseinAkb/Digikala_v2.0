@@ -20,7 +20,6 @@ namespace ShopManagement.Domain.ProductGroupAgg
         public List<Product> PrimaryProducts { get;private set; }
         public List<Product> SecondaryProducts { get;private set; }
         public List<GroupDetail> GroupDetails { get;private set; }
-        public List<ProductBrand> ProductBrands { get; private set; }
 
         protected ProductGroup()
         {
