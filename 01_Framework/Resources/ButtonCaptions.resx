@@ -132,6 +132,9 @@
   <data name="AddGroupDetails" xml:space="preserve">
     <value>Add Group Details</value>
   </data>
+  <data name="AddNewBrand" xml:space="preserve">
+    <value>Add New Brand</value>
+  </data>
   <data name="AddNewGroup" xml:space="preserve">
     <value>Add New Group</value>
   </data>

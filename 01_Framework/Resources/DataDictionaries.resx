@@ -165,6 +165,9 @@
   <data name="BirthDate" xml:space="preserve">
     <value>Birth Date</value>
   </data>
+  <data name="BrandsList" xml:space="preserve">
+    <value>Brands List</value>
+  </data>
   <data name="ChargeWallet" xml:space="preserve">
     <value>Charge Wallet</value>
   </data>

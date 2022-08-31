@@ -3,59 +3,33 @@
 @{
 }
 
-@*<div class="row">
+<div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">@DataDictionaries.ProductsList</h3>
+                <h3 class="panel-title">@DataDictionaries.BrandsList</h3>
             </div>
 
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                            <div permissions="createProductPermission" class="m-b-15">
-                                <a  id="btnCreateProduct" class="btn btn-info largeModal">@ButtonCaptions.AddNewProduct</a>
+                            <div class="m-b-15">
+                                <a id="btnCreateBrand" class="btn btn-info largeModal">@ButtonCaptions.AddNewBrand</a>
                             </div>
                             <form method="get">
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div id="datatable_filter" class="dataTables_filter">
-                                            <label style="display:block">@DataDictionaries.Title</label>
-                                            <input name="fullName" type="search" class="form-control input-sm" placeholder="@DataDictionaries.Title" aria-controls="datatable">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div id="datatable_filter" class="dataTables_filter">
-                                            <label style="display:block">@DataDictionaries.Group</label>
-                                            <select id="IndexGroup" name="groupId" asp-items="@ViewData["Groups"] as SelectList" class="form-control">
-                                                <option value="0">@DataDictionaries.SelectGroupMessage</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div id="datatable_filter" class="dataTables_filter">
-                                            <label style="display:block">@DataDictionaries.PrimaryGroup</label>
-                                            <select id="IndexPrimaryGroup" name="primaryGroupId" asp-items="@ViewData["PrimaryGroups"] as SelectList" class="form-control">
-                                                <option value="0">@DataDictionaries.SelectGroupMessage</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div id="datatable_filter" class="dataTables_filter">
-                                            <label style="display:block">@DataDictionaries.SecondaryGroup</label>
-                                            <select id="IndexSecondaryGroup" name="secondaryGroupId" asp-items="@ViewData["SecondaryGroups"] as SelectList" class="form-control">
-                                                <option value="0">@DataDictionaries.SelectGroupMessage</option>
-                                            </select>
+                                            <input name="title" type="search" class="form-control input-sm" placeholder="@DataDictionaries.Title" aria-controls="datatable">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="dataTables_length" id="datatable_length">
-                                            <label style="display:block">@DataDictionaries.Show</label>
                                             <select name="take" aria-controls="datatable" class="form-control input-sm">
                                                 @for (var i = 1; i <= 4; i++)
                                                 {
-                                                    int x = 10;
+                                                    int x = 20;
                                                     if (i * x == (int)ViewData["Take"])
                                                     {
                                                         <option value="@(i * x)" selected>@(i * x)</option>
@@ -69,9 +43,7 @@
                                             @DataDictionaries.Record
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2 m-t-10">
+                                    <div class="col-md-5">
                                         <div id="datatable_filter" class="dataTables_filter">
                                             <input type="submit" class="btn btn-primary" value="@ButtonCaptions.Search" />
                                             &nbsp;
@@ -79,7 +51,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr />
                             </form>
                             <div class="row m-t-10">
                                 <div class="col-sm-12">
@@ -88,42 +59,22 @@
                                             <tr role="row">
                                                 <th>@DataDictionaries.Image</th>
                                                 <th>@DataDictionaries.Title</th>
-                                                <th>@DataDictionaries.Price</th>
-                                                <th>@DataDictionaries.CreationDate</th>
-                                                <th>@DataDictionaries.Colors</th>
+                                                <th>@DataDictionaries.OtherLangTitle</th>
                                                 <th>@DataDictionaries.Operations</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach (var product in Model.ProductVM.Item1)
+                                            @foreach (var brand in Model.ProductBrandVms.Item1)
                                             {
                                                 <tr role="row">
                                                     <td>
-                                                        <img src="/Products/Images/@product.ImageName" style="width: 200px; height: 200px" class="img-thumbnail">
+                                                        <img src="/Products/BrandImages/@brand.ImageName" style="width: 200px; height: 200px" class="img-thumbnail">
                                                     </td>
-                                                    <td>@product.Title</td>
-                                                    <td>@product.Price.ToString("#,0")</td>
-                                                    <td>@product.CreationDate</td>
+                                                    <td>@brand.BrandTitle</td>
+                                                    <td>@brand.OtherLangTitle</td>
                                                     <td>
-                                                        @foreach (var color in Model.ProductColorVms.Where(c => c.ProductId == product.ProductId))
-                                                        {
-                                                            <form method="post" action="~/Administration/Shop/ProductColors/Delete">
-                                                                <div style="background-color: @color.ColorCode; margin: 0px 30%; border-radius: 20px">
-                                                                    <br />
-                                                                </div>
-                                                                <input type="hidden" name="colorId" value="@color.ColorId" />
-                                                                <input permissions="deleteProductColorPermission" type="submit" class="btn btn-danger btn-xs" value="@ButtonCaptions.Delete" />
-                                                                <br />
-                                                            </form>
-                                                        }
-                                                    </td>
-                                                    <td>
-                                                        <a permissions="editProductPermission" onclick="GetProductForEdit(@product.ProductId)" class="btn btn-primary btn-block largeModal">@ButtonCaptions.Edit</a>
-                                                        <a permissions="createProductColorPermission" onclick="AddProductColor(@product.ProductId)" class="btn btn-primary btn-block smallModal">@ButtonCaptions.AddColor</a>
-                                                        <a permissions="manageProductImagesPermissions" onclick="ShowProductImages(@product.ProductId)" class="btn btn-primary btn-block largeModal">@ButtonCaptions.ProductImages</a>
-                                                        <a permissions="createProductImagePermission" onclick="CreateImage(@product.ProductId)" class="btn btn-primary btn-block smallModal">@ButtonCaptions.AddProductImage</a>
-                                                        <a permissions="confirmDetailsPermission" onclick="GetProductForDetails(@product.ProductId)" class="btn btn-primary btn-block smallModal">@ButtonCaptions.ProductDetails</a>
-                                                        <a permissions="deleteProductPermission" onclick="GetProductForDelete(@product.ProductId,'@product.Title')" class="btn btn-danger btn-block smallModal">@ButtonCaptions.Delete</a>
+                                                        <a class="btn btn-primary btn-block largeModal">@ButtonCaptions.Edit</a>
+                                                        <a class="btn btn-danger btn-block smallModal">@ButtonCaptions.Delete</a>
                                                     </td>
                                                 </tr>
                                             }
@@ -135,9 +86,9 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     @{
-                                        int take = Model.ProductVM.Item4;
-                                        int pageId = Model.ProductVM.Item2;
-                                        int totalEntries = Model.ProductVM.Item1.Count();
+                                        int take = Model.ProductBrandVms.Item4;
+                                        int pageId = Model.ProductBrandVms.Item2;
+                                        int totalEntries = Model.ProductBrandVms.Item1.Count();
                                         int startEntry = (pageId - 1) * take;
                                         if (totalEntries != 0)
                                             startEntry += 1;
@@ -152,9 +103,9 @@
                                 <div class="col-sm-6">
                                     <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
                                         <ul class="pagination">
-                                            @for (var i = 1; i <= Model.ProductVM.Item3; i++)
+                                            @for (var i = 1; i <= Model.ProductBrandVms.Item3; i++)
                                             {
-                                                <li class="paginate_button @((Model.ProductVM.Item2==i)?"active":"")" aria-controls="datatable" tabindex="0"><a href="/Admin/Users?pageId=@i">@i</a></li>
+                                                <li class="paginate_button @((Model.ProductBrandVms.Item2==i)?"active":"")" aria-controls="datatable" tabindex="0"><a href="/Admin/Users?pageId=@i">@i</a></li>
                                             }
                                         </ul>
                                     </div>
@@ -166,4 +117,4 @@
             </div>
         </div>
     </div>
-</div>*@
+</div>

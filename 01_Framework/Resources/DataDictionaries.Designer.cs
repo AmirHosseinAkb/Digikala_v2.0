@@ -205,6 +205,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Brands List.
+        /// </summary>
+        public static string BrandsList {
+            get {
+                return ResourceManager.GetString("BrandsList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Charge Wallet.
         /// </summary>
         public static string ChargeWallet {
