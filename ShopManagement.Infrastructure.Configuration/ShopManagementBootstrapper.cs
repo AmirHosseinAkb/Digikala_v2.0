@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application;
 using ShopManagement.Application.Contracts.Inventory;
 using ShopManagement.Application.Contracts.Product;
+using ShopManagement.Application.Contracts.ProductBrand;
 using ShopManagement.Application.Contracts.ProductColor;
 using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Infrastructure.EfCore;
@@ -14,6 +15,7 @@ using ShopManagement.Infrastructure.EfCore.Repositories;
 using ShopManagement.Application.Contracts.ProductGroup;
 using ShopManagement.Application.Contracts.ProductImage;
 using ShopManagement.Domain.InventoryAgg;
+using ShopManagement.Domain.ProductBrandAgg;
 using ShopManagement.Domain.ProductColorAgg;
 using ShopManagement.Domain.ProductGroupAgg;
 using ShopManagement.Domain.ProductImageAgg;
@@ -41,6 +43,9 @@ namespace ShopManagement.Infrastructure.Configuration
             services.AddScoped<IPermissionExposer, InventoryPermissionExposer>();
             services.AddScoped<IPermissionExposer, ProductGroupPermissionExposer>();
             services.AddScoped<IShopAccountAcl, ShopAccountAcl>();
+            services.AddScoped<IProductBrandRepository, ProductBrandRepository>();
+            services.AddScoped<IProductBrandApplication, ProductBrandApplication>();
+
 
             services.AddScoped<IProductGroupQuery,ProductGroupQuery>();
             services.AddScoped<IProductQuery,ProductQuery>();
