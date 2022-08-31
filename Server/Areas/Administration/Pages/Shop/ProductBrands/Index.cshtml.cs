@@ -35,5 +35,19 @@ namespace Server.Areas.Administration.Pages.Shop.ProductBrands
             var result = _productBrandApplication.Create(command);
             return new JsonResult(result);
         }
+
+        public IActionResult OnGetEdit(long brandId)
+        {
+            var brand = _productBrandApplication.GetBrandForEdit(brandId);
+            return Partial("./Edit", brand);
+        }
+
+        public IActionResult OnPostEdit(EditBrandCommand command)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            var result = _productBrandApplication.Edit(command);
+            return new JsonResult(result);
+        }
     }
 }

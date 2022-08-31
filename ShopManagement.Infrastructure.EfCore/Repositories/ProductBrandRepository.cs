@@ -36,5 +36,15 @@ namespace ShopManagement.Infrastructure.EfCore.Repositories
             _context.ProductBrands.Add(productBrand);
             _context.SaveChanges();
         }
+
+        public ProductBrand GetBrand(long brandId)
+        {
+            return _context.ProductBrands.Find(brandId);
+        }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }

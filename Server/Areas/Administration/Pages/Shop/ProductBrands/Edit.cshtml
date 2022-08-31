@@ -1,5 +1,62 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model ShopManagement.Application.Contracts.ProductBrand.EditBrandCommand
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">@DataDictionaries.CreateNewBrand</h4>
+</div>
+<form asp-page="./Index"
+      asp-page-handler="Edit"
+      data-ajax="true"
+      data-action="Refresh"
+      data-callback=""
+      enctype="multipart/form-data"
+      method="post">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <input asp-for="BrandId" type="hidden"/>
+                    <input asp-for="ImageName" type="hidden"/>
+                    <input asp-for="Title" type="text" class="form-control" placeholder="@DataDictionaries.Title"/>
+                    <span asp-validation-for="Title" class="error"></span>
+                    <br/>
+                    <input asp-for="OtherLangTitle" type="text" class="form-control" placeholder="@DataDictionaries.OtherLangTitle"/>
+                    <span asp-validation-for="OtherLangTitle" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <img id="imgAvatar" src="/Products/BrandImages/@Model.ImageName" class="image img-thumbnail" style="width: 100%; height: 100%"/>
+                    <hr/>
+                    <input id="imgInp" asp-for="BrandImage" type="file" class="form-control"/>
+                    <span asp-validation-for="BrandImage" class="error"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-info waves-effect waves-light">@ButtonCaptions.Edit</button>
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">@ButtonCaptions.Cancel</button>
+    </div>
+</form>
+
+<script src="~/assets/js/library/jquery.validate.min.js"></script>
+<script src="~/assets/js/library/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgAvatar').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#imgInp").change(function () {
+        readURL(this);
+    });
+</script>

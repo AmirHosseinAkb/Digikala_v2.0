@@ -7,5 +7,7 @@ namespace ShopManagement.Application.Contracts.ProductBrand
     {
         Tuple<List<ProductBrandViewModel>,int,int,int> GetProductBrands(int pageId = 1, string title = "", int take = 20);
         OperationResult Create(CreateBrandCommand command);
+        EditBrandCommand GetBrandForEdit(long brandId);
+        OperationResult Edit(EditBrandCommand command);
     }
 }

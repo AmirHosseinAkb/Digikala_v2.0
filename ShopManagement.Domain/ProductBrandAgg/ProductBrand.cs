@@ -28,10 +28,11 @@ namespace ShopManagement.Domain.ProductBrandAgg
             OtherLangTitle = otherLangTitle;
             ImageName=imageName;
         }
-        public void Edit(string brandTitle, string otherLangTitle)
+        public void Edit(string brandTitle, string otherLangTitle,string imageName)
         {
             BrandTitle = brandTitle;
             OtherLangTitle = otherLangTitle;
+            ImageName=imageName;
         }
     }
 }

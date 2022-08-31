@@ -113,6 +113,11 @@ $("#btnCreateBrand").click(function () {
     $("#MainModal").modal('show');
 });
 
+function GetBrandForEdit(brandId) {
+    $("#ModalContent").load('/Administration/Shop/ProductBrands/Edit?brandId='+brandId);
+    $("#MainModal").modal('show');
+}
+
 var IsForEditDetail = false;
 $(document).on("submit", 'form[id="frmDetail"]', function (e) {
     e.preventDefault();

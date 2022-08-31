@@ -29,6 +29,7 @@ namespace ShopManagement.Application
 
             var query = brands.Skip(skip).Take(take).Select(b => new ProductBrandViewModel()
             {
+                BrandId = b.BrandId,
                 ImageName = b.ImageName,
                 BrandTitle = b.BrandTitle,
                 OtherLangTitle = b.OtherLangTitle
@@ -51,6 +52,45 @@ namespace ShopManagement.Application
             }
             var brand = new ProductBrand(command.Title, command.OtherLangTitle,imageName);
             _productBrandRepository.Add(brand);
+            return result.Succeeded();
+        }
+
+        public EditBrandCommand GetBrandForEdit(long brandId)
+        {
+            var brand = _productBrandRepository.GetBrand(brandId);
+            return new EditBrandCommand()
+            {
+                BrandId = brand.BrandId,
+                OtherLangTitle = brand.OtherLangTitle,
+                Title = brand.BrandTitle,
+                ImageName = brand.ImageName
+            };
+        }
+
+        public OperationResult Edit(EditBrandCommand command)
+        {
+            var result= new OperationResult();
+            var brand = _productBrandRepository.GetBrand(command.BrandId);
+            if (command.Title != brand.BrandTitle || command.OtherLangTitle != brand.OtherLangTitle)
+            {
+                if (_productBrandRepository.IsExistBrand(command.Title, command.OtherLangTitle))
+                    return result.Failed(ApplicationMessages.DuplicatedBrand);
+            }
+
+            string imageName = brand.ImageName;
+            if (command.BrandImage != null)
+            {
+                var currentImage = Directories.ProductBrandDirectory(brand.ImageName);
+                if (File.Exists(currentImage))
+                    File.Delete(currentImage);
+
+                imageName = CodeGenerator.GenerateUniqName() + Path.GetExtension(command.BrandImage.FileName);
+                var imagePath = Directories.ProductBrandDirectory(imageName);
+                using(var stream=new FileStream(imagePath,FileMode.Create))
+                    command.BrandImage.CopyTo(stream);
+            }
+            brand.Edit(command.Title,command.OtherLangTitle,imageName);
+            _productBrandRepository.SaveChanges();
             return result.Succeeded();
         }
     }
