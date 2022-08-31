@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{handler?}"
 @model Server.Areas.Administration.Pages.Shop.ProductBrands.IndexModel
 @{
 }
@@ -15,7 +15,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                             <div class="m-b-15">
-                                <a id="btnCreateBrand" class="btn btn-info largeModal">@ButtonCaptions.AddNewBrand</a>
+                                <a id="btnCreateBrand" class="btn btn-info smallModal">@ButtonCaptions.AddNewBrand</a>
                             </div>
                             <form method="get">
                                 <div class="row">
@@ -47,7 +47,7 @@
                                         <div id="datatable_filter" class="dataTables_filter">
                                             <input type="submit" class="btn btn-primary" value="@ButtonCaptions.Search" />
                                             &nbsp;
-                                            <a href="/Administration/Shop/Products" class="btn btn-warning">@ButtonCaptions.Clear</a>
+                                            <a href="/Administration/Shop/ProductBrands" class="btn btn-warning">@ButtonCaptions.Clear</a>
                                         </div>
                                     </div>
                                 </div>
@@ -68,7 +68,7 @@
                                             {
                                                 <tr role="row">
                                                     <td>
-                                                        <img src="/Products/BrandImages/@brand.ImageName" style="width: 200px; height: 200px" class="img-thumbnail">
+                                                        <img src="/Products/BrandImages/@brand.ImageName" style="width: 80px; height: 80px" class="img-thumbnail">
                                                     </td>
                                                     <td>@brand.BrandTitle</td>
                                                     <td>@brand.OtherLangTitle</td>

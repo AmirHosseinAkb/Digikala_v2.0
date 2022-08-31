@@ -259,6 +259,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create New Brand.
+        /// </summary>
+        public static string CreateNewBrand {
+            get {
+                return ResourceManager.GetString("CreateNewBrand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creation Date.
         /// </summary>
         public static string CreationDate {

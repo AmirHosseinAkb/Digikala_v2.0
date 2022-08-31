@@ -183,6 +183,9 @@
   <data name="Count" xml:space="preserve">
     <value>تعداد</value>
   </data>
+  <data name="CreateNewBrand" xml:space="preserve">
+    <value>افزودن برند جدید</value>
+  </data>
   <data name="CreationDate" xml:space="preserve">
     <value>تاریخ ایجاد</value>
   </data>

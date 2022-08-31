@@ -25,5 +25,16 @@ namespace ShopManagement.Infrastructure.EfCore.Repositories
             }
             return result;
         }
+
+        public bool IsExistBrand(string title,string otherlangTitle)
+        {
+            return _context.ProductBrands.Any(b => b.BrandTitle == title || b.OtherLangTitle==otherlangTitle);
+        }
+
+        public void Add(ProductBrand productBrand)
+        {
+            _context.ProductBrands.Add(productBrand);
+            _context.SaveChanges();
+        }
     }
 }

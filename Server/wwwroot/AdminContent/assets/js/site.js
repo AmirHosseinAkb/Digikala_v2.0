@@ -108,6 +108,11 @@ function CreateGroupDetails(groupId) {
     $("#MainModal").modal('show');
 }
 
+$("#btnCreateBrand").click(function () {
+    $("#ModalContent").load('/Administration/Shop/ProductBrands/Create');
+    $("#MainModal").modal('show');
+});
+
 var IsForEditDetail = false;
 $(document).on("submit", 'form[id="frmDetail"]', function (e) {
     e.preventDefault();

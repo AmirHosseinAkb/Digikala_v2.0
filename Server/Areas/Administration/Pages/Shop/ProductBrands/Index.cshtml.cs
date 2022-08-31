@@ -19,7 +19,21 @@ namespace Server.Areas.Administration.Pages.Shop.ProductBrands
             if (take % 20 != 0)
                 take = 20;
             ViewData["Take"] = take;
-            ProductBrandVms = _productBrandApplication.GetProductBrands();
+            ProductBrandVms = _productBrandApplication.GetProductBrands(pageId,title,take);
+        }
+
+        public IActionResult OnGetCreate()
+        {
+            return Partial("./Create");
+        }
+
+        public IActionResult OnPostCreate(CreateBrandCommand command)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var result = _productBrandApplication.Create(command);
+            return new JsonResult(result);
         }
     }
 }

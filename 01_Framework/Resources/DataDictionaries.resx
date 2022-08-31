@@ -183,6 +183,9 @@
   <data name="Count" xml:space="preserve">
     <value>Count</value>
   </data>
+  <data name="CreateNewBrand" xml:space="preserve">
+    <value>Create New Brand</value>
+  </data>
   <data name="CreationDate" xml:space="preserve">
     <value>Creation Date</value>
   </data>
