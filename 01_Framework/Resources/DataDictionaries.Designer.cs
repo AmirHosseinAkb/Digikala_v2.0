@@ -925,6 +925,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Product Brands.
+        /// </summary>
+        public static string ProductBrands {
+            get {
+                return ResourceManager.GetString("ProductBrands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Product Details.
         /// </summary>
         public static string ProductDetails {

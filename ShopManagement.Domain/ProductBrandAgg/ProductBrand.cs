@@ -13,6 +13,7 @@ namespace ShopManagement.Domain.ProductBrandAgg
         public long BrandId { get;private set; }
         public string BrandTitle { get;private set; }
         public string OtherLangTitle { get;private set; }
+        public string ImageName { get; private set; }
 
         public List<Product> Products { get;private set; }
 
@@ -21,10 +22,11 @@ namespace ShopManagement.Domain.ProductBrandAgg
             
         }
 
-        public ProductBrand(string brandTitle, string otherLangTitle)
+        public ProductBrand(string brandTitle, string otherLangTitle,string imageName)
         {
             BrandTitle = brandTitle;
             OtherLangTitle = otherLangTitle;
+            ImageName=imageName;
         }
         public void Edit(string brandTitle, string otherLangTitle)
         {

@@ -14,6 +14,7 @@ namespace ShopManagement.Infrastructure.EfCore.Mappings
             builder.HasKey(b => b.BrandId);
             builder.Property(b => b.BrandTitle).HasMaxLength(200);
             builder.Property(b => b.OtherLangTitle).HasMaxLength(200);
+            builder.Property(b => b.ImageName).HasMaxLength(200);
 
             builder.HasMany<Product>(b => b.Products).WithOne(p => p.ProductBrand)
                 .HasForeignKey(p => p.BrandId);

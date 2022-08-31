@@ -405,6 +405,9 @@
   <data name="PrimaryGroup" xml:space="preserve">
     <value>Primary Group</value>
   </data>
+  <data name="ProductBrands" xml:space="preserve">
+    <value>Product Brands</value>
+  </data>
   <data name="ProductDetails" xml:space="preserve">
     <value>Product Details</value>
   </data>
