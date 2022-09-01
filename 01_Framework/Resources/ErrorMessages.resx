@@ -123,6 +123,9 @@
   <data name="ActivationErrorTitle" xml:space="preserve">
     <value>Activation operation failed!</value>
   </data>
+  <data name="DeleteBrandErrorMessage" xml:space="preserve">
+    <value>There is some products with this brand so its impossible to delete</value>
+  </data>
   <data name="DeleteGroupErrorMessage" xml:space="preserve">
     <value>This Group Have Some Products And Its Impossible To Delete</value>
   </data>

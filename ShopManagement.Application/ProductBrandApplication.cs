@@ -124,5 +124,17 @@ namespace ShopManagement.Application
                 Value = b.BrandId.ToString()
             }).ToList();
         }
+
+        public OperationResult Delete(DeleteBrandCommand command)
+        {
+            var result= new OperationResult();
+            if (_productRepository.GetProductByBrandId(command.BrandId) != null)
+                return result.Failed(ApplicationMessages.ProcessFailed);
+
+            if (_productBrandRepository.GetBrand(command.BrandId) == null)
+                return result.Failed(ApplicationMessages.RecordNotFound);
+            _productBrandRepository.Delete(command.BrandId);
+            return result.Succeeded();
+        }
     }
 }

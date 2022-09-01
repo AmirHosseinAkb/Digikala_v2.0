@@ -79,6 +79,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is some products with this brand so its impossible to delete.
+        /// </summary>
+        public static string DeleteBrandErrorMessage {
+            get {
+                return ResourceManager.GetString("DeleteBrandErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This Group Have Some Products And Its Impossible To Delete.
         /// </summary>
         public static string DeleteGroupErrorMessage {

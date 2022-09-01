@@ -13,5 +13,6 @@ namespace ShopManagement.Application.Contracts.ProductBrand
         DeleteBrandCommand GetBrandForDelete(long brandId);
         bool IsProductsHaveBrand(long brandId);
         List<SelectListItem> GetBrandsForSelect();
+        OperationResult Delete(DeleteBrandCommand command);
     }
 }

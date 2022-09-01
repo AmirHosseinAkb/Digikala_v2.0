@@ -1,3 +1,5 @@
+using System.Collections.Immutable;
+using _01_Framework.Resources;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShopManagement.Application.Contracts.ProductBrand;
@@ -54,11 +56,18 @@ namespace Server.Areas.Administration.Pages.Shop.ProductBrands
         {
             if (_productBrandApplication.IsProductsHaveBrand(brandId))
             {
-                ViewData["ProductExist"] = true;
-                return RedirectToPage();
+                return BadRequest(ErrorMessages.DeleteBrandErrorMessage);
             }
             var brand= _productBrandApplication.GetBrandForDelete(brandId);
             return Partial("./Delete",brand);
+        }
+
+        public IActionResult OnPostDelete(DeleteBrandCommand command)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            var result = _productBrandApplication.Delete(command);
+            return new JsonResult(result);
         }
     }
 }

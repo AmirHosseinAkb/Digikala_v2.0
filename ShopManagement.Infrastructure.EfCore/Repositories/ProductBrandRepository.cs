@@ -37,7 +37,7 @@ namespace ShopManagement.Infrastructure.EfCore.Repositories
             _context.SaveChanges();
         }
 
-        public ProductBrand GetBrand(long brandId)
+        public ProductBrand? GetBrand(long brandId)
         {
             return _context.ProductBrands.Find(brandId);
         }
@@ -50,6 +50,13 @@ namespace ShopManagement.Infrastructure.EfCore.Repositories
         public List<ProductBrand> GetProductBrands()
         {
             return _context.ProductBrands.ToList();
+        }
+
+        public void Delete(long brandId)
+        {
+            var brand = GetBrand(brandId);
+            _context.ProductBrands.Remove(brand);
+            _context.SaveChanges();
         }
     }
 }

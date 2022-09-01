@@ -17,7 +17,7 @@
                     <span class="error">@Model.BrandTitle</span>
                     @ConfirmationMessages.DeleteBrandConfirmationS2
                 </h4>
-                <input asp-for="BrandId" id="roleIdInp" type="hidden" name="roleId"/>
+                <input asp-for="BrandId" type="hidden" />
             </div>
             <div class="col-md-4">
                 <img class="image img-thumbnail" src="~/Products/BrandImages/@Model.ImageName" asp-append-version="true"/>

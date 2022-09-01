@@ -119,15 +119,3 @@
     </div>
 </div>
 
-@section Scripts
-{
-    @if (Convert.ToBoolean(ViewData["ProductExist"]))
-    {
-        <text>
-            <script>
-                sweetAlert("پیغام", "محصولاتی شامل این برند می باشند و امکان حذف این برند وجود ندارد", "error");
-            </script>
-        </text>
-    }
-}
-

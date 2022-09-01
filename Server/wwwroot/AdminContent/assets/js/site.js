@@ -73,8 +73,8 @@ function CreateImage(productId) {
     $("#ModalContent").load('/Administration/Shop/ProductImages/Create?productId=' + productId);
     $("#MainModal").modal('show');
 }
-function ChangeInventory(inventoryId,isForDecrease) {
-    $("#ModalContent").load('/Administration/Inventories/ChangeInventory?inventoryId=' + inventoryId+"&isForDecrease="+isForDecrease);
+function ChangeInventory(inventoryId, isForDecrease) {
+    $("#ModalContent").load('/Administration/Inventories/ChangeInventory?inventoryId=' + inventoryId + "&isForDecrease=" + isForDecrease);
     $("#MainModal").modal('show');
 }
 
@@ -114,13 +114,23 @@ $("#btnCreateBrand").click(function () {
 });
 
 function GetBrandForEdit(brandId) {
-    $("#ModalContent").load('/Administration/Shop/ProductBrands/Edit?brandId='+brandId);
+    $("#ModalContent").load('/Administration/Shop/ProductBrands/Edit?brandId=' + brandId);
     $("#MainModal").modal('show');
 }
 
 function GetBrandForDelete(brandId) {
-    $("#ModalContent").load('/Administration/Shop/ProductBrands/Delete?brandId='+brandId);
-    $("#MainModal").modal('show');
+    $.ajax({
+        url: '/Administration/Shop/ProductBrands/Delete?brandId=' + brandId,
+        type: "get",
+        success: function () {
+            $("#ModalContent").load('/Administration/Shop/ProductBrands/Delete?brandId=' + brandId);
+            $("#MainModal").modal('show');
+        },
+        error: function (error) {
+            sweetAlert("پیغام",error.responseText, "error");
+        }
+
+    })
 }
 
 var IsForEditDetail = false;
