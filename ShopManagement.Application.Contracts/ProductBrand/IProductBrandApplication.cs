@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using _01_Framework.Application;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ShopManagement.Application.Contracts.ProductBrand
 {
@@ -11,5 +12,6 @@ namespace ShopManagement.Application.Contracts.ProductBrand
         OperationResult Edit(EditBrandCommand command);
         DeleteBrandCommand GetBrandForDelete(long brandId);
         bool IsProductsHaveBrand(long brandId);
+        List<SelectListItem> GetBrandsForSelect();
     }
 }

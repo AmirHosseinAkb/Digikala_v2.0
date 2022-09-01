@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using _01_Framework.Application;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using ShopManagement.Application.Contracts.ProductBrand;
 using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductBrandAgg;
@@ -113,6 +114,15 @@ namespace ShopManagement.Application
             if (_productRepository.GetProductByBrandId(brandId) != null)
                 return true;
             return false;
+        }
+
+        public List<SelectListItem> GetBrandsForSelect()
+        {
+            return _productBrandRepository.GetProductBrands().Select(b => new SelectListItem()
+            {
+                Text = b.BrandTitle,
+                Value = b.BrandId.ToString()
+            }).ToList();
         }
     }
 }

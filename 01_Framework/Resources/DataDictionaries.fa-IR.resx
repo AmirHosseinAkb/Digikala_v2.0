@@ -165,6 +165,9 @@
   <data name="BirthDate" xml:space="preserve">
     <value>تاریخ تولد</value>
   </data>
+  <data name="Brand" xml:space="preserve">
+    <value>برند</value>
+  </data>
   <data name="BrandsList" xml:space="preserve">
     <value>لیست برند محصولات</value>
   </data>

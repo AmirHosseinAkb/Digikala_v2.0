@@ -52,7 +52,7 @@ namespace ShopManagement.Application
                 }
             }
 
-            var product = new Product(command.GroupId, command.PrimaryGroupId, command.SecondaryGroupId, command.Title,
+            var product = new Product(command.GroupId,command.BrandId, command.PrimaryGroupId, command.SecondaryGroupId, command.Title,
                 command.Description, command.Price, command.OtherLangTitle, command.Tags, produtImage);
             
             long productId=_productRepository.AddProduct(product);
@@ -69,6 +69,7 @@ namespace ShopManagement.Application
                 Title = product.Title,
                 Description = product.Description,
                 GroupId = product.GroupId,
+                BrandId = product.BrandId,
                 ImageName = product.ImageName,
                 OtherLangTitle = product.OtherLangTitle,
                 Price = product.Price,
@@ -124,7 +125,7 @@ namespace ShopManagement.Application
             bool isGroupChanged = command.GroupId != product.GroupId || command.PrimaryGroupId != product.PrimaryGroupId || command
                 .SecondaryGroupId != product.SecondaryGroupId;
 
-            product.Edit(command.GroupId, command.PrimaryGroupId, command.SecondaryGroupId, command.Title
+            product.Edit(command.GroupId,command.BrandId, command.PrimaryGroupId, command.SecondaryGroupId, command.Title
             , command.Description, command.Price, command.OtherLangTitle, command.Tags, productImage);
 
 

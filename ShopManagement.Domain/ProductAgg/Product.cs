@@ -43,10 +43,11 @@ namespace ShopManagement.Domain.ProductAgg
             
         }
 
-        public Product(long groupId, long? primaryGroupId, long? secondaryGroupId, string title, string description, int price
+        public Product(long groupId,long brandId, long? primaryGroupId, long? secondaryGroupId, string title, string description, int price
             , string otherLangTitle, string tags, string imageName)
         {
             GroupId = groupId;
+            BrandId = brandId;
             PrimaryGroupId = primaryGroupId;
             SecondaryGroupId = secondaryGroupId;
             Title = title;
@@ -58,10 +59,11 @@ namespace ShopManagement.Domain.ProductAgg
             CreationDate = DateTime.Now;
             IsDeleted = false;
         }
-        public void Edit(long groupId, long? primaryGroupId, long? secondaryGroupId, string title, string description, int price
+        public void Edit(long groupId,long brandId, long? primaryGroupId, long? secondaryGroupId, string title, string description, int price
             , string otherLangTitle, string tags, string imageName)
         {
             GroupId = groupId;
+            BrandId = brandId;
             PrimaryGroupId = primaryGroupId;
             SecondaryGroupId = secondaryGroupId;
             Title = title;

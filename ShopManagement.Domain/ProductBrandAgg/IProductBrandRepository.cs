@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using ShopManagement.Domain.ProductAgg;
@@ -14,5 +15,6 @@ namespace ShopManagement.Domain.ProductBrandAgg
         void Add(ProductBrand productBrand);
         ProductBrand GetBrand(long brandId);
         void SaveChanges();
+        List<ProductBrand> GetProductBrands();
     }
 }

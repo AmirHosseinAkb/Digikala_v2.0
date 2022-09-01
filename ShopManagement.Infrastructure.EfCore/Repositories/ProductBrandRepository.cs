@@ -47,5 +47,9 @@ namespace ShopManagement.Infrastructure.EfCore.Repositories
             _context.SaveChanges();
         }
 
+        public List<ProductBrand> GetProductBrands()
+        {
+            return _context.ProductBrands.ToList();
+        }
     }
 }
