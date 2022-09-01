@@ -19,6 +19,9 @@ namespace ShopManagement.Application.Contracts.Product
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public long GroupId { get; set; }
 
+        [Required(ErrorMessage = ValidationMessages.IsRequired)]
+        public long BrandId { get; set; }
+
         public long? PrimaryGroupId { get; set; }
 
         public long? SecondaryGroupId { get; set; }

@@ -118,6 +118,11 @@ function GetBrandForEdit(brandId) {
     $("#MainModal").modal('show');
 }
 
+function GetBrandForDelete(brandId) {
+    $("#ModalContent").load('/Administration/Shop/ProductBrands/Delete?brandId='+brandId);
+    $("#MainModal").modal('show');
+}
+
 var IsForEditDetail = false;
 $(document).on("submit", 'form[id="frmDetail"]', function (e) {
     e.preventDefault();

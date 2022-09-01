@@ -74,7 +74,7 @@
                                                     <td>@brand.OtherLangTitle</td>
                                                     <td>
                                                         <a onclick="GetBrandForEdit(@brand.BrandId)" class="btn btn-primary btn-block smallModal">@ButtonCaptions.Edit</a>
-                                                        <a class="btn btn-danger btn-block smallModal">@ButtonCaptions.Delete</a>
+                                                        <a onclick="GetBrandForDelete(@brand.BrandId)" class="btn btn-danger btn-block smallModal">@ButtonCaptions.Delete</a>
                                                     </td>
                                                 </tr>
                                             }
@@ -118,3 +118,16 @@
         </div>
     </div>
 </div>
+
+@section Scripts
+{
+    @if (Convert.ToBoolean(ViewData["ProductExist"]))
+    {
+        <text>
+            <script>
+                sweetAlert("پیغام", "محصولاتی شامل این برند می باشند و امکان حذف این برند وجود ندارد", "error");
+            </script>
+        </text>
+    }
+}
+

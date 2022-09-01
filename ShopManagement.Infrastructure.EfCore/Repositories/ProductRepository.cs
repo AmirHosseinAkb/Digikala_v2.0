@@ -131,5 +131,10 @@ namespace ShopManagement.Infrastructure.EfCore.Repositories
             }
             _context.SaveChanges();
         }
+
+        public Product? GetProductByBrandId(long brandId)
+        {
+            return _context.Products.FirstOrDefault(p => p.BrandId == brandId);
+        }
     }
 }

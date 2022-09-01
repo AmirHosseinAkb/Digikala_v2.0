@@ -24,6 +24,7 @@ namespace ShopManagement.Domain.ProductAgg
         void EditProductDetails(Product product);
         List<ProductDetail> GetProductDetails(long productId);
         void ConfirmProductDetails(long productId, Dictionary<int, string> details);
+        Product? GetProductByBrandId(long brandId);
 
         #endregion
     }

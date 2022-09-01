@@ -331,6 +331,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Brand.
+        /// </summary>
+        public static string DeleteBrand {
+            get {
+                return ResourceManager.GetString("DeleteBrand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleted Users List.
         /// </summary>
         public static string DeletedUsersList {

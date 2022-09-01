@@ -207,6 +207,9 @@
   <data name="DecreaseInventory" xml:space="preserve">
     <value>Decrease Inventory</value>
   </data>
+  <data name="DeleteBrand" xml:space="preserve">
+    <value>Delete Brand</value>
+  </data>
   <data name="DeletedUsersList" xml:space="preserve">
     <value>Deleted Users List</value>
   </data>

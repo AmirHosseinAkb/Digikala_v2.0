@@ -1,0 +1,33 @@
+﻿@model ShopManagement.Application.Contracts.ProductBrand.DeleteBrandCommand
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">@DataDictionaries.DeleteBrand</h4>
+</div>
+<form asp-page="./Index"
+      asp-page-handler="Delete"
+      data-ajax="true"
+      data-action="Refresh"
+      enctype="multipart/form-data"
+      method="post">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-8">
+                <h4>
+                    @ConfirmationMessages.DeleteBrandConfirmationS1
+                    <span class="error">@Model.BrandTitle</span>
+                    @ConfirmationMessages.DeleteBrandConfirmationS2
+                </h4>
+                <input asp-for="BrandId" id="roleIdInp" type="hidden" name="roleId"/>
+            </div>
+            <div class="col-md-4">
+                <img class="image img-thumbnail" src="~/Products/BrandImages/@Model.ImageName" asp-append-version="true"/>
+            </div>
+        </div>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-info waves-effect waves-light">@ButtonCaptions.Delete</button>
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">@ButtonCaptions.Cancel</button>
+    </div>
+
+</form>

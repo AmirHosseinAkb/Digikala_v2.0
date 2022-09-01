@@ -207,6 +207,9 @@
   <data name="DecreaseInventory" xml:space="preserve">
     <value>کاهش موجودی</value>
   </data>
+  <data name="DeleteBrand" xml:space="preserve">
+    <value>حذف برند</value>
+  </data>
   <data name="DeletedUsersList" xml:space="preserve">
     <value>لیست کاربران حذف شده</value>
   </data>

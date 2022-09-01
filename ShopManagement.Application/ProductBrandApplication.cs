@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using _01_Framework.Application;
 using ShopManagement.Application.Contracts.ProductBrand;
+using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductBrandAgg;
 
 namespace ShopManagement.Application
@@ -13,10 +14,12 @@ namespace ShopManagement.Application
     public class ProductBrandApplication:IProductBrandApplication
     {
         private readonly IProductBrandRepository _productBrandRepository;
+        private readonly IProductRepository _productRepository;
 
-        public ProductBrandApplication(IProductBrandRepository productBrandRepository)
+        public ProductBrandApplication(IProductBrandRepository productBrandRepository, IProductRepository productRepository)
         {
             _productBrandRepository = productBrandRepository;
+            _productRepository = productRepository;
         }
         public Tuple<List<ProductBrandViewModel>, int, int, int> GetProductBrands(int pageId = 1, string title = "", int take = 20)
         {
@@ -92,6 +95,24 @@ namespace ShopManagement.Application
             brand.Edit(command.Title,command.OtherLangTitle,imageName);
             _productBrandRepository.SaveChanges();
             return result.Succeeded();
+        }
+
+        public DeleteBrandCommand GetBrandForDelete(long brandId)
+        {
+            var brand= _productBrandRepository.GetBrand(brandId);
+            return new DeleteBrandCommand()
+            {
+                BrandId = brand.BrandId,
+                BrandTitle = brand.BrandTitle,
+                ImageName = brand.ImageName
+            };
+        }
+
+        public bool IsProductsHaveBrand(long brandId)
+        {
+            if (_productRepository.GetProductByBrandId(brandId) != null)
+                return true;
+            return false;
         }
     }
 }

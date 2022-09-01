@@ -46,5 +46,6 @@ namespace ShopManagement.Infrastructure.EfCore.Repositories
         {
             _context.SaveChanges();
         }
+
     }
 }

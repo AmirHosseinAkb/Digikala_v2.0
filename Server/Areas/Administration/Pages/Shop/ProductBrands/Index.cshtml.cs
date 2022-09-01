@@ -49,5 +49,16 @@ namespace Server.Areas.Administration.Pages.Shop.ProductBrands
             var result = _productBrandApplication.Edit(command);
             return new JsonResult(result);
         }
+
+        public IActionResult OnGetDelete(long brandId)
+        {
+            if (_productBrandApplication.IsProductsHaveBrand(brandId))
+            {
+                ViewData["ProductExist"] = true;
+                return RedirectToPage();
+            }
+            var brand= _productBrandApplication.GetBrandForDelete(brandId);
+            return Partial("./Delete",brand);
+        }
     }
 }

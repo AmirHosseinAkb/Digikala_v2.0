@@ -129,6 +129,12 @@
   <data name="ConfirmUserCreation" xml:space="preserve">
     <value>User has created successfully.</value>
   </data>
+  <data name="DeleteBrandConfirmationS1" xml:space="preserve">
+    <value>Are you sure you want to delete this brand?</value>
+  </data>
+  <data name="DeleteBrandConfirmationS2" xml:space="preserve">
+    <value />
+  </data>
   <data name="DeleteGroupConfirmation" xml:space="preserve">
     <value>Are you sure you want delete this group?</value>
   </data>

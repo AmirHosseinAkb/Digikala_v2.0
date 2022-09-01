@@ -9,5 +9,7 @@ namespace ShopManagement.Application.Contracts.ProductBrand
         OperationResult Create(CreateBrandCommand command);
         EditBrandCommand GetBrandForEdit(long brandId);
         OperationResult Edit(EditBrandCommand command);
+        DeleteBrandCommand GetBrandForDelete(long brandId);
+        bool IsProductsHaveBrand(long brandId);
     }
 }
