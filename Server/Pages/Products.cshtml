@@ -73,7 +73,8 @@
                 <div class="widget py-1 mb-3">
                     <div class="widget-content widget--filter-switcher">
                         <div class="form-check form-switch mb-0">
-                            <input name="isInStock" class="form-check-input" type="checkbox" id="has_selling_stock">
+                            <input id="stockInp" type="hidden" name="isInStock"/>
+                            <input id="stockCheck" class="form-check-input" type="checkbox" id="has_selling_stock">
                             <label class="form-check-label" for="has_selling_stock">@DataDictionaries.JustInStockProducts</label>
                         </div>
                     </div>
@@ -276,8 +277,11 @@
 
 @section Scripts{
     <script>
-        $(".productFilter").click(function() {
-            $("#frmProducts").submit();
-        })
+      $("#stockCheck").click(function() {
+          if (this.checked)
+              $("#stockInp").val("true");
+          else
+              $("#stockInp").val("false");
+      })
     </script>
 }

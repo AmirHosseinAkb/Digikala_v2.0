@@ -57,6 +57,7 @@ namespace ShopManagement.Application
             
             long productId=_productRepository.AddProduct(product);
             var inventory = new Inventory(productId, 0);
+            _inventoryRepository.AddInventory(inventory);
             _productRepository.AddProductDetails(product);
             return result.Succeeded();
         }
@@ -159,6 +160,10 @@ namespace ShopManagement.Application
             if (product == null)
                 return result.NullResult();
             product.Delete();
+
+            var imagePath = Directories.ProductDirectory(product.ImageName);
+            if (File.Exists(imagePath))
+                File.Delete(imagePath);
             _productRepository.SaveChanges();
             return result.Succeeded();
         }

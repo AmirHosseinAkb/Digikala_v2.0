@@ -41,5 +41,11 @@ namespace ShopManagement.Infrastructure.EfCore.Repositories
         {
             return _shopContext.InventoryHistories.Where(h => h.ProductId == productId).ToList();
         }
+
+        public void AddInventory(Inventory inventory)
+        {
+            _shopContext.Inventories.Add(inventory);
+            _shopContext.SaveChanges();
+        }
     }
 }

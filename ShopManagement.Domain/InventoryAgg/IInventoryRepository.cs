@@ -12,5 +12,6 @@ namespace ShopManagement.Domain.InventoryAgg
         Inventory GetInventry(long id);
         void AddInventoryHistory(InventoryHistory history);
         List<InventoryHistory> GetInventoryHistories(long productId);
+        void AddInventory(Inventory inventory);
     }
 }

@@ -22,7 +22,7 @@ namespace _01_Framework.Application
                 "wwwroot",
                 "Products",
                 "ProductImages",
-                imageName!);
+                imageName);
         }
         public static string ProductBrandDirectory(string imageName)
         {
@@ -30,7 +30,15 @@ namespace _01_Framework.Application
                 "wwwroot",
                 "Products",
                 "BrandImages",
-                imageName!);
+                imageName);
+        }
+        public static string ProductDirectory(string imageName)
+        {
+            return Path.Combine(Directory.GetCurrentDirectory(),
+                "wwwroot",
+                "Products",
+                "Images",
+                imageName);
         }
     }
 }
