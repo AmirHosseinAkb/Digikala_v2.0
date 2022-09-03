@@ -1,4 +1,5 @@
 ﻿using DigikalaQuery.Contracts.ProductGroup;
+using Microsoft.EntityFrameworkCore;
 using ShopManagement.Infrastructure.EfCore;
 
 namespace DigikalaQuery.Queries
@@ -19,7 +20,7 @@ namespace DigikalaQuery.Queries
                 ImageName = g.ImageName,
                 GroupTitle = g.GroupTitle,
                 ParentId = g.ParentId
-            }).ToList();
+            }).AsNoTracking().ToList();
         }
     }
 }

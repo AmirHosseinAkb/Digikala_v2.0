@@ -718,6 +718,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Just In Stock Products.
+        /// </summary>
+        public static string JustInStockProducts {
+            get {
+                return ResourceManager.GetString("JustInStockProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last Name.
         /// </summary>
         public static string LastName {
@@ -952,6 +961,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PriceRange.
+        /// </summary>
+        public static string PriceRange {
+            get {
+                return ResourceManager.GetString("PriceRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Primary Group.
         /// </summary>
         public static string PrimaryGroup {
@@ -1047,6 +1065,15 @@ namespace _01_Framework.Resources {
         public static string ProductTagsMessage {
             get {
                 return ResourceManager.GetString("ProductTagsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product Title.
+        /// </summary>
+        public static string ProductTitle {
+            get {
+                return ResourceManager.GetString("ProductTitle", resourceCulture);
             }
         }
         
@@ -1218,6 +1245,33 @@ namespace _01_Framework.Resources {
         public static string Row {
             get {
                 return ResourceManager.GetString("Row", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search Brand Name....
+        /// </summary>
+        public static string SearchBrandName {
+            get {
+                return ResourceManager.GetString("SearchBrandName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search Color Name....
+        /// </summary>
+        public static string SearchColorName {
+            get {
+                return ResourceManager.GetString("SearchColorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search In Results.
+        /// </summary>
+        public static string SearchInResults {
+            get {
+                return ResourceManager.GetString("SearchInResults", resourceCulture);
             }
         }
         

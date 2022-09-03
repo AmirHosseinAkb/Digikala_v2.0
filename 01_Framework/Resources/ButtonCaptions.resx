@@ -153,8 +153,14 @@
   <data name="AddSubGroup" xml:space="preserve">
     <value>Add Sub Group</value>
   </data>
+  <data name="BestSelling" xml:space="preserve">
+    <value>BestSelling</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="Cheapest" xml:space="preserve">
+    <value>Cheapest</value>
   </data>
   <data name="Clear" xml:space="preserve">
     <value>Clear</value>
@@ -204,8 +210,17 @@
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
   </data>
+  <data name="MostExpensive" xml:space="preserve">
+    <value>Most Expensive</value>
+  </data>
+  <data name="MostPopular" xml:space="preserve">
+    <value>Most Popular</value>
+  </data>
   <data name="NewDetail" xml:space="preserve">
     <value>New Detail</value>
+  </data>
+  <data name="Newest" xml:space="preserve">
+    <value>Newest</value>
   </data>
   <data name="Pay" xml:space="preserve">
     <value>Pay</value>

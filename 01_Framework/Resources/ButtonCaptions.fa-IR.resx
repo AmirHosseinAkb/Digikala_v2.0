@@ -153,8 +153,14 @@
   <data name="AddSubGroup" xml:space="preserve">
     <value>افزودن زیرگروه</value>
   </data>
+  <data name="BestSelling" xml:space="preserve">
+    <value>پرفروش ترین</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>انصراف</value>
+  </data>
+  <data name="Cheapest" xml:space="preserve">
+    <value>ارزان ترین</value>
   </data>
   <data name="Clear" xml:space="preserve">
     <value>پاک کردن</value>
@@ -204,8 +210,17 @@
   <data name="Logout" xml:space="preserve">
     <value>خروج</value>
   </data>
+  <data name="MostExpensive" xml:space="preserve">
+    <value>گران ترین</value>
+  </data>
+  <data name="MostPopular" xml:space="preserve">
+    <value>محبوب ترین</value>
+  </data>
   <data name="NewDetail" xml:space="preserve">
     <value>ویژگی جدید</value>
+  </data>
+  <data name="Newest" xml:space="preserve">
+    <value>جدید ترین</value>
   </data>
   <data name="Pay" xml:space="preserve">
     <value>پرداخت</value>

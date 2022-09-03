@@ -169,11 +169,29 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BestSelling.
+        /// </summary>
+        public static string BestSelling {
+            get {
+                return ResourceManager.GetString("BestSelling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cheapest.
+        /// </summary>
+        public static string Cheapest {
+            get {
+                return ResourceManager.GetString("Cheapest", resourceCulture);
             }
         }
         
@@ -322,11 +340,38 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Most Expensive.
+        /// </summary>
+        public static string MostExpensive {
+            get {
+                return ResourceManager.GetString("MostExpensive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Most Popular.
+        /// </summary>
+        public static string MostPopular {
+            get {
+                return ResourceManager.GetString("MostPopular", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Detail.
         /// </summary>
         public static string NewDetail {
             get {
                 return ResourceManager.GetString("NewDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Newest.
+        /// </summary>
+        public static string Newest {
+            get {
+                return ResourceManager.GetString("Newest", resourceCulture);
             }
         }
         

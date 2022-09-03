@@ -336,6 +336,9 @@
   <data name="JustInStock" xml:space="preserve">
     <value>Just In Stock</value>
   </data>
+  <data name="JustInStockProducts" xml:space="preserve">
+    <value>Just In Stock Products</value>
+  </data>
   <data name="LastName" xml:space="preserve">
     <value>Last Name</value>
   </data>
@@ -414,6 +417,9 @@
   <data name="Price" xml:space="preserve">
     <value>Price</value>
   </data>
+  <data name="PriceRange" xml:space="preserve">
+    <value>PriceRange</value>
+  </data>
   <data name="PrimaryGroup" xml:space="preserve">
     <value>Primary Group</value>
   </data>
@@ -446,6 +452,9 @@
   </data>
   <data name="ProductTagsMessage" xml:space="preserve">
     <value>Please seperate tags with (-) dash</value>
+  </data>
+  <data name="ProductTitle" xml:space="preserve">
+    <value>Product Title</value>
   </data>
   <data name="Record" xml:space="preserve">
     <value>Record</value>
@@ -503,6 +512,15 @@
   </data>
   <data name="Row" xml:space="preserve">
     <value>Row</value>
+  </data>
+  <data name="SearchBrandName" xml:space="preserve">
+    <value>Search Brand Name...</value>
+  </data>
+  <data name="SearchColorName" xml:space="preserve">
+    <value>Search Color Name...</value>
+  </data>
+  <data name="SearchInResults" xml:space="preserve">
+    <value>Search In Results</value>
   </data>
   <data name="SecondaryGroup" xml:space="preserve">
     <value>Secondary Group</value>

@@ -336,6 +336,9 @@
   <data name="JustInStock" xml:space="preserve">
     <value>فقط کالاهای موجود</value>
   </data>
+  <data name="JustInStockProducts" xml:space="preserve">
+    <value>فقط محصولات موجود</value>
+  </data>
   <data name="LastName" xml:space="preserve">
     <value>نام خانوادگی</value>
   </data>
@@ -414,6 +417,9 @@
   <data name="Price" xml:space="preserve">
     <value>قیمت</value>
   </data>
+  <data name="PriceRange" xml:space="preserve">
+    <value>محدوده قیمت</value>
+  </data>
   <data name="PrimaryGroup" xml:space="preserve">
     <value>گروه فرعی اول</value>
   </data>
@@ -446,6 +452,9 @@
   </data>
   <data name="ProductTagsMessage" xml:space="preserve">
     <value>لطفا تگ های محصول را با (-) از هم جدا کنید</value>
+  </data>
+  <data name="ProductTitle" xml:space="preserve">
+    <value>عنوان محصول</value>
   </data>
   <data name="Record" xml:space="preserve">
     <value>رکورد</value>
@@ -503,6 +512,15 @@
   </data>
   <data name="Row" xml:space="preserve">
     <value>ردیف</value>
+  </data>
+  <data name="SearchBrandName" xml:space="preserve">
+    <value>جستجوی نام برند ...</value>
+  </data>
+  <data name="SearchColorName" xml:space="preserve">
+    <value>جستجوی نام رنگ ...</value>
+  </data>
+  <data name="SearchInResults" xml:space="preserve">
+    <value>جستجو در نتایج:</value>
   </data>
   <data name="SecondaryGroup" xml:space="preserve">
     <value>گروه فرعی دوم</value>

@@ -10,6 +10,7 @@
     <title>@ViewData["Title"]</title>
 
     <partial name="PartialViews/_Styles" />
+    @RenderSection("Styles",false)
 </head>
 
 <body>
@@ -25,6 +26,8 @@
 
 <partial name="PartialViews/_Scripts"/>
 <partial name="PartialViews/_ValidationScriptsPartial"/>
+
+@RenderSection("Scripts",false)
 </body>
 
 </html>
