@@ -50,8 +50,9 @@ namespace ShopManagement.Infrastructure.Configuration
             services.AddScoped<IProductGroupQuery,ProductGroupQuery>();
             services.AddScoped<IProductQuery,ProductQuery>();
 
-            services.AddDbContext<ShopContext>(options => 
+            services.AddDbContext<ShopContext>(options =>
                 options.UseSqlServer(connectionString));
+
         }
     }
 }

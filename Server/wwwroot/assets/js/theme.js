@@ -497,6 +497,7 @@
       ];
       skipSlider.noUiSlider.on("update", function (values, handle) {
         skipValues[handle].value = values[handle];
+
       });
     }
   };

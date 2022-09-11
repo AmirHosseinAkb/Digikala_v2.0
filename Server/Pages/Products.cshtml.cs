@@ -14,15 +14,23 @@ namespace Server.Pages
 
         public ProductsModel(IProductQuery productQuery)
         {
-            _productQuery=productQuery;
+            _productQuery = productQuery;
         }
 
-        public Tuple<List<ProductBoxQueryModel>,List<ProductColorQueryModel>,List<ProductBrandQueryModel>,int,int> ProductBoxVms { get; set; }
-        public void OnGet(int pageId=1,string title="",string orderBy="",bool isInStock=false,int startPrice=0,int endPrice=0
-            ,List<int> brands=null,List<int> colors=null)
+        [BindProperty]
+        public SearchProductQueryModel SearchModel { get; set; }
+
+        public Tuple<List<ProductBoxQueryModel>, List<ProductColorQueryModel>, List<ProductBrandQueryModel>, int, int> ProductBoxVms { get; set; }
+        public void OnGet()
         {
-            ProductBoxVms = _productQuery.GetProductsForShow(pageId, title, orderBy, isInStock, startPrice, endPrice,
-                brands, colors);
+            SearchModel=new SearchProductQueryModel();
+            ProductBoxVms = _productQuery.GetProductsForShow(SearchModel);
+        }
+
+        public IActionResult OnGetGetProducts(SearchProductQueryModel searchModel)
+        {
+            var prodcuts = _productQuery.GetProductsList(searchModel);
+            return Partial("PartialViews/_Products", prodcuts);
         }
     }
 }

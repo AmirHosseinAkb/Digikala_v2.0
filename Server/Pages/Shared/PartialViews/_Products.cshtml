@@ -1,0 +1,7 @@
+﻿
+@model List<DigikalaQuery.Contracts.Product.ProductBoxQueryModel>
+
+@foreach (var product in Model)
+{
+    <partial name="Shared/PartialViews/_ProductBox" model="product" />
+}

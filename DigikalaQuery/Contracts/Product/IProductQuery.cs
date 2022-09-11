@@ -6,8 +6,8 @@ namespace DigikalaQuery.Contracts.Product
 {
     public interface IProductQuery
     {
-        Tuple<List<ProductBoxQueryModel>,List<ProductColorQueryModel>,List<ProductBrandQueryModel>, int, int> GetProductsForShow(int pageId = 1, string title = "",
-            string orderBy = "", bool isInStock = false, int startPrice = 0, int endPrice = 0
-            , List<int> brands = null, List<int> colors = null);
+        Tuple<List<ProductBoxQueryModel>,List<ProductColorQueryModel>,List<ProductBrandQueryModel>, int, int> GetProductsForShow(SearchProductQueryModel searchModel);
+
+        List<ProductBoxQueryModel> GetProductsList(SearchProductQueryModel searchModel);
     }
 }

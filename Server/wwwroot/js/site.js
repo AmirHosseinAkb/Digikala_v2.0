@@ -302,15 +302,13 @@ $("#btnEditUser").click(function (e) {
         }
         else if ($("#EditUserCommand_Email").val() == "" || $("#EditUserCommand_Email").val() == localStorage.getItem("UserEmail")) {
             $("#frmEditUser").submit();
-        } 
+        }
         else if (isValidEmailInEdit) {
             $("#frmEditUser").submit();
         }
     }
 });
 /**********************************************************************************************/
-                                            /*Products*/
+/*Products*/
 /**********************************************************************************************/
-
-
 

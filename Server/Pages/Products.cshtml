@@ -1,4 +1,6 @@
-﻿@page
+﻿@page "{handler?}"
+@using System.Drawing
+@using ShopManagement.Application.Contracts.ProductColor
 @model Server.Pages.ProductsModel
 @{
     var productsMaxPrice = 0;
@@ -7,281 +9,283 @@
 }
 
 <main class="page-content">
-<div class="container">
-<div class="row">
-<div class="col-xl-3 col-lg-4 col-md-5 responsive-sidebar">
-    <div class="ui-sticky ui-sticky-top">
-        <div class="ui-box sidebar-widgets">
-            <form id="frmProducts" method="get">
-                <!-- widget -->
-                <div class="widget mb-3">
-                    <div class="widget-title">@DataDictionaries.SearchInResults</div>
-                    <div class="widget-content widget--search">
-                        <div class="form-element-row">
-                            <input type="text" name="title" class="form-control" placeholder="@DataDictionaries.ProductTitle">
-                            <button class="ri-search-line icon" style="border:0px"></button>
-                        </div>
-                    </div>
-                </div>
-                <!--  widget -->
-                <!-- widget -->
-
-                <div class="widget widget-collapse mb-3">
-                    <div class="widget-title widget-title--collapse-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseBrandFilter" aria-expanded="false" aria-controls="collapseBrandFilter" role="button">برند</div>
-                    <div class="widget-content widget--search collapse" id="collapseBrandFilter" style="">
-                        <div class="form-element-row">
-                            <input type="text" class="form-control" placeholder="@DataDictionaries.SearchBrandName">
-                            <i class="ri-search-line icon"></i>
-                        </div>
-                        <div class="filter-options do-simplebar border-top pt-2 mt-2" data-simplebar="init">
-                            <div class="simplebar-wrapper" style="margin: -8px 0px 0px -10px;">
-                                <div class="simplebar-height-auto-observer-wrapper">
-                                    <div class="simplebar-height-auto-observer"></div>
-                                </div>
-                                <div class="simplebar-mask">
-                                    <div class="simplebar-offset" style="left: 0px; bottom: 0px;">
-                                        <div class="simplebar-content-wrapper" style="height: auto; overflow: hidden;">
-                                            <div class="simplebar-content" style="padding: 8px 0px 0px 10px;">
-                                                @foreach (var brand in Model.ProductBoxVms.Item3)
-                                                {
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="brands" value="@brand.BrandId" id="brandOption1">
-                                                        <label class="form-check-label d-block" for="brandOption1">
-                                                            <span class="d-flex align-items-center justify-content-between">
-                                                                <span> @brand.BrandTitle</span>
-                                                                <span class="text-muted en_text fs-7">@brand.OtherLangTitle</span>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-                                                }
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-5 responsive-sidebar">
+                <div class="ui-sticky ui-sticky-top">
+                    <div class="ui-box sidebar-widgets">
+                        <form id="frmProducts">
+                            <div class="widget widget-collapse mb-3">
+                                <div class="widget-title widget-title--collapse-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseBrandFilter" aria-expanded="false" aria-controls="collapseBrandFilter" role="button">برند</div>
+                                <div class="widget-content widget--search collapse" id="collapseBrandFilter" style="">
+                                    <div class="form-element-row">
+                                        <input type="text" class="form-control" placeholder="@DataDictionaries.SearchBrandName">
+                                        <i class="ri-search-line icon"></i>
+                                    </div>
+                                    <div class="filter-options do-simplebar border-top pt-2 mt-2" data-simplebar="init">
+                                        <div class="simplebar-wrapper" style="margin: -8px 0px 0px -10px;">
+                                            <div class="simplebar-height-auto-observer-wrapper">
+                                                <div class="simplebar-height-auto-observer"></div>
                                             </div>
+                                            <div class="simplebar-mask">
+                                                <div class="simplebar-offset" style="left: 0px; bottom: 0px;">
+                                                    <div class="simplebar-content-wrapper" style="height: auto; overflow: hidden;">
+                                                        <div class="simplebar-content" style="padding: 8px 0px 0px 10px;">
+                                                            @foreach (var brand in Model.ProductBoxVms.Item3)
+                                                            {
+                                                                <div class="form-check">
+                                                                    <input name="SearchModel.Brands" class="form-check-input productFilter" type="checkbox" name="brands" value="@brand.BrandId" id="brandOption1">
+                                                                    <label class="form-check-label d-block" for="brandOption1">
+                                                                        <span class="d-flex align-items-center justify-content-between">
+                                                                            <span> @brand.BrandTitle</span>
+                                                                            <span class="text-muted en_text fs-7">@brand.OtherLangTitle</span>
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div>
+                                        </div>
+                                        <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                                            <div class="simplebar-scrollbar simplebar-visible" style="width: 0px; display: none;"></div>
+                                        </div>
+                                        <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
+                                            <div class="simplebar-scrollbar simplebar-visible" style="height: 0px; display: none; transform: translate3d(0px, 0px, 0px);"></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div>
                             </div>
-                            <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
-                                <div class="simplebar-scrollbar simplebar-visible" style="width: 0px; display: none;"></div>
-                            </div>
-                            <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
-                                <div class="simplebar-scrollbar simplebar-visible" style="height: 0px; display: none; transform: translate3d(0px, 0px, 0px);"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- widget -->
-                <div class="widget py-1 mb-3">
-                    <div class="widget-content widget--filter-switcher">
-                        <div class="form-check form-switch mb-0">
-                            <input id="stockInp" type="hidden" name="isInStock"/>
-                            <input id="stockCheck" class="form-check-input" type="checkbox" id="has_selling_stock">
-                            <label class="form-check-label" for="has_selling_stock">@DataDictionaries.JustInStockProducts</label>
-                        </div>
-                    </div>
-                </div>
-                <!--  widget -->
-                <!-- widget -->
-                <div class="widget widget-collapse mb-3">
-                    <div class="widget-title widget-title--collapse-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseColorFilter" aria-expanded="false" aria-controls="collapseColorFilter" role="button">رنگ ها</div>
-                    <div class="widget-content widget--search collapse" id="collapseColorFilter" style="">
-                        <div class="form-element-row">
-                            <input type="text" class="form-control" placeholder="@DataDictionaries.SearchColorName">
-                            <i class="ri-search-line icon"></i>
-                        </div>
-                        <div class="filter-options do-simplebar border-top pt-2 mt-2" data-simplebar="init">
-                            <div class="simplebar-wrapper" style="margin: -8px 0px 0px -10px;">
-                                <div class="simplebar-height-auto-observer-wrapper">
-                                    <div class="simplebar-height-auto-observer"></div>
+                            <!-- widget -->
+                            <div class="widget py-1 mb-3">
+                                <div class="widget-content widget--filter-switcher">
+                                    <div class="form-check form-switch mb-0">
+                                        <input asp-for="SearchModel.IsInStock" class="form-check-input productFilter" type="checkbox" id="stockCheck">
+                                        <label class="form-check-label" for="stockCheck">@DataDictionaries.JustInStockProducts</label>
+                                    </div>
                                 </div>
-                                <div class="simplebar-mask">
-                                    <div class="simplebar-offset" style="left: 0px; bottom: 0px;">
-                                        <div class="simplebar-content-wrapper" style="height: auto; overflow: hidden;">
-                                            <div class="simplebar-content" style="padding: 8px 0px 0px 10px;">
-                                                
-                                                @foreach (var color in Model.ProductBoxVms.Item2)
-                                                {
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" name="colors" type="checkbox" value="@color.ColorId" id="colorOption1">
-                                                        <label class="form-check-label d-block" for="colorOption1">
-                                                            <span class="d-flex align-items-center justify-content-between">
-                                                                <span>@color.ColorName</span>
-                                                                <span class="color-preview" style="background-color: @color.ColorCode"></span>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-                                                }
+                            </div>
+                            <!--  widget -->
+                            <!-- widget -->
+                            <div class="widget widget-collapse mb-3">
+                                <div class="widget-title widget-title--collapse-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseColorFilter" aria-expanded="false" aria-controls="collapseColorFilter" role="button">رنگ ها</div>
+                                <div class="widget-content widget--search collapse" id="collapseColorFilter" style="">
+                                    <div class="form-element-row">
+                                        <input type="text" class="form-control" placeholder="@DataDictionaries.SearchColorName">
+                                        <i class="ri-search-line icon"></i>
+                                    </div>
+                                    <div class="filter-options do-simplebar border-top pt-2 mt-2" data-simplebar="init">
+                                        <div class="simplebar-wrapper" style="margin: -8px 0px 0px -10px;">
+                                            <div class="simplebar-height-auto-observer-wrapper">
+                                                <div class="simplebar-height-auto-observer"></div>
                                             </div>
+                                            <div class="simplebar-mask">
+                                                <div class="simplebar-offset" style="left: 0px; bottom: 0px;">
+                                                    <div class="simplebar-content-wrapper" style="height: auto; overflow: hidden;">
+                                                        <div class="simplebar-content" style="padding: 8px 0px 0px 10px;">
+                                                            @foreach (var color in Model.ProductBoxVms.Item2)
+                                                            {
+                                                                <div class="form-check">
+                                                                    <input name="SearchModel.Colors" class="form-check-input productFilter" name="colors" type="checkbox" value="@color.ColorId" id="colorOption1">
+                                                                    <label class="form-check-label d-block" for="colorOption1">
+                                                                        <span class="d-flex align-items-center justify-content-between">
+                                                                            <span>@color.ColorName</span>
+                                                                            <span class="color-preview" style="background-color: @color.ColorCode"></span>
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div>
+                                        </div>
+                                        <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                                            <div class="simplebar-scrollbar simplebar-visible" style="width: 0px; display: none;"></div>
+                                        </div>
+                                        <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
+                                            <div class="simplebar-scrollbar simplebar-visible" style="height: 0px; display: none; transform: translate3d(0px, 0px, 0px);"></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div>
                             </div>
-                            <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
-                                <div class="simplebar-scrollbar simplebar-visible" style="width: 0px; display: none;"></div>
-                            </div>
-                            <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
-                                <div class="simplebar-scrollbar simplebar-visible" style="height: 0px; display: none; transform: translate3d(0px, 0px, 0px);"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--  widget -->
-                <!-- widget -->
-                <div class="widget widget-collapse mb-3">
-                    <div class="widget-title widget-title--collapse-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapsePriceFilter" aria-expanded="false" aria-controls="collapsePriceFilter" role="button">@DataDictionaries.PriceRange</div>
-                    <div class="widget-content widget--search fa-num collapse" id="collapsePriceFilter" style="">
-                        <div class="filter-price">
-                            <div class="filter-slider">
-                                <div id="slider-non-linear-step" class="price-slider noUi-target noUi-rtl noUi-horizontal">
-                                </div>
-                            </div>
-                            <ul class="filter-range mb-4">
-                                <li>
-                                    <input type="text" data-value="0" value="0" name="startPrice" data-range="0" class="js-slider-range-from" id="skip-value-lower" disabled="">
-                                    <span>@DataDictionaries.Toman</span>
-                                </li>
-                                <li class="label fw-bold">@DataDictionaries.To</li>
-                                <li>
-                                    <input type="text" data-value="@productsMaxPrice" value="@productsMaxPrice" name="endPrice" data-range="@productsMaxPrice" class="js-slider-range-to" id="skip-value-upper" disabled="">
-                                    <span>@DataDictionaries.Toman</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <!--  widget -->
-            <!-- widget -->
-            <div class="widget p-0 mb-3">
-                <div class="widget-content widget--free-shipping">
-                    <div class="free-shipping--detail">
-                        <div class="title">ارسال رایگان سفارش</div>
-                        <div class="subtitle">سفارش‌های بالای 500 هزار تومان</div>
-                    </div>
-                    <div class="free-shipping--banner">
-                        <img src="./assets/images/theme/free-shipping--banner.png" alt="ارسال رایگان سفارش">
-                    </div>
-                </div>
-            </div>
-            <!--  widget -->
-        </div>
-    </div>
-</div>
-<div class="col-xl-9 col-lg-8 col-md-7">
-    <!-- breadcrumb -->
-    <nav class="mb-2" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">خانه</a></li>
-            <li class="breadcrumb-item"><a href="#">کالای دیجیتال</a></li>
-            <li class="breadcrumb-item"><a href="#">موبایل</a></li>
-            <li class="breadcrumb-item"><a href="#">گوشی موبایل</a></li>
-        </ol>
-    </nav>
-    <!--  breadcrumb -->
-    <button class="btn btn-primary mb-3 d-md-none toggle-responsive-sidebar">
-        فیلتر پیشرفته
-        <i class="ri-equalizer-fill ms-1"></i>
-    </button>
-    <div class="listing-products">
-        <div class="listing-products-header mb-4">
-            <div class="listing-products-filter-container do-simplebar me-4" data-simplebar="init">
-                <div class="simplebar-wrapper" style="margin: 0px;">
-                    <div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask">
-                        <div class="simplebar-offset" style="left: 0px; bottom: 0px;">
-                            <div class="simplebar-content-wrapper" style="height: auto; overflow: scroll hidden;">
-                                <div class="simplebar-content" style="padding: 0px;">
-                                    <div class="listing-products-filter">
-                                        <!-- nav-tabs -->
-                                        <ul class="nav nav-pills nav-tabs align-items-center" id="sort-tab" role="tablist">
-                                            <li class="d-inline-flex align-items-center nav-item me-3 text-muted">
-                                                <i class="ri-equalizer-line me-2"></i>
-                                                مرتب سازی بر اساس:
+                            <!--  widget -->
+                            <!-- widget -->
+                            <div class="widget widget-collapse mb-3">
+                                <div class="widget-title widget-title--collapse-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapsePriceFilter" aria-expanded="false" aria-controls="collapsePriceFilter" role="button">@DataDictionaries.PriceRange</div>
+                                <div class="widget-content widget--search fa-num collapse" id="collapsePriceFilter" style="">
+                                    <div class="filter-price">
+                                        <div class="filter-slider">
+                                            <div id="slider-non-linear-step" class="price-slider noUi-target noUi-rtl noUi-horizontal">
+                                            </div>
+                                        </div>
+                                        <ul class="filter-range mb-4">
+                                            <li>
+                                                <input asp-for="SearchModel.StartPrice" type="text" data-value="0" value="0"  data-range="0" class="js-slider-range-from" id="skip-value-lower" disabled="">
+                                                <span>@DataDictionaries.Toman</span>
                                             </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link " id="best-selling-tab" data-bs-toggle="tab" data-bs-target="#best-selling" type="button" role="tab" aria-controls="best-selling" aria-selected="false">@ButtonCaptions.BestSelling</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="most-popular-tab" data-bs-toggle="tab" data-bs-target="#most-popular" type="button" role="tab" aria-controls="most-popular" aria-selected="false">@ButtonCaptions.MostPopular</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="newest-tab" data-bs-toggle="tab" data-bs-target="#newest" type="button" role="tab" aria-controls="newest" aria-selected="false">@ButtonCaptions.Newest</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="cheapest-tab" data-bs-toggle="tab" data-bs-target="#cheapest" type="button" role="tab" aria-controls="cheapest" aria-selected="false">@ButtonCaptions.Cheapest</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="most-expensive-tab" data-bs-toggle="tab" data-bs-target="#most-expensive" type="button" role="tab" aria-controls="most-expensive" aria-selected="false">@ButtonCaptions.MostExpensive</button>
+                                            <li class="label fw-bold">@DataDictionaries.To</li>
+                                            <li>
+                                                <input asp-for="SearchModel.EndPrice" type="text" data-value="@productsMaxPrice" value="@productsMaxPrice"  data-range="@productsMaxPrice" class="js-slider-range-to" id="skip-value-upper" disabled="">
+                                                <span>@DataDictionaries.Toman</span>
                                             </li>
                                         </ul>
-                                        <!--  nav-tabs -->
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--  widget -->
+                        <!-- widget -->
+                        <div class="widget p-0 mb-3">
+                            <div class="widget-content widget--free-shipping">
+                                <div class="free-shipping--detail">
+                                    <div class="title">ارسال رایگان سفارش</div>
+                                    <div class="subtitle">سفارش‌های بالای 500 هزار تومان</div>
+                                </div>
+                                <div class="free-shipping--banner">
+                                    <img src="./assets/images/theme/free-shipping--banner.png" alt="ارسال رایگان سفارش">
+                                </div>
+                            </div>
+                        </div>
+                        <!--  widget -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-8 col-md-7">
+                <!-- breadcrumb -->
+                <nav class="mb-2" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">خانه</a></li>
+                        <li class="breadcrumb-item"><a href="#">کالای دیجیتال</a></li>
+                        <li class="breadcrumb-item"><a href="#">موبایل</a></li>
+                        <li class="breadcrumb-item"><a href="#">گوشی موبایل</a></li>
+                    </ol>
+                </nav>
+                <!--  breadcrumb -->
+                <button class="btn btn-primary mb-3 d-md-none toggle-responsive-sidebar">
+                    فیلتر پیشرفته
+                    <i class="ri-equalizer-fill ms-1"></i>
+                </button>
+                <div class="listing-products">
+                    <div class="listing-products-header mb-4">
+                        <div class="listing-products-filter-container do-simplebar me-4" data-simplebar="init">
+                            <div class="simplebar-wrapper" style="margin: 0px;">
+                                <div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask">
+                                    <div class="simplebar-offset" style="left: 0px; bottom: 0px;">
+                                        <div class="simplebar-content-wrapper" style="height: auto; overflow: scroll hidden;">
+                                            <div class="simplebar-content" style="padding: 0px;">
+                                                <div class="listing-products-filter">
+                                                    <!-- nav-tabs -->
+                                                    <ul class="nav nav-pills nav-tabs align-items-center" id="sort-tab" role="tablist">
+                                                        <li class="d-inline-flex align-items-center nav-item me-3 text-muted">
+                                                            <i class="ri-equalizer-line me-2"></i>
+                                                            مرتب سازی بر اساس:
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link " id="best-selling-tab" data-bs-toggle="tab" data-bs-target="#best-selling" type="button" role="tab" aria-controls="best-selling" aria-selected="false">@ButtonCaptions.BestSelling</button>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link" id="most-popular-tab" data-bs-toggle="tab" data-bs-target="#most-popular" type="button" role="tab" aria-controls="most-popular" aria-selected="false">@ButtonCaptions.MostPopular</button>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link" id="newest-tab" data-bs-toggle="tab" data-bs-target="#newest" type="button" role="tab" aria-controls="newest" aria-selected="false">@ButtonCaptions.Newest</button>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link" id="cheapest-tab" data-bs-toggle="tab" data-bs-target="#cheapest" type="button" role="tab" aria-controls="cheapest" aria-selected="false">@ButtonCaptions.Cheapest</button>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link" id="most-expensive-tab" data-bs-toggle="tab" data-bs-target="#most-expensive" type="button" role="tab" aria-controls="most-expensive" aria-selected="false">@ButtonCaptions.MostExpensive</button>
+                                                        </li>
+                                                    </ul>
+                                                    <!--  nav-tabs -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><div class="simplebar-placeholder" style="width: auto; height: 54px;"></div>
+                            </div><div class="simplebar-track simplebar-horizontal" style="visibility: visible;"><div class="simplebar-scrollbar simplebar-visible" style="width: 682px; display: block; transform: translate3d(42px, 0px, 0px);"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar simplebar-visible" style="height: 0px; display: none;"></div></div>
+                        </div>
+                    </div>
+                    <div class="listing-products-content">
+                        <!-- tab-content -->
+                        <div class="tab-content" id="sort-tabContent">
+                            <!-- tab-pane -->
+                            <div class="tab-pane fade active show" id="most-visited" role="tabpanel" aria-labelledby="most-visited-tab">
+                                <div class="ui-box pt-3 pb-0 px-0 mb-4">
+                                    <div class="ui-box-content">
+                                        <div id="productsList" class="row mx-0">
+                                            @foreach (var product in Model.ProductBoxVms.Item1)
+                                            {
+                                                <partial name="Shared/PartialViews/_ProductBox" model="product" />
+                                            }
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div><div class="simplebar-placeholder" style="width: auto; height: 54px;"></div>
-                </div><div class="simplebar-track simplebar-horizontal" style="visibility: visible;"><div class="simplebar-scrollbar simplebar-visible" style="width: 682px; display: block; transform: translate3d(42px, 0px, 0px);"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar simplebar-visible" style="height: 0px; display: none;"></div></div>
-            </div>
-        </div>
-        <div class="listing-products-content">
-            <!-- tab-content -->
-            <div class="tab-content" id="sort-tabContent">
-                <!-- tab-pane -->
-                <div class="tab-pane fade active show" id="most-visited" role="tabpanel" aria-labelledby="most-visited-tab">
-                    <div class="ui-box pt-3 pb-0 px-0 mb-4">
-                        <div class="ui-box-content">
-                            <div class="row mx-0">
-                                @foreach (var product in Model.ProductBoxVms.Item1)
-                                {
-                                    <partial name="Shared/PartialViews/_ProductBox" model="product" />
-                                }
-
+                        <!--  tab-content -->
+                        <div class="row">
+                            <div class="col-12">
+                                <nav class="border-top py-4">
+                                    <!-- pagination -->
+                                    <ul class="pagination justify-content-center fa-num">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <i class="ri-arrow-right-s-line"></i>
+                                            </a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item active"><a class="page-link">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <i class="ri-arrow-left-s-line"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <!--  pagination -->
+                                </nav>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--  tab-content -->
-            <div class="row">
-                <div class="col-12">
-                    <nav class="border-top py-4">
-                        <!-- pagination -->
-                        <ul class="pagination justify-content-center fa-num">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <i class="ri-arrow-right-s-line"></i>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active"><a class="page-link">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <i class="ri-arrow-left-s-line"></i>
-                                </a>
-                            </li>
-                        </ul>
-                        <!--  pagination -->
-                    </nav>
-                </div>
+                <div class="responsive-sidebar-overlay"></div>
             </div>
         </div>
     </div>
-    <div class="responsive-sidebar-overlay"></div>
-</div>
-</div>
-</div>
-<!-- quick-view-modal -->
-<!--  quick-view-modal -->
+    <!-- quick-view-modal -->
+    <!--  quick-view-modal -->
 </main>
 
-
-@section Scripts{
+@section Scripts
+{
     <script>
-      $("#stockCheck").click(function() {
-          if (this.checked)
-              $("#stockInp").val("true");
-          else
-              $("#stockInp").val("false");
-      })
+        //$("#stockCheck").click(function() {
+
+        //    if (this.checked)
+        //        $("#stockInp").val("true");
+        //    else
+        //        $("#stockInp").val("false");
+
+        //});
+
+        $(".productFilter").click(function (e) {
+
+            var frmData = $("#frmProducts").serialize();
+            $.ajax({
+                type: "Get",
+                url: "/Products/GetProducts",
+                data: frmData,
+                beforeSend: function (xhr) { xhr.setRequestHeader("XSRF-TOKEN", $('input:hidden[name="__RequestVerificationToken"]').val()); },
+                success: function (response) {
+                    $("#productsList").html(response);
+                }
+            });
+        });
+
     </script>
 }
