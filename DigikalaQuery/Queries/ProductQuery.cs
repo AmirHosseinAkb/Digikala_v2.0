@@ -46,9 +46,11 @@ namespace DigikalaQuery.Queries
 
             var query = products.Skip(skip).Take(take);
 
-            var productColors = query.SelectMany(p=>p.ProductColors);
+            var productColors = products.SelectMany(p => p.ProductColors)
+                .GroupBy(c=>c.ColorName).Select(c=>c.First()).ToList();
 
-            var productBrands = query.Select(p => p.ProductBrand);
+            var productBrands = products.Select(p => p.ProductBrand)
+                .GroupBy(b=>b.BrandTitle).Select(b=>b.First()).ToList();
 
             
             return Tuple.Create(
@@ -60,7 +62,7 @@ namespace DigikalaQuery.Queries
                     Price = p.Price,
                     ProductColors = p.ProductColors
                 }).ToList(),
-                productColors.Distinct().Select(c => new ProductColorQueryModel()
+                productColors.Select(c => new ProductColorQueryModel()
                 {
                     ColorId = c.ColorId,
                     ColorName = c.ColorName,
@@ -126,12 +128,20 @@ namespace DigikalaQuery.Queries
 
             if (searchModel.Colors.Any())
             {
-                foreach (var colorId in searchModel.Colors)
+                foreach (var colorName in searchModel.Colors)
                 {
-                    products = products.Where(p => p.ProductColors.Any(c => c.ColorId == colorId));
+                    products = products.Where(p => p.ProductColors.Any(c => c.ColorName == colorName));
                 }
             }
 
+            if (searchModel.StartPrice != 0)
+                products = products.Where(p => p.Price >= searchModel.StartPrice);
+
+            if (products.Any())
+            {
+                if (searchModel.EndPrice != products.Max(p => p.Price))
+                    products = products.Where(p => p.Price <= searchModel.EndPrice);
+            }
             int take = 1;
 
             int skip = (searchModel.PageId - 1) * take;
@@ -142,16 +152,6 @@ namespace DigikalaQuery.Queries
                 pageCount += 1;
 
             var query = products.Skip(skip).Take(take);
-
-            if (searchModel.StartPrice != 0)
-                query = query.Where(p => p.Price > searchModel.StartPrice);
-
-            if (query.Any())
-            {
-                if (searchModel.EndPrice != query.Max(p => p.Price))
-                    query = query.Where(p => p.Price < searchModel.EndPrice);
-            }
-
             return Tuple.Create(query.Select(p => new ProductBoxQueryModel()
             {
                 ProductId = p.ProductId,

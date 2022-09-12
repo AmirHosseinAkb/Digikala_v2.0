@@ -14,7 +14,7 @@ namespace DigikalaQuery.Contracts.Product
         public bool IsInStock { get; set; } = false;
         public int StartPrice { get; set; } = 0;
         public int EndPrice { get; set; } = 0;
-        public List<int> Colors { get; set; } = new List<int>();
+        public List<string> Colors { get; set; } = new List<string>();
         public List<int> Brands { get; set; } = new List<int>();
     }
 }

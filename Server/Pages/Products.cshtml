@@ -89,7 +89,7 @@
                                                             @foreach (var color in Model.ProductBoxVms.Item2)
                                                             {
                                                                 <div class="form-check">
-                                                                    <input name="SearchModel.Colors" class="form-check-input" onclick="FilterProduct(@pageId)" type="checkbox" value="@color.ColorId" id="colorOption1">
+                                                                    <input name="SearchModel.Colors" class="form-check-input" onclick="FilterProduct(@pageId)" type="checkbox" value="@color.ColorName" id="colorOption1">
                                                                     <label class="form-check-label d-block" for="colorOption1">
                                                                         <span class="d-flex align-items-center justify-content-between">
                                                                             <span>@color.ColorName</span>
