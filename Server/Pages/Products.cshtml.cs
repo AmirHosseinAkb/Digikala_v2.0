@@ -25,8 +25,9 @@ namespace Server.Pages
             ProductBoxVms = _productQuery.GetProductsForShow(searchModel);
         }
 
-        public async Task<IActionResult> OnGetGetProducts(SearchProductQueryModel searchModel)
+        public IActionResult OnGetGetProducts(SearchProductQueryModel searchModel)
         {
+            ViewData["PageId"] = searchModel.PageId;
             var prodcuts = _productQuery.GetProductsList(searchModel); 
             return Partial("PartialViews/_Products", prodcuts);
         }

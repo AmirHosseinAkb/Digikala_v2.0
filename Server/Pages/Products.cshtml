@@ -6,6 +6,7 @@
     var productsMaxPrice = 0;
     if (Model.ProductBoxVms.Item1.Any())
         productsMaxPrice = @Model.ProductBoxVms.Item1.Max(p => p.Price);
+    int pageId = ((ViewData["PageId"]==null)?1:int.Parse(ViewData["PageId"].ToString()));
 }
 
 <main class="page-content">
@@ -34,7 +35,7 @@
                                                             @foreach (var brand in Model.ProductBoxVms.Item3)
                                                             {
                                                                 <div class="form-check">
-                                                                    <input name="SearchModel.Brands" class="form-check-input" onclick="FilterProduct()" type="checkbox" name="brands" value="@brand.BrandId" id="brandOption1">
+                                                                    <input name="SearchModel.Brands" class="form-check-input" onclick="FilterProduct(@pageId)" type="checkbox" name="brands" value="@brand.BrandId" id="brandOption1">
                                                                     <label class="form-check-label d-block" for="brandOption1">
                                                                         <span class="d-flex align-items-center justify-content-between">
                                                                             <span> @brand.BrandTitle</span>
@@ -62,7 +63,7 @@
                             <div class="widget py-1 mb-3">
                                 <div class="widget-content widget--filter-switcher">
                                     <div class="form-check form-switch mb-0">
-                                        <input asp-for="SearchModel.IsInStock" onclick="FilterProduct()" class="form-check-input" type="checkbox" id="stockCheck">
+                                        <input asp-for="SearchModel.IsInStock" onclick="FilterProduct(@pageId)" class="form-check-input" type="checkbox" id="stockCheck">
                                         <label class="form-check-label" for="stockCheck">@DataDictionaries.JustInStockProducts</label>
                                     </div>
                                 </div>
@@ -88,7 +89,7 @@
                                                             @foreach (var color in Model.ProductBoxVms.Item2)
                                                             {
                                                                 <div class="form-check">
-                                                                    <input name="SearchModel.Colors" class="form-check-input" onclick="FilterProduct()" type="checkbox" value="@color.ColorId" id="colorOption1">
+                                                                    <input name="SearchModel.Colors" class="form-check-input" onclick="FilterProduct(@pageId)" type="checkbox" value="@color.ColorId" id="colorOption1">
                                                                     <label class="form-check-label d-block" for="colorOption1">
                                                                         <span class="d-flex align-items-center justify-content-between">
                                                                             <span>@color.ColorName</span>
@@ -211,14 +212,14 @@
                             </div><div class="simplebar-track simplebar-horizontal" style="visibility: visible;"><div class="simplebar-scrollbar simplebar-visible" style="width: 682px; display: block; transform: translate3d(42px, 0px, 0px);"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar simplebar-visible" style="height: 0px; display: none;"></div></div>
                         </div>
                     </div>
-                    <div class="listing-products-content">
+                    <div id="productsList" class="listing-products-content">
                         <!-- tab-content -->
                         <div class="tab-content" id="sort-tabContent">
                             <!-- tab-pane -->
                             <div class="tab-pane fade active show" id="most-visited" role="tabpanel" aria-labelledby="most-visited-tab">
                                 <div class="ui-box pt-3 pb-0 px-0 mb-4">
                                     <div class="ui-box-content">
-                                        <div id="productsList" class="row mx-0">
+                                        <div  class="row mx-0">
                                             @foreach (var product in Model.ProductBoxVms.Item1)
                                             {
                                                 <partial name="Shared/PartialViews/_ProductBox" model="product" />
@@ -235,12 +236,10 @@
                                 <nav class="border-top py-4">
                                     <!-- pagination -->
                                     <ul class="pagination justify-content-center fa-num">
-                                        @for (int i = 1; i <= Model.ProductBoxVms.Item4; i++)
+                                        @for (int i = 1; i <= Model.ProductBoxVms.Item5; i++)
                                         {
-                                            <input type="hidden" asp-for="SearchModel.PageId" value="@i"/>
-                                            <li class="page-item"><a class="page-link" onclick="FilterProduct()">@i</a></li>
+                                            <li class="page-item"><a class="page-link" onclick="FilterProduct(@i)">@i</a></li>
                                         }
-                                        
                                     </ul>
                                     <!--  pagination -->
                                 </nav>
@@ -259,12 +258,12 @@
 @section Scripts
 {
     <script>
-        function FilterProduct () {
+        function FilterProduct (pageId) {
 
             var frmData = $("#frmProducts").serialize();
             $.ajax({
                 type: "Get",
-                url: "/Products/GetProducts",
+                url: "/Products/GetProducts?SearchModel.PageId="+pageId,
                 data: frmData,
                 beforeSend: function (xhr) { xhr.setRequestHeader("XSRF-TOKEN", $('input:hidden[name="__RequestVerificationToken"]').val()); },
                 success: function (response) {

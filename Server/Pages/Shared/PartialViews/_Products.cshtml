@@ -1,7 +1,33 @@
 ﻿
-@model List<DigikalaQuery.Contracts.Product.ProductBoxQueryModel>
+@model Tuple<List<DigikalaQuery.Contracts.Product.ProductBoxQueryModel>,int,int>
 
-@foreach (var product in Model)
-{
-    <partial name="Shared/PartialViews/_ProductBox" model="product" />
-}
+<div class="tab-content" id="sort-tabContent">
+    <!-- tab-pane -->
+    <div class="tab-pane fade active show" id="most-visited" role="tabpanel" aria-labelledby="most-visited-tab">
+        <div class="ui-box pt-3 pb-0 px-0 mb-4">
+            <div class="ui-box-content">
+                <div  class="row mx-0">
+                    @foreach (var product in Model.Item1)
+                    {
+                        <partial name="Shared/PartialViews/_ProductBox" model="product" />
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <nav class="border-top py-4">
+            <!-- pagination -->
+            <ul class="pagination justify-content-center fa-num">
+                @for (int i = 1; i <= Model.Item3; i++)
+                {
+                    <li class="page-item @((i==Model.Item2)?"active":"")"><a class="page-link" onclick="FilterProduct(@i)">@i</a></li>
+                }
+            </ul>
+            <!--  pagination -->
+        </nav>
+    </div>
+</div>
