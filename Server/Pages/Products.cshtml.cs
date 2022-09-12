@@ -17,19 +17,17 @@ namespace Server.Pages
             _productQuery = productQuery;
         }
 
-        [BindProperty]
-        public SearchProductQueryModel SearchModel { get; set; }
+        public SearchProductQueryModel SearchModel;
 
         public Tuple<List<ProductBoxQueryModel>, List<ProductColorQueryModel>, List<ProductBrandQueryModel>, int, int> ProductBoxVms { get; set; }
-        public void OnGet()
+        public void OnGet(SearchProductQueryModel searchModel)
         {
-            SearchModel=new SearchProductQueryModel();
-            ProductBoxVms = _productQuery.GetProductsForShow(SearchModel);
+            ProductBoxVms = _productQuery.GetProductsForShow(searchModel);
         }
 
-        public IActionResult OnGetGetProducts(SearchProductQueryModel searchModel)
+        public async Task<IActionResult> OnGetGetProducts(SearchProductQueryModel searchModel)
         {
-            var prodcuts = _productQuery.GetProductsList(searchModel);
+            var prodcuts = _productQuery.GetProductsList(searchModel); 
             return Partial("PartialViews/_Products", prodcuts);
         }
     }

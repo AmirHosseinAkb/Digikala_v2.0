@@ -29,11 +29,6 @@ namespace DigikalaQuery.Queries
                 .AsQueryable().
                 AsNoTracking();
 
-            if (!string.IsNullOrEmpty(searchModel.Title))
-            {
-                products = products.Where(p => p.Title.Contains(searchModel.Title));
-            }
-
             switch (searchModel.OrderBy)
             {
                 case "bestSelling":
@@ -82,7 +77,7 @@ namespace DigikalaQuery.Queries
                 }
             }
 
-            int take = 12;
+            int take = 1;
 
             int skip = (searchModel.PageId - 1) * take;
 
@@ -139,12 +134,6 @@ namespace DigikalaQuery.Queries
                 .AsQueryable().
                 AsNoTracking();
 
-            if (!string.IsNullOrEmpty(searchModel.Title))
-            {
-                products = products.Where(p => p.Title.Contains(searchModel.Title)
-                || p.OtherLangTitle.Contains(searchModel.Title)
-                || p.Tags.Contains(searchModel.Title));
-            }
 
             switch (searchModel.OrderBy)
             {
@@ -194,23 +183,25 @@ namespace DigikalaQuery.Queries
                 }
             }
 
-            int take = 12;
+            int take = 1;
 
             int skip = (searchModel.PageId - 1) * take;
 
-            var pageCount = products.Count() / take;
-
-            if (products.Count() % take != 0)
-                pageCount += 1;
-
             var query = products.Skip(skip).Take(take);
 
+            var pageCount = query.Count() / take;
+
+            if (query.Count() % take != 0)
+                pageCount += 1;
+
+            
+
             if (searchModel.StartPrice != 0)
-                products = products.Where(p => p.Price > searchModel.StartPrice);
+                query = query.Where(p => p.Price > searchModel.StartPrice);
             if (query.Any())
             {
                 if (searchModel.EndPrice != query.Max(p => p.Price))
-                    products = products.Where(p => p.Price < searchModel.EndPrice);
+                    query = query.Where(p => p.Price < searchModel.EndPrice);
             }
 
 

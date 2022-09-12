@@ -17,7 +17,7 @@
                         <form id="frmProducts">
                             <div class="widget widget-collapse mb-3">
                                 <div class="widget-title widget-title--collapse-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseBrandFilter" aria-expanded="false" aria-controls="collapseBrandFilter" role="button">برند</div>
-                                <div class="widget-content widget--search collapse" id="collapseBrandFilter" style="">
+                                <div class="widget-content widget--search collapse show" id="collapseBrandFilter" style="">
                                     <div class="form-element-row">
                                         <input type="text" class="form-control" placeholder="@DataDictionaries.SearchBrandName">
                                         <i class="ri-search-line icon"></i>
@@ -34,7 +34,7 @@
                                                             @foreach (var brand in Model.ProductBoxVms.Item3)
                                                             {
                                                                 <div class="form-check">
-                                                                    <input name="SearchModel.Brands" class="form-check-input productFilter" type="checkbox" name="brands" value="@brand.BrandId" id="brandOption1">
+                                                                    <input name="SearchModel.Brands" class="form-check-input" onclick="FilterProduct()" type="checkbox" name="brands" value="@brand.BrandId" id="brandOption1">
                                                                     <label class="form-check-label d-block" for="brandOption1">
                                                                         <span class="d-flex align-items-center justify-content-between">
                                                                             <span> @brand.BrandTitle</span>
@@ -62,7 +62,7 @@
                             <div class="widget py-1 mb-3">
                                 <div class="widget-content widget--filter-switcher">
                                     <div class="form-check form-switch mb-0">
-                                        <input asp-for="SearchModel.IsInStock" class="form-check-input productFilter" type="checkbox" id="stockCheck">
+                                        <input asp-for="SearchModel.IsInStock" onclick="FilterProduct()" class="form-check-input" type="checkbox" id="stockCheck">
                                         <label class="form-check-label" for="stockCheck">@DataDictionaries.JustInStockProducts</label>
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
                             <!-- widget -->
                             <div class="widget widget-collapse mb-3">
                                 <div class="widget-title widget-title--collapse-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseColorFilter" aria-expanded="false" aria-controls="collapseColorFilter" role="button">رنگ ها</div>
-                                <div class="widget-content widget--search collapse" id="collapseColorFilter" style="">
+                                <div class="widget-content widget--search collapse show" id="collapseColorFilter" style="">
                                     <div class="form-element-row">
                                         <input type="text" class="form-control" placeholder="@DataDictionaries.SearchColorName">
                                         <i class="ri-search-line icon"></i>
@@ -88,7 +88,7 @@
                                                             @foreach (var color in Model.ProductBoxVms.Item2)
                                                             {
                                                                 <div class="form-check">
-                                                                    <input name="SearchModel.Colors" class="form-check-input productFilter" name="colors" type="checkbox" value="@color.ColorId" id="colorOption1">
+                                                                    <input name="SearchModel.Colors" class="form-check-input" onclick="FilterProduct()" type="checkbox" value="@color.ColorId" id="colorOption1">
                                                                     <label class="form-check-label d-block" for="colorOption1">
                                                                         <span class="d-flex align-items-center justify-content-between">
                                                                             <span>@color.ColorName</span>
@@ -115,8 +115,10 @@
                             <!--  widget -->
                             <!-- widget -->
                             <div class="widget widget-collapse mb-3">
+                                <input type="hidden"  id="startInp" asp-for="SearchModel.StartPrice" />
+                                <input type="hidden" id="endInp"    asp-for="SearchModel.EndPrice"  />
                                 <div class="widget-title widget-title--collapse-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapsePriceFilter" aria-expanded="false" aria-controls="collapsePriceFilter" role="button">@DataDictionaries.PriceRange</div>
-                                <div class="widget-content widget--search fa-num collapse" id="collapsePriceFilter" style="">
+                                <div class="widget-content widget--search fa-num collapse show" id="collapsePriceFilter" style="">
                                     <div class="filter-price">
                                         <div class="filter-slider">
                                             <div id="slider-non-linear-step" class="price-slider noUi-target noUi-rtl noUi-horizontal">
@@ -124,12 +126,12 @@
                                         </div>
                                         <ul class="filter-range mb-4">
                                             <li>
-                                                <input asp-for="SearchModel.StartPrice" type="text" data-value="0" value="0"  data-range="0" class="js-slider-range-from" id="skip-value-lower" disabled="">
+                                                <input  type="text" data-value="0" value="0" data-range="0" class="js-slider-range-from" id="skip-value-lower" disabled="">
                                                 <span>@DataDictionaries.Toman</span>
                                             </li>
                                             <li class="label fw-bold">@DataDictionaries.To</li>
                                             <li>
-                                                <input asp-for="SearchModel.EndPrice" type="text" data-value="@productsMaxPrice" value="@productsMaxPrice"  data-range="@productsMaxPrice" class="js-slider-range-to" id="skip-value-upper" disabled="">
+                                                <input  type="text" data-value="@productsMaxPrice" value="@productsMaxPrice" data-range="@productsMaxPrice" class="js-slider-range-to" id="skip-value-upper" disabled="">
                                                 <span>@DataDictionaries.Toman</span>
                                             </li>
                                         </ul>
@@ -233,19 +235,12 @@
                                 <nav class="border-top py-4">
                                     <!-- pagination -->
                                     <ul class="pagination justify-content-center fa-num">
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Previous">
-                                                <i class="ri-arrow-right-s-line"></i>
-                                            </a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item active"><a class="page-link">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <i class="ri-arrow-left-s-line"></i>
-                                            </a>
-                                        </li>
+                                        @for (int i = 1; i <= Model.ProductBoxVms.Item4; i++)
+                                        {
+                                            <input type="hidden" asp-for="SearchModel.PageId" value="@i"/>
+                                            <li class="page-item"><a class="page-link" onclick="FilterProduct()">@i</a></li>
+                                        }
+                                        
                                     </ul>
                                     <!--  pagination -->
                                 </nav>
@@ -264,16 +259,7 @@
 @section Scripts
 {
     <script>
-        //$("#stockCheck").click(function() {
-
-        //    if (this.checked)
-        //        $("#stockInp").val("true");
-        //    else
-        //        $("#stockInp").val("false");
-
-        //});
-
-        $(".productFilter").click(function (e) {
+        function FilterProduct () {
 
             var frmData = $("#frmProducts").serialize();
             $.ajax({
@@ -285,7 +271,6 @@
                     $("#productsList").html(response);
                 }
             });
-        });
-
+        };
     </script>
 }
