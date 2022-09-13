@@ -4,6 +4,7 @@ using DigikalaQuery.Contracts.ProductBrand;
 using DigikalaQuery.Contracts.ProductColors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Server.Extensions;
 using ShopManagement.Application.Contracts.Product;
 
 namespace Server.Pages
@@ -19,17 +20,16 @@ namespace Server.Pages
 
         public SearchProductQueryModel SearchModel;
 
-        public Tuple<List<ProductBoxQueryModel>, List<ProductColorQueryModel>, List<ProductBrandQueryModel>, int, int> ProductBoxVms { get; set; }
-        public void OnGet(SearchProductQueryModel searchModel)
+        public Tuple<List<ProductBoxQueryModel>, List<ProductColorQueryModel>, List<ProductBrandQueryModel>, int, int,int> ProductBoxVms { get; set; }
+        public IActionResult OnGet(SearchProductQueryModel searchModel)
         {
-            ProductBoxVms = _productQuery.GetProductsForShow(searchModel);
-        }
-
-        public IActionResult OnGetGetProducts(SearchProductQueryModel searchModel)
-        {
-            ViewData["PageId"] = searchModel.PageId;
-            var prodcuts = _productQuery.GetProductsList(searchModel); 
-            return Partial("PartialViews/_Products", prodcuts);
+            if (!HttpContext.Request.IsAjaxRequest())
+            {
+                ProductBoxVms = _productQuery.GetProductsForShow(searchModel);
+                return Page();
+            }
+            var products = _productQuery.GetProductsList(searchModel);
+            return Partial("PartialViews/_Products",products);
         }
     }
 }

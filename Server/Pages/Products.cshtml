@@ -3,10 +3,7 @@
 @using ShopManagement.Application.Contracts.ProductColor
 @model Server.Pages.ProductsModel
 @{
-    var productsMaxPrice = 0;
-    if (Model.ProductBoxVms.Item1.Any())
-        productsMaxPrice = @Model.ProductBoxVms.Item1.Max(p => p.Price);
-    int pageId = ((ViewData["PageId"]==null)?1:int.Parse(ViewData["PageId"].ToString()));
+    var productsMaxPrice = Model.ProductBoxVms.Item6;
 }
 
 <main class="page-content">
@@ -16,6 +13,7 @@
                 <div class="ui-sticky ui-sticky-top">
                     <div class="ui-box sidebar-widgets">
                         <form id="frmProducts">
+                            <input id="orderInp" type="hidden" asp-for="SearchModel.OrderBy"/>
                             <div class="widget widget-collapse mb-3">
                                 <div class="widget-title widget-title--collapse-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseBrandFilter" aria-expanded="false" aria-controls="collapseBrandFilter" role="button">برند</div>
                                 <div class="widget-content widget--search collapse show" id="collapseBrandFilter" style="">
@@ -35,7 +33,7 @@
                                                             @foreach (var brand in Model.ProductBoxVms.Item3)
                                                             {
                                                                 <div class="form-check">
-                                                                    <input name="SearchModel.Brands" class="form-check-input" onclick="FilterProduct(@pageId)" type="checkbox" name="brands" value="@brand.BrandId" id="brandOption1">
+                                                                    <input name="SearchModel.Brands" class="form-check-input" onclick="FilterProduct()" type="checkbox" name="brands" value="@brand.BrandId" id="brandOption1">
                                                                     <label class="form-check-label d-block" for="brandOption1">
                                                                         <span class="d-flex align-items-center justify-content-between">
                                                                             <span> @brand.BrandTitle</span>
@@ -63,7 +61,7 @@
                             <div class="widget py-1 mb-3">
                                 <div class="widget-content widget--filter-switcher">
                                     <div class="form-check form-switch mb-0">
-                                        <input asp-for="SearchModel.IsInStock" onclick="FilterProduct(@pageId)" class="form-check-input" type="checkbox" id="stockCheck">
+                                        <input asp-for="SearchModel.IsInStock" onclick="FilterProduct()" class="form-check-input" type="checkbox" id="stockCheck">
                                         <label class="form-check-label" for="stockCheck">@DataDictionaries.JustInStockProducts</label>
                                     </div>
                                 </div>
@@ -89,7 +87,7 @@
                                                             @foreach (var color in Model.ProductBoxVms.Item2)
                                                             {
                                                                 <div class="form-check">
-                                                                    <input name="SearchModel.Colors" class="form-check-input" onclick="FilterProduct(@pageId)" type="checkbox" value="@color.ColorName" id="colorOption1">
+                                                                    <input name="SearchModel.Colors" class="form-check-input" onclick="FilterProduct()" type="checkbox" value="@color.ColorName" id="colorOption1">
                                                                     <label class="form-check-label d-block" for="colorOption1">
                                                                         <span class="d-flex align-items-center justify-content-between">
                                                                             <span>@color.ColorName</span>
@@ -116,8 +114,8 @@
                             <!--  widget -->
                             <!-- widget -->
                             <div class="widget widget-collapse mb-3">
-                                <input type="hidden"  id="startInp" asp-for="SearchModel.StartPrice" />
-                                <input type="hidden" id="endInp"    asp-for="SearchModel.EndPrice"  />
+                                <input type="hidden" id="startInp" asp-for="SearchModel.StartPrice"/>
+                                <input type="hidden" id="endInp" asp-for="SearchModel.EndPrice"/>
                                 <div class="widget-title widget-title--collapse-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapsePriceFilter" aria-expanded="false" aria-controls="collapsePriceFilter" role="button">@DataDictionaries.PriceRange</div>
                                 <div class="widget-content widget--search fa-num collapse show" id="collapsePriceFilter" style="">
                                     <div class="filter-price">
@@ -127,12 +125,12 @@
                                         </div>
                                         <ul class="filter-range mb-4">
                                             <li>
-                                                <input  type="text" data-value="0" value="0" data-range="0" class="js-slider-range-from" id="skip-value-lower" disabled="">
+                                                <input type="text" data-value="0" value="0" data-range="0" class="js-slider-range-from" id="skip-value-lower" disabled="">
                                                 <span>@DataDictionaries.Toman</span>
                                             </li>
                                             <li class="label fw-bold">@DataDictionaries.To</li>
                                             <li>
-                                                <input  type="text" data-value="@productsMaxPrice" value="@productsMaxPrice" data-range="@productsMaxPrice" class="js-slider-range-to" id="skip-value-upper" disabled="">
+                                                <input type="text" data-value="@productsMaxPrice" value="@productsMaxPrice" data-range="@productsMaxPrice" class="js-slider-range-to" id="skip-value-upper" disabled="">
                                                 <span>@DataDictionaries.Toman</span>
                                             </li>
                                         </ul>
@@ -188,19 +186,19 @@
                                                             مرتب سازی بر اساس:
                                                         </li>
                                                         <li class="nav-item" role="presentation">
-                                                            <button class="nav-link " id="best-selling-tab" data-bs-toggle="tab" data-bs-target="#best-selling" type="button" role="tab" aria-controls="best-selling" aria-selected="false">@ButtonCaptions.BestSelling</button>
+                                                            <button onclick="OrderProducts('newest')" class="nav-link active" id="newest-tab" data-bs-toggle="tab" data-bs-target="#newest" type="button" role="tab" aria-controls="newest" aria-selected="false">@ButtonCaptions.Newest</button>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <button onclick="OrderProducts('cheapest')" class="nav-link" id="cheapest-tab" data-bs-toggle="tab" data-bs-target="#cheapest" type="button" role="tab" aria-controls="cheapest" aria-selected="false">@ButtonCaptions.Cheapest</button>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <button onclick="OrderProducts('mostExpensive')" class="nav-link" id="most-expensive-tab" data-bs-toggle="tab" data-bs-target="#most-expensive" type="button" role="tab" aria-controls="most-expensive" aria-selected="false">@ButtonCaptions.MostExpensive</button>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link" id="best-selling-tab" data-bs-toggle="tab" data-bs-target="#best-selling" type="button" role="tab" aria-controls="best-selling" aria-selected="false">@ButtonCaptions.BestSelling</button>
                                                         </li>
                                                         <li class="nav-item" role="presentation">
                                                             <button class="nav-link" id="most-popular-tab" data-bs-toggle="tab" data-bs-target="#most-popular" type="button" role="tab" aria-controls="most-popular" aria-selected="false">@ButtonCaptions.MostPopular</button>
-                                                        </li>
-                                                        <li class="nav-item" role="presentation">
-                                                            <button class="nav-link" id="newest-tab" data-bs-toggle="tab" data-bs-target="#newest" type="button" role="tab" aria-controls="newest" aria-selected="false">@ButtonCaptions.Newest</button>
-                                                        </li>
-                                                        <li class="nav-item" role="presentation">
-                                                            <button class="nav-link" id="cheapest-tab" data-bs-toggle="tab" data-bs-target="#cheapest" type="button" role="tab" aria-controls="cheapest" aria-selected="false">@ButtonCaptions.Cheapest</button>
-                                                        </li>
-                                                        <li class="nav-item" role="presentation">
-                                                            <button class="nav-link" id="most-expensive-tab" data-bs-toggle="tab" data-bs-target="#most-expensive" type="button" role="tab" aria-controls="most-expensive" aria-selected="false">@ButtonCaptions.MostExpensive</button>
                                                         </li>
                                                     </ul>
                                                     <!--  nav-tabs -->
@@ -258,18 +256,20 @@
 @section Scripts
 {
     <script>
-        function FilterProduct (pageId) {
-
+        function FilterProduct (pageId=1) {
             var frmData = $("#frmProducts").serialize();
             $.ajax({
                 type: "Get",
-                url: "/Products/GetProducts?SearchModel.PageId="+pageId,
+                url: "/Products?SearchModel.PageId="+pageId,
                 data: frmData,
-                beforeSend: function (xhr) { xhr.setRequestHeader("XSRF-TOKEN", $('input:hidden[name="__RequestVerificationToken"]').val()); },
                 success: function (response) {
                     $("#productsList").html(response);
                 }
             });
         };
+        function OrderProducts(orderBy) {
+            $("#orderInp").val(orderBy);
+            FilterProduct();
+        }
     </script>
 }

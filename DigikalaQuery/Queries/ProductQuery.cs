@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using DigikalaQuery.Contracts.Product;
+﻿using DigikalaQuery.Contracts.Product;
 using DigikalaQuery.Contracts.ProductBrand;
 using DigikalaQuery.Contracts.ProductColors;
 using Microsoft.EntityFrameworkCore;
@@ -20,14 +14,15 @@ namespace DigikalaQuery.Queries
         {
             _context = context;
         }
-        public Tuple<List<ProductBoxQueryModel>, List<ProductColorQueryModel>, List<ProductBrandQueryModel>, int, int> GetProductsForShow
+        public Tuple<List<ProductBoxQueryModel>, List<ProductColorQueryModel>, List<ProductBrandQueryModel>, int, int,int> GetProductsForShow
         (SearchProductQueryModel searchModel)
         {
-            var products = _context.Products
+            var products = _context.Products.OrderByDescending(p=>p.CreationDate)
                 .Include(p => p.Inventory)
                 .Include(p => p.ProductColors)
                 .Include(p => p.ProductBrand)
-                .AsQueryable().AsNoTracking();
+                .AsQueryable()
+                .AsNoTracking();
 
             if (!string.IsNullOrEmpty(searchModel.Title))
             {
@@ -35,26 +30,28 @@ namespace DigikalaQuery.Queries
                                                || p.OtherLangTitle.Contains(searchModel.Title)
                                                || p.Tags.Contains(searchModel.Title));
             }
+
             int take = 1;
 
             int skip = (searchModel.PageId - 1) * take;
 
-            var pageCount = products.Count() /take;
+            var pageCount = products.Count() / take;
 
             if (products.Count() % take != 0)
                 pageCount += 1;
 
-            var query = products.Skip(skip).Take(take);
-
             var productColors = products.SelectMany(p => p.ProductColors)
-                .GroupBy(c=>c.ColorName).Select(c=>c.First()).ToList();
+                .GroupBy(c => c.ColorName).Select(c => c.First()).ToList();
 
             var productBrands = products.Select(p => p.ProductBrand)
-                .GroupBy(b=>b.BrandTitle).Select(b=>b.First()).ToList();
+                .GroupBy(b => b.BrandTitle).Select(b => b.First()).ToList();
 
-            
+            var maxPrice = 0;
+            if(products.Any())
+                maxPrice=products.Max(p => p.Price);
+
             return Tuple.Create(
-                query.Select(p => new ProductBoxQueryModel()
+                products.Skip(skip).Take(take).Select(p => new ProductBoxQueryModel()
                 {
                     ProductId = p.ProductId,
                     Title = p.Title,
@@ -74,12 +71,12 @@ namespace DigikalaQuery.Queries
                     BrandTitle = b.BrandTitle,
                     OtherLangTitle = b.OtherLangTitle
                 }).ToList(),
-                searchModel.PageId, pageCount);
+                searchModel.PageId, pageCount,maxPrice);
         }
 
-        public Tuple<List<ProductBoxQueryModel>,int,int> GetProductsList(SearchProductQueryModel searchModel)
+        public Tuple<List<ProductBoxQueryModel>, int, int> GetProductsList(SearchProductQueryModel searchModel)
         {
-            var products = _context.Products
+            var products = _context.Products.OrderByDescending(p=>p.CreationDate)
                 .Include(p => p.Inventory)
                 .Include(p => p.ProductColors)
                 .Include(p => p.ProductBrand)
@@ -88,6 +85,11 @@ namespace DigikalaQuery.Queries
 
             switch (searchModel.OrderBy)
             {
+                case "newest":
+                    {
+                        products = products.OrderByDescending(p => p.CreationDate);
+                        break;
+                    }
                 case "bestSelling":
                     {
                         //Do SomeThing
@@ -98,11 +100,6 @@ namespace DigikalaQuery.Queries
                         //Do SomeThing
                         break;
                     }
-                case "newest":
-                    {
-                        products = products.OrderByDescending(p => p.CreationDate);
-                        break;
-                    }
                 case "mostExpensive":
                     {
                         products = products.OrderByDescending(p => p.Price);
@@ -111,6 +108,11 @@ namespace DigikalaQuery.Queries
                 case "cheapest":
                     {
                         products = products.OrderBy(p => p.Price);
+                        break;
+                    }
+                default:
+                    {
+                        products = products.OrderByDescending(p => p.CreationDate);
                         break;
                     }
             }
@@ -151,15 +153,18 @@ namespace DigikalaQuery.Queries
             if (products.Count() % take != 0)
                 pageCount += 1;
 
-            var query = products.Skip(skip).Take(take);
-            return Tuple.Create(query.Select(p => new ProductBoxQueryModel()
-            {
-                ProductId = p.ProductId,
-                Title = p.Title,
-                ImageName = p.ImageName,
-                Price = p.Price,
-                ProductColors = p.ProductColors
-            }).ToList(),searchModel.PageId,pageCount);
+            return Tuple.Create(
+                products
+                    .Skip(skip)
+                    .Take(take)
+                    .Select(p => new ProductBoxQueryModel()
+                    {
+                        ProductId = p.ProductId,
+                        Title = p.Title,
+                        ImageName = p.ImageName,
+                        Price = p.Price,
+                        ProductColors = p.ProductColors
+                    }).ToList(), searchModel.PageId, pageCount);
         }
     }
 }
