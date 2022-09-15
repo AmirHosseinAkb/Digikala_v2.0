@@ -142,6 +142,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Advanced Filter.
+        /// </summary>
+        public static string AdvancedFilter {
+            get {
+                return ResourceManager.GetString("AdvancedFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All Rights Reserved.
         /// </summary>
         public static string AllRightsReserved {
@@ -565,6 +574,24 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to For orders higher than 500 Thousands Toman Price.
+        /// </summary>
+        public static string ForSpecialOrders {
+            get {
+                return ResourceManager.GetString("ForSpecialOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Free Delivery.
+        /// </summary>
+        public static string FreeDelivery {
+            get {
+                return ResourceManager.GetString("FreeDelivery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Full Name.
         /// </summary>
         public static string FullName {
@@ -876,6 +903,15 @@ namespace _01_Framework.Resources {
         public static string OperatorName {
             get {
                 return ResourceManager.GetString("OperatorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order By:.
+        /// </summary>
+        public static string OrderBy {
+            get {
+                return ResourceManager.GetString("OrderBy", resourceCulture);
             }
         }
         

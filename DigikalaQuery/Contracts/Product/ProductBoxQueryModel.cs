@@ -13,6 +13,7 @@ namespace DigikalaQuery.Contracts.Product
         public string Title { get; set; }
         public int Price { get; set; }
         public string ImageName { get; set; }
+        public int InventoryCount { get; set; }
         public List<ProductColor> ProductColors { get; set; }
     }
 }

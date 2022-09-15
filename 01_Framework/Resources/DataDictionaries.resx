@@ -144,6 +144,9 @@
   <data name="AddNewUser" xml:space="preserve">
     <value>Add new user</value>
   </data>
+  <data name="AdvancedFilter" xml:space="preserve">
+    <value>Advanced Filter</value>
+  </data>
   <data name="AllRightsReserved" xml:space="preserve">
     <value>All Rights Reserved</value>
   </data>
@@ -285,6 +288,12 @@
   <data name="ForgotPasswordCaption" xml:space="preserve">
     <value>Enter your email or mobile number to change your password</value>
   </data>
+  <data name="ForSpecialOrders" xml:space="preserve">
+    <value>For orders higher than 500 Thousands Toman Price</value>
+  </data>
+  <data name="FreeDelivery" xml:space="preserve">
+    <value>Free Delivery</value>
+  </data>
   <data name="FullName" xml:space="preserve">
     <value>Full Name</value>
   </data>
@@ -389,6 +398,9 @@
   </data>
   <data name="OperatorName" xml:space="preserve">
     <value>Operator Name</value>
+  </data>
+  <data name="OrderBy" xml:space="preserve">
+    <value>Order By:</value>
   </data>
   <data name="OrderPendingPayment" xml:space="preserve">
     <value>Your order is pending payment. To avoid order cancellation, please complete the payment.</value>

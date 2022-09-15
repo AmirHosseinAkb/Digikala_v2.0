@@ -143,11 +143,11 @@
                         <div class="widget p-0 mb-3">
                             <div class="widget-content widget--free-shipping">
                                 <div class="free-shipping--detail">
-                                    <div class="title">ارسال رایگان سفارش</div>
-                                    <div class="subtitle">سفارش‌های بالای 500 هزار تومان</div>
+                                    <div class="title">@DataDictionaries.FreeDelivery</div>
+                                    <div class="subtitle">@DataDictionaries.ForSpecialOrders</div>
                                 </div>
                                 <div class="free-shipping--banner">
-                                    <img src="./assets/images/theme/free-shipping--banner.png" alt="ارسال رایگان سفارش">
+                                    <img src="./assets/images/theme/free-shipping--banner.png" alt="@DataDictionaries.ForSpecialOrders">
                                 </div>
                             </div>
                         </div>
@@ -156,18 +156,8 @@
                 </div>
             </div>
             <div class="col-xl-9 col-lg-8 col-md-7">
-                <!-- breadcrumb -->
-                <nav class="mb-2" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">خانه</a></li>
-                        <li class="breadcrumb-item"><a href="#">کالای دیجیتال</a></li>
-                        <li class="breadcrumb-item"><a href="#">موبایل</a></li>
-                        <li class="breadcrumb-item"><a href="#">گوشی موبایل</a></li>
-                    </ol>
-                </nav>
-                <!--  breadcrumb -->
                 <button class="btn btn-primary mb-3 d-md-none toggle-responsive-sidebar">
-                    فیلتر پیشرفته
+                    @DataDictionaries.AdvancedFilter
                     <i class="ri-equalizer-fill ms-1"></i>
                 </button>
                 <div class="listing-products">
@@ -183,7 +173,7 @@
                                                     <ul class="nav nav-pills nav-tabs align-items-center" id="sort-tab" role="tablist">
                                                         <li class="d-inline-flex align-items-center nav-item me-3 text-muted">
                                                             <i class="ri-equalizer-line me-2"></i>
-                                                            مرتب سازی بر اساس:
+                                                            @DataDictionaries.OrderBy
                                                         </li>
                                                         <li class="nav-item" role="presentation">
                                                             <button onclick="OrderProducts('newest')" class="nav-link active" id="newest-tab" data-bs-toggle="tab" data-bs-target="#newest" type="button" role="tab" aria-controls="newest" aria-selected="false">@ButtonCaptions.Newest</button>

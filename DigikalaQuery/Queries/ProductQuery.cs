@@ -57,6 +57,7 @@ namespace DigikalaQuery.Queries
                     Title = p.Title,
                     ImageName = p.ImageName,
                     Price = p.Price,
+                    InventoryCount = p.Inventory.ProductCount,
                     ProductColors = p.ProductColors
                 }).ToList(),
                 productColors.Select(c => new ProductColorQueryModel()
@@ -163,6 +164,7 @@ namespace DigikalaQuery.Queries
                         Title = p.Title,
                         ImageName = p.ImageName,
                         Price = p.Price,
+                        InventoryCount = p.Inventory.ProductCount,
                         ProductColors = p.ProductColors
                     }).ToList(), searchModel.PageId, pageCount);
         }

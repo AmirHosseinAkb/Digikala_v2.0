@@ -144,6 +144,9 @@
   <data name="AddNewUser" xml:space="preserve">
     <value>افزودن کاربر جدید</value>
   </data>
+  <data name="AdvancedFilter" xml:space="preserve">
+    <value>فیلتر پیشرفته</value>
+  </data>
   <data name="AllRightsReserved" xml:space="preserve">
     <value>کلیه حقوق این سایت متعلق به مای استور می باشد</value>
   </data>
@@ -285,6 +288,12 @@
   <data name="ForgotPasswordCaption" xml:space="preserve">
     <value>برای تعویض رمز عبور خود ایمیل یا شماره همراهتان را وارد کنید</value>
   </data>
+  <data name="ForSpecialOrders" xml:space="preserve">
+    <value>سفارش های بالای 500 هزار تومان</value>
+  </data>
+  <data name="FreeDelivery" xml:space="preserve">
+    <value>ارسال رایگان سفارش</value>
+  </data>
   <data name="FullName" xml:space="preserve">
     <value>نام و نام خانوادگی</value>
   </data>
@@ -389,6 +398,9 @@
   </data>
   <data name="OperatorName" xml:space="preserve">
     <value>نام اپراتور</value>
+  </data>
+  <data name="OrderBy" xml:space="preserve">
+    <value>مرتب سازی بر اساس:</value>
   </data>
   <data name="OrderPendingPayment" xml:space="preserve">
     <value>سفارش شما در انتظار پرداخت است. برای جلوگیری از لغو سفارش، لطفا پرداخت را انجام دهید.</value>

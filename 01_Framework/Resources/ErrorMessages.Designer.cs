@@ -205,6 +205,24 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to just  .
+        /// </summary>
+        public static string LowInventoryMessageS1 {
+            get {
+                return ResourceManager.GetString("LowInventoryMessageS1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  peaces left in stock.
+        /// </summary>
+        public static string LowInventoryMessageS2 {
+            get {
+                return ResourceManager.GetString("LowInventoryMessageS2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your account is inactive. Please check your email or sign in with your phone number.
         /// </summary>
         public static string NoActiveUserAccount {

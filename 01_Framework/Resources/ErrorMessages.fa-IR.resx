@@ -165,6 +165,12 @@
   <data name="Error404Text" xml:space="preserve">
     <value>با عرض پوزش از شما، چنین صفحه‌ای در سایت وجود ندارد یا این صفحه از سایت پاک شده است</value>
   </data>
+  <data name="LowInventoryMessageS1" xml:space="preserve">
+    <value>تنها </value>
+  </data>
+  <data name="LowInventoryMessageS2" xml:space="preserve">
+    <value> عدد در انبار باقی مانده</value>
+  </data>
   <data name="NoActiveUserAccount" xml:space="preserve">
     <value>حساب کاربری شما فعال نمی باشد لطفا ایمیل خود را بررسی کنید یا ازطریق شماره موبایل وارد شوید</value>
   </data>

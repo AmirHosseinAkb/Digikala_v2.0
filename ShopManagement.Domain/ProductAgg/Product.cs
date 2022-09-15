@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ShopManagement.Domain.InventoryAgg;
+﻿using ShopManagement.Domain.InventoryAgg;
 using ShopManagement.Domain.ProductBrandAgg;
 using ShopManagement.Domain.ProductColorAgg;
 using ShopManagement.Domain.ProductGroupAgg;

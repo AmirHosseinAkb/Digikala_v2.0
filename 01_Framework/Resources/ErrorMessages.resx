@@ -165,6 +165,12 @@
   <data name="Error404Text" xml:space="preserve">
     <value>Sorry, there is no such page on the site or this page has been deleted.</value>
   </data>
+  <data name="LowInventoryMessageS1" xml:space="preserve">
+    <value>just  </value>
+  </data>
+  <data name="LowInventoryMessageS2" xml:space="preserve">
+    <value> peaces left in stock</value>
+  </data>
   <data name="NoActiveUserAccount" xml:space="preserve">
     <value>Your account is inactive. Please check your email or sign in with your phone number</value>
   </data>

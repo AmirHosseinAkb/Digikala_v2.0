@@ -9,7 +9,11 @@ using Server;
 using ShopManagement.Infrastructure.Configuration;
 using UserManagement.Infrastructure.Configuration;
 
-var builder = WebApplication.CreateBuilder(args);
+var webApplicationoptions = new WebApplicationOptions()
+{
+    EnvironmentName = Microsoft.Extensions.Hosting.Environments.Development
+};
+var builder = WebApplication.CreateBuilder(webApplicationoptions);
 
 // Add services to the container.
 
