@@ -61,6 +61,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AddedToCart.
+        /// </summary>
+        public static string AddedToCart {
+            get {
+                return ResourceManager.GetString("AddedToCart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Account Has Been Created.
         /// </summary>
         public static string ConfirmRegister {
@@ -210,6 +219,15 @@ namespace _01_Framework.Resources {
         public static string ReturnUserConfirmationS2 {
             get {
                 return ResourceManager.GetString("ReturnUserConfirmationS2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Succeeded!.
+        /// </summary>
+        public static string Succeeded {
+            get {
+                return ResourceManager.GetString("Succeeded", resourceCulture);
             }
         }
     }

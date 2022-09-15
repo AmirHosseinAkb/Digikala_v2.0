@@ -79,6 +79,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Buy Before It Runs Out.
+        /// </summary>
+        public static string BuyBeforeFinish {
+            get {
+                return ResourceManager.GetString("BuyBeforeFinish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is some products with this brand so its impossible to delete.
         /// </summary>
         public static string DeleteBrandErrorMessage {

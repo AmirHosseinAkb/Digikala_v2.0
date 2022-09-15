@@ -165,6 +165,9 @@
   <data name="AuthorizationMessageText" xml:space="preserve">
     <value>به مای استور خوش آمدید برای ورود به حساب کاربری خود کد زیر را وارد کنید:</value>
   </data>
+  <data name="AvailableInStock" xml:space="preserve">
+    <value>موجود در انبار</value>
+  </data>
   <data name="BirthDate" xml:space="preserve">
     <value>تاریخ تولد</value>
   </data>
@@ -176,6 +179,12 @@
   </data>
   <data name="ChargeWallet" xml:space="preserve">
     <value>شارژ کیف پول</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>بستن</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>رنگ</value>
   </data>
   <data name="Colors" xml:space="preserve">
     <value>رنگ ها</value>
@@ -306,6 +315,9 @@
   <data name="Hello" xml:space="preserve">
     <value>سلام</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>خانه</value>
+  </data>
   <data name="Image" xml:space="preserve">
     <value>عکس</value>
   </data>
@@ -374,6 +386,9 @@
   </data>
   <data name="Month" xml:space="preserve">
     <value>ماه</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>بیشتر</value>
   </data>
   <data name="MyOrders" xml:space="preserve">
     <value>سفارشات من</value>
@@ -468,6 +483,12 @@
   <data name="ProductTitle" xml:space="preserve">
     <value>عنوان محصول</value>
   </data>
+  <data name="QAndA" xml:space="preserve">
+    <value>پرسش و پاسخ</value>
+  </data>
+  <data name="ReadyForSend" xml:space="preserve">
+    <value>اماده ارسال</value>
+  </data>
   <data name="Record" xml:space="preserve">
     <value>رکورد</value>
   </data>
@@ -510,6 +531,9 @@
   <data name="ReturnDeletedUsersHelp" xml:space="preserve">
     <value>پس از حذف کاربر می توانید کاربر را از بخش "کاربران حذف شده" دوباره به قسمت کاربران سایت باز گردانید</value>
   </data>
+  <data name="Review" xml:space="preserve">
+    <value>نقد و بررسی</value>
+  </data>
   <data name="Role" xml:space="preserve">
     <value>نقش</value>
   </data>
@@ -545,6 +569,9 @@
   </data>
   <data name="SelectPermissions" xml:space="preserve">
     <value>انتخاب دسترسی ها</value>
+  </data>
+  <data name="Seller" xml:space="preserve">
+    <value>فروشنده</value>
   </data>
   <data name="September" xml:space="preserve">
     <value>شهریور</value>
@@ -596,6 +623,9 @@
   </data>
   <data name="UserRolesList" xml:space="preserve">
     <value>لیست نقش های کاربر</value>
+  </data>
+  <data name="UsersComments" xml:space="preserve">
+    <value>دیدگاه کاربران</value>
   </data>
   <data name="UsersList" xml:space="preserve">
     <value>لیست کاربران سایت</value>

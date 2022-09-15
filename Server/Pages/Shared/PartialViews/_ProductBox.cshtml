@@ -3,13 +3,13 @@
     <!-- product-card -->
     <div class="product-card">
         <div class="product-thumbnail">
-            <a href="#">
+            <a href="/Product/@Model.ProductId">
                 <img src="/Products/Images/@Model.ImageName" alt="product title">
             </a>
         </div>
         <div class="product-card-body">
             <h2 class="product-title">
-                <a href="#">@Model.Title</a>
+                <a href="/Product/@Model.ProductId">@Model.Title</a>
             </h2>
             <div class="product-variant">
                 @foreach (var color in Model.ProductColors)

@@ -153,6 +153,9 @@
   <data name="AddSubGroup" xml:space="preserve">
     <value>Add Sub Group</value>
   </data>
+  <data name="AddToCard" xml:space="preserve">
+    <value>Add To Card</value>
+  </data>
   <data name="BestSelling" xml:space="preserve">
     <value>BestSelling</value>
   </data>
@@ -260,6 +263,12 @@
   </data>
   <data name="SendEmail" xml:space="preserve">
     <value>Send Email</value>
+  </data>
+  <data name="ShowLess" xml:space="preserve">
+    <value>Show Less</value>
+  </data>
+  <data name="ShowMore" xml:space="preserve">
+    <value>Show More</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>

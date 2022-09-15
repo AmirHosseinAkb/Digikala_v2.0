@@ -1,6 +1,8 @@
 ﻿using DigikalaQuery.Contracts.Product;
 using DigikalaQuery.Contracts.ProductBrand;
 using DigikalaQuery.Contracts.ProductColors;
+using DigikalaQuery.Contracts.ProductDetail;
+using DigikalaQuery.Contracts.ProductImage;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Infrastructure.EfCore;
 
@@ -14,10 +16,10 @@ namespace DigikalaQuery.Queries
         {
             _context = context;
         }
-        public Tuple<List<ProductBoxQueryModel>, List<ProductColorQueryModel>, List<ProductBrandQueryModel>, int, int,int> GetProductsForShow
+        public Tuple<List<ProductBoxQueryModel>, List<ProductColorQueryModel>, List<ProductBrandQueryModel>, int, int, int> GetProductsForShow
         (SearchProductQueryModel searchModel)
         {
-            var products = _context.Products.OrderByDescending(p=>p.CreationDate)
+            var products = _context.Products.OrderByDescending(p => p.CreationDate)
                 .Include(p => p.Inventory)
                 .Include(p => p.ProductColors)
                 .Include(p => p.ProductBrand)
@@ -47,8 +49,8 @@ namespace DigikalaQuery.Queries
                 .GroupBy(b => b.BrandTitle).Select(b => b.First()).ToList();
 
             var maxPrice = 0;
-            if(products.Any())
-                maxPrice=products.Max(p => p.Price);
+            if (products.Any())
+                maxPrice = products.Max(p => p.Price);
 
             return Tuple.Create(
                 products.Skip(skip).Take(take).Select(p => new ProductBoxQueryModel()
@@ -72,12 +74,12 @@ namespace DigikalaQuery.Queries
                     BrandTitle = b.BrandTitle,
                     OtherLangTitle = b.OtherLangTitle
                 }).ToList(),
-                searchModel.PageId, pageCount,maxPrice);
+                searchModel.PageId, pageCount, maxPrice);
         }
 
         public Tuple<List<ProductBoxQueryModel>, int, int> GetProductsList(SearchProductQueryModel searchModel)
         {
-            var products = _context.Products.OrderByDescending(p=>p.CreationDate)
+            var products = _context.Products.OrderByDescending(p => p.CreationDate)
                 .Include(p => p.Inventory)
                 .Include(p => p.ProductColors)
                 .Include(p => p.ProductBrand)
@@ -167,6 +169,53 @@ namespace DigikalaQuery.Queries
                         InventoryCount = p.Inventory.ProductCount,
                         ProductColors = p.ProductColors
                     }).ToList(), searchModel.PageId, pageCount);
+        }
+
+        public ProductQueryModel? GetProduct(long productId)
+        {
+            var product = _context.Products
+                .Include(p=>p.ProductGroup)
+                .Include(p=>p.PrimaryProductGroup)
+                .Include(p=>p.SecondaryProductGroup)
+                .Include(p => p.Inventory)
+                .Include(p => p.ProductColors)
+                .Include(p => p.ProductImages)
+                .Include(p => p.ProductDetails)
+                .ThenInclude(d => d.GroupDetail)
+                .SingleOrDefault(p => p.ProductId == productId);
+            if (product == null)
+                return null;
+            var productColors = product.ProductColors.Select(c => new ProductColorQueryModel()
+            {
+                ColorId = c.ColorId,
+                ColorName = c.ColorName,
+                ColorCode = c.ColorCode
+            });
+            var productDetails = product.ProductDetails.Select(d => new ProductDetailQueryModel()
+            {
+                DetailTitle = d.GroupDetail.DetailTitle,
+                DetailValue = d.DetailValue
+            });
+            var productImages = product.ProductImages.Select(i => new ProductImageQueryModel()
+            {
+                ImageName = i.ImageName
+            });
+            return new ProductQueryModel()
+            {
+                ProductId = product.ProductId,
+                Title = product.Title,
+                OtherLangTitle = product.OtherLangTitle,
+                GroupTitle = product.ProductGroup.GroupTitle,
+                PrimaryGroupTitle = product.PrimaryProductGroup?.GroupTitle,
+                SecondaryGroupTitle = product.SecondaryProductGroup?.GroupTitle,
+                Description = product.Description,
+                ImageName = product.ImageName,
+                InventoryCount = product.Inventory.ProductCount,
+                Price = product.Price,
+                ProductColors = productColors.ToList(),
+                ProductImages = productImages.ToList(),
+                ProductDetails = productDetails.ToList()
+            };
         }
     }
 }

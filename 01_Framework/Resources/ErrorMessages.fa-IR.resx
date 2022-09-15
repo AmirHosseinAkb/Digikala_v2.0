@@ -123,6 +123,9 @@
   <data name="ActivationErrorTitle" xml:space="preserve">
     <value>عملیات فعالسازی با شکست مواجه شد!</value>
   </data>
+  <data name="BuyBeforeFinish" xml:space="preserve">
+    <value>قبل از اتمام بخرید</value>
+  </data>
   <data name="DeleteBrandErrorMessage" xml:space="preserve">
     <value>محصولاتی شامل این برند می باشند پس امکان حذف این برند وجود ندارد</value>
   </data>

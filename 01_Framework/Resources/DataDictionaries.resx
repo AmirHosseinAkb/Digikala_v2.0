@@ -165,6 +165,9 @@
   <data name="AuthorizationMessageText" xml:space="preserve">
     <value>Hi for login to your account use code:</value>
   </data>
+  <data name="AvailableInStock" xml:space="preserve">
+    <value>Available In Stock</value>
+  </data>
   <data name="BirthDate" xml:space="preserve">
     <value>Birth Date</value>
   </data>
@@ -176,6 +179,12 @@
   </data>
   <data name="ChargeWallet" xml:space="preserve">
     <value>Charge Wallet</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
   </data>
   <data name="Colors" xml:space="preserve">
     <value>Colors</value>
@@ -306,6 +315,9 @@
   <data name="Hello" xml:space="preserve">
     <value>Hello</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="Image" xml:space="preserve">
     <value>Image</value>
   </data>
@@ -374,6 +386,9 @@
   </data>
   <data name="Month" xml:space="preserve">
     <value>Month</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>More</value>
   </data>
   <data name="MyOrders" xml:space="preserve">
     <value>My Orders</value>
@@ -468,6 +483,12 @@
   <data name="ProductTitle" xml:space="preserve">
     <value>Product Title</value>
   </data>
+  <data name="QAndA" xml:space="preserve">
+    <value>QAndA</value>
+  </data>
+  <data name="ReadyForSend" xml:space="preserve">
+    <value>Ready For Send</value>
+  </data>
   <data name="Record" xml:space="preserve">
     <value>Record</value>
   </data>
@@ -510,6 +531,9 @@
   <data name="ReturnDeletedUsersHelp" xml:space="preserve">
     <value>After delete you can return deleted users from "Deleted Users" section.</value>
   </data>
+  <data name="Review" xml:space="preserve">
+    <value>Review</value>
+  </data>
   <data name="Role" xml:space="preserve">
     <value>Role</value>
   </data>
@@ -545,6 +569,9 @@
   </data>
   <data name="SelectPermissions" xml:space="preserve">
     <value>Select Permissions</value>
+  </data>
+  <data name="Seller" xml:space="preserve">
+    <value>Seller</value>
   </data>
   <data name="September" xml:space="preserve">
     <value>September</value>
@@ -593,6 +620,9 @@
   </data>
   <data name="UserRolesList" xml:space="preserve">
     <value>User roles list</value>
+  </data>
+  <data name="UsersComments" xml:space="preserve">
+    <value>Users Comments</value>
   </data>
   <data name="UsersList" xml:space="preserve">
     <value>UsersList</value>

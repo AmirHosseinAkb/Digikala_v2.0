@@ -153,6 +153,9 @@
   <data name="AddSubGroup" xml:space="preserve">
     <value>افزودن زیرگروه</value>
   </data>
+  <data name="AddToCard" xml:space="preserve">
+    <value>افزودن به سبد خرید</value>
+  </data>
   <data name="BestSelling" xml:space="preserve">
     <value>پرفروش ترین</value>
   </data>
@@ -260,6 +263,12 @@
   </data>
   <data name="SendEmail" xml:space="preserve">
     <value>ارسال ایمیل</value>
+  </data>
+  <data name="ShowLess" xml:space="preserve">
+    <value>نمایش کمتر</value>
+  </data>
+  <data name="ShowMore" xml:space="preserve">
+    <value>نمایش بیشتر</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>تایید</value>

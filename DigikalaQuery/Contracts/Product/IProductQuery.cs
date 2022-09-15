@@ -9,7 +9,7 @@ namespace DigikalaQuery.Contracts.Product
         Tuple<List<ProductBoxQueryModel>,List<ProductColorQueryModel>,List<ProductBrandQueryModel>, int, int,int> GetProductsForShow(SearchProductQueryModel searchModel);
 
         Tuple<List<ProductBoxQueryModel>, int, int> GetProductsList(SearchProductQueryModel searchModel);
+        ProductQueryModel? GetProduct(long productId);
 
-        
     }
 }

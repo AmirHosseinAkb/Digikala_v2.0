@@ -205,6 +205,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Available In Stock.
+        /// </summary>
+        public static string AvailableInStock {
+            get {
+                return ResourceManager.GetString("AvailableInStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Birth Date.
         /// </summary>
         public static string BirthDate {
@@ -237,6 +246,24 @@ namespace _01_Framework.Resources {
         public static string ChargeWallet {
             get {
                 return ResourceManager.GetString("ChargeWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        public static string Color {
+            get {
+                return ResourceManager.GetString("Color", resourceCulture);
             }
         }
         
@@ -628,6 +655,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Image.
         /// </summary>
         public static string Image {
@@ -831,6 +867,15 @@ namespace _01_Framework.Resources {
         public static string Month {
             get {
                 return ResourceManager.GetString("Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More.
+        /// </summary>
+        public static string More {
+            get {
+                return ResourceManager.GetString("More", resourceCulture);
             }
         }
         
@@ -1114,6 +1159,24 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to QAndA.
+        /// </summary>
+        public static string QAndA {
+            get {
+                return ResourceManager.GetString("QAndA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ready For Send.
+        /// </summary>
+        public static string ReadyForSend {
+            get {
+                return ResourceManager.GetString("ReadyForSend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Record.
         /// </summary>
         public static string Record {
@@ -1240,6 +1303,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Review.
+        /// </summary>
+        public static string Review {
+            get {
+                return ResourceManager.GetString("Review", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Role.
         /// </summary>
         public static string Role {
@@ -1344,6 +1416,15 @@ namespace _01_Framework.Resources {
         public static string SelectPermissions {
             get {
                 return ResourceManager.GetString("SelectPermissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seller.
+        /// </summary>
+        public static string Seller {
+            get {
+                return ResourceManager.GetString("Seller", resourceCulture);
             }
         }
         
@@ -1488,6 +1569,15 @@ namespace _01_Framework.Resources {
         public static string UserRolesList {
             get {
                 return ResourceManager.GetString("UserRolesList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users Comments.
+        /// </summary>
+        public static string UsersComments {
+            get {
+                return ResourceManager.GetString("UsersComments", resourceCulture);
             }
         }
         

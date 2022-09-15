@@ -169,6 +169,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add To Card.
+        /// </summary>
+        public static string AddToCard {
+            get {
+                return ResourceManager.GetString("AddToCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BestSelling.
         /// </summary>
         public static string BestSelling {
@@ -489,6 +498,24 @@ namespace _01_Framework.Resources {
         public static string SendEmail {
             get {
                 return ResourceManager.GetString("SendEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Less.
+        /// </summary>
+        public static string ShowLess {
+            get {
+                return ResourceManager.GetString("ShowLess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show More.
+        /// </summary>
+        public static string ShowMore {
+            get {
+                return ResourceManager.GetString("ShowMore", resourceCulture);
             }
         }
         

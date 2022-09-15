@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DigikalaQuery.Contracts.ProductColors;
+using DigikalaQuery.Contracts.ProductDetail;
+using DigikalaQuery.Contracts.ProductImage;
 
 namespace DigikalaQuery.Contracts.Product
 {
@@ -17,6 +19,10 @@ namespace DigikalaQuery.Contracts.Product
         public string? SecondaryGroupTitle { get; set; }
         public string Description { get; set; }
         public int Price { get; set; }
+        public string ImageName { get; set; }
+        public int InventoryCount { get; set; }
         public List<ProductColorQueryModel> ProductColors { get; set; }
+        public List<ProductImageQueryModel> ProductImages { get; set; }
+        public List<ProductDetailQueryModel> ProductDetails { get; set; }
     }
 }
