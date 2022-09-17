@@ -1,0 +1,150 @@
+﻿@page
+@model Server.Areas.Administration.Pages.Discounts.IndexModel
+@{
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">@DataDictionaries.ProductsList</h3>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                            <div class="m-b-15">
+                                <a  id="btnCreateProduct" class="btn btn-info largeModal">@ButtonCaptions.AddNewProduct</a>
+                            </div>
+                            <form method="get">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div id="datatable_filter" class="dataTables_filter">
+                                            <input asp-for="SearchModel.Code" type="search" class="form-control input-sm" placeholder="@DataDictionaries.Title" aria-controls="datatable">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div id="datatable_filter" class="dataTables_filter">
+                                            <input asp-for="SearchModel.Reason" type="search" class="form-control input-sm" placeholder="@DataDictionaries.Title" aria-controls="datatable">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div id="datatable_filter" class="dataTables_filter">
+                                            <label>@DataDictionaries.IsActive</label>
+                                            <input asp-for="SearchModel.IsActive" type="checkbox" class="form-control input-sm" aria-controls="datatable">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="dataTables_length" id="datatable_length">
+                                            <select name="take" aria-controls="datatable" class="form-control input-sm">
+                                                @for (var i = 1; i <= 4; i++)
+                                                {
+                                                    int x = 10;
+                                                    if (i * x == (int)ViewData["Take"])
+                                                    {
+                                                        <option value="@(i * x)" selected>@(i * x)</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@(i*x)">@(i*x)</option>
+                                                    }
+                                                }
+                                            </select>
+                                            @DataDictionaries.Record
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div id="datatable_filter" class="dataTables_filter">
+                                            <input type="submit" class="btn btn-primary" value="@ButtonCaptions.Search" />
+                                            <a href="/Administration/Discounts" class="btn btn-warning">@ButtonCaptions.Clear</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+@*                            <div class="row m-t-10">
+                                <div class="col-sm-12">
+                                    <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th>@DataDictionaries.Image</th>
+                                                <th>@DataDictionaries.Title</th>
+                                                <th>@DataDictionaries.Price</th>
+                                                <th>@DataDictionaries.CreationDate</th>
+                                                <th>@DataDictionaries.Colors</th>
+                                                <th>@DataDictionaries.Operations</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var product in Model.ProductVM.Item1)
+                                            {
+                                                <tr role="row">
+                                                    <td>
+                                                        <img src="/Products/Images/@product.ImageName" style="width: 200px; height: 200px" class="img-thumbnail">
+                                                    </td>
+                                                    <td>@product.Title</td>
+                                                    <td>@product.Price.ToString("#,0")</td>
+                                                    <td>@product.CreationDate</td>
+                                                    <td>
+                                                        @foreach (var color in Model.ProductColorVms.Where(c => c.ProductId == product.ProductId))
+                                                        {
+                                                            <form method="post" action="~/Administration/Shop/ProductColors/Delete">
+                                                                <div style="background-color: @color.ColorCode; margin: 0px 30%; border-radius: 20px">
+                                                                    <br />
+                                                                </div>
+                                                                <input type="hidden" name="colorId" value="@color.ColorId" />
+                                                                <input  type="submit" class="btn btn-danger btn-xs" value="@ButtonCaptions.Delete" />
+                                                                <br />
+                                                            </form>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        <a onclick="GetProductForEdit(@product.ProductId)" class="btn btn-primary btn-block largeModal">@ButtonCaptions.Edit</a>
+                                                        <a onclick="AddProductColor(@product.ProductId)" class="btn btn-primary btn-block smallModal">@ButtonCaptions.AddColor</a>
+                                                        <a onclick="ShowProductImages(@product.ProductId)" class="btn btn-primary btn-block largeModal">@ButtonCaptions.ProductImages</a>
+                                                        <a onclick="CreateImage(@product.ProductId)" class="btn btn-primary btn-block smallModal">@ButtonCaptions.AddProductImage</a>
+                                                        <a onclick="GetProductForDetails(@product.ProductId)" class="btn btn-primary btn-block smallModal">@ButtonCaptions.ProductDetails</a>
+                                                        <a onclick="GetProductForDelete(@product.ProductId,'@product.Title')" class="btn btn-danger btn-block smallModal">@ButtonCaptions.Delete</a>
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    @{
+                                        int take = Model.ProductVM.Item4;
+                                        int pageId = Model.ProductVM.Item2;
+                                        int totalEntries = Model.ProductVM.Item1.Count();
+                                        int startEntry = (pageId - 1) * take;
+                                        if (totalEntries != 0)
+                                            startEntry += 1;
+                                        int endEntry = pageId * take;
+                                        if (totalEntries < endEntry)
+                                            endEntry = totalEntries;
+                                    }
+                                    <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">
+                                        @DataDictionaries.Showing @startEntry @DataDictionaries.To @endEntry @DataDictionaries.Of @totalEntries @DataDictionaries.Entries
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                                        <ul class="pagination">
+                                            @for (var i = 1; i <= Model.ProductVM.Item3; i++)
+                                            {
+                                                <li class="paginate_button @((Model.ProductVM.Item2==i)?"active":"")" aria-controls="datatable" tabindex="0"><a href="/Admin/Users?pageId=@i">@i</a></li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

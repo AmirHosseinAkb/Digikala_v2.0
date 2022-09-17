@@ -489,6 +489,9 @@
   <data name="ReadyForSend" xml:space="preserve">
     <value>اماده ارسال</value>
   </data>
+  <data name="Reason" xml:space="preserve">
+    <value>دلیل</value>
+  </data>
   <data name="Record" xml:space="preserve">
     <value>رکورد</value>
   </data>
