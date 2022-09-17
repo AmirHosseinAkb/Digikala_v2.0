@@ -377,18 +377,18 @@ else
                         @foreach (var group in groups.Where(g => g.ParentId == null))
                         {
                             <li class="mega-menu-category">
-                                <a href="#">@group.GroupTitle</a>
+                                <a href="/Products/SearchModel.Groups=@group.GroupId">@group.GroupTitle</a>
                                 @if (groups.Any(g => g.ParentId == group.GroupId))
                                 {
                                     <ul class="mega-menu">
                                         @foreach (var primaryGroup in groups.Where(g => g.ParentId == group.GroupId))
                                         {
-                                            <li class="parent"><a href="#">@primaryGroup.GroupTitle</a></li>
+                                            <li class="parent"><a href="/Products/SearchModel.Groups=@primaryGroup.GroupId">@primaryGroup.GroupTitle</a></li>
                                             @if (groups.Any(g => g.ParentId == primaryGroup.GroupId))
                                             {
                                                 @foreach (var secondaryGroup in groups.Where(g => g.ParentId == primaryGroup.GroupId))
                                                 {
-                                                    <li><a href="#">@secondaryGroup.GroupTitle</a></li>
+                                                    <li><a href="/Products?SearchModel.Groups=@secondaryGroup.GroupId">@secondaryGroup.GroupTitle</a></li>
                                                 }
                                             }
                                         }

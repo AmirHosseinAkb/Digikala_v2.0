@@ -32,6 +32,14 @@ namespace DigikalaQuery.Queries
                                                || p.OtherLangTitle.Contains(searchModel.Title)
                                                || p.Tags.Contains(searchModel.Title));
             }
+            if (searchModel.Groups.Any())
+            {
+                foreach (var groupId in searchModel.Groups)
+                {
+                    products = products.Where(p =>
+                        p.GroupId == groupId || p.PrimaryGroupId == groupId || p.SecondaryGroupId == groupId);
+                }
+            }
 
             int take = 1;
 
@@ -51,30 +59,31 @@ namespace DigikalaQuery.Queries
             var maxPrice = 0;
             if (products.Any())
                 maxPrice = products.Max(p => p.Price);
+           
 
             return Tuple.Create(
-                products.Skip(skip).Take(take).Select(p => new ProductBoxQueryModel()
-                {
-                    ProductId = p.ProductId,
-                    Title = p.Title,
-                    ImageName = p.ImageName,
-                    Price = p.Price,
-                    InventoryCount = p.Inventory.ProductCount,
-                    ProductColors = p.ProductColors
-                }).ToList(),
-                productColors.Select(c => new ProductColorQueryModel()
-                {
-                    ColorId = c.ColorId,
-                    ColorName = c.ColorName,
-                    ColorCode = c.ColorCode
-                }).ToList(),
-                productBrands.Distinct().Select(b => new ProductBrandQueryModel()
-                {
-                    BrandId = b.BrandId,
-                    BrandTitle = b.BrandTitle,
-                    OtherLangTitle = b.OtherLangTitle
-                }).ToList(),
-                searchModel.PageId, pageCount, maxPrice);
+            products.Skip(skip).Take(take).Select(p => new ProductBoxQueryModel()
+            {
+                ProductId = p.ProductId,
+                Title = p.Title,
+                ImageName = p.ImageName,
+                Price = p.Price,
+                InventoryCount = p.Inventory.ProductCount,
+                ProductColors = p.ProductColors
+            }).ToList(),
+            productColors.Select(c => new ProductColorQueryModel()
+            {
+                ColorId = c.ColorId,
+                ColorName = c.ColorName,
+                ColorCode = c.ColorCode
+            }).ToList(),
+            productBrands.Distinct().Select(b => new ProductBrandQueryModel()
+            {
+                BrandId = b.BrandId,
+                BrandTitle = b.BrandTitle,
+                OtherLangTitle = b.OtherLangTitle
+            }).ToList(),
+            searchModel.PageId, pageCount, maxPrice);
         }
 
         public Tuple<List<ProductBoxQueryModel>, int, int> GetProductsList(SearchProductQueryModel searchModel)
@@ -174,9 +183,9 @@ namespace DigikalaQuery.Queries
         public ProductQueryModel? GetProduct(long productId)
         {
             var product = _context.Products
-                .Include(p=>p.ProductGroup)
-                .Include(p=>p.PrimaryProductGroup)
-                .Include(p=>p.SecondaryProductGroup)
+                .Include(p => p.ProductGroup)
+                .Include(p => p.PrimaryProductGroup)
+                .Include(p => p.SecondaryProductGroup)
                 .Include(p => p.Inventory)
                 .Include(p => p.ProductColors)
                 .Include(p => p.ProductImages)

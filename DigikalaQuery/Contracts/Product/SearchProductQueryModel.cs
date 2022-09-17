@@ -16,5 +16,6 @@ namespace DigikalaQuery.Contracts.Product
         public int EndPrice { get; set; } = 0;
         public List<string> Colors { get; set; } = new List<string>();
         public List<int> Brands { get; set; } = new List<int>();
+        public List<int> Groups { get; set; } = new List<int>();
     }
 }
