@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Server;
 using ShopManagement.Infrastructure.Configuration;
 using UserManagement.Infrastructure.Configuration;
+using DiscountManagement.Infrastructure.Configuration;
 
 var webApplicationoptions = new WebApplicationOptions()
 {
@@ -21,6 +22,7 @@ var builder = WebApplication.CreateBuilder(webApplicationoptions);
 
 UserManagementBootstrapper.Config(builder.Services, builder.Configuration.GetConnectionString("DigikalaConnection"));
 ShopManagementBootstrapper.Config(builder.Services,builder.Configuration.GetConnectionString("DigikalaConnection"));
+DiscountManagentBootstrapper.Config(builder.Services, builder.Configuration.GetConnectionString("DigikalaConnection"));
 #endregion
 
 #region IOC

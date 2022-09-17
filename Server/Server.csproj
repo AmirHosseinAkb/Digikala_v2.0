@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\01_Framework\01_Framework.csproj" />
     <ProjectReference Include="..\DigikalaQuery\DigikalaQuery.csproj" />
+    <ProjectReference Include="..\DiscountManagement.Infrastructure.Configuration\DiscountManagement.Infrastructure.Configuration.csproj" />
     <ProjectReference Include="..\ShopManagement.Application.Contracts\ShopManagement.Application.Contracts.csproj" />
     <ProjectReference Include="..\ShopManagement.Infrastructure.Configuration\ShopManagement.Infrastructure.Configuration.csproj" />
     <ProjectReference Include="..\UserManagement.Infrastructure.Configuration\UserManagement.Infrastructure.Configuration.csproj" />
