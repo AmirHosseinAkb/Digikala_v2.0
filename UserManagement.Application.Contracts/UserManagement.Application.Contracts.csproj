@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FoolProof.Core" Version="1.1.10" />
+    <PackageReference Include="FoolProof.Core" Version="1.1.35" />
   </ItemGroup>
 
   <ItemGroup>

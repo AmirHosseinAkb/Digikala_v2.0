@@ -52,5 +52,28 @@ namespace DiscountManagement.Application
             _orderDiscountRepository.Add(discount);
             return result.Succeeded();
         }
+
+        public Tuple<List<OrderDiscountViewModel>,int,int,int> GetOrderDiscounts(OrderDiscountSearchModel searchModel)
+        {
+            var discounts =
+                _orderDiscountRepository.GetOrderDiscounts(searchModel.Code, searchModel.Reason, searchModel.IsActive);
+            var take=searchModel.Take;
+            int skip = (searchModel.PageId - 1) * take;
+            int pageCount = discounts.Count() / take;
+            if (discounts.Count() % take!= 0)
+                pageCount += 1;
+            var query = discounts.Skip(skip).Take(take).Select(d => new OrderDiscountViewModel()
+            {
+                DiscountId = d.DiscountId,
+                DiscountCode = d.DiscountCode,
+                DiscountRate = d.DiscountRate.ToString(),
+                StartDate = ((d.StartDate==null)?null:d.StartDate.Value.ToShamsi()),
+                EndDate = ((d.EndDate==null)?null:d.EndDate.Value.ToShamsi()),
+                UsableCount = d.UsableCount,
+                Reason = d.Reason
+            }).ToList();
+            return Tuple.Create(query, searchModel.PageId, pageCount, searchModel.Take);
+
+        }
     }
 }

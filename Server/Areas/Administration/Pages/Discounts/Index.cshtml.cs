@@ -14,9 +14,11 @@ namespace Server.Areas.Administration.Pages.Discounts
         }
 
         public OrderDiscountSearchModel SearchModel;
+        public Tuple<List<OrderDiscountViewModel>,int,int,int> OrderDiscountVm { get; set; }
         public void OnGet(OrderDiscountSearchModel searchModel)
         {
             ViewData["Take"] = searchModel.Take;
+            OrderDiscountVm = _discountApplication.GetOrderDiscounts(searchModel);
         }
 
         public IActionResult OnGetCreate()

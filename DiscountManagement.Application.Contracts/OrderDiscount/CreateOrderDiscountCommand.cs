@@ -1,12 +1,5 @@
 ﻿using _01_Framework.Application;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using _01_Framework.Resources;
-using Microsoft.VisualBasic.CompilerServices;
 
 namespace DiscountManagement.Application.Contracts.OrderDiscount
 {
@@ -26,7 +19,7 @@ namespace DiscountManagement.Application.Contracts.OrderDiscount
 
         [Range(0,int.MaxValue,ErrorMessage = ValidationMessages.IntegerRange)]
         public int? UsableCount { get; set; }
-        
+
         public string? StartDate { get; set; }
 
         public string? EndDate { get; set; }
