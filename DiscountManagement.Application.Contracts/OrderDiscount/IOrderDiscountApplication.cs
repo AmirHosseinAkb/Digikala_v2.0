@@ -7,5 +7,7 @@ namespace DiscountManagement.Application.Contracts.OrderDiscount
     {
         OperationResult Create(CreateOrderDiscountCommand command);
         Tuple<List<OrderDiscountViewModel>,int,int,int> GetOrderDiscounts(OrderDiscountSearchModel searchModel);
+        EditOrderDiscountCommand GetDiscountForEdit(long discountId);
+        OperationResult Edit(EditOrderDiscountCommand command);
     }
 }

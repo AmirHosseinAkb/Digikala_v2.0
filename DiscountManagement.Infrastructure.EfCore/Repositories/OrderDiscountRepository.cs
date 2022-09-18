@@ -35,5 +35,15 @@ namespace DiscountManagement.Infrastructure.EfCore.Repositories
             
             return discounts;
         }
+
+        public OrderDiscount GetOrderDiscount(long discountId)
+        {
+            return _context.OrderDiscounts.Find(discountId);
+        }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }

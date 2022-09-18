@@ -121,6 +121,10 @@ $("#btnCreateDiscount").click(function () {
     $("#ModalContent").load('/Administration/Discounts/Create');
     $("#MainModal").modal('show');
 });
+function EditDiscount(discountId) {
+    $("#ModalContent").load('/Administration/Discounts/Edit?discountId='+discountId);
+    $("#MainModal").modal('show');
+}
 
 function GetBrandForDelete(brandId) {
     $.ajax({
