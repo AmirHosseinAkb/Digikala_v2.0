@@ -115,6 +115,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Discount.
+        /// </summary>
+        public static string AddNewDiscount {
+            get {
+                return ResourceManager.GetString("AddNewDiscount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add New Group.
         /// </summary>
         public static string AddNewGroup {

@@ -16,6 +16,7 @@ namespace _01_Framework.Application
         public const string DuplicatedColor = "این رنگ محصول از قبل وجود دارد";
         public const string DuplicatedGroupDetail = "این ویژگی از قبل در این گروه وجود دارد";
         public const string DuplicatedBrand = "این برند وجود دارد";
+        public const string DuplicatedDiscount = "این کد تخفیف از قبل وجود دارد";
         public const string RecordNotFound = "نتیجه ای یافت نشد";
         public static string WrongUserPass = "رمز عبور وارد شده صحیح نمی باشد";
         public const string InvalidEmailOrPhoneNumber = "ایمیل یا شماره همراه را بصورت صحیح وارد کنید";
@@ -31,6 +32,7 @@ namespace _01_Framework.Application
         public const string RoleNotExist = "نقش انتخاب شده وجود ندارد";
         public const string SomeUsersExistWithThisRole = "کاربرانی دارای این نقش می باشند لذا نمی توانید این نقش را حذف کنید";
         public const string CantDecreaseInventory = "موجودی محصول کمتر از مقداری است  که میخواهید کم کنید";
+        public const string DateTimeFormatIsNotCorrect = "فرمت تاریخ صحیح نمی باشد";
 
     }
 }

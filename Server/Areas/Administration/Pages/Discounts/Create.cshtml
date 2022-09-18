@@ -1,0 +1,63 @@
+﻿@model DiscountManagement.Application.Contracts.OrderDiscount.CreateOrderDiscountCommand
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">@DataDictionaries.CreateNewBrand</h4>
+</div>
+<form asp-page="./Index"
+      asp-page-handler="Create"
+      data-ajax="true"
+      data-action="Refresh"
+      data-callback=""
+      enctype="multipart/form-data"
+      method="post">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input asp-for="DiscountCode" type="text" class="form-control" placeholder="@DataDictionaries.DiscountCode"/>
+                    <span asp-validation-for="DiscountCode" class="error"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="DiscountRate" type="text" class="form-control" placeholder="@DataDictionaries.DiscountPercent"/>
+                    <span asp-validation-for="DiscountRate" class="error"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="UsableCount" type="number" class="form-control" placeholder="@DataDictionaries.UsableCount"/>
+                    <span asp-validation-for="UsableCount" class="error"></span>
+                </div>
+                <div class="form-group">
+                    <input id="startDate" asp-for="StartDate" placeholder="@DataDictionaries.StartDate"/>
+                    <span asp-validation-for="StartDate" class="error"></span>
+                </div>
+                <div class="form-group">
+                    <input id="endDate" asp-for="EndDate"  placeholder="@DataDictionaries.EndDate"/>
+                    <span asp-validation-for="EndDate" class="error"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text" asp-for="Reason" class="form-control"  placeholder="@DataDictionaries.Reason"/>
+                    <span asp-validation-for="Reason" class="error"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-info waves-effect waves-light">@ButtonCaptions.Add</button>
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">@ButtonCaptions.Cancel</button>
+    </div>
+</form>
+
+<link href="http://cdn.kendostatic.com/2013.2.918/styles/kendo.common.min.css" rel="stylesheet" />
+<link href="http://cdn.kendostatic.com/2013.2.918/styles/kendo.default.min.css" rel="stylesheet" />
+
+<script src="~/assets/js/library/jquery.validate.min.js"></script>
+<script src="~/assets/js/library/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/AdminContent/assets/js/kendo.all.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+                
+        // create DatePicker from input HTML element
+        $("#startDate").kendoDatePicker();
+        $("#endDate").kendoDatePicker();
+    });
+</script>

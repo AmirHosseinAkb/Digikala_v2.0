@@ -255,6 +255,12 @@
   <data name="DetailTitle" xml:space="preserve">
     <value>عنوان ویژگی</value>
   </data>
+  <data name="DiscountCode" xml:space="preserve">
+    <value>کد تخفیف</value>
+  </data>
+  <data name="DiscountPercent" xml:space="preserve">
+    <value>درصد تخفیف</value>
+  </data>
   <data name="EditGroup" xml:space="preserve">
     <value>ویرایش گروه</value>
   </data>
@@ -278,6 +284,9 @@
   </data>
   <data name="EmailOrPhone" xml:space="preserve">
     <value>ایمیل یا شماره همراه</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>تاریخ پایان</value>
   </data>
   <data name="Entries" xml:space="preserve">
     <value>ورودی</value>
@@ -591,6 +600,9 @@
   <data name="Showing" xml:space="preserve">
     <value>در حال نمایش</value>
   </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>تاریخ شروع</value>
+  </data>
   <data name="String" xml:space="preserve">
     <value>زمان باقی مانده</value>
   </data>
@@ -620,6 +632,9 @@
   </data>
   <data name="TransactionType" xml:space="preserve">
     <value>نوع تراکنش</value>
+  </data>
+  <data name="UsableCount" xml:space="preserve">
+    <value>تعداد استفاه</value>
   </data>
   <data name="UserAvatar" xml:space="preserve">
     <value>تصویر کاربر</value>

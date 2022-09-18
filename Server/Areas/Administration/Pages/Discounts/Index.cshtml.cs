@@ -18,5 +18,18 @@ namespace Server.Areas.Administration.Pages.Discounts
         {
             ViewData["Take"] = searchModel.Take;
         }
+
+        public IActionResult OnGetCreate()
+        {
+            return Partial("./Create");
+        }
+
+        public IActionResult OnPostCreate(CreateOrderDiscountCommand command)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            var result = _discountApplication.Create(command);
+            return new JsonResult(result);
+        }
     }
 }

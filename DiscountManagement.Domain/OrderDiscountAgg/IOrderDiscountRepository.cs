@@ -2,5 +2,6 @@
 
 public interface IOrderDiscountRepository
 {
-    
+    void Add(OrderDiscount orderDiscount);
+    bool IsExistDiscount(string code);
 }

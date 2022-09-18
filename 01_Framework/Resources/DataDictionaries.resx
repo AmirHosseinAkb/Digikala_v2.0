@@ -255,6 +255,12 @@
   <data name="DetailTitle" xml:space="preserve">
     <value>Detail Title</value>
   </data>
+  <data name="DiscountCode" xml:space="preserve">
+    <value>Discount Code</value>
+  </data>
+  <data name="DiscountPercent" xml:space="preserve">
+    <value>Discount Percent</value>
+  </data>
   <data name="EditGroup" xml:space="preserve">
     <value>Edit Group</value>
   </data>
@@ -278,6 +284,9 @@
   </data>
   <data name="EmailOrPhone" xml:space="preserve">
     <value>Email or Phone</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End Date</value>
   </data>
   <data name="Entries" xml:space="preserve">
     <value>entries</value>
@@ -591,6 +600,9 @@
   <data name="Showing" xml:space="preserve">
     <value>Showing</value>
   </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
   <data name="SubGroups" xml:space="preserve">
     <value>Sub Groups</value>
   </data>
@@ -617,6 +629,9 @@
   </data>
   <data name="TransactionType" xml:space="preserve">
     <value>Transaction Type</value>
+  </data>
+  <data name="UsableCount" xml:space="preserve">
+    <value>Usable Count</value>
   </data>
   <data name="UserAvatar" xml:space="preserve">
     <value>User avatar</value>

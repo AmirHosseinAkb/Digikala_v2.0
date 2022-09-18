@@ -117,6 +117,10 @@ function GetBrandForEdit(brandId) {
     $("#ModalContent").load('/Administration/Shop/ProductBrands/Edit?brandId=' + brandId);
     $("#MainModal").modal('show');
 }
+$("#btnCreateDiscount").click(function () {
+    $("#ModalContent").load('/Administration/Discounts/Create');
+    $("#MainModal").modal('show');
+});
 
 function GetBrandForDelete(brandId) {
     $.ajax({

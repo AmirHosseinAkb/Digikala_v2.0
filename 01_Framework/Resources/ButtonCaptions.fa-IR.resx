@@ -135,6 +135,9 @@
   <data name="AddNewBrand" xml:space="preserve">
     <value>افزودن برند جدید</value>
   </data>
+  <data name="AddNewDiscount" xml:space="preserve">
+    <value>افزودن تخفیف جدید</value>
+  </data>
   <data name="AddNewGroup" xml:space="preserve">
     <value>افزودن گروه جدید</value>
   </data>

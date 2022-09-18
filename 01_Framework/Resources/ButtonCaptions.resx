@@ -135,6 +135,9 @@
   <data name="AddNewBrand" xml:space="preserve">
     <value>Add New Brand</value>
   </data>
+  <data name="AddNewDiscount" xml:space="preserve">
+    <value>Add New Discount</value>
+  </data>
   <data name="AddNewGroup" xml:space="preserve">
     <value>Add New Group</value>
   </data>

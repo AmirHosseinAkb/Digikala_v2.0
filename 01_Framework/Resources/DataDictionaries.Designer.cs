@@ -475,6 +475,24 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discount Code.
+        /// </summary>
+        public static string DiscountCode {
+            get {
+                return ResourceManager.GetString("DiscountCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discount Percent.
+        /// </summary>
+        public static string DiscountPercent {
+            get {
+                return ResourceManager.GetString("DiscountPercent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Group.
         /// </summary>
         public static string EditGroup {
@@ -543,6 +561,15 @@ namespace _01_Framework.Resources {
         public static string EmailOrPhone {
             get {
                 return ResourceManager.GetString("EmailOrPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End Date.
+        /// </summary>
+        public static string EndDate {
+            get {
+                return ResourceManager.GetString("EndDate", resourceCulture);
             }
         }
         
@@ -1483,6 +1510,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start Date.
+        /// </summary>
+        public static string StartDate {
+            get {
+                return ResourceManager.GetString("StartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sub Groups.
         /// </summary>
         public static string SubGroups {
@@ -1560,6 +1596,15 @@ namespace _01_Framework.Resources {
         public static string TransactionType {
             get {
                 return ResourceManager.GetString("TransactionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usable Count.
+        /// </summary>
+        public static string UsableCount {
+            get {
+                return ResourceManager.GetString("UsableCount", resourceCulture);
             }
         }
         
