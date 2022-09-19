@@ -138,6 +138,9 @@
   <data name="DeleteBrandConfirmationS2" xml:space="preserve">
     <value> را حذف کنید؟</value>
   </data>
+  <data name="DeleteDiscountConfirmationMessage" xml:space="preserve">
+    <value>آیا مطمئنید که می خواهید این کد تخفیف را حذف کنید؟</value>
+  </data>
   <data name="DeleteGroupConfirmation" xml:space="preserve">
     <value>آیا مطمئنید که می خواهید این گروه را حذف کنید؟</value>
   </data>

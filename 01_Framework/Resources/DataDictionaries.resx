@@ -225,6 +225,9 @@
   <data name="DeleteBrand" xml:space="preserve">
     <value>Delete Brand</value>
   </data>
+  <data name="DeleteDiscount" xml:space="preserve">
+    <value>Delete Discount</value>
+  </data>
   <data name="DeletedUsersList" xml:space="preserve">
     <value>Deleted Users List</value>
   </data>
@@ -260,6 +263,9 @@
   </data>
   <data name="DiscountPercent" xml:space="preserve">
     <value>Discount Percent</value>
+  </data>
+  <data name="EditDiscount" xml:space="preserve">
+    <value>Edit Discount</value>
   </data>
   <data name="EditGroup" xml:space="preserve">
     <value>Edit Group</value>

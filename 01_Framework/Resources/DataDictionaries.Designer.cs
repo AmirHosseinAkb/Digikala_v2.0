@@ -385,6 +385,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Discount.
+        /// </summary>
+        public static string DeleteDiscount {
+            get {
+                return ResourceManager.GetString("DeleteDiscount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleted Users List.
         /// </summary>
         public static string DeletedUsersList {
@@ -489,6 +498,15 @@ namespace _01_Framework.Resources {
         public static string DiscountPercent {
             get {
                 return ResourceManager.GetString("DiscountPercent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Discount.
+        /// </summary>
+        public static string EditDiscount {
+            get {
+                return ResourceManager.GetString("EditDiscount", resourceCulture);
             }
         }
         

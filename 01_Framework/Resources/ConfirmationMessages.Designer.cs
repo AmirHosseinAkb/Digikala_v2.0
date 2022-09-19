@@ -124,6 +124,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this discount?.
+        /// </summary>
+        public static string DeleteDiscountConfirmationMessage {
+            get {
+                return ResourceManager.GetString("DeleteDiscountConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want delete this group?.
         /// </summary>
         public static string DeleteGroupConfirmation {

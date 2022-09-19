@@ -131,5 +131,14 @@ namespace DiscountManagement.Application
             _orderDiscountRepository.SaveChanges();
             return result.Succeeded();
         }
+
+        public void Delete(long discountId)
+        {
+            var discount = _orderDiscountRepository.GetOrderDiscount(discountId);
+            if (discount != null)
+            {
+                _orderDiscountRepository.Delete(discount);
+            }
+        }
     }
 }

@@ -47,5 +47,19 @@ namespace Server.Areas.Administration.Pages.Discounts
             var result = _discountApplication.Edit(command);
             return new JsonResult(result);
         }
+
+        public IActionResult OnGetDelete(long discountId)
+        {
+            TempData["DiscountId"] = discountId;
+            return Partial("./Delete");
+        }
+
+        public IActionResult OnPostDelete(long discountId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            _discountApplication.Delete(discountId);
+            return RedirectToPage();
+        }
     }
 }

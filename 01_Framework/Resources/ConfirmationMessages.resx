@@ -138,6 +138,9 @@
   <data name="DeleteBrandConfirmationS2" xml:space="preserve">
     <value />
   </data>
+  <data name="DeleteDiscountConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to delete this discount?</value>
+  </data>
   <data name="DeleteGroupConfirmation" xml:space="preserve">
     <value>Are you sure you want delete this group?</value>
   </data>

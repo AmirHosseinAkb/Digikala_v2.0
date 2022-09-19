@@ -45,5 +45,11 @@ namespace DiscountManagement.Infrastructure.EfCore.Repositories
         {
             _context.SaveChanges();
         }
+
+        public void Delete(OrderDiscount orderDiscount)
+        {
+            _context.OrderDiscounts.Remove(orderDiscount);
+            _context.SaveChanges();
+        }
     }
 }

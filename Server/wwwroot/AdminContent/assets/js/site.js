@@ -125,6 +125,10 @@ function EditDiscount(discountId) {
     $("#ModalContent").load('/Administration/Discounts/Edit?discountId='+discountId);
     $("#MainModal").modal('show');
 }
+function DeleteDiscount(discountId) {
+    $("#ModalContent").load('/Administration/Discounts/Delete?discountId='+discountId);
+    $("#MainModal").modal('show');
+}
 
 function GetBrandForDelete(brandId) {
     $.ajax({

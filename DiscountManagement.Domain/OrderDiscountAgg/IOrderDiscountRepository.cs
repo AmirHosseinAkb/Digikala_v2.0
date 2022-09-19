@@ -7,4 +7,5 @@ public interface IOrderDiscountRepository
     IQueryable<OrderDiscount> GetOrderDiscounts(string code = "",string reason="", bool isActive = false);
     OrderDiscount GetOrderDiscount(long discountId);
     void SaveChanges();
+    void Delete(OrderDiscount orderDiscount);
 }

@@ -225,6 +225,9 @@
   <data name="DeleteBrand" xml:space="preserve">
     <value>حذف برند</value>
   </data>
+  <data name="DeleteDiscount" xml:space="preserve">
+    <value>حذف کد تخفیف</value>
+  </data>
   <data name="DeletedUsersList" xml:space="preserve">
     <value>لیست کاربران حذف شده</value>
   </data>
@@ -260,6 +263,9 @@
   </data>
   <data name="DiscountPercent" xml:space="preserve">
     <value>درصد تخفیف</value>
+  </data>
+  <data name="EditDiscount" xml:space="preserve">
+    <value>ویرایش کد تخفیف</value>
   </data>
   <data name="EditGroup" xml:space="preserve">
     <value>ویرایش گروه</value>
