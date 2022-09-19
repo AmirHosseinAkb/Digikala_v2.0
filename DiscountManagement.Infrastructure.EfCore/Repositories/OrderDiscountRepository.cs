@@ -31,7 +31,7 @@ namespace DiscountManagement.Infrastructure.EfCore.Repositories
             if(!string.IsNullOrEmpty(reason))
                 discounts = discounts.Where(d => d.Reason.Contains(reason));
             if (isActive)
-                discounts = discounts.Where(d =>(d.StartDate==null || d.StartDate <= DateTime.Now) && (d.EndDate==null || d.EndDate >= DateTime.Now));
+                discounts = discounts.Where(d => d.UsableCount>0 && ((d.StartDate==null || d.StartDate<=DateTime.Now) || (d.EndDate==null || d.EndDate>=DateTime.Now)));
             
             return discounts;
         }
