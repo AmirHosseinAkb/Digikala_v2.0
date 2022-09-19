@@ -1,6 +1,6 @@
 ﻿namespace UserManagement.Application.Contracts.Address;
 
-public class IAddressApplication
+public interface IAddressApplication
 {
-    
+    List<AddressViewModel> GetAddresses();
 }

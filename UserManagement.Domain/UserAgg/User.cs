@@ -49,7 +49,7 @@ namespace UserManagement.Domain.UserAgg
             IsActive = isActive;
             RegisterDate=DateTime.Now;
             AvatarName = avatarName;
-            RefundType = 0;
+            RefundType = 2;
             IsDeleted = false;
         }
 

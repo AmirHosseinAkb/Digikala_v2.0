@@ -287,6 +287,21 @@ namespace UserManagement.Application
 
         }
 
+        public bool IsUserInformationsConfirmed()
+        {
+            var informations = GetUserInformationsForShow();
+            foreach (var property in informations.GetType().GetProperties())
+            {
+                if (property.Name != "AccountNumber")
+                {
+                    if (property.GetValue(informations) == null)
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
         public Tuple<List<UserAdminInformationsViewModel>, int, int, int> GetUsersAdminInformationsForShow(int pageId = 1, string fullName = "", string email = "", string phoneNumber = "", int take = 20)
         {
             if (take % 20 != 0 || take < 0)

@@ -14,8 +14,4 @@
     <ProjectReference Include="..\01_Framework\01_Framework.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Address\" />
-  </ItemGroup>
-
 </Project>

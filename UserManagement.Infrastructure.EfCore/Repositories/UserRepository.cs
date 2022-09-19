@@ -1,5 +1,9 @@
-﻿using _01_Framework.Infrastructure;
+﻿using System.Reflection;
+using System.Transactions;
+using _01_Framework.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using UserManagement.Domain.AddressAgg;
+using UserManagement.Domain.RoleAgg;
 using UserManagement.Domain.UserAgg;
 
 namespace UserManagement.Infrastructure.EfCore.Repositories

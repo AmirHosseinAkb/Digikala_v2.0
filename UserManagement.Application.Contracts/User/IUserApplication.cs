@@ -32,6 +32,7 @@ namespace UserManagement.Application.Contracts.User
         string ConfirmUserBirthDate(BirthDateCommand command);
         OperationResult ConfirmUserPassword(PasswordCommand command);
         OperationResult ConfirmUserRefundType(RefundCommand command);
+        bool IsUserInformationsConfirmed();
 
         #endregion
 

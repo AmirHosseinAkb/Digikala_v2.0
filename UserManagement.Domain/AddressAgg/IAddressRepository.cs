@@ -8,6 +8,6 @@ namespace UserManagement.Domain.AddressAgg
 {
     public interface IAddressRepository
     {
-
+        List<Address> GetAll();
     }
 }

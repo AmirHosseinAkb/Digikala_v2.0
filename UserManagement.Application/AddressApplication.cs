@@ -11,4 +11,17 @@ public class AddressApplication:IAddressApplication
     {
         _addressRepository = addressRepository;
     }
+
+    public List<AddressViewModel> GetAddresses()
+    {
+        return _addressRepository.GetAll().Select(a => new AddressViewModel()
+        {
+            AddressId = a.AddressId,
+            State = a.State,
+            City = a.City,
+            UserFullName = a.User.FirstName+" "+a.User.LastName,
+            UserPhoneNumber = a.User.PhoneNumber!,
+            PostCode = a.PostCode
+        }).ToList();
+    }
 }
