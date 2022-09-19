@@ -153,6 +153,9 @@
   <data name="AddProductImage" xml:space="preserve">
     <value>Add Product Image</value>
   </data>
+  <data name="Addresses" xml:space="preserve">
+    <value>Addresses</value>
+  </data>
   <data name="AddSubGroup" xml:space="preserve">
     <value>Add Sub Group</value>
   </data>
@@ -221,6 +224,9 @@
   </data>
   <data name="MostPopular" xml:space="preserve">
     <value>Most Popular</value>
+  </data>
+  <data name="NewAddress" xml:space="preserve">
+    <value>New Address</value>
   </data>
   <data name="NewDetail" xml:space="preserve">
     <value>New Detail</value>

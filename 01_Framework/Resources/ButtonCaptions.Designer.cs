@@ -169,6 +169,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Addresses.
+        /// </summary>
+        public static string Addresses {
+            get {
+                return ResourceManager.GetString("Addresses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Sub Group.
         /// </summary>
         public static string AddSubGroup {
@@ -372,6 +381,15 @@ namespace _01_Framework.Resources {
         public static string MostPopular {
             get {
                 return ResourceManager.GetString("MostPopular", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Address.
+        /// </summary>
+        public static string NewAddress {
+            get {
+                return ResourceManager.GetString("NewAddress", resourceCulture);
             }
         }
         

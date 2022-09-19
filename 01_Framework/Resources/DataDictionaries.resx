@@ -144,6 +144,9 @@
   <data name="AddNewUser" xml:space="preserve">
     <value>Add new user</value>
   </data>
+  <data name="Addresses" xml:space="preserve">
+    <value>Addresses</value>
+  </data>
   <data name="AdvancedFilter" xml:space="preserve">
     <value>Advanced Filter</value>
   </data>
@@ -221,6 +224,12 @@
   </data>
   <data name="DecreaseInventory" xml:space="preserve">
     <value>Decrease Inventory</value>
+  </data>
+  <data name="DefaultAddressMessage" xml:space="preserve">
+    <value>My Default Address</value>
+  </data>
+  <data name="DefaultAddressPlaceholder" xml:space="preserve">
+    <value>Choose For Default Address</value>
   </data>
   <data name="DeleteBrand" xml:space="preserve">
     <value>Delete Brand</value>

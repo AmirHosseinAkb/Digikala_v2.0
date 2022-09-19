@@ -144,6 +144,9 @@
   <data name="AddNewUser" xml:space="preserve">
     <value>افزودن کاربر جدید</value>
   </data>
+  <data name="Addresses" xml:space="preserve">
+    <value>آدرس ها</value>
+  </data>
   <data name="AdvancedFilter" xml:space="preserve">
     <value>فیلتر پیشرفته</value>
   </data>
@@ -221,6 +224,12 @@
   </data>
   <data name="DecreaseInventory" xml:space="preserve">
     <value>کاهش موجودی</value>
+  </data>
+  <data name="DefaultAddressMessage" xml:space="preserve">
+    <value>آدرس پیش فرض من است</value>
+  </data>
+  <data name="DefaultAddressPlaceholder" xml:space="preserve">
+    <value>انتخاب به عنوان آدرس پیش فرض</value>
   </data>
   <data name="DeleteBrand" xml:space="preserve">
     <value>حذف برند</value>

@@ -142,6 +142,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Addresses.
+        /// </summary>
+        public static string Addresses {
+            get {
+                return ResourceManager.GetString("Addresses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Advanced Filter.
         /// </summary>
         public static string AdvancedFilter {
@@ -372,6 +381,24 @@ namespace _01_Framework.Resources {
         public static string DecreaseInventory {
             get {
                 return ResourceManager.GetString("DecreaseInventory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Default Address.
+        /// </summary>
+        public static string DefaultAddressMessage {
+            get {
+                return ResourceManager.GetString("DefaultAddressMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose For Default Address.
+        /// </summary>
+        public static string DefaultAddressPlaceholder {
+            get {
+                return ResourceManager.GetString("DefaultAddressPlaceholder", resourceCulture);
             }
         }
         
