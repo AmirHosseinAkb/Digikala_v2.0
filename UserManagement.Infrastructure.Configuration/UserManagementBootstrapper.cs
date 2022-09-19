@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using UserManagement.Application;
+using UserManagement.Application.Contracts.Address;
 using UserManagement.Application.Contracts.Role;
 using UserManagement.Application.Contracts.Transaction;
 using UserManagement.Application.Contracts.User;
+using UserManagement.Domain.AddressAgg;
 using UserManagement.Domain.RoleAgg;
 using UserManagement.Domain.TransactionAgg;
 using UserManagement.Domain.UserAgg;
@@ -26,6 +28,9 @@ namespace UserManagement.Infrastructure.Configuration
             services.AddScoped<ITransactionApplication,TransactionApplication>();
             services.AddTransient<IPermissionExposer,UserPermissionExposer>();
             services.AddTransient<IPermissionExposer,RolePermissionExposer>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<IAddressApplication,AddressApplication>();
+
             services.AddDbContext<AccountContext>(options =>
                 options.UseSqlServer(connectionString));
         }

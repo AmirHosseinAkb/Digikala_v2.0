@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using UserManagement.Domain.AddressAgg;
 using UserManagement.Domain.RoleAgg;
 using UserManagement.Domain.TransactionAgg;
 using UserManagement.Domain.UserAgg;
@@ -19,6 +20,7 @@ namespace UserManagement.Infrastructure.EfCore
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Address> Addresses { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<TransactionType> TransactionTypes { get; set; }
@@ -27,6 +29,7 @@ namespace UserManagement.Infrastructure.EfCore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserMapping());
+            modelBuilder.ApplyConfiguration(new AddressMapping());
             modelBuilder.ApplyConfiguration(new RoleMapping());
             modelBuilder.ApplyConfiguration(new TransactionMapping());
             modelBuilder.ApplyConfiguration(new TransactionTypeMapping());

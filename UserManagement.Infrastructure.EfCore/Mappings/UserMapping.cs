@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using UserManagement.Domain.AddressAgg;
 using UserManagement.Domain.TransactionAgg;
 using UserManagement.Domain.UserAgg;
 
@@ -40,6 +41,9 @@ namespace UserManagement.Infrastructure.EfCore.Mappings
             builder.HasMany<Transaction>(u => u.Transactions)
                 .WithOne(t => t.User)
                 .HasForeignKey(t => t.UserId);
+
+            builder.HasMany<Address>(u => u.Addresses).WithOne(a => a.User)
+                .HasForeignKey(a => a.UserId);
 
             builder.HasQueryFilter(u => !u.IsDeleted);
         }

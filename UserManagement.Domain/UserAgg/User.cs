@@ -1,4 +1,5 @@
 ﻿using System.Security.AccessControl;
+using UserManagement.Domain.AddressAgg;
 using UserManagement.Domain.RoleAgg;
 using UserManagement.Domain.TransactionAgg;
 
@@ -26,6 +27,7 @@ namespace UserManagement.Domain.UserAgg
 
         public Role Role { get;private set; }
         public List<TransactionAgg.Transaction> Transactions { get;private set; }
+        public List<Address> Addresses { get; private set; }
         
 
         protected User()
