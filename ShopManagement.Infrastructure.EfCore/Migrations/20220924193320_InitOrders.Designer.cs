@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopManagement.Infrastructure.EfCore;
 
@@ -11,9 +12,10 @@ using ShopManagement.Infrastructure.EfCore;
 namespace ShopManagement.Infrastructure.EfCore.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    partial class ShopContextModelSnapshot : ModelSnapshot
+    [Migration("20220924193320_InitOrders")]
+    partial class InitOrders
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,7 +134,13 @@ namespace ShopManagement.Infrastructure.EfCore.Migrations
                     b.Property<long>("OrderId")
                         .HasColumnType("bigint");
 
+                    b.Property<long?>("ProductColorColorId1")
+                        .HasColumnType("bigint");
+
                     b.Property<long>("ProductId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("ProductId1")
                         .HasColumnType("bigint");
 
                     b.Property<int>("UnitPrice")
@@ -144,7 +152,11 @@ namespace ShopManagement.Infrastructure.EfCore.Migrations
 
                     b.HasIndex("OrderId");
 
+                    b.HasIndex("ProductColorColorId1");
+
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("ProductId1");
 
                     b.ToTable("OrderItem");
                 });
@@ -393,7 +405,7 @@ namespace ShopManagement.Infrastructure.EfCore.Migrations
             modelBuilder.Entity("ShopManagement.Domain.OrderAgg.OrderItem", b =>
                 {
                     b.HasOne("ShopManagement.Domain.ProductColorAgg.ProductColor", "ProductColor")
-                        .WithMany("OrderItems")
+                        .WithMany()
                         .HasForeignKey("ColorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -404,11 +416,19 @@ namespace ShopManagement.Infrastructure.EfCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ShopManagement.Domain.ProductAgg.Product", "Product")
+                    b.HasOne("ShopManagement.Domain.ProductColorAgg.ProductColor", null)
                         .WithMany("OrderItems")
+                        .HasForeignKey("ProductColorColorId1");
+
+                    b.HasOne("ShopManagement.Domain.ProductAgg.Product", "Product")
+                        .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("ShopManagement.Domain.ProductAgg.Product", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("ProductId1");
 
                     b.Navigation("Order");
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ShopManagement.Domain.InventoryAgg;
+using ShopManagement.Domain.OrderAgg;
 using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductBrandAgg;
 using ShopManagement.Domain.ProductColorAgg;
@@ -58,6 +59,8 @@ namespace ShopManagement.Infrastructure.EfCore.Mappings
 
             builder.HasOne<ProductBrand>(p => p.ProductBrand).WithMany(b => b.Products)
                 .HasForeignKey(p => p.BrandId);
+
+            builder.HasMany<OrderItem>(p=>p.OrderItems).WithOne(i => i.Product).HasForeignKey(i => i.ProductId).OnDelete(DeleteBehavior.NoAction);
 
             builder.HasQueryFilter(p => !p.IsDeleted);
         }

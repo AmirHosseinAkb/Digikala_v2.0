@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShopManagement.Domain.OrderAgg;
 using ShopManagement.Domain.ProductAgg;
 
 namespace ShopManagement.Domain.ProductColorAgg
@@ -14,6 +16,8 @@ namespace ShopManagement.Domain.ProductColorAgg
         public string ColorName { get; private set; }
         public string ColorCode { get; private set; }
         public Product Product { get;private set; }
+        public List<OrderItem> OrderItems { get;private set; }
+        
 
 
         protected ProductColor()

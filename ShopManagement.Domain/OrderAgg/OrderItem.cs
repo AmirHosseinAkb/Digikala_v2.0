@@ -10,7 +10,7 @@ namespace ShopManagement.Domain.OrderAgg
 {
     public class OrderItem
     {
-        public long ItemId { get; set; }
+        public long OrderItemId { get; set; }
         public long OrderId { get; set; }
         public long ProductId { get; set; }
         public long ColorId { get; set; }

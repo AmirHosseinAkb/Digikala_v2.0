@@ -1,4 +1,5 @@
 ﻿using ShopManagement.Domain.InventoryAgg;
+using ShopManagement.Domain.OrderAgg;
 using ShopManagement.Domain.ProductBrandAgg;
 using ShopManagement.Domain.ProductColorAgg;
 using ShopManagement.Domain.ProductGroupAgg;
@@ -31,6 +32,7 @@ namespace ShopManagement.Domain.ProductAgg
         public List<ProductDetail> ProductDetails { get; private set; }
         public Inventory Inventory { get; private set; }
         public List<InventoryHistory> InventoryHistories { get; private set; }
+        public List<OrderItem> OrderItems { get; private set; }
 
 
         protected Product()

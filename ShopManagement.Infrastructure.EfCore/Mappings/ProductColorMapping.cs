@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ShopManagement.Domain.OrderAgg;
 using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductColorAgg;
 
@@ -22,6 +23,7 @@ namespace ShopManagement.Infrastructure.EfCore.Mappings
 
             builder.HasOne<Product>(c => c.Product).WithMany(p => p.ProductColors)
                 .HasForeignKey(c => c.ProductId);
+            builder.HasMany<OrderItem>(c=>c.OrderItems).WithOne(i => i.ProductColor).HasForeignKey(i => i.ColorId);
         }
     }
 }
