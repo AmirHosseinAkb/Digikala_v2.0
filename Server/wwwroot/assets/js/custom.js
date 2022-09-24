@@ -14,7 +14,7 @@
 ////    });
 ////})(jQuery);
 
- $(document).off().on("submit", 'form[data-ajax="true"]',
+$(document).off().on("submit", 'form[data-ajax="true"]',
     function (e) {
         var form = $(this);
         var isValidForm = form.valid();
@@ -37,7 +37,7 @@
                     url: url,
                     type: "post",
                     data: formData,
-                    async:false,
+                    async: false,
                     enctype: "multipart/form-data",
                     dataType: "json",
                     processData: false,
@@ -47,7 +47,7 @@
                         CallBackHandler(data, action, form);
                     },
                     error: function (data) {
-                        alert("خطایی رخ داده است. لطفا با مدیر سیستم تماس بگیرید.");
+                        alert("عملیات با شکست مواجه شد");
                     }
                 });
             }
@@ -83,3 +83,22 @@ function CallBackHandler(data, action, form) {
         default:
     }
 }
+
+$(".addressLabel").click(function (e) {
+    debugger;
+    if ($(e.target).is('a')==false) {
+        $.ajax({
+            url: "/UserPanel/Addresses/SetDefaultAddress?addressId=" + $(this).attr("id"),
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                if (data.isSucceeded == false) {
+                    alert(data.message);
+                }
+            },
+            error: function (error) {
+                alert(error.responseText);
+            }
+        })
+    }
+});

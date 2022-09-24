@@ -40,4 +40,14 @@ public class Address
         PostCode = postCode;
         IsDefault = isDefault;
     }
+
+    public void SetDefault()
+    {
+        IsDefault = true;
+    }
+
+    public void Undefault()
+    {
+        IsDefault = false;
+    }
 }

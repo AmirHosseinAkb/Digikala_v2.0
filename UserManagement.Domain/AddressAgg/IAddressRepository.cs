@@ -12,5 +12,7 @@ namespace UserManagement.Domain.AddressAgg
         void Add(Address address);
         List<Address> GetUserAddresses(long userId);
         Address? GetUserAddress(long addressId, long userId);
+        Address GetUserDefaultAddress(long userId);
+        void SaveChanges();
     }
 }

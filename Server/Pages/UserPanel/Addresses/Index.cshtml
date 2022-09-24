@@ -1,4 +1,5 @@
 ﻿@page "{handler?}"
+@using UserManagement.Infrastructure.EfCore.Repositories
 @model Server.Pages.UserPanel.Addresses.IndexModel
 @{
 }
@@ -20,7 +21,7 @@
                                 <div class="user-address-item">
                                     <div class="custom-radio-box">
                                         <input type="radio" class="custom-radio-box-input" name="userAddress" @((address.IsDefault)?"checked":"") id="@address.AddressId">
-                                        <label for="@address.AddressId" class="custom-radio-box-label" data-placeholder="@DataDictionaries.DefaultAddressPlaceholder" data-placeholder-checked="@DataDictionaries.DefaultAddressMessage">
+                                        <label  id="@address.AddressId" for="@address.AddressId" class="custom-radio-box-label addressLabel" data-placeholder="@DataDictionaries.DefaultAddressPlaceholder" data-placeholder-checked="@DataDictionaries.DefaultAddressMessage">
                                             <span class="d-block user-address-recipient mb-2">
                                                 @(address.State+","+address.City)
                                             </span>
@@ -44,6 +45,7 @@
                                                 <a href="#" class="link border-bottom-0 fs-7 fw-bold" data-remodal-target="edit-address-modal">@ButtonCaptions.Edit</a>
                                             </span>
                                         </label>
+                                        
                                     </div>
                                 </div>
                             }

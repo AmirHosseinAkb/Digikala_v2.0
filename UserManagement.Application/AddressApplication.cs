@@ -45,8 +45,12 @@ public class AddressApplication : IAddressApplication
     {
         var result = new OperationResult();
         var address = _addressRepository.GetUserAddress(addressId, _authenticationHelper.GetCurrentUserId());
+        var defaultAddress = _addressRepository.GetUserDefaultAddress(_authenticationHelper.GetCurrentUserId());
         if (address==null)
             return result.Failed(ApplicationMessages.ProcessFailed);
-        
+        defaultAddress.Undefault();
+        address.SetDefault();
+        _addressRepository.SaveChanges();
+        return result.Succeeded();
     }
 }

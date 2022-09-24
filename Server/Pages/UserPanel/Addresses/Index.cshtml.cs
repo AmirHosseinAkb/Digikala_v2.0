@@ -38,11 +38,12 @@ namespace Server.Pages.UserPanel.Addresses
             return new JsonResult(result);
         }
 
-        public IActionResult OnPostSetDefaultAddress(long addressId)
+        public IActionResult OnGetSetDefaultAddress(long addressId)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
-
+            var result = _addressApplication.SetDefaultAddress(addressId);
+            return new JsonResult(result);
         }
     }
 }

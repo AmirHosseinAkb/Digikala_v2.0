@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using UserManagement.Domain.AddressAgg;
 
 namespace UserManagement.Infrastructure.EfCore.Repositories
@@ -36,6 +31,16 @@ namespace UserManagement.Infrastructure.EfCore.Repositories
         public Address? GetUserAddress(long addressId, long userId)
         {
             return _context.Addresses.SingleOrDefault(a => a.AddressId == addressId && a.UserId == userId);
+        }
+
+        public Address GetUserDefaultAddress(long userId)
+        {
+            return _context.Addresses.Single(a => a.IsDefault);
+        }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
         }
     }
 }
