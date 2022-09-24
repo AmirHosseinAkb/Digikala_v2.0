@@ -38,6 +38,11 @@ namespace UserManagement.Infrastructure.EfCore.Repositories
             return _context.Addresses.Single(a => a.IsDefault);
         }
 
+        public Address GetAddressById(long addressId)
+        {
+            return _context.Addresses.Find(addressId);
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

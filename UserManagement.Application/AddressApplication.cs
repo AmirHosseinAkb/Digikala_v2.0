@@ -53,4 +53,29 @@ public class AddressApplication : IAddressApplication
         _addressRepository.SaveChanges();
         return result.Succeeded();
     }
+
+    public EditAddressCommand GetAddressForEdit(long addressId)
+    {
+        var address = _addressRepository.GetAddressById(addressId);
+        return new EditAddressCommand()
+        {
+            AddressId = address.AddressId,
+            State = address.State,
+            City = address.City,
+            NeighborHood = address.NeighborHood,
+            Number = address.Number,
+            PostCode = address.PostCode
+        };
+    }
+
+    public OperationResult Edit(EditAddressCommand command)
+    {
+        var result = new OperationResult();
+        var address=_addressRepository.GetUserAddress(command.AddressId,_authenticationHelper.GetCurrentUserId());
+        if (address == null)
+            return result.Failed(ApplicationMessages.RecordNotFound);
+        address.Edit(command.State,command.City,command.NeighborHood,command.Number,command.PostCode);
+        _addressRepository.SaveChanges();
+        return result.Succeeded();
+    }
 }

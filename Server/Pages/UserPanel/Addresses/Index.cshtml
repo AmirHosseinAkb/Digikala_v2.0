@@ -21,7 +21,7 @@
                                 <div class="user-address-item">
                                     <div class="custom-radio-box">
                                         <input type="radio" class="custom-radio-box-input" name="userAddress" @((address.IsDefault)?"checked":"") id="@address.AddressId">
-                                        <label  id="@address.AddressId" for="@address.AddressId" class="custom-radio-box-label addressLabel" data-placeholder="@DataDictionaries.DefaultAddressPlaceholder" data-placeholder-checked="@DataDictionaries.DefaultAddressMessage">
+                                        <label id="@address.AddressId" for="@address.AddressId" class="custom-radio-box-label addressLabel" data-placeholder="@DataDictionaries.DefaultAddressPlaceholder" data-placeholder-checked="@DataDictionaries.DefaultAddressMessage">
                                             <span class="d-block user-address-recipient mb-2">
                                                 @(address.State+","+address.City)
                                             </span>
@@ -40,12 +40,11 @@
                                                 </span>
                                             </span>
                                             <span class="d-flex align-items-center justify-content-end">
-                                                <a href="#" class="link border-bottom-0 fs-7 fw-bold" data-remodal-target="remove-from-addresses-modal">@ButtonCaptions.Delete</a>
+                                                <a onclick="DeleteAddress(@address.AddressId)" class="link border-bottom-0 fs-7 fw-bold" data-remodal-target="remove-from-addresses-modal">@ButtonCaptions.Delete</a>
                                                 <span class="text-secondary mx-2">|</span>
-                                                <a href="#" class="link border-bottom-0 fs-7 fw-bold" data-remodal-target="edit-address-modal">@ButtonCaptions.Edit</a>
+                                                <a onclick="EditAddress(@address.AddressId)" class="link border-bottom-0 fs-7 fw-bold" data-remodal-target="edit-address-modal">@ButtonCaptions.Edit</a>
                                             </span>
                                         </label>
-                                        
                                     </div>
                                 </div>
                             }
@@ -67,20 +66,20 @@
 
 </main>
 @*
-<div class="remodal remodal-xs" data-remodal-id="remove-from-addresses-modal" data-remodal-options="hashTracking: false">
+    <div class="remodal remodal-xs" data-remodal-id="remove-from-addresses-modal" data-remodal-options="hashTracking: false">
     <div class="remodal-header">
-        <button data-remodal-action="close" class="remodal-close"></button>
+    <button data-remodal-action="close" class="remodal-close"></button>
     </div>
     <div class="remodal-content">
-        <div class="text-muted fs-7 fw-bold mb-3">
-            آیا مطمئنید که این آدرس حذف شود؟
-        </div>
+    <div class="text-muted fs-7 fw-bold mb-3">
+    آیا مطمئنید که این آدرس حذف شود؟
+    </div>
     </div>
     <div class="remodal-footer">
-        <button data-remodal-action="cancel" class="btn btn-sm btn-outline-light px-3 me-2">خیر</button>
-        <button class="btn btn-sm btn-primary px-3">بله</button>
+    <button data-remodal-action="cancel" class="btn btn-sm btn-outline-light px-3 me-2">خیر</button>
+    <button class="btn btn-sm btn-primary px-3">بله</button>
     </div>
-</div>*@
+    </div>*@
 
 
 
@@ -91,5 +90,15 @@
         $("#mainModalContent").load("/UserPanel/Addresses/Create");
         $("#mainModal").modal('show');
     });
+
+    function EditAddress(addressId) {
+        $("#mainModalContent").load("/UserPanel/Addresses/Edit?addressId="+addressId);
+        $("#mainModal").modal('show');
+    }
+
+    function DeleteAddress(addressId) {
+        $("#mainModalContent").load("/UserPanel/Addresses/Delete/addressId="+addressId);
+        $("#mainModal").modal('show');
+    }
 </script>
 }

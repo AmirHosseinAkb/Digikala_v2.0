@@ -13,6 +13,7 @@ namespace UserManagement.Domain.AddressAgg
         List<Address> GetUserAddresses(long userId);
         Address? GetUserAddress(long addressId, long userId);
         Address GetUserDefaultAddress(long userId);
+        Address GetAddressById(long addressId);
         void SaveChanges();
     }
 }

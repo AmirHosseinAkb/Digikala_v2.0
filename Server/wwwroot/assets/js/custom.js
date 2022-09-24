@@ -85,7 +85,6 @@ function CallBackHandler(data, action, form) {
 }
 
 $(".addressLabel").click(function (e) {
-    debugger;
     if ($(e.target).is('a')==false) {
         $.ajax({
             url: "/UserPanel/Addresses/SetDefaultAddress?addressId=" + $(this).attr("id"),

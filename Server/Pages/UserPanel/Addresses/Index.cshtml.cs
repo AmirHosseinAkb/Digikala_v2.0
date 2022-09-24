@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Server.Extensions;
+using Server.Pages.Roles;
 using UserManagement.Application.Contracts.Address;
 using UserManagement.Application.Contracts.User;
 
@@ -44,6 +45,25 @@ namespace Server.Pages.UserPanel.Addresses
                 return BadRequest();
             var result = _addressApplication.SetDefaultAddress(addressId);
             return new JsonResult(result);
+        }
+
+        public IActionResult OnGetEdit(long addressId)
+        {
+            var address = _addressApplication.GetAddressForEdit(addressId);
+            return Partial("./Edit",address);
+        }
+
+        public IActionResult OnPostEdit(EditAddressCommand command)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            var result = _addressApplication.Edit(command);
+            return new JsonResult(result);
+        }
+
+        public IActionResult OnGetDelete(long addressId)
+        {
+            return Partial("./Delete");
         }
     }
 }

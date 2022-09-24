@@ -30,15 +30,13 @@ public class Address
         IsDefault = isDefault;
     }
 
-    public void Edit(long userId, string state, string city, string neighborHood, string number, string postCode, bool isDefault)
+    public void Edit(string state, string city, string neighborHood, string number, string postCode)
     {
-        UserId = userId;
         State = state;
         City = city;
         NeighborHood = neighborHood;
         Number = number;
         PostCode = postCode;
-        IsDefault = isDefault;
     }
 
     public void SetDefault()
