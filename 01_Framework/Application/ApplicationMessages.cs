@@ -17,6 +17,7 @@ namespace _01_Framework.Application
         public const string DuplicatedGroupDetail = "این ویژگی از قبل در این گروه وجود دارد";
         public const string DuplicatedBrand = "این برند وجود دارد";
         public const string DuplicatedDiscount = "این کد تخفیف از قبل وجود دارد";
+        public const string DuplicatedAddress = "این آدرس از قبل وجود دارد";
         public const string RecordNotFound = "نتیجه ای یافت نشد";
         public static string WrongUserPass = "رمز عبور وارد شده صحیح نمی باشد";
         public const string InvalidEmailOrPhoneNumber = "ایمیل یا شماره همراه را بصورت صحیح وارد کنید";

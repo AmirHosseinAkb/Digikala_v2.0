@@ -1,0 +1,53 @@
+﻿@model UserManagement.Application.Contracts.Address.CreateAddressCommand
+
+<div class="modal-header">
+    <div class="modal-title">@DataDictionaries.NewAddress</div>
+</div>
+<div class="modal-body">
+    <form class="ajaxForm" asp-page="./index"
+          asp-page-handler="Create"
+          method="post"
+          data-ajax="true"
+          data-action="Refresh">
+        <div class="row">
+            <div class="col-md-12 mb-md-0 mb-4">
+
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 mb-3">
+                        <div class="form-element-row">
+                            <label class="label fs-7">@DataDictionaries.State</label>
+                            <input asp-for="State" type="text" class="form-control">
+                            <span asp-validation-for="State" class="text-danger"></span>
+                        </div>
+                        <div class="form-element-row">
+                            <label class="label fs-7">@DataDictionaries.City</label>
+                            <input asp-for="City" type="text" class="form-control">
+                            <span asp-validation-for="City" class="text-danger"></span>
+                        </div>
+                        <div class="form-element-row">
+                            <label class="label fs-7">@DataDictionaries.Neighborhood</label>
+                            <input asp-for="NeighborHood" type="text" class="form-control">
+                            <span asp-validation-for="NeighborHood" class="text-danger"></span>
+                        </div>
+                        <div class="form-element-row">
+                            <label class="label fs-7">@DataDictionaries.Number</label>
+                            <input asp-for="Number" type="number" class="form-control">
+                            <span asp-validation-for="Number" class="text-danger"></span>
+                        </div>
+                        <div class="form-element-row">
+                            <label class="label fs-7">@DataDictionaries.PostCode</label>
+                            <input asp-for="PostCode" type="number" class="form-control">
+                            <span asp-validation-for="PostCode" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+
+            <button class="btn btn-sm btn-primary px-3">@ButtonCaptions.Save</button>
+        </div>
+    </form>
+</div>
+<script src="~/assets/js/library/jquery.validate.min.js"></script>
+<script src="~/assets/js/library/jquery.validate.unobtrusive.min.js"></script>

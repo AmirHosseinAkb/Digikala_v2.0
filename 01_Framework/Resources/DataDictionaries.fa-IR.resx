@@ -183,6 +183,9 @@
   <data name="ChargeWallet" xml:space="preserve">
     <value>شارژ کیف پول</value>
   </data>
+  <data name="City" xml:space="preserve">
+    <value>شهر</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>بستن</value>
   </data>
@@ -420,11 +423,20 @@
   <data name="NationalNumber" xml:space="preserve">
     <value>کد ملی</value>
   </data>
+  <data name="Neighborhood" xml:space="preserve">
+    <value>خیابان/کوچه</value>
+  </data>
+  <data name="NewAddress" xml:space="preserve">
+    <value>آدرس جدید</value>
+  </data>
   <data name="NewPassword" xml:space="preserve">
     <value>رمز عبور جدید</value>
   </data>
   <data name="November" xml:space="preserve">
     <value>آبان</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>پلاک</value>
   </data>
   <data name="October" xml:space="preserve">
     <value>مهر</value>
@@ -464,6 +476,9 @@
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>شماره همراه</value>
+  </data>
+  <data name="PostCode" xml:space="preserve">
+    <value>کد پستی</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>قیمت</value>
@@ -617,6 +632,9 @@
   </data>
   <data name="StartDate" xml:space="preserve">
     <value>تاریخ شروع</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>استان</value>
   </data>
   <data name="String" xml:space="preserve">
     <value>زمان باقی مانده</value>

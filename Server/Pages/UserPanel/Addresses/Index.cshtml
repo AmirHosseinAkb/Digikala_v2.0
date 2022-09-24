@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{handler?}"
 @model Server.Pages.UserPanel.Addresses.IndexModel
 @{
 }
@@ -18,38 +18,38 @@
                             @foreach (var address in Model.AddressVm)
                             {
                                 <div class="user-address-item">
-                                <div class="custom-radio-box">
-                                    <input type="radio" class="custom-radio-box-input" name="userAddress" id="userAddress01" checked="">
-                                    <label for="userAddress01" class="custom-radio-box-label" data-placeholder="@DataDictionaries.DefaultAddressPlaceholder" data-placeholder-checked="@DataDictionaries.DefaultAddressMessage">
-                                        <span class="d-block user-address-recipient mb-2">
-                                            @(address.State+","+address.City)
-                                        </span>
-                                        <span class="d-block user-contact-items fa-num mb-3">
-                                            <span class="user-contact-item">
-                                                <i class="ri-mail-line icon"></i>
-                                                <span class="value">@address.PostCode</span>
+                                    <div class="custom-radio-box">
+                                        <input type="radio" class="custom-radio-box-input" name="userAddress" @((address.IsDefault)?"checked":"") id="@address.AddressId">
+                                        <label for="@address.AddressId" class="custom-radio-box-label" data-placeholder="@DataDictionaries.DefaultAddressPlaceholder" data-placeholder-checked="@DataDictionaries.DefaultAddressMessage">
+                                            <span class="d-block user-address-recipient mb-2">
+                                                @(address.State+","+address.City)
                                             </span>
-                                            <span class="user-contact-item">
-                                                <i class="ri-phone-line icon"></i>
-                                                <span class="value">@address.UserPhoneNumber</span>
+                                            <span class="d-block user-contact-items fa-num mb-3">
+                                                <span class="user-contact-item">
+                                                    <i class="ri-mail-line icon"></i>
+                                                    <span class="value">@address.PostCode</span>
+                                                </span>
+                                                <span class="user-contact-item">
+                                                    <i class="ri-phone-line icon"></i>
+                                                    <span class="value">@address.UserPhoneNumber</span>
+                                                </span>
+                                                <span class="user-contact-item">
+                                                    <i class="ri-user-line icon"></i>
+                                                    <span class="value">@address.UserFullName</span>
+                                                </span>
                                             </span>
-                                            <span class="user-contact-item">
-                                                <i class="ri-user-line icon"></i>
-                                                <span class="value">@address.UserFullName</span>
+                                            <span class="d-flex align-items-center justify-content-end">
+                                                <a href="#" class="link border-bottom-0 fs-7 fw-bold" data-remodal-target="remove-from-addresses-modal">@ButtonCaptions.Delete</a>
+                                                <span class="text-secondary mx-2">|</span>
+                                                <a href="#" class="link border-bottom-0 fs-7 fw-bold" data-remodal-target="edit-address-modal">@ButtonCaptions.Edit</a>
                                             </span>
-                                        </span>
-                                        <span class="d-flex align-items-center justify-content-end">
-                                            <a href="#" class="link border-bottom-0 fs-7 fw-bold" data-remodal-target="remove-from-addresses-modal">@ButtonCaptions.Delete</a>
-                                            <span class="text-secondary mx-2">|</span>
-                                            <a href="#" class="link border-bottom-0 fs-7 fw-bold" data-remodal-target="edit-address-modal">@ButtonCaptions.Edit</a>
-                                        </span>
-                                    </label>
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
                             }
 
                             <div class="user-address-item user-add-address-btn-container">
-                                <button class="user-add-address-btn" data-remodal-target="add-address-modal-fields-with-map">
+                                <button id="btnCreateAddress" class="user-add-address-btn">
                                     <i class="ri-add-line icon"></i>
                                     <span>@ButtonCaptions.NewAddress</span>
                                 </button>
@@ -64,7 +64,7 @@
     </div>
 
 </main>
-
+@*
 <div class="remodal remodal-xs" data-remodal-id="remove-from-addresses-modal" data-remodal-options="hashTracking: false">
     <div class="remodal-header">
         <button data-remodal-action="close" class="remodal-close"></button>
@@ -78,405 +78,16 @@
         <button data-remodal-action="cancel" class="btn btn-sm btn-outline-light px-3 me-2">خیر</button>
         <button class="btn btn-sm btn-primary px-3">بله</button>
     </div>
-</div>
-<div class="remodal remodal-sm" data-remodal-id="add-address-modal-without-map" data-remodal-options="hashTracking: false">
-    <div class="remodal-header">
-        <button data-remodal-action="close" class="remodal-close"></button>
-        <div class="remodal-title">افزودن آدرس جدید</div>
-    </div>
-    <div class="remodal-content">
-        <!-- add-address-form -->
-        <form action="#" class="add-address-form">
-            <div class="row">
-                <div class="col-lg-6 mb-3">
-                    <!-- form-element -->
-                    <div class="form-element-row">
-                        <label class="label fs-7">نام گیرنده</label>
-                        <input type="text" class="form-control" placeholder="نام">
-                    </div>
-                    <!--  form-element -->
-                </div>
-                <div class="col-lg-6 mb-3">
-                    <!-- form-element -->
-                    <div class="form-element-row">
-                        <label class="label fs-7">نام خانوادگی گیرنده</label>
-                        <input type="text" class="form-control" placeholder="نام خانوادگی">
-                    </div>
-                    <!--  form-element -->
-                </div>
-                <div class="col-lg-6 mb-3">
-                    <!-- form-element -->
-                    <div class="form-element-row">
-                        <label class="label fs-7">استان</label>
-                        <select class="select2" name="state01" id="state01">
-                            <option value="0">انتخاب کنید</option>
-                            <option value="0">اصفهان</option>
-                            <option value="0">تهران</option>
-                            <option value="0">شیراز</option>
-                            <option value="0">تبریز</option>
+</div>*@
 
-                        </select>
-                    </div>
-                    <!--  form-element -->
-                </div>
-                <div class="col-lg-6 mb-3">
-                    <!-- form-element -->
-                    <div class="form-element-row">
-                        <label class="label fs-7">شهر</label>
-                        <select class="select2" name="city01" id="city01">
-                            <option value="0">انتخاب کنید</option>
-                            <option value="0">اصفهان</option>
-                        </select>
-                    </div>
-                    <!--  form-element -->
-                </div>
-                <div class="col-lg-6 mb-3">
-                    <!-- form-element -->
-                    <div class="form-element-row">
-                        <label class="label fs-7">شماره موبایل</label>
-                        <input type="text" class="form-control" placeholder="مثال: 09131234567">
-                    </div>
-                    <!--  form-element -->
-                </div>
-                <div class="col-lg-6 mb-3">
-                    <!-- form-element -->
-                    <div class="form-element-row">
-                        <label class="label fs-7">کدپستی</label>
-                        <input type="text" class="form-control"
-                               placeholder="کدپستی باید ۱۰ رقم و بدون خط تیره باشد">
-                    </div>
-                    <!--  form-element -->
-                </div>
-                <div class="col-12 mb-3">
-                    <!-- form-element -->
-                    <div class="form-element-row">
-                        <label class="label fs-7">آدرس</label>
-                        <textarea rows="5" class="form-control" placeholder="آدرس کامل"></textarea>
-                    </div>
-                    <!--  form-element -->
-                </div>
-            </div>
-        </form>
-        <!--  add-address-form -->
-    </div>
-    <div class="remodal-footer">
-        <button data-remodal-action="cancel" class="btn btn-sm btn-outline-light px-3 me-2">بستن</button>
-        <button data-remodal-action="confirm" class="btn btn-sm btn-primary px-3">ثبت</button>
-    </div>
-</div>
-<div class="remodal remodal-sm" data-remodal-id="add-address-modal-without-fields" data-remodal-options="hashTracking: false">
-    <div class="remodal-header">
-        <button data-remodal-action="close" class="remodal-close"></button>
-        <div class="remodal-title">افزودن آدرس جدید</div>
-    </div>
-    <div class="remodal-content">
-        <!-- search -->
-        <div class="search-container w-full">
-            <!-- search-form -->
-            <form action="#" class="search-form">
-                <input type="text" class="form-control search-field" placeholder="جستجو">
-                <button class="btn btn-primary btn-search btn-action">
-                    <i class="ri-search-2-line"></i>
-                </button>
-                <button class="btn btn-primary btn-close-search-result btn-action d-none">
-                    <i class="ri-close-line"></i>
-                </button>
-            </form>
-            <!--  search-form -->
-            <!-- search-result -->
-            <div class="search-result-container">
-                <div class="search-result-tags-container">
-                    <div class="search-result-tags-label">
-                        <i class="ri-fire-line"></i> جستجوهای پرطرفدار
-                    </div>
-                    <ul class="search-result-tags">
-                        <li><a href="#" class="search-result-tag">گوشی موبایل</a></li>
-                        <li><a href="#" class="search-result-tag">لوازم خانگی برقی</a></li>
-                        <li><a href="#" class="search-result-tag">لپ تاپ</a></li>
-                        <li><a href="#" class="search-result-tag">کنسول بازی</a></li>
-                        <li><a href="#" class="search-result-tag">دوچرخه</a></li>
-                    </ul>
-                </div>
-                <div class="border-bottom my-3"></div>
-                <ul class="search-result-items">
-                    <li><a href="#">گوشی موبایل</a></li>
-                    <li><a href="#">گوشی موبایل  سامسونگ</a></li>
-                    <li><a href="#">گوشی موبایل سامسونگ</a></li>
-                    <li><a href="#">قاب گوشی موبایل</a></li>
-                    <li><a href="#">گوشی موبایل اپل</a></li>
-                </ul>
-            </div>
-            <!--  search-result -->
-        </div>
-        <!--  search -->
-        <div class="map-container bg-light my-3">
-            <!-- map -->
-        </div>
-    </div>
-    <div class="remodal-footer">
-        <button data-remodal-action="cancel" class="btn btn-sm btn-outline-light px-3 me-2">بستن</button>
-        <button data-remodal-action="confirm" class="btn btn-sm btn-primary px-3">ثبت</button>
-    </div>
-</div>
-<div class="remodal remodal-lg" data-remodal-id="add-address-modal-fields-with-map" data-remodal-options="hashTracking: false">
-    <div class="remodal-header">
-        <button data-remodal-action="close" class="remodal-close"></button>
-        <div class="remodal-title">افزودن آدرس جدید</div>
-    </div>
-    <div class="remodal-content">
-        <div class="row">
-            <div class="col-md-6 mb-md-0 mb-4">
-                <!-- add-address-form -->
-                <form action="#" class="add-address-form">
-                    <div class="row">
-                        <div class="col-lg-6 mb-3">
-                            <!-- form-element -->
-                            <div class="form-element-row">
-                                <label class="label fs-7">نام گیرنده</label>
-                                <input type="text" class="form-control" placeholder="نام">
-                            </div>
-                            <!--  form-element -->
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <!-- form-element -->
-                            <div class="form-element-row">
-                                <label class="label fs-7">نام خانوادگی گیرنده</label>
-                                <input type="text" class="form-control" placeholder="نام خانوادگی">
-                            </div>
-                            <!--  form-element -->
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <!-- form-element -->
-                            <div class="form-element-row">
-                                <label class="label fs-7">استان</label>
-                                <select class="select2" name="state02" id="state02">
-                                    <option value="0">انتخاب کنید</option>
-                                    <option value="0">اصفهان</option>
-                                    <option value="0">تهران</option>
-                                    <option value="0">شیراز</option>
-                                    <option value="0">تبریز</option>
-                                </select>
-                            </div>
-                            <!--  form-element -->
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <!-- form-element -->
-                            <div class="form-element-row">
-                                <label class="label fs-7">شهر</label>
-                                <select class="select2" name="city02" id="city02">
-                                    <option value="0">انتخاب کنید</option>
-                                    <option value="0">اصفهان</option>
-                                </select>
-                            </div>
-                            <!--  form-element -->
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <!-- form-element -->
-                            <div class="form-element-row">
-                                <label class="label fs-7">شماره موبایل</label>
-                                <input type="text" class="form-control" placeholder="مثال: 09131234567">
-                            </div>
-                            <!--  form-element -->
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <!-- form-element -->
-                            <div class="form-element-row">
-                                <label class="label fs-7">کدپستی</label>
-                                <input type="text" class="form-control"
-                                       placeholder="کدپستی باید ۱۰ رقم و بدون خط تیره باشد">
-                            </div>
-                            <!--  form-element -->
-                        </div>
-                        <div class="col-12 mb-3">
-                            <!-- form-element -->
-                            <div class="form-element-row">
-                                <label class="label fs-7">آدرس</label>
-                                <textarea rows="5" class="form-control" placeholder="آدرس کامل"></textarea>
-                            </div>
-                            <!--  form-element -->
-                        </div>
-                    </div>
-                </form>
-                <!--  add-address-form -->
-            </div>
-            <div class="col-md-6">
-                <!-- search -->
-                <div class="search-container w-full">
-                    <!-- search-form -->
-                    <form action="#" class="search-form">
-                        <input type="text" class="form-control search-field" placeholder="جستجو">
-                        <button class="btn btn-primary btn-search btn-action">
-                            <i class="ri-search-2-line"></i>
-                        </button>
-                        <button class="btn btn-primary btn-close-search-result btn-action d-none">
-                            <i class="ri-close-line"></i>
-                        </button>
-                    </form>
-                    <!--  search-form -->
-                    <!-- search-result -->
-                    <div class="search-result-container">
-                        <div class="search-result-tags-container">
-                            <div class="search-result-tags-label"><i class="ri-fire-line"></i>جستجوهای پرطرفدار</div>
-                            <ul class="search-result-tags">
-                                <li><a href="#" class="search-result-tag">گوشی موبایل</a></li>
-                                <li><a href="#" class="search-result-tag">لوازم خانگی برقی</a></li>
-                                <li><a href="#" class="search-result-tag">لپ تاپ</a></li>
-                                <li><a href="#" class="search-result-tag">کنسول بازی</a></li>
-                                <li><a href="#" class="search-result-tag">دوچرخه</a></li>
-                            </ul>
-                        </div>
-                        <div class="border-bottom my-3"></div>
-                        <ul class="search-result-items">
-                            <li><a href="#">گوشی موبایل</a></li>
-                            <li><a href="#">گوشی موبایل  سامسونگ</a></li>
-                            <li><a href="#">گوشی موبایل سامسونگ</a></li>
-                            <li><a href="#">قاب گوشی موبایل</a></li>
-                            <li><a href="#">گوشی موبایل اپل</a></li>
-                        </ul>
-                    </div>
-                    <!--  search-result -->
-                </div>
-                <!--  search -->
-                <div class="map-container bg-light my-3">
-                    <!-- map -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="remodal-footer">
-        <button data-remodal-action="cancel" class="btn btn-sm btn-outline-light px-3 me-2">بستن</button>
-        <button data-remodal-action="confirm" class="btn btn-sm btn-primary px-3">ثبت</button>
-    </div>
-</div>
-<div class="remodal remodal-lg" data-remodal-id="edit-address-modal" data-remodal-options="hashTracking: false">
-    <div class="remodal-header">
-        <button data-remodal-action="close" class="remodal-close"></button>
-        <div class="remodal-title">ویرایش آدرس</div>
-    </div>
-    <div class="remodal-content">
-        <div class="row">
-            <div class="col-md-6 mb-md-0 mb-4">
-                <!-- add-address-form -->
-                <form action="#" class="add-address-form">
-                    <div class="row">
-                        <div class="col-lg-6 mb-3">
-                            <!-- form-element -->
-                            <div class="form-element-row">
-                                <label class="label fs-7">نام گیرنده</label>
-                                <input type="text" class="form-control" placeholder="نام" value="محسن">
-                            </div>
-                            <!--  form-element -->
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <!-- form-element -->
-                            <div class="form-element-row">
-                                <label class="label fs-7">نام خانوادگی گیرنده</label>
-                                <input type="text" class="form-control" placeholder="نام خانوادگی"
-                                       value="اسماعیلی">
-                            </div>
-                            <!--  form-element -->
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <!-- form-element -->
-                            <div class="form-element-row">
-                                <label class="label fs-7">استان</label>
-                                <select class="select2" name="state03" id="state03">
-                                    <option value="0">انتخاب کنید</option>
-                                    <option value="0" selected>اصفهان</option>
-                                    <option value="0">اصفهان</option>
-                                    <option value="0">تهران</option>
-                                    <option value="0">شیراز</option>
-                                    <option value="0">تبریز</option>
-                                </select>
-                            </div>
-                            <!--  form-element -->
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <!-- form-element -->
-                            <div class="form-element-row">
-                                <label class="label fs-7">شهر</label>
-                                <select class="select2" name="city03" id="city03">
-                                    <option value="0">انتخاب کنید</option>
-                                    <option value="0" selected>اصفهان</option>
-                                </select>
-                            </div>
-                            <!--  form-element -->
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <!-- form-element -->
-                            <div class="form-element-row">
-                                <label class="label fs-7">شماره موبایل</label>
-                                <input type="text" class="form-control" placeholder="مثال: 09131234567">
-                            </div>
-                            <!--  form-element -->
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <!-- form-element -->
-                            <div class="form-element-row">
-                                <label class="label fs-7">کدپستی</label>
-                                <input type="text" class="form-control"
-                                       placeholder="کدپستی باید ۱۰ رقم و بدون خط تیره باشد" value="1234567890">
-                            </div>
-                            <!--  form-element -->
-                        </div>
-                        <div class="col-12 mb-3">
-                            <!-- form-element -->
-                            <div class="form-element-row">
-                                <label class="label fs-7">آدرس</label>
-                                <textarea rows="5" class="form-control" placeholder="آدرس کامل"></textarea>
-                            </div>
-                            <!--  form-element -->
-                        </div>
-                    </div>
-                </form>
-                <!--  add-address-form -->
-            </div>
-            <div class="col-md-6">
-                <!-- search -->
-                <div class="search-container w-full">
-                    <!-- search-form -->
-                    <form action="#" class="search-form">
-                        <input type="text" class="form-control search-field" placeholder="جستجو">
-                        <button class="btn btn-primary btn-search btn-action">
-                            <i class="ri-search-2-line"></i>
-                        </button>
-                        <button class="btn btn-primary btn-close-search-result btn-action d-none">
-                            <i class="ri-close-line"></i>
-                        </button>
-                    </form>
-                    <!--  search-form -->
-                    <!-- search-result -->
-                    <div class="search-result-container">
-                        <div class="search-result-tags-container">
-                            <div class="search-result-tags-label"><i class="ri-fire-line"></i>جستجوهای پرطرفدار</div>
-                            <ul class="search-result-tags">
-                                <li><a href="#" class="search-result-tag">گوشی موبایل</a></li>
-                                <li><a href="#" class="search-result-tag">لوازم خانگی برقی</a></li>
-                                <li><a href="#" class="search-result-tag">لپ تاپ</a></li>
-                                <li><a href="#" class="search-result-tag">کنسول بازی</a></li>
-                                <li><a href="#" class="search-result-tag">دوچرخه</a></li>
-                            </ul>
-                        </div>
-                        <div class="border-bottom my-3"></div>
-                        <ul class="search-result-items">
-                            <li><a href="#">گوشی موبایل</a></li>
-                            <li><a href="#">گوشی موبایل  سامسونگ</a></li>
-                            <li><a href="#">گوشی موبایل سامسونگ</a></li>
-                            <li><a href="#">قاب گوشی موبایل</a></li>
-                            <li><a href="#">گوشی موبایل اپل</a></li>
-                        </ul>
-                    </div>
-                    <!--  search-result -->
-                </div>
-                <!--  search -->
-                <div class="map-container bg-light my-3">
-                    <!-- map -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="remodal-footer">
-        <button data-remodal-action="cancel" class="btn btn-sm btn-outline-light px-3 me-2">بستن</button>
-        <button data-remodal-action="confirm" class="btn btn-sm btn-primary px-3">ثبت</button>
-    </div>
-</div>
+
+
+@section Scripts
+{
+<script>
+    $("#btnCreateAddress").click(function() {
+        $("#mainModalContent").load("/UserPanel/Addresses/Create");
+        $("#mainModal").modal('show');
+    });
+</script>
+}

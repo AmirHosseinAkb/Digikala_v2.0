@@ -5,7 +5,7 @@
 <html lang="fa">
 
 <head>
-    <partial name="PartialViews/_MetaTags"/>
+    <partial name="PartialViews/_MetaTags" />
 
     <title>@ViewData["Title"]</title>
 
@@ -15,19 +15,25 @@
 
 <body>
 
-    <div class="page-wrapper">
+<div class="page-wrapper">
     <partial name="PartialViews/_Header" />
-        <!-- page-content -->
-      @RenderBody()
-        <!--  page-content -->
-        <partial name="PartialViews/_Footer"/>
+    <!-- page-content -->
+    @RenderBody()
+    <!--  page-content -->
+    <partial name="PartialViews/_Footer" />
+    <div id="mainModal" class="modal fade">
+        <div class="modal-dialog">
+            <div id="mainModalContent" class="modal-content">
+            </div>
+        </div>
     </div>
+</div>
 
-<partial name="PartialViews/_Scripts"/>
-<partial name="PartialViews/_ValidationScriptsPartial"/>
+<partial name="PartialViews/_Scripts" />
+<partial name="PartialViews/_ValidationScriptsPartial" />
 
 @RenderSection("Scripts",false)
-</body>
 
+</body>
 </html>
-@RenderBody()
+

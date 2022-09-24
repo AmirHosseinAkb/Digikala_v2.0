@@ -12,6 +12,32 @@ public class Address
     public string Number { get;private set; }
     public string PostCode { get;private set; }
     public bool IsDefault { get; private set; }
-    public User User { get; set; }
+    public User User { get;private set; }
 
+    protected Address()
+    {
+
+    }
+
+    public Address(long userId, string state, string city, string neighborHood, string number, string postCode, bool isDefault)
+    {
+        UserId = userId;
+        State = state;
+        City = city;
+        NeighborHood = neighborHood;
+        Number = number;
+        PostCode = postCode;
+        IsDefault = isDefault;
+    }
+
+    public void Edit(long userId, string state, string city, string neighborHood, string number, string postCode, bool isDefault)
+    {
+        UserId = userId;
+        State = state;
+        City = city;
+        NeighborHood = neighborHood;
+        Number = number;
+        PostCode = postCode;
+        IsDefault = isDefault;
+    }
 }

@@ -183,6 +183,9 @@
   <data name="ChargeWallet" xml:space="preserve">
     <value>Charge Wallet</value>
   </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
@@ -420,11 +423,20 @@
   <data name="NationalNumber" xml:space="preserve">
     <value>National Number</value>
   </data>
+  <data name="Neighborhood" xml:space="preserve">
+    <value>Neighborhood</value>
+  </data>
+  <data name="NewAddress" xml:space="preserve">
+    <value>New Address</value>
+  </data>
   <data name="NewPassword" xml:space="preserve">
     <value>NewPassword</value>
   </data>
   <data name="November" xml:space="preserve">
     <value>November</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Number</value>
   </data>
   <data name="October" xml:space="preserve">
     <value>October</value>
@@ -464,6 +476,9 @@
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Phone Number</value>
+  </data>
+  <data name="PostCode" xml:space="preserve">
+    <value>Post Code</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>Price</value>
@@ -617,6 +632,9 @@
   </data>
   <data name="StartDate" xml:space="preserve">
     <value>Start Date</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State</value>
   </data>
   <data name="SubGroups" xml:space="preserve">
     <value>Sub Groups</value>

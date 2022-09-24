@@ -14,5 +14,6 @@ namespace UserManagement.Application.Contracts.Address
         public string UserFullName { get; set; }
         public string UserPhoneNumber { get; set; }
         public string PostCode { get; set; }
+        public bool IsDefault { get; set; }
     }
 }

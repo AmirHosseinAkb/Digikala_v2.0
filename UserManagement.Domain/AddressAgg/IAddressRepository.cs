@@ -8,6 +8,9 @@ namespace UserManagement.Domain.AddressAgg
 {
     public interface IAddressRepository
     {
-        List<Address> GetAll();
+        bool IsExistAddress(long userId,string postCode);
+        void Add(Address address);
+        List<Address> GetUserAddresses(long userId);
+        Address? GetUserAddress(long addressId, long userId);
     }
 }
