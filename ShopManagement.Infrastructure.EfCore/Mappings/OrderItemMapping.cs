@@ -19,7 +19,7 @@ namespace ShopManagement.Infrastructure.EfCore.Mappings
             builder.HasKey(i => i.OrderItemId);
             builder.Property(i=>i.OrderId);
             builder.Property(i=>i.ProductId);
-            builder.Property(i=>i.ColorId);
+            builder.Property(i=>i.ColorId).IsRequired(false);
             builder.Property(i=>i.UnitPrice);
             builder.Property(i=>i.Count);
 

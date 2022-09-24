@@ -10,16 +10,30 @@ namespace ShopManagement.Domain.OrderAgg
 {
     public class OrderItem
     {
-        public long OrderItemId { get; set; }
-        public long OrderId { get; set; }
-        public long ProductId { get; set; }
-        public long ColorId { get; set; }
-        public int UnitPrice { get; set; }
-        public byte Count { get; set; }
+        public long OrderItemId { get;private set; }
+        public long OrderId { get;private set; }
+        public long ProductId { get;private set; }
+        public long? ColorId { get;private set; }
+        public int UnitPrice { get;private set; }
+        public byte Count { get;private set; }
 
 
-        public Order Order { get; set; }
-        public Product Product { get; set; }
-        public ProductColor ProductColor { get; set; }
+        public Order Order { get;private set; }
+        public Product Product { get;private set; }
+        public ProductColor ProductColor { get;private set; }
+
+        protected OrderItem()
+        {
+            
+        }
+
+        public OrderItem(long orderId, long productId, long? colorId, int unitPrice, byte count)
+        {
+            OrderId = orderId;
+            ProductId = productId;
+            ColorId = colorId;
+            UnitPrice = unitPrice;
+            Count = count;
+        }
     }
 }
