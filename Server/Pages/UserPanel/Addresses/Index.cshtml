@@ -97,7 +97,7 @@
     }
 
     function DeleteAddress(addressId) {
-        $("#mainModalContent").load("/UserPanel/Addresses/Delete/addressId="+addressId);
+        $("#mainModalContent").load("/UserPanel/Addresses/Delete?addressId="+addressId);
         $("#mainModal").modal('show');
     }
 </script>

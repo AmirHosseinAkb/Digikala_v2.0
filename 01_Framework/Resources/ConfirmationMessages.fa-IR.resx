@@ -132,6 +132,9 @@
   <data name="ConfirmUserCreation" xml:space="preserve">
     <value>کاربر مورد نظر با موفقیت ایجاد شد</value>
   </data>
+  <data name="DeleteAddressConfirmation" xml:space="preserve">
+    <value>آیا مطمئنید که میخواهید این ادرس را حذف کنید؟</value>
+  </data>
   <data name="DeleteBrandConfirmationS1" xml:space="preserve">
     <value>آیا مطمئنید که می خواهید برند  </value>
   </data>

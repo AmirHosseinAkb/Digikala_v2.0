@@ -106,6 +106,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want delete this address?.
+        /// </summary>
+        public static string DeleteAddressConfirmation {
+            get {
+                return ResourceManager.GetString("DeleteAddressConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete this brand?.
         /// </summary>
         public static string DeleteBrandConfirmationS1 {

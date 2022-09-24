@@ -9,5 +9,6 @@ public interface IAddressApplication
     OperationResult SetDefaultAddress(long addressId);
     EditAddressCommand GetAddressForEdit(long addressId);
     OperationResult Edit(EditAddressCommand command);
+    void Delete(long addressId);
 
 }

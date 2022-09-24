@@ -1,0 +1,21 @@
+﻿
+<div class="modal-header">
+    <div class="modal-title">@DataDictionaries.NewAddress</div>
+</div>
+<div class="modal-body">
+    <form asp-page="./index" asp-page-handler="Delete">
+        <div class="text-muted fs-7 fw-bold mb-3">
+            @ConfirmationMessages.DeleteAddressConfirmation
+        </div>
+        <div class="modal-footer">
+            <input type="hidden" name="addressId" value="@TempData["AddressId"]"/>
+            <a id="btnCancel" class="btn btn-sm btn-outline-light px-3 me-2">@ButtonCaptions.Cancel</a>
+            <button class="btn btn-sm btn-primary px-3">@ButtonCaptions.Delete</button>
+        </div>
+    </form>
+</div>
+<script>
+    $("#btnCancel").click(function() {
+        $("#mainModal").modal('toggle');
+    });
+</script>

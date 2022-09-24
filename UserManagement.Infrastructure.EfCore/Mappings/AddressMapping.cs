@@ -23,9 +23,12 @@ namespace UserManagement.Infrastructure.EfCore.Mappings
             builder.Property(a => a.Number).HasMaxLength(200);
             builder.Property(a => a.PostCode).HasMaxLength(200);
             builder.Property(a => a.IsDefault);
+            builder.Property(a => a.IsDeleted);
 
             builder.HasOne<User>(a => a.User).WithMany(u => u.Addresses)
                 .HasForeignKey(a => a.UserId);
+
+            builder.HasQueryFilter(a => !a.IsDeleted);
         }
     }
 }

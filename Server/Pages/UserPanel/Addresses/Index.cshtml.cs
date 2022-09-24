@@ -63,7 +63,16 @@ namespace Server.Pages.UserPanel.Addresses
 
         public IActionResult OnGetDelete(long addressId)
         {
+            TempData["AddressId"]=addressId;
             return Partial("./Delete");
+        }
+
+        public IActionResult OnPostDelete(long addressId)
+        {
+            if (!ModelState.IsValid)
+                return RedirectToPage();
+            _addressApplication.Delete(addressId);
+            return RedirectToPage();
         }
     }
 }

@@ -12,6 +12,7 @@ public class Address
     public string Number { get;private set; }
     public string PostCode { get;private set; }
     public bool IsDefault { get; private set; }
+    public bool IsDeleted { get; set; }
     public User User { get;private set; }
 
     protected Address()
@@ -47,5 +48,10 @@ public class Address
     public void Undefault()
     {
         IsDefault = false;
+    }
+
+    public void Delete()
+    {
+        IsDeleted = true;
     }
 }

@@ -78,4 +78,14 @@ public class AddressApplication : IAddressApplication
         _addressRepository.SaveChanges();
         return result.Succeeded();
     }
+
+    public void Delete(long addressId)
+    {
+        var address = _addressRepository.GetUserAddress(addressId, _authenticationHelper.GetCurrentUserId());
+        if (address != null)
+        {
+            address.Delete();
+            _addressRepository.SaveChanges();
+        }
+    }
 }
