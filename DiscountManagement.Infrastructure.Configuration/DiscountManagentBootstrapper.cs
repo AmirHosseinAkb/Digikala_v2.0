@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DiscountManagement.Application;
+﻿using DiscountManagement.Application;
 using DiscountManagement.Application.Contracts.OrderDiscount;
+using DiscountManagement.Application.Contracts.ProductDiscount;
 using DiscountManagement.Domain.OrderDiscountAgg;
+using DiscountManagement.Domain.ProductDiscountAgg;
 using DiscountManagement.Infrastructure.EfCore;
 using DiscountManagement.Infrastructure.EfCore.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +16,8 @@ namespace DiscountManagement.Infrastructure.Configuration
         {
             services.AddScoped<IOrderDiscountRepository, OrderDiscountRepository>();
             services.AddScoped<IOrderDiscountApplication, OrderDiscountApplication>();
+            services.AddScoped<IProductDiscountRepository, ProductDiscountRepository>();
+            services.AddScoped<IProductDiscountApplication, ProductDiscountApplication>();
 
             services.AddDbContext<DiscountContext>(options =>
                 options.UseSqlServer(connectionString));

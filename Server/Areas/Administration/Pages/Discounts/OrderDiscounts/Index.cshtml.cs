@@ -2,7 +2,7 @@ using DiscountManagement.Application.Contracts.OrderDiscount;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Server.Areas.Administration.Pages.Discounts
+namespace Server.Areas.Administration.Pages.Discounts.OrderDiscounts
 {
     public class IndexModel : PageModel
     {

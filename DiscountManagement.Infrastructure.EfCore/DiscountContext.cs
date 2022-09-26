@@ -16,6 +16,7 @@ public class DiscountContext:DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new OrderDiscountMapping());
+        modelBuilder.ApplyConfiguration(new ProductDiscountMapping());
         base.OnModelCreating(modelBuilder);
     }
 }
