@@ -120,7 +120,7 @@ function AddToCart(id, title, price, imageName, brand) {
         const product = {
             id,
             title,
-            price,
+            unitPrice:price,
             imageName,
             count,
             brand
