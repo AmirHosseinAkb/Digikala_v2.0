@@ -31,7 +31,11 @@
 
 <partial name="PartialViews/_Scripts" />
 <partial name="PartialViews/_ValidationScriptsPartial" />
-
+<script>
+    $(document).ready(function() {
+        UpdateCart();
+    });
+</script>
 @RenderSection("Scripts",false)
 
 </body>

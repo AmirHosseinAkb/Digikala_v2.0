@@ -85,7 +85,7 @@ function CallBackHandler(data, action, form) {
 }
 
 $(".addressLabel").click(function (e) {
-    if ($(e.target).is('a')==false) {
+    if ($(e.target).is('a') == false) {
         $.ajax({
             url: "/UserPanel/Addresses/SetDefaultAddress?addressId=" + $(this).attr("id"),
             type: "get",
@@ -101,3 +101,83 @@ $(".addressLabel").click(function (e) {
         })
     }
 });
+
+const cookieName = "cart_items";
+function AddToCart(id, title, price, imageName, brand) {
+    var products = $.cookie(cookieName);
+    if (products === undefined) {
+        products = [];
+    }
+    else {
+        products = JSON.parse(products);
+    }
+    var currentProduct = products.find(p => p.id == id);
+    const count = 1;
+    if (currentProduct != undefined) {
+        products.find(p => p.id == id).count = parseInt(currentProduct.count) + parseInt(count);
+    }
+    else {
+        const product = {
+            id,
+            title,
+            price,
+            imageName,
+            count,
+            brand
+        };
+        products.push(product);
+    }
+    $.cookie(cookieName, JSON.stringify(products), { expires: 10, path: "/" });
+    UpdateCart();
+}
+
+function UpdateCart() {
+    let products = $.cookie(cookieName);
+    if (products != undefined) {
+        products = JSON.parse(products);
+        $(".cartItemsCounter").text(products.length);
+    }
+    var cartItemsWrapper = $("#cartItemsWrapper");
+    cartItemsWrapper.html('');
+    var totalCartPrice = 0;
+    products.forEach(p => {
+        const product = `
+               <div class="mini-cart-product">
+                    <div class="mini-cart-product-thumbnail">
+                        <a href="/Product/${p.id}"><img src="../Products/Images/${p.imageName}" alt=""></a>
+                    </div>
+                    <div class="mini-cart-product-detail">
+                        <div class="mini-cart-product-title">${p.brand}</div>
+                        <div class="mini-cart-product-title">
+                            <a href="/Product/${p.id}">${p.title}</a>
+                        </div>
+                        <div class="mini-cart-purchase-info">
+                            <div class="mini-cart-product-meta">
+                                <span class="fa-num">${p.count} عدد</span>
+                            </div>
+                            <div class="mini-cart-product-price fa-num">
+
+                                ${parseInt(p.price).toLocaleString()}<span class="currency">تومان</span>
+
+                            </div>
+                        </div>
+                        <button onclick="RemoveItem(${p.id})" class="mini-cart-product-remove"></button>
+                    </div>
+                </div>`;
+        cartItemsWrapper.append(product);
+        totalCartPrice += parseInt(p.price.replace(',', '')) * parseInt(p.count);
+    })
+    var digits = totalCartPrice.toLocaleString();
+    $(".totalCartPrice").text(digits);
+}
+
+function RemoveItem(id) {
+    var products=$.cookie(cookieName);
+    products=JSON.parse(products);
+    var product=products.find(p=>p.id==id);
+    debugger;
+    var index=products.indexOf(product);
+    products.splice(index,1);
+     $.cookie(cookieName, JSON.stringify(products), { expires: 10, path: "/" });
+    UpdateCart();
+}

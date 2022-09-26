@@ -15,16 +15,14 @@
       "applicationUrl": "https://localhost:8562;http://localhost:6323",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "launchUrl": "UserPanel/Addresses"
+      }
     },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "launchUrl": "UserPanel/Addresses"
+      }
     }
   }
 }

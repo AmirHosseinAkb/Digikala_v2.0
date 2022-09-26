@@ -186,6 +186,7 @@ namespace DigikalaQuery.Queries
                 .Include(p => p.ProductGroup)
                 .Include(p => p.PrimaryProductGroup)
                 .Include(p => p.SecondaryProductGroup)
+                .Include(p=>p.ProductBrand)
                 .Include(p => p.Inventory)
                 .Include(p => p.ProductColors)
                 .Include(p => p.ProductImages)
@@ -219,6 +220,7 @@ namespace DigikalaQuery.Queries
                 SecondaryGroupTitle = product.SecondaryProductGroup?.GroupTitle,
                 Description = product.Description,
                 ImageName = product.ImageName,
+                BrandName = product.ProductBrand.BrandTitle,
                 InventoryCount = product.Inventory.ProductCount,
                 Price = product.Price,
                 ProductColors = productColors.ToList(),

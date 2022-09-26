@@ -247,7 +247,7 @@
                                 }
                             </div>
                             <div class="product-seller--add-to-cart">
-                                <a href="#" class="btn btn-primary w-100" data-toast="" data-toast-type="success" data-toast-color="green" data-toast-position="topRight" data-toast-icon="ri-check-fill" data-toast-title="@ConfirmationMessages.Succeeded" data-toast-message="@ConfirmationMessages.AddedToCart">
+                                <a onclick="AddToCart('@Model.Product.ProductId','@Model.Product.Title','@Model.Product.Price','@Model.Product.ImageName','@Model.Product.BrandName')" class="btn btn-primary w-100" data-toast="" data-toast-type="success" data-toast-color="green" data-toast-position="topRight" data-toast-icon="ri-check-fill" data-toast-title="@ConfirmationMessages.Succeeded" data-toast-message="@ConfirmationMessages.AddedToCart">
                                     @ButtonCaptions.AddToCard
                                 </a>
                             </div>
