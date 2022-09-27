@@ -20,6 +20,7 @@ namespace ShopManagement.Application.Contracts.Product
         OperationResult Delete(long productId);
         bool IsExistProductByGroup(long groupId);
         bool CheckInputGroups(long groupId,long?primaryGroupId,long?secondaryGroupId);
+        List<SelectListItem> GetProductsForSelect();
 
         #region ProductDetail
         List<ProductDetailViewModel> GetProductDetails(long productId);

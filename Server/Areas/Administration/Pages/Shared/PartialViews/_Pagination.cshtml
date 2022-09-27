@@ -1,0 +1,30 @@
+﻿@model (int,int,int,int)
+
+<div class="row">
+    <div class="col-sm-6">
+        @{
+            int take = Model.Item4;
+            int pageId = Model.Item2;
+            int totalEntries = Model.Item1;
+            int startEntry = (pageId - 1) * take;
+            if (totalEntries != 0)
+                startEntry += 1;
+            int endEntry = pageId * take;
+            if (totalEntries < endEntry)
+                endEntry = totalEntries;
+        }
+        <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">
+            @DataDictionaries.Showing @startEntry @DataDictionaries.To @endEntry @DataDictionaries.Of @totalEntries @DataDictionaries.Entries
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+            <ul class="pagination">
+                @for (var i = 1; i <= Model.Item3; i++)
+                {
+                    <li class="paginate_button @((Model.Item2==i)?"active":"")" aria-controls="datatable" tabindex="0"><a href="/Admin/Users?pageId=@i">@i</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _01_Framework.Application;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Org.BouncyCastle.Asn1.Misc;
 using ShopManagement.Application.Contracts.Product;
 using ShopManagement.Application.Contracts.ProductGroup;
@@ -217,6 +218,15 @@ namespace ShopManagement.Application
             if (primaryGroupId == null && secondaryGroupId != null)
                 return false;
             return true;
+        }
+
+        public List<SelectListItem> GetProductsForSelect()
+        {
+            return _productRepository.GetAll().Select(p => new SelectListItem()
+            {
+                Text = p.Title,
+                Value = p.ProductId.ToString()
+            }).ToList();
         }
 
         public List<ProductDetailViewModel> GetProductDetails(long productId)

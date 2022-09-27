@@ -1,4 +1,5 @@
 ﻿using DiscountManagement.Domain.OrderDiscountAgg;
+using DiscountManagement.Domain.ProductDiscountAgg;
 using DiscountManagement.Infrastructure.EfCore.Mappings;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,7 @@ public class DiscountContext:DbContext
     }
 
     public DbSet<OrderDiscount> OrderDiscounts { get; set; }
+    public DbSet<ProductDiscount> ProductDiscounts { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
