@@ -39,5 +39,19 @@ namespace Server.Areas.Administration.Pages.Discounts.ProductDiscounts
             var result = _productDiscountApplication.Create(command);
             return new JsonResult(result);
         }
+
+        public IActionResult OnGetEdit(long discountId)
+        {
+            var discount = _productDiscountApplication.GetDiscountForEdit(discountId);
+            return Partial("./Edit" , discount);
+        }
+
+        public IActionResult OnPostEdit(EditProductDiscountCommand command)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            var result = _productDiscountApplication.Edit(command);
+            return new JsonResult(result);
+        }
     }
 }

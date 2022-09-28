@@ -68,4 +68,54 @@ public class ProductDiscountApplication:IProductDiscountApplication
         _productDiscountRepository.Add(discount);
         return result.Succeeded();
     }
+
+    public EditProductDiscountCommand GetDiscountForEdit(long discountId)
+    {
+        var discount = _productDiscountRepository.GetDiscountById(discountId);
+        return new EditProductDiscountCommand()
+        {
+            DiscountId = discount.ProductDiscountId,
+            ProductId = discount.ProductId,
+            Rate = discount.Rate,
+            StartDate = discount.StartDate.ToShamsi(),
+            EndDate = discount.EndDate.ToShamsi()
+        };
+    }
+
+    public OperationResult Edit(EditProductDiscountCommand command)
+    {
+        var result = new OperationResult();
+        var discount = _productDiscountRepository.GetDiscountById(command.DiscountId);
+        if (command.ProductId != discount.ProductId)
+        {
+            if (_productDiscountRepository.IsExistProductDiscount(command.ProductId, command.StartDate, command.EndDate))
+                return result.Failed(ApplicationMessages.DuplicatedDiscount);
+        }
+
+        DateTime startDate = DateTime.Now;
+        DateTime endDate = DateTime.Now;
+
+        try
+        {
+            startDate = command.StartDate.ShamsiToGerogorian();
+        }
+        catch
+        {
+            return result.Failed(ApplicationMessages.DateTimeFormatIsNotCorrect);
+        }
+
+        try
+        {
+            endDate=command.EndDate.ShamsiToGerogorian();
+        }
+        catch 
+        {
+            return result.Failed(ApplicationMessages.DateTimeFormatIsNotCorrect);
+        }
+        if(startDate>endDate)
+            return result.Failed(ApplicationMessages.EndDateShouldBeGreaterThanStartDate);
+        discount.Edit(command.ProductId,command.Rate,startDate,endDate);
+        _productDiscountRepository.SaveChanges();
+        return result.Succeeded();
+    }
 }

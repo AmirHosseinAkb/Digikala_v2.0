@@ -41,8 +41,11 @@ public class ProductDiscountRepository:IProductDiscountRepository
         _context.SaveChanges();
     }
 
-    public void SaveChanges()
-    {
+    public void SaveChanges()=>
         _context.SaveChanges();
+
+    public ProductDiscount GetDiscountById(long discountId)
+    {
+        return _context.ProductDiscounts.Find(discountId);
     }
 }

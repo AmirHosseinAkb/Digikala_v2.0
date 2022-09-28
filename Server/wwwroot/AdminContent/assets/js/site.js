@@ -135,6 +135,14 @@ $("#btnCreateProductDiscount").click(function () {
     $("#MainModal").modal('show');
 })
 
+function EditProductDiscount(discountId) {
+    $("#ModalContent").load('/Administration/Discounts/ProductDiscounts/Edit?discountId='+discountId);
+    $("#MainModal").modal('show');
+}
+function DeleteProductDiscount(discountId) {
+    $("#ModalContent").load('/Administration/Discounts/ProductDiscounts/Delete?discountId='+discountId);
+    $("#MainModal").modal('show');
+}
 function GetBrandForDelete(brandId) {
     $.ajax({
         url: '/Administration/Shop/ProductBrands/Delete?brandId=' + brandId,

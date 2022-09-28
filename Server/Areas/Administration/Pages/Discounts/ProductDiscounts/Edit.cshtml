@@ -1,15 +1,16 @@
 ﻿@using ShopManagement.Application.Contracts.Product
-@model DiscountManagement.Application.Contracts.ProductDiscount.CreateProductDiscountCommand
+@model DiscountManagement.Application.Contracts.ProductDiscount.EditProductDiscountCommand
 @inject IProductApplication _productApplication;
 @{
-    var productSelect = new SelectList(_productApplication.GetProductsForSelect(),"Value","Text");
+    var productSelect = new SelectList(_productApplication.GetProductsForSelect(),"Value","Text",Model.ProductId);
+
 }
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h4 class="modal-title">@DataDictionaries.AddNewDiscount</h4>
 </div>
 <form asp-page="./Index"
-      asp-page-handler="Create"
+      asp-page-handler="Edit"
       data-ajax="true"
       data-action="Refresh"
       data-callback=""
@@ -17,30 +18,35 @@
       method="post">
     <div class="modal-body">
         <div class="row">
+            <input type="hidden" asp-for="DiscountId"/>
             <div class="col-md-12">
                 <div class="form-group">
-                    <select asp-for="ProductId" asp-items="productSelect" class="select3 select2-offscreen" tabindex="-1" title="">
+                    <label>@DataDictionaries.SelectProductMessage</label>
+                    <select asp-for="ProductId" asp-items="productSelect" class="select4 select2-offscreen" tabindex="-1" title="">
                         <option value="">@DataDictionaries.SelectProductMessage</option>
                     </select>
                     <span asp-validation-for="ProductId" class="error"></span>
                 </div>
                 <div class="form-group">
+                    <label>@DataDictionaries.DiscountPercent</label>
                     <input asp-for="Rate" type="number" class="form-control" placeholder="@DataDictionaries.DiscountPercent"/>
                     <span asp-validation-for="Rate" class="error"></span>
                 </div>
                 <div class="form-group">
-                    <input id="startDate1"  asp-for="StartDate" placeholder="@DataDictionaries.StartDate"/>
+                    <label style="display: block">@DataDictionaries.StartDate</label>
+                    <input id="startDate2" asp-for="StartDate" placeholder="@DataDictionaries.StartDate"/>
                     <span asp-validation-for="StartDate" class="error"></span>
                 </div>
                 <div class="form-group">
-                    <input id="endDate1" asp-for="EndDate"  placeholder="@DataDictionaries.EndDate"/>
+                    <label style="display: block">@DataDictionaries.EndDate</label>
+                    <input id="endDate2" asp-for="EndDate" placeholder="@DataDictionaries.EndDate"/>
                     <span asp-validation-for="EndDate" class="error"></span>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="submit" class="btn btn-info waves-effect waves-light">@ButtonCaptions.Add</button>
+        <button type="submit" class="btn btn-info waves-effect waves-light">@ButtonCaptions.Edit</button>
         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">@ButtonCaptions.Cancel</button>
     </div>
 </form>
@@ -59,10 +65,10 @@
     $(document).ready(function() {
                 
         // create DatePicker from input HTML element
-        $("#startDate1").kendoDatePicker();
-        $("#endDate1").kendoDatePicker();
+        $("#startDate2").kendoDatePicker();
+        $("#endDate2").kendoDatePicker();
     });
-    jQuery(".select3").select2({
+    jQuery(".select4").select2({
         width: '100%'
     });
 </script>

@@ -6,4 +6,5 @@ public interface IProductDiscountRepository
     bool IsExistProductDiscount(long productId,string startDate,string endDate);
     void Add(ProductDiscount productDiscount);
     void SaveChanges();
+    ProductDiscount GetDiscountById(long discountId);
 }
