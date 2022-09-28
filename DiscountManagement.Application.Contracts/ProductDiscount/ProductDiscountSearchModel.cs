@@ -10,7 +10,7 @@ namespace DiscountManagement.Application.Contracts.ProductDiscount
     public class ProductDiscountSearchModel:SearchModelsMain
     {
         public long ProductId { get; set; } = 0;
-        public string StartDate { get; set; } = "";
-        public string EndDate { get; set; } = "";
+        public string? StartDate { get; set; } = "";
+        public string? EndDate { get; set; } = "";
     }
 }

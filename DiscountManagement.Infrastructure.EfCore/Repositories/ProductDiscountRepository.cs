@@ -19,13 +19,13 @@ public class ProductDiscountRepository:IProductDiscountRepository
         if (!string.IsNullOrEmpty(startDate))
         {
             startDate.ShamsiToGerogorian();
-            discounts = discounts.Where(d => d.StartDate == DateTime.Parse(startDate));
+            discounts = discounts.Where(d => d.StartDate >= DateTime.Parse(startDate));
         }
 
         if (!string.IsNullOrEmpty(endDate))
         {
             endDate.ShamsiToGerogorian();
-            discounts=discounts.Where(d => d.EndDate == DateTime.Parse(endDate));
+            discounts=discounts.Where(d => d.EndDate <= DateTime.Parse(endDate));
         }
         return discounts;
     }
