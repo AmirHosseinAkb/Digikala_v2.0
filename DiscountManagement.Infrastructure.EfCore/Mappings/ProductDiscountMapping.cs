@@ -14,6 +14,9 @@ namespace DiscountManagement.Infrastructure.EfCore.Mappings
             builder.Property(d => d.Rate);
             builder.Property(d => d.StartDate);
             builder.Property(d => d.EndDate);
+            builder.Property(d => d.IsDeleted);
+
+            builder.HasQueryFilter(d => !d.IsDeleted);
         }
     }
 }

@@ -118,4 +118,14 @@ public class ProductDiscountApplication:IProductDiscountApplication
         _productDiscountRepository.SaveChanges();
         return result.Succeeded();
     }
+
+    public void Delete(long discountId)
+    {
+        var discount= _productDiscountRepository.GetDiscountById(discountId);
+        if (discount != null)
+        {
+            discount.Delete();
+            _productDiscountRepository.SaveChanges();
+        }
+    }
 }

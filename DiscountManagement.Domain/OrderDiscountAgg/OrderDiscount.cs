@@ -9,6 +9,7 @@ public class OrderDiscount
     public int? UsableCount { get; private set; }
     public DateTime? StartDate { get; private set; }
     public DateTime? EndDate { get; private set; }
+    public bool IsDeleted { get; private set; }
 
     public OrderDiscount(string discountCode, int discountRate, string reason, int? usableCount, DateTime? startDate, DateTime? endDate)
     {
@@ -29,4 +30,7 @@ public class OrderDiscount
         StartDate = startDate;
         EndDate = endDate;
     }
+
+    public void Delete()=> IsDeleted = true;
+    
 }

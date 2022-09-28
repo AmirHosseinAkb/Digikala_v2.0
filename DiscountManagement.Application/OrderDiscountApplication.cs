@@ -149,7 +149,8 @@ namespace DiscountManagement.Application
             var discount = _orderDiscountRepository.GetOrderDiscount(discountId);
             if (discount != null)
             {
-                _orderDiscountRepository.Delete(discount);
+                discount.Delete();
+                _orderDiscountRepository.SaveChanges();
             }
         }
     }

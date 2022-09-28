@@ -16,5 +16,8 @@ public class OrderDiscountMapping:IEntityTypeConfiguration<OrderDiscount>
         builder.Property(d => d.StartDate).IsRequired(false);
         builder.Property(d => d.EndDate).IsRequired(false);
         builder.Property(d => d.Reason).HasMaxLength(200);
+        builder.Property(d => d.IsDeleted);
+
+        builder.HasQueryFilter(d => !d.IsDeleted);
     }
 }
