@@ -1,0 +1,68 @@
+﻿@using ShopManagement.Application.Contracts.Product
+@model DiscountManagement.Application.Contracts.ProductDiscount.CreateProductDiscountCommand
+@inject IProductApplication _productApplication;
+@{
+    var productSelect = _productApplication.GetProductsForSelect();
+}
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">@DataDictionaries.AddNewDiscount</h4>
+</div>
+<form asp-page="./Index"
+      asp-page-handler="Create"
+      data-ajax="true"
+      data-action="Refresh"
+      data-callback=""
+      enctype="multipart/form-data"
+      method="post">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <select asp-for="ProductId" asp-items="productSelect" class="select3 select2-offscreen" tabindex="-1" title="">
+                        <option value="">@DataDictionaries.SelectProductMessage</option>
+                    </select>
+                    <span asp-validation-for="ProductId" class="error"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Rate" type="number" class="form-control" placeholder="@DataDictionaries.DiscountPercent"/>
+                    <span asp-validation-for="Rate" class="error"></span>
+                </div>
+                <div class="form-group">
+                    <input id="startDate1"  asp-for="StartDate" placeholder="@DataDictionaries.StartDate"/>
+                    <span asp-validation-for="StartDate" class="error"></span>
+                </div>
+                <div class="form-group">
+                    <input id="endDate1" asp-for="EndDate"  placeholder="@DataDictionaries.EndDate"/>
+                    <span asp-validation-for="EndDate" class="error"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-info waves-effect waves-light">@ButtonCaptions.Add</button>
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">@ButtonCaptions.Cancel</button>
+    </div>
+</form>
+
+<link href="http://cdn.kendostatic.com/2013.2.918/styles/kendo.common.min.css" rel="stylesheet" />
+<link href="http://cdn.kendostatic.com/2013.2.918/styles/kendo.default.min.css" rel="stylesheet" />
+<link href="~/AdminContent/assets/select2/select2.css" rel="stylesheet" type="text/css">
+
+<script src="~/assets/js/library/jquery.validate.min.js"></script>
+<script src="~/assets/js/library/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/AdminContent/assets/js/kendo.all.min.js"></script>
+<script src="~/AdminContent/assets/select2/select2.min.js" type="text/javascript"></script>
+
+
+<script>
+    $(document).ready(function() {
+                
+        // create DatePicker from input HTML element
+        $("#startDate1").kendoDatePicker();
+        $("#endDate1").kendoDatePicker();
+    });
+    jQuery(".select3").select2({
+        width: '100%'
+    });
+</script>

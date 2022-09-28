@@ -13,6 +13,7 @@ namespace DiscountManagement.Application
         {
             _orderDiscountRepository = orderDiscountRepository;
         }
+
         public OperationResult Create(CreateOrderDiscountCommand command)
         {
             var result = new OperationResult();
@@ -47,6 +48,12 @@ namespace DiscountManagement.Application
                 }
             }
 
+            if (!string.IsNullOrEmpty(command.StartDate) && !string.IsNullOrEmpty(command.EndDate))
+            {
+                if (DateTime.Parse(command.StartDate) > DateTime.Parse(command.EndDate))
+                    return result.Failed(ApplicationMessages.EndDateShouldBeGreaterThanStartDate);
+            }
+                
             var discount = new OrderDiscount(command.DiscountCode.Replace(" ", ""), command.DiscountRate,
                 command.Reason, command.UsableCount, startDate, endDate);
             _orderDiscountRepository.Add(discount);
@@ -126,6 +133,11 @@ namespace DiscountManagement.Application
                 {
                     return result.Failed(ApplicationMessages.DateTimeFormatIsNotCorrect);
                 }
+            }
+            if (!string.IsNullOrEmpty(command.StartDate) && !string.IsNullOrEmpty(command.EndDate))
+            {
+                if (DateTime.Parse(command.StartDate) > DateTime.Parse(command.EndDate))
+                    return result.Failed(ApplicationMessages.EndDateShouldBeGreaterThanStartDate);
             }
             discount.Edit(command.DiscountCode,command.DiscountRate,command.Reason,command.UsableCount,startDate,endDate);
             _orderDiscountRepository.SaveChanges();

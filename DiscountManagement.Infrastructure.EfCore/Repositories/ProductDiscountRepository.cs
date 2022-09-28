@@ -29,4 +29,20 @@ public class ProductDiscountRepository:IProductDiscountRepository
         }
         return discounts;
     }
+
+    public bool IsExistProductDiscount(long productId,string startDate,string endDate)
+    {
+        return _context.ProductDiscounts.Any(d => d.ProductId == productId && d.StartDate<DateTime.Parse(endDate) &&d.EndDate>DateTime.Parse(startDate));
+    }
+
+    public void Add(ProductDiscount productDiscount)
+    {
+        _context.ProductDiscounts.Add(productDiscount);
+        _context.SaveChanges();
+    }
+
+    public void SaveChanges()
+    {
+        _context.SaveChanges();
+    }
 }

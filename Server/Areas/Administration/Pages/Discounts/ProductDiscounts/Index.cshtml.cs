@@ -1,5 +1,5 @@
-using DiscountManagement.Application;
 using DiscountManagement.Application.Contracts.ProductDiscount;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ShopManagement.Application.Contracts.Product;
@@ -25,6 +25,19 @@ namespace Server.Areas.Administration.Pages.Discounts.ProductDiscounts
             ProductsSelect = _productApplication.GetProductsForSelect();
             ProductDiscountVm = _productDiscountApplication.GetProductDiscounts(searchModel);
             ViewData["Take"] = 10;
+        }
+
+        public IActionResult OnGetCreate()
+        {
+            return Partial("./Create");
+        }
+
+        public IActionResult OnPostCreate(CreateProductDiscountCommand command)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            var result = _productDiscountApplication.Create(command);
+            return new JsonResult(result);
         }
     }
 }

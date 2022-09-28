@@ -132,6 +132,9 @@
   <data name="ActiveRegisterText" xml:space="preserve">
     <value>To activate your account, enter your email and click on the activation link, then you can log in to your account and by completing your account information, you can access all the facilities and services and related services.</value>
   </data>
+  <data name="AddNewDiscount" xml:space="preserve">
+    <value>Add New Discount</value>
+  </data>
   <data name="AddNewGroup" xml:space="preserve">
     <value>Add New Group</value>
   </data>
@@ -453,6 +456,9 @@
   <data name="OrderBy" xml:space="preserve">
     <value>Order By:</value>
   </data>
+  <data name="OrderDiscountsList" xml:space="preserve">
+    <value>Order Discounts List</value>
+  </data>
   <data name="OrderPendingPayment" xml:space="preserve">
     <value>Your order is pending payment. To avoid order cancellation, please complete the payment.</value>
   </data>
@@ -494,6 +500,9 @@
   </data>
   <data name="ProductDetails" xml:space="preserve">
     <value>Product Details</value>
+  </data>
+  <data name="ProductDiscountsList" xml:space="preserve">
+    <value>Product Discounts List</value>
   </data>
   <data name="ProductGroups" xml:space="preserve">
     <value>Product Groups</value>
@@ -611,6 +620,9 @@
   </data>
   <data name="SelectPermissions" xml:space="preserve">
     <value>Select Permissions</value>
+  </data>
+  <data name="SelectProductMessage" xml:space="preserve">
+    <value>Please select a product</value>
   </data>
   <data name="Seller" xml:space="preserve">
     <value>Seller</value>

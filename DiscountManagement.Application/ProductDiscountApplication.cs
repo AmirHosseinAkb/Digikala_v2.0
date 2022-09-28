@@ -35,4 +35,37 @@ public class ProductDiscountApplication:IProductDiscountApplication
         }).ToList();
         return Tuple.Create(query, searchModel.PageId, pageCount, searchModel.Take);
     }
+
+    public OperationResult Create(CreateProductDiscountCommand command)
+    {
+        var result = new OperationResult();
+
+        if (_productDiscountRepository.IsExistProductDiscount(command.ProductId, command.StartDate, command.EndDate))
+            return result.Failed(ApplicationMessages.DuplicatedDiscount);
+
+        DateTime startDate = DateTime.Now;
+        DateTime endDate = DateTime.Now;
+        try
+        {
+            startDate = command.StartDate.ShamsiToGerogorian();
+        }
+        catch
+        {
+            return result.Failed(ApplicationMessages.DateTimeFormatIsNotCorrect);
+        }
+
+        try
+        {
+            endDate=command.EndDate.ShamsiToGerogorian();
+        }
+        catch 
+        {
+            return result.Failed(ApplicationMessages.DateTimeFormatIsNotCorrect);
+        }
+        if(startDate>endDate)
+            return result.Failed(ApplicationMessages.EndDateShouldBeGreaterThanStartDate);
+        var discount = new ProductDiscount(command.ProductId, command.Rate, startDate, endDate);
+        _productDiscountRepository.Add(discount);
+        return result.Succeeded();
+    }
 }

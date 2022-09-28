@@ -106,6 +106,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Discount.
+        /// </summary>
+        public static string AddNewDiscount {
+            get {
+                return ResourceManager.GetString("AddNewDiscount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add New Group.
         /// </summary>
         public static string AddNewGroup {
@@ -1069,6 +1078,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Order Discounts List.
+        /// </summary>
+        public static string OrderDiscountsList {
+            get {
+                return ResourceManager.GetString("OrderDiscountsList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your order is pending payment. To avoid order cancellation, please complete the payment..
         /// </summary>
         public static string OrderPendingPayment {
@@ -1191,6 +1209,15 @@ namespace _01_Framework.Resources {
         public static string ProductDetails {
             get {
                 return ResourceManager.GetString("ProductDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product Discounts List.
+        /// </summary>
+        public static string ProductDiscountsList {
+            get {
+                return ResourceManager.GetString("ProductDiscountsList", resourceCulture);
             }
         }
         
@@ -1542,6 +1569,15 @@ namespace _01_Framework.Resources {
         public static string SelectPermissions {
             get {
                 return ResourceManager.GetString("SelectPermissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a product.
+        /// </summary>
+        public static string SelectProductMessage {
+            get {
+                return ResourceManager.GetString("SelectProductMessage", resourceCulture);
             }
         }
         

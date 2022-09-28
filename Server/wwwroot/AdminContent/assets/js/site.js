@@ -118,17 +118,22 @@ function GetBrandForEdit(brandId) {
     $("#MainModal").modal('show');
 }
 $("#btnCreateDiscount").click(function () {
-    $("#ModalContent").load('/Administration/Discounts/Create');
+    $("#ModalContent").load('/Administration/Discounts/OrderDiscounts/Create');
     $("#MainModal").modal('show');
 });
 function EditDiscount(discountId) {
-    $("#ModalContent").load('/Administration/Discounts/Edit?discountId='+discountId);
+    $("#ModalContent").load('/Administration/Discounts/OrderDiscounts/Edit?discountId='+discountId);
     $("#MainModal").modal('show');
 }
 function DeleteDiscount(discountId) {
-    $("#ModalContent").load('/Administration/Discounts/Delete?discountId='+discountId);
+    $("#ModalContent").load('/Administration/Discounts/OrderDiscounts/Delete?discountId='+discountId);
     $("#MainModal").modal('show');
 }
+
+$("#btnCreateProductDiscount").click(function () {
+    $("#ModalContent").load('/Administration/Discounts/ProductDiscounts/Create');
+    $("#MainModal").modal('show');
+})
 
 function GetBrandForDelete(brandId) {
     $.ajax({

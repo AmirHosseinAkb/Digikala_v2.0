@@ -34,6 +34,7 @@ namespace _01_Framework.Application
         public const string SomeUsersExistWithThisRole = "کاربرانی دارای این نقش می باشند لذا نمی توانید این نقش را حذف کنید";
         public const string CantDecreaseInventory = "موجودی محصول کمتر از مقداری است  که میخواهید کم کنید";
         public const string DateTimeFormatIsNotCorrect = "فرمت تاریخ صحیح نمی باشد";
+        public const string EndDateShouldBeGreaterThanStartDate = "تاریخ پایان باید بعد از تاریخ شروع باشد";
 
     }
 }
