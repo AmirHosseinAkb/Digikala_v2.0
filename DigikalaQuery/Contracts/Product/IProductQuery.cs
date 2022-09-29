@@ -1,6 +1,7 @@
 ﻿using System.Reflection.Metadata;
 using DigikalaQuery.Contracts.ProductBrand;
 using DigikalaQuery.Contracts.ProductColors;
+using DiscountManagement.Domain.ProductDiscountAgg;
 
 namespace DigikalaQuery.Contracts.Product
 {
@@ -10,6 +11,7 @@ namespace DigikalaQuery.Contracts.Product
 
         Tuple<List<ProductBoxQueryModel>, int, int> GetProductsList(SearchProductQueryModel searchModel);
         ProductQueryModel? GetProduct(long productId);
+        ProductDiscount? GetProductCurrentDiscount(long productId);
 
     }
 }

@@ -3,12 +3,11 @@
 @{
 
     int? discountRate = null;
-    int discountPrice = 0;
+    int currentPrice = Model.Price;
     if (Model.DiscountRate != null)
     {
         discountRate = Model.DiscountRate;
-        discountPrice = (Model.Price - (Model.Price * discountRate/100)).Value;
-        Model.Price -= discountPrice;
+        currentPrice = Model.Price-(Model.Price * discountRate / 100).Value;
     }
 }
 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4">
@@ -37,16 +36,15 @@
             }
             else
             {
-
                 <div class="product-price fa-num">
                     @if (discountRate != null)
                     {
                         <div class="d-flex align-items-center">
-                            <del class="price-old">@discountPrice.ToString("#,0")</del>
+                            <del class="price-old">@Model.Price.ToString("#,0")</del>
                             <span class="discount ms-2">%@discountRate</span>
                         </div>
                     }
-                    <span class="price-now">@Model.Price.ToString("#,0")<span class="currency">@DataDictionaries.Toman</span></span>
+                    <span class="price-now">@currentPrice.ToString("#,0")<span class="currency">@DataDictionaries.Toman</span></span>
                 </div>
             }
             @if (Model.InventoryCount <= 5 && Model.InventoryCount > 0)

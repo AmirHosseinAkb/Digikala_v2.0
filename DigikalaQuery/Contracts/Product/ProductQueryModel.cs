@@ -22,6 +22,7 @@ namespace DigikalaQuery.Contracts.Product
         public string ImageName { get; set; }
         public int InventoryCount { get; set; }
         public string BrandName { get; set; }
+        public int? DiscountRate { get; set; }
         public List<ProductColorQueryModel> ProductColors { get; set; }
         public List<ProductImageQueryModel> ProductImages { get; set; }
         public List<ProductDetailQueryModel> ProductDetails { get; set; }

@@ -3,6 +3,7 @@ using DigikalaQuery.Contracts.ProductBrand;
 using DigikalaQuery.Contracts.ProductColors;
 using DigikalaQuery.Contracts.ProductDetail;
 using DigikalaQuery.Contracts.ProductImage;
+using DiscountManagement.Domain.ProductDiscountAgg;
 using DiscountManagement.Infrastructure.EfCore;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Infrastructure.EfCore;
@@ -75,8 +76,7 @@ namespace DigikalaQuery.Queries
             }).ToList();
             foreach (var product in query)
             {
-                product.DiscountRate = _discountContext.ProductDiscounts.SingleOrDefault(d =>
-                    d.ProductId == product.ProductId && d.StartDate <= DateTime.Now && d.EndDate >= DateTime.Now)?.Rate;
+                product.DiscountRate = GetProductCurrentDiscount(product.ProductId)?.Rate;
             }
             return Tuple.Create(
             query,
@@ -187,8 +187,7 @@ namespace DigikalaQuery.Queries
                 }).ToList();
             foreach (var product in query)
             {
-                product.DiscountRate = _discountContext.ProductDiscounts.SingleOrDefault(d =>
-                    d.ProductId == product.ProductId && d.StartDate <= DateTime.Now && d.EndDate >= DateTime.Now)?.Rate;
+                product.DiscountRate = GetProductCurrentDiscount(product.ProductId)?.Rate;
             }
             return Tuple.Create(
                 query, searchModel.PageId, pageCount);
@@ -237,10 +236,17 @@ namespace DigikalaQuery.Queries
                 BrandName = product.ProductBrand.BrandTitle,
                 InventoryCount = product.Inventory.ProductCount,
                 Price = product.Price,
+                DiscountRate = GetProductCurrentDiscount(product.ProductId)?.Rate,
                 ProductColors = productColors.ToList(),
                 ProductImages = productImages.ToList(),
                 ProductDetails = productDetails.ToList()
             };
+        }
+
+        public ProductDiscount? GetProductCurrentDiscount(long productId)
+        {
+            return _discountContext.ProductDiscounts.SingleOrDefault(d =>
+                d.ProductId == productId && d.StartDate <= DateTime.Now && d.EndDate >= DateTime.Now);
         }
     }
 }

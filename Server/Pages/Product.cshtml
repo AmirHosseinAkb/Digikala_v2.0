@@ -1,6 +1,13 @@
 ﻿@page "{productId}"
 @model Server.Pages.ProductModel
 @{
+    int? discountRate = null;
+    var currentPrice = Model.Product.Price;
+    if (Model.Product?.DiscountRate != null)
+    {
+        discountRate = Model.Product.DiscountRate;
+        currentPrice = Model.Product.Price - (Model.Product.Price * discountRate / 100).Value;
+    }
 }
 
 <main class="page-content">
@@ -233,8 +240,18 @@
                                 </div>
                                 <div class="product-seller-row product-seller-row--price">
                                     <div class="product-seller-row--price-now fa-num">
-                                        <span class="price">@Model.Product.Price.ToString("#,0")</span>
+                                        @if (discountRate != null)
+                                        {
+                                            <del style="display: block" class="price-old text-muted ">
+                                                <div class="text-danger">
+                                                    @Model.Product.Price.ToString("#,0")
+                                                    <span class="currency">@DataDictionaries.Toman</span>
+                                                </div>
+                                            </del>
+                                        }
+                                        <span class="price">@currentPrice.ToString("#,0")</span>
                                         <span class="currency">@DataDictionaries.Toman</span>
+
                                     </div>
                                 </div>
                                 @if (Model.Product.InventoryCount <= 5)
@@ -247,7 +264,7 @@
                                 }
                             </div>
                             <div class="product-seller--add-to-cart">
-                                <a onclick="AddToCart('@Model.Product.ProductId','@Model.Product.Title','@Model.Product.Price','@Model.Product.ImageName','@Model.Product.BrandName')" class="btn btn-primary w-100" data-toast="" data-toast-type="success" data-toast-color="green" data-toast-position="topRight" data-toast-icon="ri-check-fill" data-toast-title="@ConfirmationMessages.Succeeded" data-toast-message="@ConfirmationMessages.AddedToCart">
+                                <a onclick="AddToCart('@Model.Product.ProductId','@Model.Product.Title','@Model.Product.Price','@((discountRate==null)?"":discountRate)','@Model.Product.ImageName','@Model.Product.BrandName')" class="btn btn-primary w-100" data-toast="" data-toast-type="success" data-toast-color="green" data-toast-position="topRight" data-toast-icon="ri-check-fill" data-toast-title="@ConfirmationMessages.Succeeded" data-toast-message="@ConfirmationMessages.AddedToCart">
                                     @ButtonCaptions.AddToCard
                                 </a>
                             </div>

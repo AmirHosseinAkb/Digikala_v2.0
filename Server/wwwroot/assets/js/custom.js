@@ -103,7 +103,7 @@ $(".addressLabel").click(function (e) {
 });
 
 const cookieName = "cart_items";
-function AddToCart(id, title, price, imageName, brand) {
+function AddToCart(id, title, price,discountRate, imageName, brand) {
     var products = $.cookie(cookieName);
     if (products === undefined) {
         products = [];
@@ -121,6 +121,7 @@ function AddToCart(id, title, price, imageName, brand) {
             id,
             title,
             unitPrice:price,
+            discountRate,
             imageName,
             count,
             brand

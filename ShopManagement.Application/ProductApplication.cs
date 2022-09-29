@@ -277,7 +277,5 @@ namespace ShopManagement.Application
 
             return Tuple.Create(products, pageId, pageCount, take);
         }
-
-
     }
 }
