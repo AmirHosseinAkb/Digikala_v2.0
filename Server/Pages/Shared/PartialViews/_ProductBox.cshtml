@@ -1,4 +1,16 @@
-﻿@model DigikalaQuery.Contracts.Product.ProductBoxQueryModel
+﻿@using Microsoft.EntityFrameworkCore
+@model DigikalaQuery.Contracts.Product.ProductBoxQueryModel
+@{
+
+    int? discountRate = null;
+    int discountPrice = 0;
+    if (Model.DiscountRate != null)
+    {
+        discountRate = Model.DiscountRate;
+        discountPrice = (Model.Price - (Model.Price * discountRate/100)).Value;
+        Model.Price -= discountPrice;
+    }
+}
 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4">
     <!-- product-card -->
     <div class="product-card">
@@ -17,23 +29,27 @@
                     <span class="color" style="background-color: @color.ColorCode;"></span>
                 }
             </div>
-           @if (Model.InventoryCount == 0)
-           {
-               <div class="alert alert-secondary text-center">
-                   <strong>ناموجود</strong>
-               </div>
-           }
-           else
-           {
-               <div class="product-price fa-num">
-                   <div class="d-flex align-items-center">
-                       <del class="price-old">29,999,000</del>
-                       <span class="discount ms-2">%2</span>
-                   </div>
-                   <span class="price-now">@Model.Price.ToString("#,0")<span class="currency">@DataDictionaries.Toman</span></span>
-               </div>
-           }
-            @if (Model.InventoryCount <= 5 && Model.InventoryCount>0)
+            @if (Model.InventoryCount == 0)
+            {
+                <div class="alert alert-secondary text-center">
+                    <strong>ناموجود</strong>
+                </div>
+            }
+            else
+            {
+
+                <div class="product-price fa-num">
+                    @if (discountRate != null)
+                    {
+                        <div class="d-flex align-items-center">
+                            <del class="price-old">@discountPrice.ToString("#,0")</del>
+                            <span class="discount ms-2">%@discountRate</span>
+                        </div>
+                    }
+                    <span class="price-now">@Model.Price.ToString("#,0")<span class="currency">@DataDictionaries.Toman</span></span>
+                </div>
+            }
+            @if (Model.InventoryCount <= 5 && Model.InventoryCount > 0)
             {
                 <small class="text-danger">@(ErrorMessages.LowInventoryMessageS1+Model.InventoryCount+ErrorMessages.LowInventoryMessageS2)</small>
             }

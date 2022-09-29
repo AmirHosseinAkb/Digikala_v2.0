@@ -16,9 +16,5 @@ namespace ShopManagement.Application.Contracts.Order
         public string Brand { get; set; }
         public int TotalItemPrice { get; set; }
 
-        public CartItemViewModel()
-        {
-            TotalItemPrice = UnitPrice * Count;
-        }
     }
 }

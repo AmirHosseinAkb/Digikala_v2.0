@@ -276,6 +276,9 @@
   <data name="DiscountCode" xml:space="preserve">
     <value>کد تخفیف</value>
   </data>
+  <data name="DiscountManagement" xml:space="preserve">
+    <value>مدیریت تخفیفات</value>
+  </data>
   <data name="DiscountPercent" xml:space="preserve">
     <value>درصد تخفیف</value>
   </data>
@@ -456,6 +459,9 @@
   <data name="OrderBy" xml:space="preserve">
     <value>مرتب سازی بر اساس:</value>
   </data>
+  <data name="OrderDiscounts" xml:space="preserve">
+    <value>تخفیفات روی فاکتور</value>
+  </data>
   <data name="OrderDiscountsList" xml:space="preserve">
     <value>لیست تخفیفات روی فاکتور</value>
   </data>
@@ -500,6 +506,9 @@
   </data>
   <data name="ProductDetails" xml:space="preserve">
     <value>مشخصات محصول</value>
+  </data>
+  <data name="ProductDiscounts" xml:space="preserve">
+    <value>تخفیفات روی محصول</value>
   </data>
   <data name="ProductDiscountsList" xml:space="preserve">
     <value>لیست تخفیفات محصولات</value>

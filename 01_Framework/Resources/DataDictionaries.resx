@@ -276,6 +276,9 @@
   <data name="DiscountCode" xml:space="preserve">
     <value>Discount Code</value>
   </data>
+  <data name="DiscountManagement" xml:space="preserve">
+    <value>Discount Management</value>
+  </data>
   <data name="DiscountPercent" xml:space="preserve">
     <value>Discount Percent</value>
   </data>
@@ -456,6 +459,9 @@
   <data name="OrderBy" xml:space="preserve">
     <value>Order By:</value>
   </data>
+  <data name="OrderDiscounts" xml:space="preserve">
+    <value>Order Discounts</value>
+  </data>
   <data name="OrderDiscountsList" xml:space="preserve">
     <value>Order Discounts List</value>
   </data>
@@ -500,6 +506,9 @@
   </data>
   <data name="ProductDetails" xml:space="preserve">
     <value>Product Details</value>
+  </data>
+  <data name="ProductDiscounts" xml:space="preserve">
+    <value>Product Discounts</value>
   </data>
   <data name="ProductDiscountsList" xml:space="preserve">
     <value>Product Discounts List</value>

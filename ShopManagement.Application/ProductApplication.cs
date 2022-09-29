@@ -222,7 +222,7 @@ namespace ShopManagement.Application
 
         public List<SelectListItem> GetProductsForSelect()
         {
-            return _productRepository.GetAll().Select(p => new SelectListItem()
+            return _productRepository.GetProductsWithInventory().Where(p=>p.Inventory.ProductCount>0).Select(p => new SelectListItem()
             {
                 Text = p.Title,
                 Value = p.ProductId.ToString()

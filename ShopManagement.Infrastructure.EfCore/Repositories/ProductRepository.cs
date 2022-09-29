@@ -68,6 +68,11 @@ namespace ShopManagement.Infrastructure.EfCore.Repositories
             return _context.Products.SingleOrDefault(g => g.GroupId == groupId || g.PrimaryGroupId == groupId || g.SecondaryGroupId == groupId);
         }
 
+        public List<Product> GetProductsWithInventory()
+        {
+            return _context.Products.Include(p => p.Inventory).ToList();
+        }
+
         public List<Product> GetProductsByGroupId(long groupId)
         {
             return _context.Products.Where(g =>

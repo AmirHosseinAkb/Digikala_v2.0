@@ -538,6 +538,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discount Management.
+        /// </summary>
+        public static string DiscountManagement {
+            get {
+                return ResourceManager.GetString("DiscountManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Discount Percent.
         /// </summary>
         public static string DiscountPercent {
@@ -1078,6 +1087,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Order Discounts.
+        /// </summary>
+        public static string OrderDiscounts {
+            get {
+                return ResourceManager.GetString("OrderDiscounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Order Discounts List.
         /// </summary>
         public static string OrderDiscountsList {
@@ -1209,6 +1227,15 @@ namespace _01_Framework.Resources {
         public static string ProductDetails {
             get {
                 return ResourceManager.GetString("ProductDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product Discounts.
+        /// </summary>
+        public static string ProductDiscounts {
+            get {
+                return ResourceManager.GetString("ProductDiscounts", resourceCulture);
             }
         }
         

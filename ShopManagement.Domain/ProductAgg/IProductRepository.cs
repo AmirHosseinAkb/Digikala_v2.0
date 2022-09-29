@@ -17,6 +17,7 @@ namespace ShopManagement.Domain.ProductAgg
         List<Product> GetProductsByGroupId(long groupId);
         void SaveChanges();
         Product GetProductByGroupId(long groupId);
+        List<Product> GetProductsWithInventory();
 
         #region ProductDetail
         void AddProductDetails(GroupDetail detail);

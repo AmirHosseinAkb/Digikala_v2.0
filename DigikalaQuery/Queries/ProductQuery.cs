@@ -3,6 +3,7 @@ using DigikalaQuery.Contracts.ProductBrand;
 using DigikalaQuery.Contracts.ProductColors;
 using DigikalaQuery.Contracts.ProductDetail;
 using DigikalaQuery.Contracts.ProductImage;
+using DiscountManagement.Infrastructure.EfCore;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Infrastructure.EfCore;
 
@@ -10,16 +11,18 @@ namespace DigikalaQuery.Queries
 {
     public class ProductQuery : IProductQuery
     {
-        private readonly ShopContext _context;
+        private readonly ShopContext _shopContext;
+        private readonly DiscountContext _discountContext;
 
-        public ProductQuery(ShopContext context)
+        public ProductQuery(ShopContext shopContext, DiscountContext discountContext)
         {
-            _context = context;
+            _shopContext = shopContext;
+            _discountContext = discountContext;
         }
         public Tuple<List<ProductBoxQueryModel>, List<ProductColorQueryModel>, List<ProductBrandQueryModel>, int, int, int> GetProductsForShow
         (SearchProductQueryModel searchModel)
         {
-            var products = _context.Products.OrderByDescending(p => p.CreationDate)
+            var products = _shopContext.Products.OrderByDescending(p => p.CreationDate)
                 .Include(p => p.Inventory)
                 .Include(p => p.ProductColors)
                 .Include(p => p.ProductBrand)
@@ -41,7 +44,7 @@ namespace DigikalaQuery.Queries
                 }
             }
 
-            int take = 1;
+            int take = 12;
 
             int skip = (searchModel.PageId - 1) * take;
 
@@ -59,18 +62,24 @@ namespace DigikalaQuery.Queries
             var maxPrice = 0;
             if (products.Any())
                 maxPrice = products.Max(p => p.Price);
-           
 
-            return Tuple.Create(
-            products.Skip(skip).Take(take).Select(p => new ProductBoxQueryModel()
+            var query = products.Skip(skip).Take(take).Select(p => new ProductBoxQueryModel()
             {
                 ProductId = p.ProductId,
                 Title = p.Title,
                 ImageName = p.ImageName,
                 Price = p.Price,
                 InventoryCount = p.Inventory.ProductCount,
-                ProductColors = p.ProductColors
-            }).ToList(),
+                ProductColors = p.ProductColors,
+
+            }).ToList();
+            foreach (var product in query)
+            {
+                product.DiscountRate = _discountContext.ProductDiscounts.SingleOrDefault(d =>
+                    d.ProductId == product.ProductId && d.StartDate <= DateTime.Now && d.EndDate >= DateTime.Now)?.Rate;
+            }
+            return Tuple.Create(
+            query,
             productColors.Select(c => new ProductColorQueryModel()
             {
                 ColorId = c.ColorId,
@@ -88,7 +97,7 @@ namespace DigikalaQuery.Queries
 
         public Tuple<List<ProductBoxQueryModel>, int, int> GetProductsList(SearchProductQueryModel searchModel)
         {
-            var products = _context.Products.OrderByDescending(p => p.CreationDate)
+            var products = _shopContext.Products.OrderByDescending(p => p.CreationDate)
                 .Include(p => p.Inventory)
                 .Include(p => p.ProductColors)
                 .Include(p => p.ProductBrand)
@@ -156,7 +165,7 @@ namespace DigikalaQuery.Queries
                 if (searchModel.EndPrice != products.Max(p => p.Price))
                     products = products.Where(p => p.Price <= searchModel.EndPrice);
             }
-            int take = 1;
+            int take = 12;
 
             int skip = (searchModel.PageId - 1) * take;
 
@@ -164,29 +173,34 @@ namespace DigikalaQuery.Queries
 
             if (products.Count() % take != 0)
                 pageCount += 1;
-
+            var query = products
+                .Skip(skip)
+                .Take(take)
+                .Select(p => new ProductBoxQueryModel()
+                {
+                    ProductId = p.ProductId,
+                    Title = p.Title,
+                    ImageName = p.ImageName,
+                    Price = p.Price,
+                    InventoryCount = p.Inventory.ProductCount,
+                    ProductColors = p.ProductColors
+                }).ToList();
+            foreach (var product in query)
+            {
+                product.DiscountRate = _discountContext.ProductDiscounts.SingleOrDefault(d =>
+                    d.ProductId == product.ProductId && d.StartDate <= DateTime.Now && d.EndDate >= DateTime.Now)?.Rate;
+            }
             return Tuple.Create(
-                products
-                    .Skip(skip)
-                    .Take(take)
-                    .Select(p => new ProductBoxQueryModel()
-                    {
-                        ProductId = p.ProductId,
-                        Title = p.Title,
-                        ImageName = p.ImageName,
-                        Price = p.Price,
-                        InventoryCount = p.Inventory.ProductCount,
-                        ProductColors = p.ProductColors
-                    }).ToList(), searchModel.PageId, pageCount);
+                query, searchModel.PageId, pageCount);
         }
 
         public ProductQueryModel? GetProduct(long productId)
         {
-            var product = _context.Products
+            var product = _shopContext.Products
                 .Include(p => p.ProductGroup)
                 .Include(p => p.PrimaryProductGroup)
                 .Include(p => p.SecondaryProductGroup)
-                .Include(p=>p.ProductBrand)
+                .Include(p => p.ProductBrand)
                 .Include(p => p.Inventory)
                 .Include(p => p.ProductColors)
                 .Include(p => p.ProductImages)

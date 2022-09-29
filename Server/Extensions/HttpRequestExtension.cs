@@ -9,7 +9,7 @@
             if (request == null)
                 throw new ArgumentNullException("request");
 
-            if (request.Headers != null)
+            if (request?.Headers != null)
                 return request.Headers[RequestedWithHeader] == XmlHttpRequest;
 
             return false;

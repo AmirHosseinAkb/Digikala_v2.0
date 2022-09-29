@@ -157,7 +157,7 @@ function UpdateCart() {
                             </div>
                             <div class="mini-cart-product-price fa-num">
 
-                                ${parseInt(p.price).toLocaleString()}<span class="currency">تومان</span>
+                                ${parseInt(p.unitPrice).toLocaleString()}<span class="currency">تومان</span>
 
                             </div>
                         </div>
@@ -165,7 +165,7 @@ function UpdateCart() {
                     </div>
                 </div>`;
         cartItemsWrapper.append(product);
-        totalCartPrice += parseInt(p.price.replace(',', '')) * parseInt(p.count);
+        totalCartPrice += parseInt(p.unitPrice.replace(',', '')) * parseInt(p.count);
     })
     var digits = totalCartPrice.toLocaleString();
     $(".totalCartPrice").text(digits);
