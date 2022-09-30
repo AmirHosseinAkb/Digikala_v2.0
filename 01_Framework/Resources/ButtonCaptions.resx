@@ -180,6 +180,9 @@
   <data name="Continue" xml:space="preserve">
     <value>Continue</value>
   </data>
+  <data name="ContinueShoppingProcess" xml:space="preserve">
+    <value>Continue Shopping Process</value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
   </data>

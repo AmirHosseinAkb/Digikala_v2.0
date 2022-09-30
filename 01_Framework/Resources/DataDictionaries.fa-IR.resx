@@ -168,6 +168,9 @@
   <data name="August" xml:space="preserve">
     <value>مرداد</value>
   </data>
+  <data name="AuthenticityWarranty" xml:space="preserve">
+    <value>گارانتی اصالت و سلامت فیزیکی کالا</value>
+  </data>
   <data name="AuthorizationMessageText" xml:space="preserve">
     <value>به مای استور خوش آمدید برای ورود به حساب کاربری خود کد زیر را وارد کنید:</value>
   </data>
@@ -185,6 +188,9 @@
   </data>
   <data name="ChargeWallet" xml:space="preserve">
     <value>شارژ کیف پول</value>
+  </data>
+  <data name="CheckoutMessage" xml:space="preserve">
+    <value>هزینه‌ی ارسال در ادامه بر اساس آدرس، زمان و نحوه‌ی ارسال انتخابی شما‌ محاسبه و به این مبلغ اضافه خواهد شد</value>
   </data>
   <data name="City" xml:space="preserve">
     <value>شهر</value>
@@ -272,6 +278,9 @@
   </data>
   <data name="DetailTitle" xml:space="preserve">
     <value>عنوان ویژگی</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>تخفیف</value>
   </data>
   <data name="DiscountCode" xml:space="preserve">
     <value>کد تخفیف</value>
@@ -681,6 +690,15 @@
   <data name="Toman" xml:space="preserve">
     <value>تومان</value>
   </data>
+  <data name="TotalCartPrice" xml:space="preserve">
+    <value>جمع کل سبد خرید</value>
+  </data>
+  <data name="TotalProductsDiscount" xml:space="preserve">
+    <value>تخفیف کالاها</value>
+  </data>
+  <data name="TotalProductsPrice" xml:space="preserve">
+    <value>قیمت کل کالاها</value>
+  </data>
   <data name="TrackingId" xml:space="preserve">
     <value>کد پیگیری</value>
   </data>
@@ -719,6 +737,9 @@
   </data>
   <data name="Warning" xml:space="preserve">
     <value>اخطار</value>
+  </data>
+  <data name="Warranty" xml:space="preserve">
+    <value>گارانتی</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>خوش آمدید!</value>

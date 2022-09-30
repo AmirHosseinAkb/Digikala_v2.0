@@ -15,6 +15,8 @@ namespace ShopManagement.Application.Contracts.Order
         public string ImageName{ get; set; }
         public int Count { get; set; }
         public string Brand { get; set; }
+        public string? ColorName { get; set; }
+        public string? ColorCode { get; set; }
         public int TotalItemPrice { get; set; }
 
     }

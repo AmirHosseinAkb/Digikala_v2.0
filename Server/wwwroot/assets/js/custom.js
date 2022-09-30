@@ -103,7 +103,7 @@ $(".addressLabel").click(function (e) {
 });
 
 const cookieName = "cart_items";
-function AddToCart(id, title, price,discountRate, imageName, brand) {
+function AddToCart(id, title, price, discountRate, imageName, brand) {
     var products = $.cookie(cookieName);
     if (products === undefined) {
         products = [];
@@ -111,7 +111,10 @@ function AddToCart(id, title, price,discountRate, imageName, brand) {
     else {
         products = JSON.parse(products);
     }
-    var currentProduct = products.find(p => p.id == id);
+    var colorInformations = $('input[name=productColor]:checked').attr("value").split('-');
+    var colorName=colorInformations[0];
+    var colorCode=colorInformations[1];
+    var currentProduct = products.find(p => p.id == id && p.colorName == colorName);
     const count = 1;
     if (currentProduct != undefined) {
         products.find(p => p.id == id).count = parseInt(currentProduct.count) + parseInt(count);
@@ -120,11 +123,13 @@ function AddToCart(id, title, price,discountRate, imageName, brand) {
         const product = {
             id,
             title,
-            unitPrice:price,
+            unitPrice: price,
             discountRate,
             imageName,
             count,
-            brand
+            brand,
+            colorName,
+            colorCode
         };
         products.push(product);
     }
@@ -148,7 +153,7 @@ function UpdateCart() {
                         <a href="/Product/${p.id}"><img src="../Products/Images/${p.imageName}" alt=""></a>
                     </div>
                     <div class="mini-cart-product-detail">
-                        <div class="mini-cart-product-title">${p.brand}</div>
+                        <div class="mini-cart-product-title">${p.brand} <p style="color:${p.colorCode}">${p.colorName}</p></div>
                         <div class="mini-cart-product-title">
                             <a href="/Product/${p.id}">${p.title}</a>
                         </div>
@@ -173,12 +178,11 @@ function UpdateCart() {
 }
 
 function RemoveItem(id) {
-    var products=$.cookie(cookieName);
-    products=JSON.parse(products);
-    var product=products.find(p=>p.id==id);
-    debugger;
-    var index=products.indexOf(product);
-    products.splice(index,1);
-     $.cookie(cookieName, JSON.stringify(products), { expires: 10, path: "/" });
+    var products = $.cookie(cookieName);
+    products = JSON.parse(products);
+    var product = products.find(p => p.id == id);
+    var index = products.indexOf(product);
+    products.splice(index, 1);
+    $.cookie(cookieName, JSON.stringify(products), { expires: 10, path: "/" });
     UpdateCart();
 }

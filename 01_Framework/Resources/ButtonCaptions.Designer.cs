@@ -250,6 +250,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Continue Shopping Process.
+        /// </summary>
+        public static string ContinueShoppingProcess {
+            get {
+                return ResourceManager.GetString("ContinueShoppingProcess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dashboard.
         /// </summary>
         public static string Dashboard {

@@ -7,138 +7,122 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-9 col-lg-8">
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane py-4 fade active show" id="nav-1" role="tabpanel" aria-labelledby="nav-1-tab">
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane py-4 fade active show" id="nav-1" role="tabpanel" aria-labelledby="nav-1-tab">
                         <div class="ui-box bg-white p-2">
                             <div class="ui-box-content">
                                 <div class="cart-items">
-                                    <div class="cart-item">
-                                        <div class="cart-item--thumbnail">
-                                            <a href="#">
-                                                <img src="./assets/images/carts/01.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="cart-item--detail">
-                                            <h2 class="cart-item--title mb-2">
+                                    @foreach (var item in Model.CartItemVm)
+                                    {
+                                        <div class="cart-item">
+                                            <div class="cart-item--thumbnail">
                                                 <a href="#">
-                                                    هدفون بی سیم سامسونگ
-                                                    مدل
-                                                    Galaxy Buds
-                                                    Live
+                                                    <img src="~/Products/Images/@item.ImageName" alt="">
                                                 </a>
-                                            </h2>
-                                            <div class="cart-item--variant mb-2">
-                                                <span class="color" style="background-color: #fad7c2;"></span>
-                                                <span class="ms-1">طلایی</span>
                                             </div>
-                                            <div class="cart-item--data mb-4">
-                                                <ul>
-                                                    <li>
-                                                        <i class="ri-shield-check-fill text-secondary"></i><span>
-                                                            گارانتی
-                                                            اصالت و
-                                                            سلامت فیزیکی
-                                                            کالا
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <i class="ri-store-3-fill text-secondary"></i><span>
-                                                            اسم
-                                                            فروشگاه
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <i class="ri-checkbox-multiple-fill text-primary"></i><span>
-                                                            موجود
-                                                            در
-                                                            انبار
-                                                        </span>
-                                                        <span class="text-secondary mx-2">|</span>
-                                                        <i class="ri-truck-fill text-danger"></i><span>
-                                                            ارسال
-                                                            (نحوه
-                                                            ارسال)
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="cart-item--price--actions">
-                                                <div class="cart-item--actions">
-                                                    <div class="num-block fa-num me-3">
-                                                        <div class="num-in">
-                                                            <span class="plus"></span>
-                                                            <input type="text" class="in-num" value="1" readonly="">
-                                                            <span class="minus dis"></span>
+                                            <div class="cart-item--detail">
+                                                <h2 class="cart-item--title mb-2">
+                                                    <a href="~/Products/@item.Id">@item.Title</a>
+                                                </h2>
+                                                <div class="cart-item--variant mb-2">
+                                                    <span class="color" style="background-color: @item.ColorCode"></span>
+                                                    <span class="ms-1">@item.ColorName</span>
+                                                </div>
+                                                <div class="cart-item--data mb-4">
+                                                    <ul>
+                                                        <li>
+                                                            <i class="ri-shield-check-fill text-secondary"></i><span>
+                                                                @DataDictionaries.AuthenticityWarranty
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <i class="ri-store-3-fill text-secondary"></i><span>
+                                                                @DataDictionaries.ShopName
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <i class="ri-checkbox-multiple-fill text-primary"></i><span>
+                                                                @DataDictionaries.AvailableInStock
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="cart-item--price--actions">
+                                                    <div class="cart-item--actions">
+                                                        <div class="num-block fa-num me-3">
+                                                            <div class="num-in">
+                                                                <span class="plus"></span>
+                                                                <input type="text" class="in-num" value="1" readonly="">
+                                                                <span class="minus dis"></span>
+                                                            </div>
+                                                        </div>
+                                                        <a asp-page="Cart" asp-route-data="@item.Id" class="btn btn-link btn-sm text-secondary"><i class="ri-delete-bin-5-line me-1"></i><span>@ButtonCaptions.Delete</span></a>
+                                                    </div>
+                                                    @{
+                                                        int? discountPrice = null;
+                                                        if (item.DiscountRate != null)
+                                                        {
+                                                            discountPrice= (item.DiscountRate * item.TotalItemPrice / 100);
+                                                        }
+                                                    }
+                                                    <div class="cart-item--price fa-num">
+                                                        @if (discountPrice != null)
+                                                        {
+                                                            <div class="cart-item--discount">
+                                                                <span>@DataDictionaries.Discount</span>
+                                                                <span>@discountPrice.Value.ToString("#,0")</span>
+                                                                <span class="currency">@DataDictionaries.Toman</span>
+                                                            </div>
+                                                        }
+                                                        
+                                                        <div class="cart-item--price-now">
+                                                            <span>@((discountPrice!=null)?(item.TotalItemPrice-discountPrice!)?.ToString("#,0"):item.TotalItemPrice.ToString("#,0"))</span>
+                                                            <span class="currency">@DataDictionaries.Toman</span>
                                                         </div>
                                                     </div>
-                                                    <button class="btn btn-link btn-sm text-secondary"><i class="ri-delete-bin-5-line me-1"></i><span>حذف</span></button>
-                                                    <button class="btn btn-link btn-sm text-secondary">
-                                                        <i class="ri-anticlockwise-2-line me-1"></i><span>
-                                                            ذخیره
-                                                            در لیست
-                                                            خرید
-                                                            بعدی
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                                <div class="cart-item--price fa-num">
-                                                    <div class="cart-item--discount">
-                                                        <span>تخفیف</span>
-                                                        <del>10,000</del>
-                                                        <span class="currency">تومان</span>
-                                                    </div>
-                                                    <div class="cart-item--price-now">
-                                                        <span>9,000,000</span>
-                                                        <span class="currency">تومان</span>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    }
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
-            </div>
+            @{
+                int totalProductsPrice = Model.CartItemVm.Sum(i => i.TotalItemPrice);
+                int totalDiscountsPrice = Model.CartItemVm.Sum(i => ((i.DiscountRate != null) ? i.DiscountRate * i.TotalItemPrice / 100 : 0).Value);
+                var totalCartPrice = totalProductsPrice - totalDiscountsPrice;
+            }
             <div class="col-xl-3 col-lg-4">
                 <div class="ui-sticky ui-sticky-top">
                     <!-- checkout-bill -->
                     <div class="checkout-bill ui-box bg-white mb-5">
                         <div class="checkout-bill-row">
-                            <div class="checkout-bill-row-label">قیمت کالاها (@Model.CartItemVm.Count)</div>
+                            <div class="checkout-bill-row-label">@DataDictionaries.TotalProductsPrice (@Model.CartItemVm.Count)</div>
                             <div class="checkout-bill-row-value">
-                                <span class="fs-6">۴۲,۴۲۰,۰۰۰</span> <span class="currency">تومان</span>
+                                <span class="fs-6">@totalProductsPrice.ToString("#,0")</span> <span class="currency">@DataDictionaries.Toman</span>
                             </div>
                         </div>
                         <div class="checkout-bill-row">
-                            <div class="checkout-bill-row-label">تخفیف کالاها</div>
+                            <div class="checkout-bill-row-label">@DataDictionaries.TotalProductsDiscount</div>
                             <div class="checkout-bill-row-value">
-                                <span class="fs-6 text-danger">۵,۰۰۰</span>
-                                <span class="currency text-danger">تومان</span>
+                                <span class="fs-6 text-danger">@totalDiscountsPrice.ToString("#,0")</span>
+                                <span class="currency text-danger">@DataDictionaries.Toman</span>
                             </div>
                         </div>
                         <div class="checkout-bill-row">
-                            <div class="checkout-bill-row-label">جمع سبد خرید</div>
+                            <div class="checkout-bill-row-label">@DataDictionaries.TotalCartPrice</div>
                             <div class="checkout-bill-row-value">
-                                <span class="fs-6">25,800,000</span> <span class="currency">تومان</span>
+                                <span class="fs-6">@totalCartPrice.ToString("#,0")</span> <span class="currency">@DataDictionaries.Toman</span>
                             </div>
                         </div>
                         <div class="checkout-bill-row checkout-bill-note">
-                            هزینه‌ی ارسال در ادامه بر اساس آدرس، زمان و نحوه‌ی ارسال انتخابی شما‌ محاسبه و به
-                            این مبلغ اضافه خواهد شد
+                            @DataDictionaries.CheckoutMessage
                         </div>
                         <div class="checkout-bill-row checkout-bill-action">
-                            <a href="shipping.html" class="btn btn-block btn-primary">ادامه فرایند خرید</a>
-                        </div>
-                        <div class="checkout-bill-row checkout-bill-footer">
-                            <div class="checkout-bill-row-label">
-                                <span class="d-flex">
-                                    <i class="ri-copper-coin-fill text-warning me-1"></i>
-                                    <span class="fs-7">امتیاز باشگاه مشتریان</span>
-                                </span>
-                            </div>
-                            <div class="checkout-bill-row-value">۱۵۰ <span class="fs-7 fw-bold text-muted">امتیاز</span></div>
+                            <a href="shipping.html" class="btn btn-block btn-primary">@ButtonCaptions.ContinueShoppingProcess</a>
                         </div>
                     </div>
                     <!--  checkout-bill -->
@@ -146,11 +130,11 @@
                     <div class="widget p-0">
                         <div class="widget-content widget--free-shipping">
                             <div class="free-shipping--detail">
-                                <div class="title">ارسال رایگان سفارش</div>
-                                <div class="subtitle">سفارش‌های بالای 500 هزار تومان</div>
+                                <div class="title">@DataDictionaries.FreeDelivery</div>
+                                <div class="subtitle">@DataDictionaries.ForSpecialOrders</div>
                             </div>
                             <div class="free-shipping--banner">
-                                <img src="./assets/images/theme/free-shipping--banner.png" alt="ارسال رایگان سفارش">
+                                <img src="./assets/images/theme/free-shipping--banner.png" alt="@DataDictionaries.FreeDelivery">
                             </div>
                         </div>
                     </div>

@@ -214,6 +214,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Guarantee of authenticity and physical health of goods.
+        /// </summary>
+        public static string AuthenticityWarranty {
+            get {
+                return ResourceManager.GetString("AuthenticityWarranty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hi for login to your account use code:.
         /// </summary>
         public static string AuthorizationMessageText {
@@ -264,6 +273,15 @@ namespace _01_Framework.Resources {
         public static string ChargeWallet {
             get {
                 return ResourceManager.GetString("ChargeWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The shipping fee will be calculated based on the address, time and shipping method you choose and will be added to this amount.
+        /// </summary>
+        public static string CheckoutMessage {
+            get {
+                return ResourceManager.GetString("CheckoutMessage", resourceCulture);
             }
         }
         
@@ -525,6 +543,15 @@ namespace _01_Framework.Resources {
         public static string DetailTitle {
             get {
                 return ResourceManager.GetString("DetailTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discount.
+        /// </summary>
+        public static string Discount {
+            get {
+                return ResourceManager.GetString("Discount", resourceCulture);
             }
         }
         
@@ -1744,6 +1771,33 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Cart Price.
+        /// </summary>
+        public static string TotalCartPrice {
+            get {
+                return ResourceManager.GetString("TotalCartPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Products Discount.
+        /// </summary>
+        public static string TotalProductsDiscount {
+            get {
+                return ResourceManager.GetString("TotalProductsDiscount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Products Price.
+        /// </summary>
+        public static string TotalProductsPrice {
+            get {
+                return ResourceManager.GetString("TotalProductsPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TrackingId.
         /// </summary>
         public static string TrackingId {
@@ -1857,6 +1911,15 @@ namespace _01_Framework.Resources {
         public static string Warning {
             get {
                 return ResourceManager.GetString("Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warranty.
+        /// </summary>
+        public static string Warranty {
+            get {
+                return ResourceManager.GetString("Warranty", resourceCulture);
             }
         }
         

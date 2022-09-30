@@ -168,6 +168,9 @@
   <data name="August" xml:space="preserve">
     <value>August</value>
   </data>
+  <data name="AuthenticityWarranty" xml:space="preserve">
+    <value>Guarantee of authenticity and physical health of goods</value>
+  </data>
   <data name="AuthorizationMessageText" xml:space="preserve">
     <value>Hi for login to your account use code:</value>
   </data>
@@ -185,6 +188,9 @@
   </data>
   <data name="ChargeWallet" xml:space="preserve">
     <value>Charge Wallet</value>
+  </data>
+  <data name="CheckoutMessage" xml:space="preserve">
+    <value>The shipping fee will be calculated based on the address, time and shipping method you choose and will be added to this amount</value>
   </data>
   <data name="City" xml:space="preserve">
     <value>City</value>
@@ -272,6 +278,9 @@
   </data>
   <data name="DetailTitle" xml:space="preserve">
     <value>Detail Title</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Discount</value>
   </data>
   <data name="DiscountCode" xml:space="preserve">
     <value>Discount Code</value>
@@ -678,6 +687,15 @@
   <data name="Toman" xml:space="preserve">
     <value>Toman</value>
   </data>
+  <data name="TotalCartPrice" xml:space="preserve">
+    <value>Total Cart Price</value>
+  </data>
+  <data name="TotalProductsDiscount" xml:space="preserve">
+    <value>Total Products Discount</value>
+  </data>
+  <data name="TotalProductsPrice" xml:space="preserve">
+    <value>Total Products Price</value>
+  </data>
   <data name="TrackingId" xml:space="preserve">
     <value>TrackingId</value>
   </data>
@@ -716,6 +734,9 @@
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Warning</value>
+  </data>
+  <data name="Warranty" xml:space="preserve">
+    <value>Warranty</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome</value>
