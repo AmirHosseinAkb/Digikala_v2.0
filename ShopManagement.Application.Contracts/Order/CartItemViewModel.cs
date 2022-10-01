@@ -4,6 +4,7 @@ namespace ShopManagement.Application.Contracts.Order
     public class CartItemViewModel
     {
         public long Id { get; set; }
+        public Guid Guid { get; set; }
         public string Title{ get; set; }
         public int UnitPrice { get; set; }
         public int? DiscountRate { get; set; }

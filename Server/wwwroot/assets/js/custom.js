@@ -101,6 +101,21 @@ $(".addressLabel").click(function (e) {
         })
     }
 });
+function generateUUIDUsingMathRandom() {
+    var d = new Date().getTime();//Timestamp
+    var d2 = (performance && performance.now && (performance.now() * 1000)) || 0;//Time in microseconds since page-load or 0 if unsupported
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16;//random number between 0 and 16
+        if (d > 0) {//Use timestamp until depleted
+            r = (d + r) % 16 | 0;
+            d = Math.floor(d / 16);
+        } else {//Use microseconds since page-load if supported
+            r = (d2 + r) % 16 | 0;
+            d2 = Math.floor(d2 / 16);
+        }
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+}
 
 const cookieName = "cart_items";
 function AddToCart(id, title, price, discountRate, imageName, brand) {
@@ -115,6 +130,7 @@ function AddToCart(id, title, price, discountRate, imageName, brand) {
     var colorName = colorInformations[0];
     var colorCode = colorInformations[1];
     var currentProduct = products.find(p => p.id == id && p.colorName == colorName);
+    var guid = generateUUIDUsingMathRandom();
     const count = 1;
     if (currentProduct != undefined) {
         products.find(p => p.id == id).count = parseInt(currentProduct.count) + parseInt(count);
@@ -129,7 +145,8 @@ function AddToCart(id, title, price, discountRate, imageName, brand) {
             count,
             brand,
             colorName,
-            colorCode
+            colorCode,
+            guid
         };
         products.push(product);
     }
@@ -147,8 +164,8 @@ function UpdateCart() {
     cartItemsWrapper.html('');
     var totalCartPrice = 0;
     products.forEach(p => {
-        var totalPrice=p.unitPrice*p.count;
-        var currentPrice=totalPrice-(totalPrice*p.discountRate/100)
+        var totalPrice = p.unitPrice * p.count;
+        var currentPrice = totalPrice - (totalPrice * p.discountRate / 100)
         const product = `
                <div class="mini-cart-product">
                     <div class="mini-cart-product-thumbnail">
@@ -189,3 +206,39 @@ function RemoveItem(id) {
     UpdateCart();
 }
 
+function ChangeItemCount(type,guid) {
+    var count = $("input[class='in-num']").val();
+    var currentCount=parseInt(count);
+    if (type == "minus")
+        currentCount -= 1;
+    else if (type == "plus")
+        currentCount += 1;
+
+    $.ajax({
+        type: "get",
+        url: "/Cart/ChangeItemCount?Guid=" + guid + "&count=" + currentCount,
+        dataType: "json",
+        success: function (data) {
+            if (data.isSucceeded) {
+                window.location.reload();
+            }
+            else {
+                iziToast.warning({
+                    message: data.message,
+                    rtl: true,
+                    position: 'topCenter',
+                    timeout: 3000
+                });
+                $("input[class='in-num']").val(count);
+            }
+        },
+        error: function (error) {
+            iziToast.warning({
+                    message: "خطایی رخ داده است لطفا صفحه را نوسازی کرده و دوباره امتحان کنید",
+                    rtl: true,
+                    position: 'topCenter',
+                    timeout: 3000
+                });
+        }
+    });
+}

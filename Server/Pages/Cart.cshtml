@@ -68,9 +68,9 @@
                                                             <div class="cart-item--actions">
                                                                 <div class="num-block fa-num me-3">
                                                                     <div class="num-in">
-                                                                        <span class="plus"></span>
-                                                                        <input type="text" class="in-num" value="1" readonly="">
-                                                                        <span class="minus dis"></span>
+                                                                        <span onclick="ChangeItemCount('plus','@item.Guid')" class="plus"></span>
+                                                                        <input type="number" class="in-num" value="@item.Count" readonly="">
+                                                                        <span onclick="ChangeItemCount('minus','@item.Guid')" class="minus dis"></span>
                                                                     </div>
                                                                 </div>
                                                                 <a href="/Cart/RemoveFromCart?id=@item.Id" class="btn btn-link btn-sm text-secondary"><i class="ri-delete-bin-5-line me-1"></i><span>@ButtonCaptions.Delete</span></a>

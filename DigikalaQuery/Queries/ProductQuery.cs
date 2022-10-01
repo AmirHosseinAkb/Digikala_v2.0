@@ -1,4 +1,5 @@
-﻿using DigikalaQuery.Contracts.Product;
+﻿using _01_Framework.Application;
+using DigikalaQuery.Contracts.Product;
 using DigikalaQuery.Contracts.ProductBrand;
 using DigikalaQuery.Contracts.ProductColors;
 using DigikalaQuery.Contracts.ProductDetail;
@@ -298,6 +299,19 @@ namespace DigikalaQuery.Queries
                 }
             }
             return cartItems;
+        }
+
+        public OperationResult ChangeItemCount(List<CartItemViewModel> cartItems,Guid guid, int count)
+        {
+            var result = new OperationResult();
+            var cartItem = cartItems.SingleOrDefault(i => i.Guid == guid);
+            if (cartItem == null)
+                return result.Failed(ApplicationMessages.ProcessFailed);
+            var inventory = _shopContext.Inventories.SingleOrDefault(i => i.ProductId == cartItem.Id);
+            if (inventory!.ProductCount < count)
+                return result.Failed(ApplicationMessages.ProductDontExistInStockForCurrentCount);
+            cartItem.Count = count;
+            return result.Succeeded();
         }
     }
 }

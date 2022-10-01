@@ -1,6 +1,7 @@
 using DigikalaQuery.Contracts.Product;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.ResponseCaching;
 using Nancy.Json;
 using ShopManagement.Application.Contracts.Order;
 
@@ -42,6 +43,19 @@ namespace Server.Pages
             var cookieOptions = new CookieOptions() {Expires = DateTime.Now.AddDays(10), Path = "/"};
             Response.Cookies.Append(cookieName,serializer.Serialize(items),cookieOptions);
             return RedirectToPage();
+        }
+
+        public IActionResult OnGetChangeItemCount(Guid guid, int count)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            var serializer = new JavaScriptSerializer();
+            var cookie=Request.Cookies[cookieName];
+            var cartItems=serializer.Deserialize<List<CartItemViewModel>>(cookie);
+            var result = _productQuery.ChangeItemCount(cartItems, guid, count);
+            var cookieOptions = new CookieOptions() {Expires = DateTime.Now.AddDays(10), Path = "/"};
+            Response.Cookies.Append(cookieName,serializer.Serialize(cartItems),cookieOptions);
+            return new JsonResult(result);
         }
     }
 }

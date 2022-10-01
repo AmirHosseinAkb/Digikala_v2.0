@@ -448,6 +448,7 @@
             var $input = $(this).parents(".num-block").find("input.in-num");
             if ($(this).hasClass("minus")) {
                 var count = parseFloat($input.val()) - 1;
+                $("input[class='in-num']").attr("value",count);
                 count = count < 1 ? 1 : count;
                 if (count < 2) {
                     $(this).addClass("dis");
@@ -465,6 +466,10 @@
 
             $input.change();
             return false;
+        });
+        $("span[class='plus']").click(function () {
+            var count=$("input[class='in-num']").val();
+            $("input[class='in-num']").attr("value",parseInt(count));
         });
     };
     var isFirstCall = true;
