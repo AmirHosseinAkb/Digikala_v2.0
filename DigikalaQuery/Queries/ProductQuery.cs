@@ -36,6 +36,39 @@ namespace DigikalaQuery.Queries
                                                || p.OtherLangTitle.Contains(searchModel.Title)
                                                || p.Tags.Contains(searchModel.Title));
             }
+            switch (searchModel.OrderBy)
+            {
+                case "newest":
+                {
+                    products = products.OrderByDescending(p => p.CreationDate);
+                    break;
+                }
+                case "bestSelling":
+                {
+                    //Do SomeThing
+                    break;
+                }
+                case "popular":
+                {
+                    //Do SomeThing
+                    break;
+                }
+                case "mostExpensive":
+                {
+                    products = products.OrderByDescending(p => p.Price);
+                    break;
+                }
+                case "cheapest":
+                {
+                    products = products.OrderBy(p => p.Price);
+                    break;
+                }
+                default:
+                {
+                    products = products.OrderByDescending(p => p.CreationDate);
+                    break;
+                }
+            }
             if (searchModel.GroupId != 0)
             {
 

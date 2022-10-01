@@ -147,6 +147,8 @@ function UpdateCart() {
     cartItemsWrapper.html('');
     var totalCartPrice = 0;
     products.forEach(p => {
+        var totalPrice=p.unitPrice*p.count;
+        var currentPrice=totalPrice-(totalPrice*p.discountRate/100)
         const product = `
                <div class="mini-cart-product">
                     <div class="mini-cart-product-thumbnail">
@@ -163,7 +165,7 @@ function UpdateCart() {
                             </div>
                             <div class="mini-cart-product-price fa-num">
 
-                                ${parseInt(p.unitPrice).toLocaleString()}<span class="currency">تومان</span>
+                                ${parseInt(currentPrice).toLocaleString()}<span class="currency">تومان</span>
 
                             </div>
                         </div>
@@ -171,7 +173,7 @@ function UpdateCart() {
                     </div>
                 </div>`;
         cartItemsWrapper.append(product);
-        totalCartPrice += parseInt(p.unitPrice.replace(',', '')) * parseInt(p.count);
+        totalCartPrice += parseInt(currentPrice);
     })
     var digits = totalCartPrice.toLocaleString();
     $(".totalCartPrice").text(digits);
