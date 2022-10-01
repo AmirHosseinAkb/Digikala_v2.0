@@ -10,6 +10,7 @@ namespace ShopManagement.Application.Contracts.Order
         public string ImageName{ get; set; }
         public int Count { get; set; }
         public string Brand { get; set; }
+        public bool IsInStock { get; set; } = false;
         public string? ColorName { get; set; }
         public string? ColorCode { get; set; }
         public int TotalItemPrice { get; set; }

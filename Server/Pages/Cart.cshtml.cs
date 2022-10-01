@@ -1,3 +1,4 @@
+using DigikalaQuery.Contracts.Product;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Nancy.Json;
@@ -9,16 +10,24 @@ namespace Server.Pages
     {
         public const string cookieName = "cart_items";
         public List<CartItemViewModel> CartItemVm { get; set; }
+        private readonly IProductQuery _productQuery;
+
+        public CartModel(IProductQuery productQuery)
+        {
+            _productQuery=productQuery;
+        }
         public void OnGet()
         {
             var serializer = new JavaScriptSerializer();
             var cookie = Request.Cookies["cart_items"];
-            CartItemVm = serializer.Deserialize<List<CartItemViewModel>>(cookie);
+            var cartItems = serializer.Deserialize<List<CartItemViewModel>>(cookie);
 
-            foreach (var item in CartItemVm)
+            foreach (var item in cartItems)
             {
                 item.TotalItemPrice = item.UnitPrice * item.Count;
             }
+
+            CartItemVm = _productQuery.CheckInventoryStatus(cartItems);
         }
 
         public IActionResult OnGetRemoveFromCart(long id)

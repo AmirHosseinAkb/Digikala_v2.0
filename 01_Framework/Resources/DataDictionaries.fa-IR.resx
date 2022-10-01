@@ -459,6 +459,9 @@
   <data name="NewProducts" xml:space="preserve">
     <value>محصولات جدید</value>
   </data>
+  <data name="NotAvailable" xml:space="preserve">
+    <value>ناموجود</value>
+  </data>
   <data name="November" xml:space="preserve">
     <value>آبان</value>
   </data>

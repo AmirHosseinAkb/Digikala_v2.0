@@ -6,6 +6,7 @@ using DigikalaQuery.Contracts.ProductImage;
 using DiscountManagement.Domain.ProductDiscountAgg;
 using DiscountManagement.Infrastructure.EfCore;
 using Microsoft.EntityFrameworkCore;
+using ShopManagement.Application.Contracts.Order;
 using ShopManagement.Infrastructure.EfCore;
 
 namespace DigikalaQuery.Queries
@@ -284,6 +285,19 @@ namespace DigikalaQuery.Queries
         {
             return _discountContext.ProductDiscounts.SingleOrDefault(d =>
                 d.ProductId == productId && d.StartDate <= DateTime.Now && d.EndDate >= DateTime.Now);
+        }
+
+        public List<CartItemViewModel> CheckInventoryStatus(List<CartItemViewModel> cartItems)
+        {
+            var inventories = _shopContext.Inventories.Select(i => new {i.ProductId, i.ProductCount}).ToList();
+            foreach (var cartItem in cartItems)
+            {
+                if (inventories.Any(i => i.ProductId == cartItem.Id && i.ProductCount > 0))
+                {
+                    cartItem.IsInStock = true;
+                }
+            }
+            return cartItems;
         }
     }
 }

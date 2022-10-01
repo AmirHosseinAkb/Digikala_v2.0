@@ -459,6 +459,9 @@
   <data name="NewProducts" xml:space="preserve">
     <value>New Products</value>
   </data>
+  <data name="NotAvailable" xml:space="preserve">
+    <value>Not Available</value>
+  </data>
   <data name="November" xml:space="preserve">
     <value>November</value>
   </data>

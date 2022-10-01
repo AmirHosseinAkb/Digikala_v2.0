@@ -42,46 +42,62 @@
                                                                     @DataDictionaries.ShopName
                                                                 </span>
                                                             </li>
-                                                            <li>
-                                                                <i class="ri-checkbox-multiple-fill text-primary"></i><span>
-                                                                    @DataDictionaries.AvailableInStock
-                                                                </span>
-                                                            </li>
+                                                            @if (item.IsInStock)
+                                                            {
+                                                                <li>
+                                                                    <i class="ri-checkbox-multiple-fill text-primary"></i><span>
+                                                                        @DataDictionaries.AvailableInStock
+                                                                    </span>
+                                                                </li>
+                                                            }
+                                                            else
+                                                            {
+                                                                <li>
+                                                                    <i class="ri-close-circle-fill text-primary"></i><span>
+                                                                        @DataDictionaries.NotAvailable
+                                                                    </span>
+                                                                </li>
+                                                            }
+                                                            
                                                         </ul>
                                                     </div>
                                                     <div class="cart-item--price--actions">
-                                                        <div class="cart-item--actions">
-                                                            <div class="num-block fa-num me-3">
-                                                                <div class="num-in">
-                                                                    <span class="plus"></span>
-                                                                    <input type="text" class="in-num" value="1" readonly="">
-                                                                    <span class="minus dis"></span>
+                                                        
+                                                        @if (item.IsInStock)
+                                                        {
+                                                            <div class="cart-item--actions">
+                                                                <div class="num-block fa-num me-3">
+                                                                    <div class="num-in">
+                                                                        <span class="plus"></span>
+                                                                        <input type="text" class="in-num" value="1" readonly="">
+                                                                        <span class="minus dis"></span>
+                                                                    </div>
                                                                 </div>
+                                                                <a href="/Cart/RemoveFromCart?id=@item.Id" class="btn btn-link btn-sm text-secondary"><i class="ri-delete-bin-5-line me-1"></i><span>@ButtonCaptions.Delete</span></a>
                                                             </div>
-                                                            <a href="/Cart/RemoveFromCart?id=@item.Id" class="btn btn-link btn-sm text-secondary"><i class="ri-delete-bin-5-line me-1"></i><span>@ButtonCaptions.Delete</span></a>
-                                                        </div>
-                                                        @{
+
                                                             int? discountPrice = null;
                                                             if (item.DiscountRate != null)
                                                             {
                                                                 discountPrice = (item.DiscountRate * item.TotalItemPrice / 100);
                                                             }
-                                                        }
-                                                        <div class="cart-item--price fa-num">
-                                                            @if (discountPrice != null)
-                                                            {
-                                                                <div class="cart-item--discount">
-                                                                    <span>@DataDictionaries.Discount</span>
-                                                                    <span>@discountPrice.Value.ToString("#,0")</span>
+
+                                                            <div class="cart-item--price fa-num">
+                                                                @if (discountPrice != null)
+                                                                {
+                                                                    <div class="cart-item--discount">
+                                                                        <span>@DataDictionaries.Discount</span>
+                                                                        <span>@discountPrice.Value.ToString("#,0")</span>
+                                                                        <span class="currency">@DataDictionaries.Toman</span>
+                                                                    </div>
+                                                                }
+
+                                                                <div class="cart-item--price-now">
+                                                                    <span>@((discountPrice!=null)?(item.TotalItemPrice-discountPrice!)?.ToString("#,0"):item.TotalItemPrice.ToString("#,0"))</span>
                                                                     <span class="currency">@DataDictionaries.Toman</span>
                                                                 </div>
-                                                            }
-
-                                                            <div class="cart-item--price-now">
-                                                                <span>@((discountPrice!=null)?(item.TotalItemPrice-discountPrice!)?.ToString("#,0"):item.TotalItemPrice.ToString("#,0"))</span>
-                                                                <span class="currency">@DataDictionaries.Toman</span>
                                                             </div>
-                                                        </div>
+                                                        }
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,8 +109,8 @@
                     </div>
                 </div>
                 @{
-                    int totalProductsPrice = Model.CartItemVm.Sum(i => i.TotalItemPrice);
-                    int totalDiscountsPrice = Model.CartItemVm.Sum(i => ((i.DiscountRate != null) ? i.DiscountRate * i.TotalItemPrice / 100 : 0).Value);
+                    int totalProductsPrice = Model.CartItemVm.Where(i => i.IsInStock).Sum(i => i.TotalItemPrice);
+                    int totalDiscountsPrice = Model.CartItemVm.Where(i => i.IsInStock).Sum(i => ((i.DiscountRate != null) ? i.DiscountRate * i.TotalItemPrice / 100 : 0).Value);
                     var totalCartPrice = totalProductsPrice - totalDiscountsPrice;
                 }
                 <div class="col-xl-3 col-lg-4">
