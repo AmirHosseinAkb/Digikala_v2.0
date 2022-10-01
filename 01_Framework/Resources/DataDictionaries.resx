@@ -177,6 +177,9 @@
   <data name="AvailableInStock" xml:space="preserve">
     <value>Available In Stock</value>
   </data>
+  <data name="BestSellerProducts" xml:space="preserve">
+    <value>Best Seller Products</value>
+  </data>
   <data name="BirthDate" xml:space="preserve">
     <value>Birth Date</value>
   </data>
@@ -318,6 +321,12 @@
   <data name="EmailOrPhone" xml:space="preserve">
     <value>Email or Phone</value>
   </data>
+  <data name="EmptyCard" xml:space="preserve">
+    <value>Cart Is Empty!</value>
+  </data>
+  <data name="EmptyCardMessage" xml:space="preserve">
+    <value>You can go to the following pages to see more products</value>
+  </data>
   <data name="EndDate" xml:space="preserve">
     <value>End Date</value>
   </data>
@@ -447,6 +456,9 @@
   <data name="NewPassword" xml:space="preserve">
     <value>NewPassword</value>
   </data>
+  <data name="NewProducts" xml:space="preserve">
+    <value>New Products</value>
+  </data>
   <data name="November" xml:space="preserve">
     <value>November</value>
   </data>
@@ -509,6 +521,9 @@
   </data>
   <data name="PrimaryGroup" xml:space="preserve">
     <value>Primary Group</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Product</value>
   </data>
   <data name="ProductBrands" xml:space="preserve">
     <value>Product Brands</value>

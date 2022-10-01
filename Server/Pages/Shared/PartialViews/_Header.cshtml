@@ -216,17 +216,17 @@ else
         <a href="cart.html" class="user-option-btn user-option-btn--cart">
             <i class="ri-shopping-bag-2-fill icon"></i>
             <span class="user-item-text">
-                <span class="title">مبلغ سفارش شما</span>
-                <span  class="value fa-num totalCartPrice">0<span class="currency">تومان</span></span>
+                <span class="title">@DataDictionaries.TotalCartPrice</span>
+                <span  class="value fa-num totalCartPrice">0<span class="currency">@DataDictionaries.Toman</span></span>
             </span>
             <span  class="counter cartItemsCounter">0</span>
         </a>
         <div class="mini-cart">
             <div class="mini-cart-header">
-                <span class="mini-cart-products-count fa-num"><span class="cartItemsCounter">0</span> کالا</span>
+                <span class="mini-cart-products-count fa-num"><span class="cartItemsCounter">0</span> @DataDictionaries.Product</span>
                 <a href="cart.html" class="btn btn-link px-0">
 
-                    مشاهده سبد خرید <i class="ri-arrow-left-s-fill"></i>
+                    @ButtonCaptions.ShowCart<i class="ri-arrow-left-s-fill"></i>
 
                 </a>
             </div>
@@ -235,14 +235,14 @@ else
             </div>
             <div class="mini-cart-footer">
                 <div class="mini-cart-total">
-                    <span class="mini-cart-total-label">مبلغ قابل پرداخت:</span>
+                    <span class="mini-cart-total-label">@DataDictionaries.TotalCartPrice</span>
                     <span class="mini-cart-total-value fa-num">
 
                         <span class="totalCartPrice"></span><span class="currency">@DataDictionaries.Toman</span>
 
                     </span>
                 </div>
-                <a href="shipping.html" class="btn btn-primary">ورود و ثبت سفارش</a>
+                <a href="/Cart" class="btn btn-primary">@ButtonCaptions.LoginAndRegisterOrder</a>
             </div>
         </div>
     </div>
@@ -263,18 +263,18 @@ else
                         @foreach (var group in groups.Where(g => g.ParentId == null))
                         {
                             <li class="mega-menu-category">
-                                <a href="/Products/SearchModel.Groups=@group.GroupId">@group.GroupTitle</a>
+                                <a href="/Products/SearchModel.GroupId=@group.GroupId">@group.GroupTitle</a>
                                 @if (groups.Any(g => g.ParentId == group.GroupId))
                                 {
                                     <ul class="mega-menu">
                                         @foreach (var primaryGroup in groups.Where(g => g.ParentId == group.GroupId))
                                         {
-                                            <li class="parent"><a href="/Products/SearchModel.Groups=@primaryGroup.GroupId">@primaryGroup.GroupTitle</a></li>
+                                            <li class="parent"><a href="/Products/SearchModel.GroupId=@primaryGroup.GroupId">@primaryGroup.GroupTitle</a></li>
                                             @if (groups.Any(g => g.ParentId == primaryGroup.GroupId))
                                             {
                                                 @foreach (var secondaryGroup in groups.Where(g => g.ParentId == primaryGroup.GroupId))
                                                 {
-                                                    <li><a href="/Products?SearchModel.Groups=@secondaryGroup.GroupId">@secondaryGroup.GroupTitle</a></li>
+                                                    <li><a href="/Products?SearchModel.GroupId=@secondaryGroup.GroupId">@secondaryGroup.GroupTitle</a></li>
                                                 }
                                             }
                                         }

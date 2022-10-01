@@ -219,6 +219,9 @@
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="LoginAndRegisterOrder" xml:space="preserve">
+    <value>Login And Register Order</value>
+  </data>
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
   </data>
@@ -275,6 +278,9 @@
   </data>
   <data name="SendEmail" xml:space="preserve">
     <value>Send Email</value>
+  </data>
+  <data name="ShowCart" xml:space="preserve">
+    <value>Show Cart</value>
   </data>
   <data name="ShowLess" xml:space="preserve">
     <value>Show Less</value>

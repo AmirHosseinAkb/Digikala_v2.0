@@ -241,6 +241,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Best Seller Products.
+        /// </summary>
+        public static string BestSellerProducts {
+            get {
+                return ResourceManager.GetString("BestSellerProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Birth Date.
         /// </summary>
         public static string BirthDate {
@@ -664,6 +673,24 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cart Is Empty!.
+        /// </summary>
+        public static string EmptyCard {
+            get {
+                return ResourceManager.GetString("EmptyCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can go to the following pages to see more products.
+        /// </summary>
+        public static string EmptyCardMessage {
+            get {
+                return ResourceManager.GetString("EmptyCardMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End Date.
         /// </summary>
         public static string EndDate {
@@ -1051,6 +1078,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Products.
+        /// </summary>
+        public static string NewProducts {
+            get {
+                return ResourceManager.GetString("NewProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to November.
         /// </summary>
         public static string November {
@@ -1236,6 +1272,15 @@ namespace _01_Framework.Resources {
         public static string PrimaryGroup {
             get {
                 return ResourceManager.GetString("PrimaryGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product.
+        /// </summary>
+        public static string Product {
+            get {
+                return ResourceManager.GetString("Product", resourceCulture);
             }
         }
         

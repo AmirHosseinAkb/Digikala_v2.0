@@ -25,6 +25,7 @@ namespace Server.Pages
         {
             if (!HttpContext.Request.IsAjaxRequest())
             {
+                ViewData["GroupId"] = searchModel.GroupId;
                 ProductBoxVms = _productQuery.GetProductsForShow(searchModel);
                 return Page();
             }

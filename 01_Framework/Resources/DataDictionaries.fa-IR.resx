@@ -177,6 +177,9 @@
   <data name="AvailableInStock" xml:space="preserve">
     <value>موجود در انبار</value>
   </data>
+  <data name="BestSellerProducts" xml:space="preserve">
+    <value>محصولات پر فروش</value>
+  </data>
   <data name="BirthDate" xml:space="preserve">
     <value>تاریخ تولد</value>
   </data>
@@ -318,6 +321,12 @@
   <data name="EmailOrPhone" xml:space="preserve">
     <value>ایمیل یا شماره همراه</value>
   </data>
+  <data name="EmptyCard" xml:space="preserve">
+    <value>سبد خرید شما خالی است!</value>
+  </data>
+  <data name="EmptyCardMessage" xml:space="preserve">
+    <value>می‌توانید برای مشاهده محصولات بیشتر به صفحات زیر بروید</value>
+  </data>
   <data name="EndDate" xml:space="preserve">
     <value>تاریخ پایان</value>
   </data>
@@ -447,6 +456,9 @@
   <data name="NewPassword" xml:space="preserve">
     <value>رمز عبور جدید</value>
   </data>
+  <data name="NewProducts" xml:space="preserve">
+    <value>محصولات جدید</value>
+  </data>
   <data name="November" xml:space="preserve">
     <value>آبان</value>
   </data>
@@ -509,6 +521,9 @@
   </data>
   <data name="PrimaryGroup" xml:space="preserve">
     <value>گروه فرعی اول</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>محصول</value>
   </data>
   <data name="ProductBrands" xml:space="preserve">
     <value>برند محصولات</value>

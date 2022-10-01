@@ -36,13 +36,11 @@ namespace DigikalaQuery.Queries
                                                || p.OtherLangTitle.Contains(searchModel.Title)
                                                || p.Tags.Contains(searchModel.Title));
             }
-            if (searchModel.Groups.Any())
+            if (searchModel.GroupId != 0)
             {
-                foreach (var groupId in searchModel.Groups)
-                {
-                    products = products.Where(p =>
-                        p.GroupId == groupId || p.PrimaryGroupId == groupId || p.SecondaryGroupId == groupId);
-                }
+
+                products = products.Where(p =>
+                    p.GroupId == searchModel.GroupId || p.PrimaryGroupId == searchModel.GroupId || p.SecondaryGroupId == searchModel.GroupId);
             }
 
             int take = 12;
@@ -137,9 +135,15 @@ namespace DigikalaQuery.Queries
                         break;
                     }
             }
+            if (searchModel.GroupId != 0)
+            {
+
+                products = products.Where(p =>
+                    p.GroupId == searchModel.GroupId || p.PrimaryGroupId == searchModel.GroupId || p.SecondaryGroupId == searchModel.GroupId);
+            }
+
             if (searchModel.IsInStock)
                 products = products.Where(p => p.Inventory.ProductCount > 0);
-
 
             if (searchModel.Brands.Any())
             {

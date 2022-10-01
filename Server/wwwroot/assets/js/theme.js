@@ -467,8 +467,12 @@
             return false;
         });
     };
-    /* end Product +/- ======*/
-    /*====== FilterPrice ======*/
+    var isFirstCall = true;
+    var isSecondUpdate = false;
+    $(document).ready(function () {
+        isFirstCall = true;
+        isSecondUpdate = false;
+    });
     SCRIPT.FilterPrice = function () {
         if ($(".filter-price").length) {
             var skipSlider = document.getElementById("slider-non-linear-step");
@@ -496,15 +500,17 @@
             ];
             var startInp = document.getElementById('startInp');
             var endInp = document.getElementById('endInp');
-
             skipSlider.noUiSlider.on("update", function (values, handle) {
                 skipValues[handle].value = values[handle];
                 startInp.value = values[0].replace(',', '');
                 endInp.value = values[1].replace(',', '');
-                setTimeout(FilterProduct, 2000);
+            });
+            skipSlider.noUiSlider.on("end", function (values, handle) {
+                 FilterProduct();
             });
         }
     };
+
     /* end FilterPrice ======*/
 
     /*====== Tooltip ======*/

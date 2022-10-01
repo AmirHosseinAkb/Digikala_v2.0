@@ -219,6 +219,9 @@
   <data name="Login" xml:space="preserve">
     <value>ورود</value>
   </data>
+  <data name="LoginAndRegisterOrder" xml:space="preserve">
+    <value>ورود و ثبت سفارش</value>
+  </data>
   <data name="Logout" xml:space="preserve">
     <value>خروج</value>
   </data>
@@ -275,6 +278,9 @@
   </data>
   <data name="SendEmail" xml:space="preserve">
     <value>ارسال ایمیل</value>
+  </data>
+  <data name="ShowCart" xml:space="preserve">
+    <value>مشاهده سبد خرید</value>
   </data>
   <data name="ShowLess" xml:space="preserve">
     <value>نمایش کمتر</value>

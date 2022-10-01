@@ -367,6 +367,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login And Register Order.
+        /// </summary>
+        public static string LoginAndRegisterOrder {
+            get {
+                return ResourceManager.GetString("LoginAndRegisterOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Logout.
         /// </summary>
         public static string Logout {
@@ -534,6 +543,15 @@ namespace _01_Framework.Resources {
         public static string SendEmail {
             get {
                 return ResourceManager.GetString("SendEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Cart.
+        /// </summary>
+        public static string ShowCart {
+            get {
+                return ResourceManager.GetString("ShowCart", resourceCulture);
             }
         }
         

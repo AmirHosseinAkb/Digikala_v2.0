@@ -112,8 +112,8 @@ function AddToCart(id, title, price, discountRate, imageName, brand) {
         products = JSON.parse(products);
     }
     var colorInformations = $('input[name=productColor]:checked').attr("value").split('-');
-    var colorName=colorInformations[0];
-    var colorCode=colorInformations[1];
+    var colorName = colorInformations[0];
+    var colorCode = colorInformations[1];
     var currentProduct = products.find(p => p.id == id && p.colorName == colorName);
     const count = 1;
     if (currentProduct != undefined) {
@@ -186,3 +186,4 @@ function RemoveItem(id) {
     $.cookie(cookieName, JSON.stringify(products), { expires: 10, path: "/" });
     UpdateCart();
 }
+

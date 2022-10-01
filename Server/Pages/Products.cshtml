@@ -13,6 +13,7 @@
                 <div class="ui-sticky ui-sticky-top">
                     <div class="ui-box sidebar-widgets">
                         <form id="frmProducts">
+                            <input type="hidden" asp-for="SearchModel.GroupId" value="@ViewData["GroupId"]"/>
                             <input id="orderInp" type="hidden" asp-for="SearchModel.OrderBy"/>
                             <div class="widget widget-collapse mb-3">
                                 <div class="widget-title widget-title--collapse-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseBrandFilter" aria-expanded="false" aria-controls="collapseBrandFilter" role="button">برند</div>
@@ -114,8 +115,8 @@
                             <!--  widget -->
                             <!-- widget -->
                             <div class="widget widget-collapse mb-3">
-                                <input type="hidden" id="startInp" asp-for="SearchModel.StartPrice"/>
-                                <input type="hidden" id="endInp" asp-for="SearchModel.EndPrice"/>
+                                <input  type="hidden" id="startInp" asp-for="SearchModel.StartPrice"/>
+                                <input  type="hidden" id="endInp" asp-for="SearchModel.EndPrice"/>
                                 <div class="widget-title widget-title--collapse-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapsePriceFilter" aria-expanded="false" aria-controls="collapsePriceFilter" role="button">@DataDictionaries.PriceRange</div>
                                 <div class="widget-content widget--search fa-num collapse show" id="collapsePriceFilter" style="">
                                     <div class="filter-price">
