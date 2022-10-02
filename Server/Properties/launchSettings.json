@@ -16,7 +16,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "launchUrl":"Products"
+      "launchUrl":"Cart"
     },
     "IIS Express": {
       "commandName": "IISExpress",

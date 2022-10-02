@@ -206,8 +206,8 @@ function RemoveItem(id) {
     UpdateCart();
 }
 
-function ChangeItemCount(type,guid) {
-    var count = $("input[class='in-num']").val();
+function ChangeItemCount(type,guid,count) {
+    var count = $("input[id='"+guid+"']").val();
     var currentCount=parseInt(count);
     if (type == "minus")
         currentCount -= 1;

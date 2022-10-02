@@ -36,6 +36,7 @@ namespace _01_Framework.Application
         public const string DateTimeFormatIsNotCorrect = "فرمت تاریخ صحیح نمی باشد";
         public const string EndDateShouldBeGreaterThanStartDate = "تاریخ پایان باید بعد از تاریخ شروع باشد";
         public const string ProductDontExistInStockForCurrentCount = "متاسفانه از محصول مورد نظر به اندازه وارد شده در انبار نداریم!";
+        public const string InventoryCantBeZero = "موجودی نمی تواند صفر باشد در صورتی که می خواهید ایتم را حذف کنید از دکمه حذف استفاده کنید";
 
     }
 }

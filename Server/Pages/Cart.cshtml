@@ -69,14 +69,14 @@
                                                                 <div class="num-block fa-num me-3">
                                                                     <div class="num-in">
                                                                         <span onclick="ChangeItemCount('plus','@item.Guid')" class="plus"></span>
-                                                                        <input type="number" class="in-num" value="@item.Count" readonly="">
-                                                                        <span onclick="ChangeItemCount('minus','@item.Guid')" class="minus dis"></span>
+                                                                        <input id="@item.Guid" type="number" class="in-num" value="@item.Count" readonly="">
+                                                                        <span onclick="ChangeItemCount('minus','@item.Guid')"  class="minus dis"></span>
                                                                     </div>
                                                                 </div>
                                                                 <a href="/Cart/RemoveFromCart?id=@item.Id" class="btn btn-link btn-sm text-secondary"><i class="ri-delete-bin-5-line me-1"></i><span>@ButtonCaptions.Delete</span></a>
                                                             </div>
 
-                                                            int? discountPrice = null;
+                                                            long? discountPrice = null;
                                                             if (item.DiscountRate != null)
                                                             {
                                                                 discountPrice = (item.DiscountRate * item.TotalItemPrice / 100);
@@ -109,9 +109,9 @@
                     </div>
                 </div>
                 @{
-                    int totalProductsPrice = Model.CartItemVm.Where(i => i.IsInStock).Sum(i => i.TotalItemPrice);
-                    int totalDiscountsPrice = Model.CartItemVm.Where(i => i.IsInStock).Sum(i => ((i.DiscountRate != null) ? i.DiscountRate * i.TotalItemPrice / 100 : 0).Value);
-                    var totalCartPrice = totalProductsPrice - totalDiscountsPrice;
+                    long totalProductsPrice = Model.CartItemVm.Where(i => i.IsInStock).Sum(i => i.TotalItemPrice);
+                    long totalDiscountsPrice = Model.CartItemVm.Where(i => i.IsInStock).Sum(i => ((i.DiscountRate != null) ? (i.DiscountRate * i.TotalItemPrice)/100  : 0).Value);
+                    long totalCartPrice = totalProductsPrice - totalDiscountsPrice;
                 }
                 <div class="col-xl-3 col-lg-4">
                     <div class="ui-sticky ui-sticky-top">

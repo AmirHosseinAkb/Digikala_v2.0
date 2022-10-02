@@ -16,19 +16,22 @@ namespace Server.Pages
         public CartModel(IProductQuery productQuery)
         {
             _productQuery=productQuery;
+            CartItemVm=new List<CartItemViewModel>();
         }
         public void OnGet()
         {
             var serializer = new JavaScriptSerializer();
             var cookie = Request.Cookies["cart_items"];
             var cartItems = serializer.Deserialize<List<CartItemViewModel>>(cookie);
-
-            foreach (var item in cartItems)
+            if (cartItems != null)
             {
-                item.TotalItemPrice = item.UnitPrice * item.Count;
+                foreach (var item in cartItems)
+                {
+                    item.TotalItemPrice = item.UnitPrice * item.Count;
+                }
+                _productQuery.CheckItemsStatus(cartItems);
+                CartItemVm = cartItems;
             }
-
-            CartItemVm = _productQuery.CheckInventoryStatus(cartItems);
         }
 
         public IActionResult OnGetRemoveFromCart(long id)

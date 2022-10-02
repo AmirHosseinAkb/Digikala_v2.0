@@ -288,7 +288,7 @@ namespace DigikalaQuery.Queries
                 d.ProductId == productId && d.StartDate <= DateTime.Now && d.EndDate >= DateTime.Now);
         }
 
-        public List<CartItemViewModel> CheckInventoryStatus(List<CartItemViewModel> cartItems)
+        public void CheckItemsStatus(List<CartItemViewModel> cartItems)
         {
             var inventories = _shopContext.Inventories.Select(i => new {i.ProductId, i.ProductCount}).ToList();
             foreach (var cartItem in cartItems)
@@ -297,8 +297,17 @@ namespace DigikalaQuery.Queries
                 {
                     cartItem.IsInStock = true;
                 }
+
+                var product = _shopContext.Products.SingleOrDefault(p => p.ProductId == cartItem.Id);
+                if (product != null)
+                {
+                    cartItem.Title = product!.Title;
+                    cartItem.UnitPrice = product!.Price;
+                    cartItem.TotalItemPrice = cartItem.UnitPrice * cartItem.Count;
+                    cartItem.DiscountRate = _discountContext.ProductDiscounts
+                        .SingleOrDefault(d => d.ProductId == cartItem.Id)?.Rate;
+                }
             }
-            return cartItems;
         }
 
         public OperationResult ChangeItemCount(List<CartItemViewModel> cartItems,Guid guid, int count)
@@ -310,6 +319,8 @@ namespace DigikalaQuery.Queries
             var inventory = _shopContext.Inventories.SingleOrDefault(i => i.ProductId == cartItem.Id);
             if (inventory!.ProductCount < count)
                 return result.Failed(ApplicationMessages.ProductDontExistInStockForCurrentCount);
+            if (count < 1)
+                return result.Failed(ApplicationMessages.InventoryCantBeZero);
             cartItem.Count = count;
             return result.Succeeded();
         }

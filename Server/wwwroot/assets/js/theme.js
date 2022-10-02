@@ -441,43 +441,28 @@
         });
     };
     /*====== end Form ======*/
-
     /*====== Product +/- ======*/
     SCRIPT.Quantity = function () {
         $(".num-in span").click(function () {
             var $input = $(this).parents(".num-block").find("input.in-num");
             if ($(this).hasClass("minus")) {
                 var count = parseFloat($input.val()) - 1;
-                $("input[class='in-num']").attr("value",count);
                 count = count < 1 ? 1 : count;
                 if (count < 2) {
                     $(this).addClass("dis");
                 } else {
                     $(this).removeClass("dis");
                 }
-                $input.val(count);
+                $(this).parents(".num-block").find("input.in-num").attr("value", count);
             } else {
-                var count = parseFloat($input.val()) + 1;
-                $input.val(count);
-                if (count > 1) {
-                    $(this).parents(".num-block").find(".minus").removeClass("dis");
-                }
+                var input = $(this).parents(".num-block").find("input.in-num");
+                var count = input.val();
+                input.attr("value", parseInt(count))
             }
-
             $input.change();
             return false;
         });
-        $("span[class='plus']").click(function () {
-            var count=$("input[class='in-num']").val();
-            $("input[class='in-num']").attr("value",parseInt(count));
-        });
     };
-    var isFirstCall = true;
-    var isSecondUpdate = false;
-    $(document).ready(function () {
-        isFirstCall = true;
-        isSecondUpdate = false;
-    });
     SCRIPT.FilterPrice = function () {
         if ($(".filter-price").length) {
             var skipSlider = document.getElementById("slider-non-linear-step");
@@ -511,7 +496,7 @@
                 endInp.value = values[1].replace(',', '');
             });
             skipSlider.noUiSlider.on("end", function (values, handle) {
-                 FilterProduct();
+                FilterProduct();
             });
         }
     };

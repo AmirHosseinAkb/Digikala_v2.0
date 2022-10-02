@@ -14,7 +14,7 @@ namespace ShopManagement.Application.Contracts.Order
         public bool IsInStock { get; set; } = false;
         public string? ColorName { get; set; }
         public string? ColorCode { get; set; }
-        public int TotalItemPrice { get; set; }
+        public long TotalItemPrice { get; set; }
 
     }
 }
