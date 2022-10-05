@@ -218,7 +218,7 @@ namespace UserManagement.Application
             var user = _userRepository.GetUserById(_authenticationHelper.GetCurrentUserId());
 
             if (user.PhoneNumber == command.PhoneNumber)
-                result.Failed(ApplicationMessages.IdenticalPhoneNumberEntered);
+                return result.Failed(ApplicationMessages.IdenticalPhoneNumberEntered);
 
             if (_userRepository.IsExistByPhoneNumber(command.PhoneNumber))
                 return result.Failed(ApplicationMessages.DuplicatedPhone);

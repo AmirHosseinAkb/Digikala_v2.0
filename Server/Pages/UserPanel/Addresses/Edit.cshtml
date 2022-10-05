@@ -1,5 +1,15 @@
-﻿@model UserManagement.Application.Contracts.Address.EditAddressCommand
-
+﻿@using Nancy.Json
+@model UserManagement.Application.Contracts.Address.EditAddressCommand
+@inject IHttpContextAccessor _httpContextAccessor;
+@{
+    var serializer = new JavaScriptSerializer();
+    var nameCookie = _httpContextAccessor.HttpContext.Request.Cookies["UserFullName"];
+    var phoneCookie = _httpContextAccessor.HttpContext.Request.Cookies["Phone"];
+    var userFullName = serializer.Deserialize<string>(nameCookie).Split('-');
+    var phoneNumber = serializer.Deserialize<string>(phoneCookie);
+    var firstName = userFullName[0];
+    var lastName = userFullName[1];
+}
 <div class="modal-header">
     <div class="modal-title">@DataDictionaries.NewAddress</div>
 </div>
@@ -14,6 +24,30 @@
                 <input type="hidden" asp-for="AddressId" />
                 <div class="row">
                     <div class="col-md-12 col-lg-12 mb-3">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6 mb-3">
+                                <div class="form-element-row">
+                                    <label class="label fs-7">@DataDictionaries.ReceiverFirstName</label>
+                                    <input asp-for="ReceiverFirstName" type="text" class="form-control">
+                                    <span asp-validation-for="ReceiverFirstName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 mb-3">
+                                <div class="form-element-row">
+                                    <label class="label fs-7">@DataDictionaries.ReceiverLastName</label>
+                                    <input asp-for="ReceiverLastName" type="text" class="form-control">
+                                    <span asp-validation-for="ReceiverLastName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-element-row">
+                            <label class="label fs-7">@DataDictionaries.ReceiverPhoneNumber</label>
+                            <input asp-for="ReceiverPhoneNumber" type="number" class="form-control">
+                            <span asp-validation-for="ReceiverPhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <input id="selfAddressCheck" type="checkbox"><p style="display: inline;margin-right:5px">@DataDictionaries.SelfAddressMessage</p>
+                        </div>
                         <div class="form-element-row">
                             <label class="label fs-7">@DataDictionaries.State</label>
                             <input asp-for="State" type="text" class="form-control">
@@ -50,3 +84,16 @@
 </div>
 <script src="~/assets/js/library/jquery.validate.min.js"></script>
 <script src="~/assets/js/library/jquery.validate.unobtrusive.min.js"></script>
+<script type="text/javascript">
+    $("#selfAddressCheck").click(function() {
+        if (this.checked) {
+            $("#ReceiverFirstName").val("@Html.Raw(firstName)").attr("readOnly", true);
+            $("#ReceiverLastName").val("@Html.Raw(lastName)").attr("readOnly", true);
+            $("#ReceiverPhoneNumber").val("@Html.Raw(phoneNumber)").attr("readOnly", true);
+        } else {
+            $("#ReceiverFirstName").val("").attr("readOnly", false);
+            $("#ReceiverLastName").val("").attr("readOnly", false);
+            $("#ReceiverPhoneNumber").val("").attr("readOnly", false);
+        }
+    });
+</script>

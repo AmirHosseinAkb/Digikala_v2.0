@@ -63,6 +63,9 @@ public class AddressApplication : IAddressApplication
         return new EditAddressCommand()
         {
             AddressId = address.AddressId,
+            ReceiverFirstName = address.ReceiverFirstName,
+            ReceiverLastName = address.ReceiverLastName,
+            ReceiverPhoneNumber = address.ReceiverPhoneNumber,
             State = address.State,
             City = address.City,
             NeighborHood = address.NeighborHood,
