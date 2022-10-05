@@ -90,6 +90,21 @@ function CallBackHandler(data, action, form) {
     }
 }
 
+$("#btnCreateAddress").click(function () {
+    $("#mainModalContent").load("/UserPanel/Addresses/Create");
+    $("#mainModal").modal('show');
+});
+
+function EditAddress(addressId) {
+    $("#mainModalContent").load("/UserPanel/Addresses/Edit?addressId=" + addressId);
+    $("#mainModal").modal('show');
+}
+
+function DeleteAddress(addressId) {
+    $("#mainModalContent").load("/UserPanel/Addresses/Delete?addressId=" + addressId);
+    $("#mainModal").modal('show');
+}
+
 $(".addressLabel").click(function (e) {
     if ($(e.target).is('a') == false) {
         $.ajax({

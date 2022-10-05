@@ -48,16 +48,13 @@
                                     </div>
                                 </div>
                             }
-
                             <div class="user-address-item user-add-address-btn-container">
                                 <button id="btnCreateAddress" class="user-add-address-btn">
                                     <i class="ri-add-line icon"></i>
                                     <span>@ButtonCaptions.NewAddress</span>
                                 </button>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -85,33 +82,17 @@
 
 @section Scripts
 {
-    <script>
-        $("#btnCreateAddress").click(function() {
-            $("#mainModalContent").load("/UserPanel/Addresses/Create");
-            $("#mainModal").modal('show');
-        });
-
-        function EditAddress(addressId) {
-            $("#mainModalContent").load("/UserPanel/Addresses/Edit?addressId="+addressId);
-            $("#mainModal").modal('show');
-        }
-
-        function DeleteAddress(addressId) {
-            $("#mainModalContent").load("/UserPanel/Addresses/Delete?addressId="+addressId);
-            $("#mainModal").modal('show');
-        }
-    </script>
-        @if (Convert.ToBoolean(ViewData["IsAddressNotFound"]))
-        {
-            <text>
-                <script>
-                    iziToast.warning({
-                        message: "لطفا قبل از تکمیل خرید آدرس مورد نظر را وارد کنید",
-                        rtl: true,
-                        position: 'bottomCenter',
-                        timeout: 3000
-                    });
-                </script>
-            </text>
-        }
+    @if (Convert.ToBoolean(ViewData["IsAddressNotFound"]))
+    {
+        <text>
+            <script>
+                iziToast.warning({
+                    message: "لطفا قبل از تکمیل خرید آدرس مورد نظر را وارد کنید",
+                    rtl: true,
+                    position: 'bottomCenter',
+                    timeout: 3000
+                });
+            </script>
+        </text>
+    }
 }

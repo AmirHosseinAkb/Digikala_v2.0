@@ -2,6 +2,9 @@
 @model Server.Pages.ShippingModel
 @{
     Layout = "Shared/Layouts/_CartLayout";
+    var defaultAddress = Model.AddressVm.FirstOrDefault(a => a.IsDefault);
+    var receiverName = defaultAddress.ReceiverFullName;
+    var addressSchema = defaultAddress.State + "," + defaultAddress.City;
 }
 <main class="page-content">
     <div class="container">
@@ -15,11 +18,11 @@
                         <div class="user-addresses-container">
                             <!-- user-address -->
                             <div class="user-address">
-                                <div class="user-address-recipient mb-2">اصفهان،اصفهان</div>
+                                <div class="user-address-recipient mb-2">@addressSchema</div>
                                 <span class="d-block user-contact-items fa-num mb-3">
                                     <span class="user-contact-item">
                                         <i class="ri-user-line icon"></i>
-                                        <span class="value"></span>
+                                        <span class="value">@receiverName</span>
                                     </span>
                                 </span>
                                 <a href="#" class="link border-bottom-0 fs-7 fw-bold" data-btn-box="" data-parent=".user-address-selected" data-target="#change-user-address">تغییر یا ویرایش آدرس <i class="ri-arrow-left-s-fill"></i></a>
@@ -40,35 +43,40 @@
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane py-4 fade show active" id="nav-1" role="tabpanel" aria-labelledby="nav-1-tab">
                                 <div class="user-address-items">
-                                    <div class="user-address-item">
-                                        <div class="custom-radio-box">
-                                            <input type="radio" class="custom-radio-box-input" name="userAddress" id="userAddress01" checked="">
-                                            <label for="userAddress01" class="custom-radio-box-label" data-placeholder="انتخاب به عنوان آدرس پیش فرض" data-placeholder-checked="آدرس پیش فرض من است">
-                                                <span class="d-block user-address-recipient mb-2">اصفهان،اصفهان</span>
-                                                <span class="d-block user-contact-items fa-num mb-3">
-                                                    <span class="user-contact-item">
-                                                        <i class="ri-mail-line icon"></i>
-                                                        <span class="value">9999999999</span>
+                                    @foreach (var address in Model.AddressVm)
+                                    {
+                                        <div class="user-address-item">
+                                            <div class="custom-radio-box">
+                                                <input type="radio" class="custom-radio-box-input" name="userAddress" @((address.IsDefault)?"checked":"") id="@address.AddressId">
+                                                <label id="@address.AddressId" for="@address.AddressId" class="custom-radio-box-label addressLabel" data-placeholder="@DataDictionaries.DefaultAddressPlaceholder" data-placeholder-checked="@DataDictionaries.DefaultAddressMessage">
+                                                    <span class="d-block user-address-recipient mb-2">
+                                                        @(address.State+","+address.City)
                                                     </span>
-                                                    <span class="user-contact-item">
-                                                        <i class="ri-phone-line icon"></i>
-                                                        <span class="value">09xxxxxxxxx</span>
+                                                    <span class="d-block user-contact-items fa-num mb-3">
+                                                        <span class="user-contact-item">
+                                                            <i class="ri-mail-line icon"></i>
+                                                            <span class="value">@address.PostCode</span>
+                                                        </span>
+                                                        <span class="user-contact-item">
+                                                            <i class="ri-phone-line icon"></i>
+                                                            <span class="value">@address.ReceiverPhoneNumber</span>
+                                                        </span>
+                                                        <span class="user-contact-item">
+                                                            <i class="ri-user-line icon"></i>
+                                                            <span class="value">@address.ReceiverFullName</span>
+                                                        </span>
                                                     </span>
-                                                    <span class="user-contact-item">
-                                                        <i class="ri-user-line icon"></i>
-                                                        <span class="value">محسن اسماعیلی</span>
+                                                    <span class="d-flex align-items-center justify-content-end">
+                                                        <a onclick="DeleteAddress(@address.AddressId)" class="link border-bottom-0 fs-7 fw-bold" >@ButtonCaptions.Delete</a>
+                                                        <span class="text-secondary mx-2">|</span>
+                                                        <a onclick="EditAddress(@address.AddressId)" class="link border-bottom-0 fs-7 fw-bold" >@ButtonCaptions.Edit</a>
                                                     </span>
-                                                </span>
-                                                <span class="d-flex align-items-center justify-content-end">
-                                                    <a href="#" class="link border-bottom-0 fs-7 fw-bold" data-remodal-target="remove-from-addresses-modal">حذف</a>
-                                                    <span class="text-secondary mx-2">|</span>
-                                                    <a href="#" class="link border-bottom-0 fs-7 fw-bold" data-remodal-target="edit-address-modal">ویرایش</a>
-                                                </span>
-                                            </label>
+                                                </label>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
                                     <div class="user-address-item user-add-address-btn-container">
-                                        <button class="user-add-address-btn" data-remodal-target="add-address-modal-fields-with-map">
+                                        <button id="btnCreateAddress" class="user-add-address-btn" data-remodal-target="add-address-modal-fields-with-map">
                                             <i class="ri-add-line icon"></i>
                                             <span>@ButtonCaptions.NewAddress</span>
                                         </button>
