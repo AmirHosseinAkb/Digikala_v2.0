@@ -62,7 +62,13 @@ function CallBackHandler(data, action, form) {
             break;
         case "Refresh":
             if (data.isSucceeded == true) {
+                var uri = window.location.toString();
+                if (uri.indexOf("?") > 0) {
+                    var clean_uri = uri.substring(0, uri.indexOf("?"));
+                    window.history.replaceState({}, document.title, clean_uri);
+                }
                 window.location.reload();
+
             } else {
                 alert(data.message);
             }
@@ -206,9 +212,9 @@ function RemoveItem(id) {
     UpdateCart();
 }
 
-function ChangeItemCount(type,guid,count) {
-    var count = $("input[id='"+guid+"']").val();
-    var currentCount=parseInt(count);
+function ChangeItemCount(type, guid, count) {
+    var count = $("input[id='" + guid + "']").val();
+    var currentCount = parseInt(count);
     if (type == "minus")
         currentCount -= 1;
     else if (type == "plus")
@@ -234,11 +240,11 @@ function ChangeItemCount(type,guid,count) {
         },
         error: function (error) {
             iziToast.warning({
-                    message: "خطایی رخ داده است لطفا صفحه را نوسازی کرده و دوباره امتحان کنید",
-                    rtl: true,
-                    position: 'topCenter',
-                    timeout: 3000
-                });
+                message: "خطایی رخ داده است لطفا صفحه را نوسازی کرده و دوباره امتحان کنید",
+                rtl: true,
+                position: 'topCenter',
+                timeout: 3000
+            });
         }
     });
 }

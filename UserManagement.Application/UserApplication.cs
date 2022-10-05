@@ -82,7 +82,7 @@ namespace UserManagement.Application
                 return operation.Failed(ApplicationMessages.UserIsNotActive);
             var permissions = _roleRepository.GetRoleById(user.RoleId).Permissions.Select(p => p.PermissionCode)
                 .ToList();
-            var authVm = new AuthenticationViewModel(user.UserId, user.RoleId, user.Email, user.PhoneNumber,user.AvatarName,permissions);
+            var authVm = new AuthenticationViewModel(user.UserId, user.RoleId, user.Email, user.PhoneNumber, user.AvatarName, permissions);
             _authenticationHelper.SignIn(authVm);
             return operation.Succeeded();
         }
@@ -200,7 +200,7 @@ namespace UserManagement.Application
             //Login With New Email
             var permissions = _roleRepository.GetRoleById(user.RoleId).Permissions.Select(p => p.PermissionCode)
                 .ToList();
-            var authVm = new AuthenticationViewModel(user.UserId, user.RoleId, user.Email, user.PhoneNumber,user.AvatarName,permissions);
+            var authVm = new AuthenticationViewModel(user.UserId, user.RoleId, user.Email, user.PhoneNumber, user.AvatarName, permissions);
             _authenticationHelper.SignOut();
             _authenticationHelper.SignIn(authVm);
             return result.Succeeded();
@@ -224,7 +224,7 @@ namespace UserManagement.Application
             user.ChangePhoneNumber(command.PhoneNumber);
             _userRepository.SaveChanges(); var permissions = _roleRepository.GetRoleById(user.RoleId).Permissions.Select(p => p.PermissionCode)
                 .ToList();
-            var authVm = new AuthenticationViewModel(user.UserId, user.RoleId, user.Email, user.PhoneNumber,user.AvatarName,permissions);
+            var authVm = new AuthenticationViewModel(user.UserId, user.RoleId, user.Email, user.PhoneNumber, user.AvatarName, permissions);
             _authenticationHelper.SignOut();
             _authenticationHelper.SignIn(authVm);
             return result.Succeeded();
@@ -489,7 +489,8 @@ namespace UserManagement.Application
 
         public UserViewModel GetUserBy(long userId)
         {
-            var user= _userRepository.GetUserWithRole(userId);
+            var user = _userRepository.GetUserWithRole(userId);
+
             return new UserViewModel()
             {
                 FullName = user.FirstName + " " + user.LastName,

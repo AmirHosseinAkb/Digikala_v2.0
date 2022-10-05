@@ -54,9 +54,9 @@ namespace UserManagement.Infrastructure.EfCore.Repositories
 
         public User GetUserWithRole(long userId)
         {
-            return _context.Users.Include(u => u.Role).SingleOrDefault(u => u.UserId == userId);
+            return _context.Users.IgnoreQueryFilters().Include(u => u.Role).SingleOrDefault(u => u.UserId == userId);
         }
-
+        
         public User GetDeletedUser(long userId)
         {
             return _context.Users.IgnoreQueryFilters().SingleOrDefault(u => u.IsDeleted && u.UserId == userId);

@@ -18,11 +18,12 @@ namespace Server.Pages.UserPanel.Addresses
         }
 
         public List<AddressViewModel> AddressVm { get; set; }
-        public IActionResult OnGet()
+        public IActionResult OnGet(bool isAddressNotFound=false)
         {
             if (!_userApplication.IsUserInformationsConfirmed())
                 return Redirect("/UserPanel/ConfirmInformations");
             AddressVm = _addressApplication.GetUserAddresses();
+            ViewData["IsAddressNotFound"] = isAddressNotFound;
             return Page();
         }
 
