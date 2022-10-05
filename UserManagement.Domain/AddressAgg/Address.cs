@@ -23,11 +23,11 @@ public class Address
 
     }
 
-    public Address(long userId,string receiverFirst,string receiverLastName,string receiverPhoneNumber, string state, string city
+    public Address(long userId,string receiverFirstName,string receiverLastName,string receiverPhoneNumber, string state, string city
         , string neighborHood, string number, string postCode, bool isDefault)
     {
         UserId = userId;
-        ReceiverFirstName = receiverFirst;
+        ReceiverFirstName = receiverFirstName;
         ReceiverLastName=receiverLastName;
         ReceiverPhoneNumber=receiverPhoneNumber;
         State = state;
@@ -38,10 +38,10 @@ public class Address
         IsDefault = isDefault;
     }
 
-    public void Edit(string state,string receiverFirst,string receiverLastName,string receiverPhoneNumber, string city, string neighborHood
+    public void Edit(string state,string receiverFirstName,string receiverLastName,string receiverPhoneNumber, string city, string neighborHood
         , string number, string postCode)
     {
-        ReceiverFirstName = receiverFirst;
+        ReceiverFirstName = receiverFirstName;
         ReceiverLastName=receiverLastName;
         ReceiverPhoneNumber = receiverPhoneNumber;
         State = state;

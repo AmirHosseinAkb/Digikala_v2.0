@@ -37,6 +37,7 @@ namespace _01_Framework.Application
         public const string EndDateShouldBeGreaterThanStartDate = "تاریخ پایان باید بعد از تاریخ شروع باشد";
         public const string ProductDontExistInStockForCurrentCount = "متاسفانه از محصول مورد نظر به اندازه وارد شده در انبار نداریم!";
         public const string InventoryCantBeZero = "موجودی نمی تواند صفر باشد در صورتی که می خواهید ایتم را حذف کنید از دکمه حذف استفاده کنید";
+        public const string AddressIsDefault = "ابتدا ادرس پیشفرض برای خود انتخاب کنید سپس می توانید این ادرس را حذف کنید";
 
     }
 }

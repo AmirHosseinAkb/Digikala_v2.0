@@ -18,7 +18,7 @@ namespace UserManagement.Application.Contracts.Address
         public string ReceiverLastName { get; set; }
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         [MaxLength(50, ErrorMessage = ValidationMessages.MaxLength)]
-        [Range(0,11,ErrorMessage = ValidationMessages.IntegerRange)]
+        [Range(0,long.MaxValue,ErrorMessage = ValidationMessages.IntegerRange)]
         public string ReceiverPhoneNumber { get; set; }
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         [MaxLength(200, ErrorMessage = ValidationMessages.MaxLength)]

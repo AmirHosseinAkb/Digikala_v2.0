@@ -72,8 +72,9 @@ namespace Server.Pages.UserPanel.Addresses
         {
             if (!ModelState.IsValid)
                 return RedirectToPage();
-            _addressApplication.Delete(addressId);
-            return RedirectToPage();
+            var result=_addressApplication.Delete(addressId);
+            
+            return new JsonResult(result);
         }
     }
 }

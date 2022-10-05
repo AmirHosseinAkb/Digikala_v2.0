@@ -33,8 +33,12 @@ public class AddressApplication : IAddressApplication
         var result = new OperationResult();
         if (_addressRepository.IsExistAddress(_authenticationHelper.GetCurrentUserId(), command.PostCode))
             return result.Failed(ApplicationMessages.DuplicatedAddress);
+
+        if (!command.ReceiverPhoneNumber.IsPhoneNumber())
+            return result.Failed(ApplicationMessages.InvalidPhoneNumber);
+
         bool isDefault = _addressRepository.GetUserAddresses(_authenticationHelper.GetCurrentUserId()).Count == 0;
-        var address = new Address(_authenticationHelper.GetCurrentUserId(),"","","", command.State, command.City,
+        var address = new Address(_authenticationHelper.GetCurrentUserId(),command.ReceiverFirstName,command.ReceiverLastName,command.ReceiverPhoneNumber, command.State, command.City,
             command.NeighborHood, command.Number, command.PostCode, isDefault);
         _addressRepository.Add(address);
         return result.Succeeded();
@@ -73,18 +77,28 @@ public class AddressApplication : IAddressApplication
         var address=_addressRepository.GetUserAddress(command.AddressId,_authenticationHelper.GetCurrentUserId());
         if (address == null)
             return result.Failed(ApplicationMessages.RecordNotFound);
-        address.Edit(command.State,"","","",command.City,command.NeighborHood,command.Number,command.PostCode);
+        if (command.PostCode != address.PostCode)
+        {
+            if (_addressRepository.IsExistAddress(_authenticationHelper.GetCurrentUserId(), command.PostCode))
+                return result.Failed(ApplicationMessages.DuplicatedAddress);
+        }
+        if (!command.ReceiverPhoneNumber.IsPhoneNumber())
+            return result.Failed(ApplicationMessages.InvalidPhoneNumber);
+        address.Edit(command.State,command.ReceiverFirstName,command.ReceiverLastName,command.ReceiverPhoneNumber,command.City,command.NeighborHood,command.Number,command.PostCode);
         _addressRepository.SaveChanges();
         return result.Succeeded();
     }
 
-    public void Delete(long addressId)
+    public OperationResult Delete(long addressId)
     {
+        var result = new OperationResult();
         var address = _addressRepository.GetUserAddress(addressId, _authenticationHelper.GetCurrentUserId());
-        if (address != null)
-        {
-            address.Delete();
-            _addressRepository.SaveChanges();
-        }
+        if (address == null)
+            return result.Failed(ApplicationMessages.ProcessFailed);
+        if (address.IsDefault)
+            return result.Failed(ApplicationMessages.AddressIsDefault);
+        address.Delete();
+        _addressRepository.SaveChanges();
+        return result.Succeeded();
     }
 }

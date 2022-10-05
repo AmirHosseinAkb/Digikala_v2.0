@@ -42,7 +42,7 @@
                         </div>
                         <div class="form-element-row">
                             <label class="label fs-7">@DataDictionaries.ReceiverPhoneNumber</label>
-                            <input asp-for="ReceiverPhoneNumber" type="text" class="form-control">
+                            <input asp-for="ReceiverPhoneNumber" type="number" class="form-control">
                             <span asp-validation-for="ReceiverPhoneNumber" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
@@ -78,7 +78,6 @@
             </div>
         </div>
         <div class="modal-footer">
-
             <button class="btn btn-sm btn-primary px-3">@ButtonCaptions.Save</button>
         </div>
     </form>
@@ -88,13 +87,13 @@
 <script type="text/javascript">
     $("#selfAddressCheck").click(function() {
         if (this.checked) {
-            $("#ReceiverFirstName").val("@Html.Raw(firstName)").attr("disabled", true);
-            $("#ReceiverLastName").val("@Html.Raw(lastName)").attr("disabled", true);
-            $("#ReceiverPhoneNumber").val("@Html.Raw(phoneNumber)").attr("disabled", true);
+            $("#ReceiverFirstName").val("@Html.Raw(firstName)").attr("readOnly", true);
+            $("#ReceiverLastName").val("@Html.Raw(lastName)").attr("readOnly", true);
+            $("#ReceiverPhoneNumber").val("@Html.Raw(phoneNumber)").attr("readOnly", true);
         } else {
-            $("#ReceiverFirstName").val("").attr("disabled", false);
-            $("#ReceiverLastName").val("").attr("disabled", false);
-            $("#ReceiverPhoneNumber").val("").attr("disabled", false);
+            $("#ReceiverFirstName").val("").attr("readOnly", false);
+            $("#ReceiverLastName").val("").attr("readOnly", false);
+            $("#ReceiverPhoneNumber").val("").attr("readOnly", false);
         }
     });
 </script>

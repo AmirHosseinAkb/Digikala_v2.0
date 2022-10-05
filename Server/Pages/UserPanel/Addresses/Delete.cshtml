@@ -3,7 +3,10 @@
     <div class="modal-title">@DataDictionaries.NewAddress</div>
 </div>
 <div class="modal-body">
-    <form asp-page="./index" asp-page-handler="Delete">
+    <form asp-page="./index" asp-page-handler="Delete"
+          data-ajax="true"
+          data-action="Refresh"
+          method="post">
         <div class="text-muted fs-7 fw-bold mb-3">
             @ConfirmationMessages.DeleteAddressConfirmation
         </div>
