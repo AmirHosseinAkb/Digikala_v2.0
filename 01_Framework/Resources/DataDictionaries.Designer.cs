@@ -1438,6 +1438,33 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Receiver First Name.
+        /// </summary>
+        public static string ReceiverFirstName {
+            get {
+                return ResourceManager.GetString("ReceiverFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receiver Last Name.
+        /// </summary>
+        public static string ReceiverLastName {
+            get {
+                return ResourceManager.GetString("ReceiverLastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receiver Phone Number.
+        /// </summary>
+        public static string ReceiverPhoneNumber {
+            get {
+                return ResourceManager.GetString("ReceiverPhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Record.
         /// </summary>
         public static string Record {
@@ -1686,6 +1713,15 @@ namespace _01_Framework.Resources {
         public static string SelectProductMessage {
             get {
                 return ResourceManager.GetString("SelectProductMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Im The Receiver.
+        /// </summary>
+        public static string SelfAddressMessage {
+            get {
+                return ResourceManager.GetString("SelfAddressMessage", resourceCulture);
             }
         }
         

@@ -17,7 +17,7 @@ namespace Server.Pages.UserPanel
             _userApplication = userApplication;
         }
 
-
+        private const string cookieName = "UserFullName";
         public UserInformationsViewModel UserInformationsVM { get; set; }
         public void OnGet()
         {

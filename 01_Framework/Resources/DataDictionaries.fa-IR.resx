@@ -576,6 +576,15 @@
   <data name="Reason" xml:space="preserve">
     <value>دلیل</value>
   </data>
+  <data name="ReceiverFirstName" xml:space="preserve">
+    <value>نام گیرنده</value>
+  </data>
+  <data name="ReceiverLastName" xml:space="preserve">
+    <value>نام خانوادگی گیرنده</value>
+  </data>
+  <data name="ReceiverPhoneNumber" xml:space="preserve">
+    <value>شماره تلفن گیرنده</value>
+  </data>
   <data name="Record" xml:space="preserve">
     <value>رکورد</value>
   </data>
@@ -659,6 +668,9 @@
   </data>
   <data name="SelectProductMessage" xml:space="preserve">
     <value>لطفا محصولی را انتخاب کنید</value>
+  </data>
+  <data name="SelfAddressMessage" xml:space="preserve">
+    <value>گیرنده ی مرسوله خودم هستم</value>
   </data>
   <data name="Seller" xml:space="preserve">
     <value>فروشنده</value>

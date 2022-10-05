@@ -21,8 +21,8 @@ public class AddressApplication : IAddressApplication
             AddressId = a.AddressId,
             State = a.State,
             City = a.City,
-            UserFullName = a.User.FirstName + " " + a.User.LastName,
-            UserPhoneNumber = a.User.PhoneNumber!,
+            ReceiverFullName = a.ReceiverFirstName+" "+a.ReceiverLastName,
+            ReceiverPhoneNumber= a.ReceiverPhoneNumber,
             PostCode = a.PostCode,
             IsDefault = a.IsDefault
         }).ToList();
@@ -33,12 +33,11 @@ public class AddressApplication : IAddressApplication
         var result = new OperationResult();
         if (_addressRepository.IsExistAddress(_authenticationHelper.GetCurrentUserId(), command.PostCode))
             return result.Failed(ApplicationMessages.DuplicatedAddress);
-        bool isDefault = _addressRepository.GetUserAddresses(_authenticationHelper.GetCurrentUserId()).Count == 1;
-        var address = new Address(_authenticationHelper.GetCurrentUserId(), command.State, command.City,
+        bool isDefault = _addressRepository.GetUserAddresses(_authenticationHelper.GetCurrentUserId()).Count == 0;
+        var address = new Address(_authenticationHelper.GetCurrentUserId(),"","","", command.State, command.City,
             command.NeighborHood, command.Number, command.PostCode, isDefault);
         _addressRepository.Add(address);
         return result.Succeeded();
-
     }
 
     public OperationResult SetDefaultAddress(long addressId)
@@ -74,7 +73,7 @@ public class AddressApplication : IAddressApplication
         var address=_addressRepository.GetUserAddress(command.AddressId,_authenticationHelper.GetCurrentUserId());
         if (address == null)
             return result.Failed(ApplicationMessages.RecordNotFound);
-        address.Edit(command.State,command.City,command.NeighborHood,command.Number,command.PostCode);
+        address.Edit(command.State,"","","",command.City,command.NeighborHood,command.Number,command.PostCode);
         _addressRepository.SaveChanges();
         return result.Succeeded();
     }

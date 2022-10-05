@@ -11,8 +11,8 @@ namespace UserManagement.Application.Contracts.Address
         public long AddressId { get; set; }
         public string State { get; set; }
         public string City { get; set; }
-        public string UserFullName { get; set; }
-        public string UserPhoneNumber { get; set; }
+        public string ReceiverFullName { get; set; }
+        public string ReceiverPhoneNumber { get; set; }
         public string PostCode { get; set; }
         public bool IsDefault { get; set; }
     }

@@ -576,6 +576,15 @@
   <data name="Reason" xml:space="preserve">
     <value>Reason</value>
   </data>
+  <data name="ReceiverFirstName" xml:space="preserve">
+    <value>Receiver First Name</value>
+  </data>
+  <data name="ReceiverLastName" xml:space="preserve">
+    <value>Receiver Last Name</value>
+  </data>
+  <data name="ReceiverPhoneNumber" xml:space="preserve">
+    <value>Receiver Phone Number</value>
+  </data>
   <data name="Record" xml:space="preserve">
     <value>Record</value>
   </data>
@@ -659,6 +668,9 @@
   </data>
   <data name="SelectProductMessage" xml:space="preserve">
     <value>Please select a product</value>
+  </data>
+  <data name="SelfAddressMessage" xml:space="preserve">
+    <value>Im The Receiver</value>
   </data>
   <data name="Seller" xml:space="preserve">
     <value>Seller</value>

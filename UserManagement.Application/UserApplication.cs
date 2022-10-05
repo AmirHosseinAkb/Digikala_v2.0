@@ -3,6 +3,7 @@ using _01_Framework.Application;
 using _01_Framework.Application.Email;
 using _01_Framework.Infrastructure;
 using _01_Framework.Resources;
+using Microsoft.AspNetCore.Http;
 using UserManagement.Application.Contracts.User;
 using UserManagement.Application.Contracts.User.Administration;
 using UserManagement.Application.Contracts.User.UserPanel;
@@ -180,6 +181,7 @@ namespace UserManagement.Application
             var user = _userRepository.GetUserById(_authenticationHelper.GetCurrentUserId());
             user.ChangeFullName(command.FirstName, command.LastName);
             _userRepository.SaveChanges();
+            _authenticationHelper.SetUserFullNameCookie(command.FirstName+"-"+command.LastName);
             return user.FirstName + " " + user.LastName;
         }
 
@@ -222,7 +224,9 @@ namespace UserManagement.Application
                 return result.Failed(ApplicationMessages.DuplicatedPhone);
 
             user.ChangePhoneNumber(command.PhoneNumber);
-            _userRepository.SaveChanges(); var permissions = _roleRepository.GetRoleById(user.RoleId).Permissions.Select(p => p.PermissionCode)
+            _userRepository.SaveChanges();
+            _authenticationHelper.SetPhoneNumberCookie(command.PhoneNumber);
+            var permissions = _roleRepository.GetRoleById(user.RoleId).Permissions.Select(p => p.PermissionCode)
                 .ToList();
             var authVm = new AuthenticationViewModel(user.UserId, user.RoleId, user.Email, user.PhoneNumber, user.AvatarName, permissions);
             _authenticationHelper.SignOut();

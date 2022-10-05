@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
+using Nancy.Json;
 using Newtonsoft.Json;
 
 namespace _01_Framework.Application
@@ -94,5 +95,22 @@ namespace _01_Framework.Application
             return permissions;
         }
 
+        public void SetUserFullNameCookie(string fullName)
+        {
+            const string cookieName = "UserFullName";
+            var serializer = new JavaScriptSerializer();
+            var cookie = _httpContextAccessor.HttpContext.Request.Cookies[cookieName];
+            var cookieOptions = new CookieOptions() {Expires = new DateTimeOffset(2038,1,1,0,0,0,TimeSpan.FromHours(0)), Path = "/"};
+            _httpContextAccessor.HttpContext.Response.Cookies.Append(cookieName,serializer.Serialize(fullName),cookieOptions);
+        }
+
+        public void SetPhoneNumberCookie(string phoneNumber)
+        {
+            const string cookieName = "Phone";
+            var serializer = new JavaScriptSerializer();
+            var cookie = _httpContextAccessor.HttpContext.Request.Cookies[cookieName];
+            var cookieOptions = new CookieOptions() {Expires = new DateTimeOffset(2038,1,1,0,0,0,TimeSpan.FromHours(0)), Path = "/"};
+            _httpContextAccessor.HttpContext.Response.Cookies.Append(cookieName,serializer.Serialize(phoneNumber),cookieOptions);
+        }
     }
 }

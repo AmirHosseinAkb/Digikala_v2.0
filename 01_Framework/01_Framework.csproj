@@ -13,6 +13,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0" />
     <PackageReference Include="MimeKit" Version="3.3.0" />
+    <PackageReference Include="Nancy" Version="2.0.0" />
     <PackageReference Include="ZarinPalSandbox" Version="2.0.4" />
   </ItemGroup>
 

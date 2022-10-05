@@ -25,7 +25,7 @@ namespace UserManagement.Infrastructure.EfCore.Repositories
 
         public List<Address> GetUserAddresses(long userId)
         {
-            return _context.Addresses.Include(a=>a.User).Where(a => a.UserId == userId).ToList();
+            return _context.Addresses.Where(a => a.UserId == userId).ToList();
         }
 
         public Address? GetUserAddress(long addressId, long userId)
