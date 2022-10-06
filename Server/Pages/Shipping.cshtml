@@ -87,14 +87,14 @@
                                 <div class="checkout-pack">
                                     <div class="checkout-pack-header fa-num">
                                         <div class="checkout-pack-detail">
-                                            <span>@Model.CartItemVm.Count @DataDictionaries.Product</span>
+                                            <span>@Model.Cart.CartItems.Count @DataDictionaries.Product</span>
                                             <span class="divider"></span>
                                         </div>
                                     </div>
                                     <div class="checkout-pack-content">
                                         <div class="swiper checkout-pack-swiper-slider mb-5 swiper-initialized swiper-horizontal swiper-pointer-events swiper-rtl">
                                             <div class="swiper-wrapper" id="swiper-wrapper-f4b51048abcd18c5" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
-                                                @foreach (var item in Model.CartItemVm)
+                                                @foreach (var item in Model.Cart.CartItems)
                                                 {
                                                     <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 3" style="width: 191.75px; margin-left: 10px;">
                                                         <div class="checkout-pack-item">

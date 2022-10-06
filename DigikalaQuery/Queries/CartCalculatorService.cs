@@ -25,7 +25,7 @@ public class CartCalculatorService:ICartCalculatorService
                 cartItem.IsInStock = true;
             }
 
-            var product = _shopContext.Products.SingleOrDefault(p => p.ProductId == cartItem.Id);
+            var product = _shopContext.Products.Find(cartItem.Id);
             if (product != null)
             {
                 cartItem.Title = product!.Title;
@@ -36,8 +36,8 @@ public class CartCalculatorService:ICartCalculatorService
                 if (cartItem.DiscountRate != null)
                 {
                     cartItem.DiscountPrice = (cartItem.DiscountRate.Value * cartItem.TotalItemPrice)/100;
-                    cartItem.PayingPrice = cartItem.TotalItemPrice - cartItem.DiscountPrice;
                 }
+                cartItem.PayingPrice = cartItem.TotalItemPrice - cartItem.DiscountPrice;
             }
             cart.Add(cartItem);
         }

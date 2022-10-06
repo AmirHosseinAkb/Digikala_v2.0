@@ -19,9 +19,13 @@
         public void Add(CartItem cartItem)
         {
             CartItems.Add(cartItem);
-            TotalCartPrice += cartItem.TotalItemPrice;
-            TotalProductDiscounts += cartItem.DiscountPrice;
-            PaidPrice += cartItem.PayingPrice;
+            if (cartItem.IsInStock)
+            {
+                TotalCartPrice += cartItem.TotalItemPrice;
+                TotalProductDiscounts += cartItem.DiscountPrice;
+                PaidPrice += cartItem.PayingPrice;
+            }
+            
         }
     }
 }

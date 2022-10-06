@@ -297,21 +297,6 @@ namespace DigikalaQuery.Queries
                 {
                     cartItem.IsInStock = true;
                 }
-
-                var product = _shopContext.Products.SingleOrDefault(p => p.ProductId == cartItem.Id);
-                if (product != null)
-                {
-                    cartItem.Title = product!.Title;
-                    cartItem.UnitPrice = product!.Price;
-                    cartItem.TotalItemPrice = cartItem.UnitPrice * cartItem.Count;
-                    cartItem.DiscountRate = _discountContext.ProductDiscounts
-                        .SingleOrDefault(d => d.ProductId == cartItem.Id)?.Rate;
-                    if (cartItem.DiscountRate != null)
-                    {
-                        cartItem.DiscountPrice = (cartItem.DiscountRate.Value * cartItem.TotalItemPrice)/100;
-                        cartItem.PayingPrice = cartItem.TotalItemPrice - cartItem.DiscountPrice;
-                    }
-                }
             }
         }
 

@@ -56,7 +56,8 @@ namespace ShopManagement.Infrastructure.Configuration
             services.AddScoped<ICartCalculatorService,CartCalculatorService>();
 
             services.AddDbContext<ShopContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseSqlServer(connectionString),
+                ServiceLifetime.Transient);
 
         }
     }

@@ -63,5 +63,21 @@ namespace Server.Pages
             Response.Cookies.Append(cookieName,serializer.Serialize(cartItems),cookieOptions);
             return new JsonResult(result);
         }
+
+        public IActionResult OnGetConfirmShopping()
+        {
+            var serializer = new JavaScriptSerializer();
+            var cookie = Request.Cookies[cookieName];
+            var cartItems = serializer.Deserialize<List<CartItem>>(cookie);
+            _productQuery.CheckItemsStatus(cartItems);
+            cartItems = cartItems.Where(i => i.IsInStock).ToList();
+            foreach (var item in cartItems)
+            {
+                item.IsInStock = false;
+            }
+            var cookieOptions = new CookieOptions() {Expires = DateTime.Now.AddDays(14), Path = "/"};
+            Response.Cookies.Append(cookieName, serializer.Serialize(cartItems), cookieOptions);
+            return RedirectToPage("Shipping");
+        }
     }
 }
