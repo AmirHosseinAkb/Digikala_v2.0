@@ -484,6 +484,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Return To Cart.
+        /// </summary>
+        public static string ReturnToCart {
+            get {
+                return ResourceManager.GetString("ReturnToCart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Return To Wallet.
         /// </summary>
         public static string ReturnToWallet {

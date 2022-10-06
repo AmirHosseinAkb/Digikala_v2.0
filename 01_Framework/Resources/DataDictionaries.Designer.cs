@@ -277,6 +277,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Address.
+        /// </summary>
+        public static string ChangeAddress {
+            get {
+                return ResourceManager.GetString("ChangeAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Charge Wallet.
         /// </summary>
         public static string ChargeWallet {
@@ -1465,6 +1474,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Receiving Address.
+        /// </summary>
+        public static string ReceivingAddress {
+            get {
+                return ResourceManager.GetString("ReceivingAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Record.
         /// </summary>
         public static string Record {
@@ -1677,6 +1695,15 @@ namespace _01_Framework.Resources {
         public static string SecondaryGroup {
             get {
                 return ResourceManager.GetString("SecondaryGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select address.
+        /// </summary>
+        public static string SelectAddressMessage {
+            get {
+                return ResourceManager.GetString("SelectAddressMessage", resourceCulture);
             }
         }
         

@@ -189,6 +189,9 @@
   <data name="BrandsList" xml:space="preserve">
     <value>لیست برند محصولات</value>
   </data>
+  <data name="ChangeAddress" xml:space="preserve">
+    <value>تغیییر یا ویرایش آدرس</value>
+  </data>
   <data name="ChargeWallet" xml:space="preserve">
     <value>شارژ کیف پول</value>
   </data>
@@ -585,6 +588,9 @@
   <data name="ReceiverPhoneNumber" xml:space="preserve">
     <value>شماره تلفن گیرنده</value>
   </data>
+  <data name="ReceivingAddress" xml:space="preserve">
+    <value>آدرس تحویل سفارش</value>
+  </data>
   <data name="Record" xml:space="preserve">
     <value>رکورد</value>
   </data>
@@ -656,6 +662,9 @@
   </data>
   <data name="SecondaryGroup" xml:space="preserve">
     <value>گروه فرعی دوم</value>
+  </data>
+  <data name="SelectAddressMessage" xml:space="preserve">
+    <value>لطفا آدرس تحویل را انتخاب کنید</value>
   </data>
   <data name="SelectColorMessage" xml:space="preserve">
     <value>لطفا رنگ را انتخاب کنید:</value>

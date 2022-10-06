@@ -5,7 +5,7 @@
 
 <main class="page-content">
     <div class="container">
-        @if (Model.CartItemVm.Any())
+        @if (Model.Cart.CartItems.Any())
         {
             <div class="row">
                 <div class="col-xl-9 col-lg-8">
@@ -14,7 +14,7 @@
                             <div class="ui-box bg-white p-2">
                                 <div class="ui-box-content">
                                     <div class="cart-items">
-                                        @foreach (var item in Model.CartItemVm)
+                                        @foreach (var item in Model.Cart.CartItems)
                                         {
                                             <div class="cart-item">
                                                 <div class="cart-item--thumbnail">
@@ -108,32 +108,27 @@
                         </div>
                     </div>
                 </div>
-                @{
-                    long totalProductsPrice = Model.CartItemVm.Where(i => i.IsInStock).Sum(i => i.TotalItemPrice);
-                    long totalDiscountsPrice = Model.CartItemVm.Where(i => i.IsInStock).Sum(i => ((i.DiscountRate != null) ? (i.DiscountRate * i.TotalItemPrice)/100  : 0).Value);
-                    long totalCartPrice = totalProductsPrice - totalDiscountsPrice;
-                }
                 <div class="col-xl-3 col-lg-4">
                     <div class="ui-sticky ui-sticky-top">
                         <!-- checkout-bill -->
                     <div class="checkout-bill ui-box bg-white mb-5">
                             <div class="checkout-bill-row">
-                                <div class="checkout-bill-row-label">@DataDictionaries.TotalProductsPrice (@Model.CartItemVm.Count)</div>
+                                <div class="checkout-bill-row-label">@DataDictionaries.TotalProductsPrice (@Model.Cart.CartItems.Count)</div>
                                 <div class="checkout-bill-row-value">
-                                    <span class="fs-6">@totalProductsPrice.ToString("#,0")</span> <span class="currency">@DataDictionaries.Toman</span>
+                                    <span class="fs-6">@Model.Cart.TotalCartPrice.ToString("#,0")</span> <span class="currency">@DataDictionaries.Toman</span>
                                 </div>
                             </div>
                             <div class="checkout-bill-row">
                                 <div class="checkout-bill-row-label">@DataDictionaries.TotalProductsDiscount</div>
                                 <div class="checkout-bill-row-value">
-                                    <span class="fs-6 text-danger">@totalDiscountsPrice.ToString("#,0")</span>
+                                    <span class="fs-6 text-danger">@Model.Cart.TotalProductDiscounts.ToString("#,0")</span>
                                     <span class="currency text-danger">@DataDictionaries.Toman</span>
                                 </div>
                             </div>
                             <div class="checkout-bill-row">
                                 <div class="checkout-bill-row-label">@DataDictionaries.TotalCartPrice</div>
                                 <div class="checkout-bill-row-value">
-                                    <span class="fs-6">@totalCartPrice.ToString("#,0")</span> <span class="currency">@DataDictionaries.Toman</span>
+                                    <span class="fs-6">@Model.Cart.PaidPrice.ToString("#,0")</span> <span class="currency">@DataDictionaries.Toman</span>
                                 </div>
                             </div>
                             <div class="checkout-bill-row checkout-bill-note">

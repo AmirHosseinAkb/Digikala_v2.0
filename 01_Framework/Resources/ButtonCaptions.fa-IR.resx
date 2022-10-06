@@ -258,6 +258,9 @@
   <data name="ReturnHome" xml:space="preserve">
     <value>بازگشت به صفحه اصلی</value>
   </data>
+  <data name="ReturnToCart" xml:space="preserve">
+    <value>بازگشت به سبد خرید</value>
+  </data>
   <data name="ReturnToWallet" xml:space="preserve">
     <value>بازگشت به کیف پول</value>
   </data>

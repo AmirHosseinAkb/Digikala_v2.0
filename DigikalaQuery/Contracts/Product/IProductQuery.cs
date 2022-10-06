@@ -13,8 +13,8 @@ namespace DigikalaQuery.Contracts.Product
         Tuple<List<ProductBoxQueryModel>, int, int> GetProductsList(SearchProductQueryModel searchModel);
         ProductQueryModel? GetProduct(long productId);
         ProductDiscount? GetProductCurrentDiscount(long productId);
-        void CheckItemsStatus(List<CartItemViewModel> cartItems);
-        OperationResult ChangeItemCount(List<CartItemViewModel> cartItems,Guid guid, int count);
+        void CheckItemsStatus(List<CartItem> cartItems);
+        OperationResult ChangeItemCount(List<CartItem> cartItems,Guid guid, int count);
 
     }
 }

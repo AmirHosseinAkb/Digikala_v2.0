@@ -288,7 +288,7 @@ namespace DigikalaQuery.Queries
                 d.ProductId == productId && d.StartDate <= DateTime.Now && d.EndDate >= DateTime.Now);
         }
 
-        public void CheckItemsStatus(List<CartItemViewModel> cartItems)
+        public void CheckItemsStatus(List<CartItem> cartItems)
         {
             var inventories = _shopContext.Inventories.Select(i => new {i.ProductId, i.ProductCount}).ToList();
             foreach (var cartItem in cartItems)
@@ -306,11 +306,16 @@ namespace DigikalaQuery.Queries
                     cartItem.TotalItemPrice = cartItem.UnitPrice * cartItem.Count;
                     cartItem.DiscountRate = _discountContext.ProductDiscounts
                         .SingleOrDefault(d => d.ProductId == cartItem.Id)?.Rate;
+                    if (cartItem.DiscountRate != null)
+                    {
+                        cartItem.DiscountPrice = (cartItem.DiscountRate.Value * cartItem.TotalItemPrice)/100;
+                        cartItem.PayingPrice = cartItem.TotalItemPrice - cartItem.DiscountPrice;
+                    }
                 }
             }
         }
 
-        public OperationResult ChangeItemCount(List<CartItemViewModel> cartItems,Guid guid, int count)
+        public OperationResult ChangeItemCount(List<CartItem> cartItems,Guid guid, int count)
         {
             var result = new OperationResult();
             var cartItem = cartItems.SingleOrDefault(i => i.Guid == guid);

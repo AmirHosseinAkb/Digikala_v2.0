@@ -1,4 +1,5 @@
 using DigikalaQuery.Contracts.Product;
+using DigikalaQuery.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.ResponseCaching;
@@ -10,27 +11,29 @@ namespace Server.Pages
     public class CartModel : PageModel
     {
         public const string cookieName = "cart_items";
-        public List<CartItemViewModel> CartItemVm { get; set; }
+        public Cart Cart { get; set; }
+        public ICartCalculatorService _cartCalculatorService { get; set; }
         private readonly IProductQuery _productQuery;
 
-        public CartModel(IProductQuery productQuery)
+        public CartModel(IProductQuery productQuery,ICartCalculatorService cartCalculatorService)
         {
             _productQuery=productQuery;
-            CartItemVm=new List<CartItemViewModel>();
+            _cartCalculatorService=cartCalculatorService;
+            Cart = new Cart();
         }
         public void OnGet()
         {
             var serializer = new JavaScriptSerializer();
             var cookie = Request.Cookies["cart_items"];
-            var cartItems = serializer.Deserialize<List<CartItemViewModel>>(cookie);
+            var cartItems = serializer.Deserialize<List<CartItem>>(cookie);
             if (cartItems != null)
             {
                 foreach (var item in cartItems)
                 {
-                    item.TotalItemPrice = item.UnitPrice * item.Count;
+                    item.CalculateTotalItemPrice();
                 }
-                _productQuery.CheckItemsStatus(cartItems);
-                CartItemVm = cartItems;
+
+                Cart=_cartCalculatorService.ComputeCart(cartItems);
             }
         }
 
@@ -38,7 +41,7 @@ namespace Server.Pages
         {
             var cookie = Request.Cookies[cookieName];
             var serializer=new JavaScriptSerializer();
-            var items=serializer.Deserialize<List<CartItemViewModel>>(cookie);
+            var items=serializer.Deserialize<List<CartItem>>(cookie);
             Response.Cookies.Delete(cookieName);
             var toRemoveItem = items.FirstOrDefault(i => i.Id == id);
             if(toRemoveItem!=null)
@@ -54,7 +57,7 @@ namespace Server.Pages
                 return BadRequest();
             var serializer = new JavaScriptSerializer();
             var cookie=Request.Cookies[cookieName];
-            var cartItems=serializer.Deserialize<List<CartItemViewModel>>(cookie);
+            var cartItems=serializer.Deserialize<List<CartItem>>(cookie);
             var result = _productQuery.ChangeItemCount(cartItems, guid, count);
             var cookieOptions = new CookieOptions() {Expires = DateTime.Now.AddDays(10), Path = "/"};
             Response.Cookies.Append(cookieName,serializer.Serialize(cartItems),cookieOptions);
