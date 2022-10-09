@@ -12,14 +12,15 @@ namespace Server.Pages
         private const string cookieName = "cart_items";
         private readonly IAddressApplication _addressApplication;
         public ICartCalculatorService _cartCalculatorService { get; set; }
-        public ShippingModel(IAddressApplication addressApplication,ICartCalculatorService cartCalculatorService)
+        public ShippingModel(IAddressApplication addressApplication, ICartCalculatorService cartCalculatorService)
         {
             _addressApplication = addressApplication;
             AddressVm = new List<AddressViewModel>();
-            _cartCalculatorService=cartCalculatorService;
+            _cartCalculatorService = cartCalculatorService;
         }
         public List<AddressViewModel> AddressVm { get; set; }
         public Cart Cart { get; set; }
+        public CartAddressCommand CartAddressCommand;
         public IActionResult OnGet()
         {
             AddressVm = _addressApplication.GetUserAddresses();
@@ -33,8 +34,16 @@ namespace Server.Pages
                 item.CalculateTotalItemPrice();
             }
 
-            Cart=_cartCalculatorService.ComputeCart(cartItems);
+            Cart = _cartCalculatorService.ComputeCart(cartItems);
             return Page();
+        }
+
+
+        public IActionResult OnGetContinueToPayment(CartAddressCommand cartAddressCommand)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            return RedirectToPage("Payment");
         }
     }
 }

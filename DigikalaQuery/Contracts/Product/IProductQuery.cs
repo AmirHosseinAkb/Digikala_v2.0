@@ -14,7 +14,7 @@ namespace DigikalaQuery.Contracts.Product
         ProductQueryModel? GetProduct(long productId);
         ProductDiscount? GetProductCurrentDiscount(long productId);
         void CheckItemsStatus(List<CartItem> cartItems);
-        OperationResult ChangeItemCount(List<CartItem> cartItems,Guid guid, int count);
+        OperationResult ChangeItemCount(List<CartItem> cartItems, Guid guid, int count);
 
     }
 }

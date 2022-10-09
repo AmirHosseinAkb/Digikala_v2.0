@@ -71,7 +71,7 @@ namespace Server.Pages
             var cartItems = serializer.Deserialize<List<CartItem>>(cookie);
             _productQuery.CheckItemsStatus(cartItems);
             cartItems = cartItems.Where(i => i.IsInStock).ToList();
-            foreach (var item in cartItems)
+            foreach (var item in cartItems) //Foreach wrote Because Of Conflicting When Checking IsInStock Property of Items In OnGet Handler
             {
                 item.IsInStock = false;
             }

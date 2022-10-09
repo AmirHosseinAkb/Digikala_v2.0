@@ -7,169 +7,185 @@
     var addressSchema = defaultAddress.State + "," + defaultAddress.City;
 }
 <main class="page-content">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-9 col-lg-8 mb-lg-0 mb-4">
-                <div class="ui-box bg-white user-address-selected mb-5">
-                    <div class="ui-box-title">@DataDictionaries.ReceivingAddress</div>
-                    <div class="ui-box-content">
-                        <div class="user-addresses-container">
-                            <div class="user-address">
-                                <div class="user-address-recipient mb-2">@addressSchema</div>
-                                <span class="d-block user-contact-items fa-num mb-3">
-                                    <span class="user-contact-item">
-                                        <i class="ri-user-line icon"></i>
-                                        <span class="value">@receiverName</span>
+    <form method="get" asp-page="Shipping" asp-page-handler="ContinueToPayment">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-xl-9 col-lg-8 mb-lg-0 mb-4">
+                    <div class="ui-box bg-white user-address-selected mb-5">
+                        <div class="ui-box-title">@DataDictionaries.ReceivingAddress</div>
+                        <div class="ui-box-content">
+                            <div class="user-addresses-container">
+                                <div class="user-address">
+                                    <div class="user-address-recipient mb-2">@addressSchema</div>
+                                    <span class="d-block user-contact-items fa-num mb-3">
+                                        <span class="user-contact-item">
+                                            <i class="ri-user-line icon"></i>
+                                            <span class="value">@receiverName</span>
+                                        </span>
                                     </span>
-                                </span>
-                                <a href="#" class="link border-bottom-0 fs-7 fw-bold" data-btn-box="" data-parent=".user-address-selected" data-target="#change-user-address">@DataDictionaries.ChangeAddress <i class="ri-arrow-left-s-fill"></i></a>
+                                    <a href="#" class="link border-bottom-0 fs-7 fw-bold" data-btn-box="" data-parent=".user-address-selected" data-target="#change-user-address">@DataDictionaries.ChangeAddress <i class="ri-arrow-left-s-fill"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="ui-box bg-white user-addresses d-none mb-5" id="change-user-address">
-                    <div class="ui-box-title">
-                        @DataDictionaries.SelectAddressMessage:
-                        <button class="ui-box-close" data-btn-box-close="" data-parent="#change-user-address" data-show=".user-address-selected"><i class="ri-close-line"></i></button>
-                    </div>
-                    <div class="ui-box-content">
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane py-4 fade show active" id="nav-1" role="tabpanel" aria-labelledby="nav-1-tab">
-                                <div class="user-address-items">
-                                    @foreach (var address in Model.AddressVm)
-                                    {
-                                        <div class="user-address-item">
-                                            <div class="custom-radio-box">
-                                                <input type="radio" class="custom-radio-box-input" name="userAddress" @((address.IsDefault)?"checked":"") id="@address.AddressId">
-                                                <label id="@address.AddressId" for="@address.AddressId" class="custom-radio-box-label addressLabel" data-placeholder="@DataDictionaries.DefaultAddressPlaceholder" data-placeholder-checked="@DataDictionaries.DefaultAddressMessage">
-                                                    <span class="d-block user-address-recipient mb-2">
-                                                        @(address.State+","+address.City)
-                                                    </span>
-                                                    <span class="d-block user-contact-items fa-num mb-3">
-                                                        <span class="user-contact-item">
-                                                            <i class="ri-mail-line icon"></i>
-                                                            <span class="value">@address.PostCode</span>
+                    <div class="ui-box bg-white user-addresses d-none mb-5" id="change-user-address">
+                        <div class="ui-box-title">
+                            @DataDictionaries.SelectAddressMessage:
+                            <button class="ui-box-close" data-btn-box-close="" data-parent="#change-user-address" data-show=".user-address-selected"><i class="ri-close-line"></i></button>
+                        </div>
+                        <div class="ui-box-content">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane py-4 fade show active" id="nav-1" role="tabpanel" aria-labelledby="nav-1-tab">
+                                    <div class="user-address-items">
+                                        <input asp-for="CartAddressCommand.AddressId" id="addressId" type="hidden" value="@defaultAddress.AddressId" />
+                                        @foreach (var address in Model.AddressVm)
+                                        {
+                                            <div class="user-address-item">
+                                                <div class="custom-radio-box">
+                                                    <input type="radio" class="custom-radio-box-input" name="userAddress" @((address.IsDefault) ? "checked" : "") id="@address.AddressId">
+                                                    <label id="@address.AddressId" for="@address.AddressId" class="custom-radio-box-label addressLabel" data-placeholder="@DataDictionaries.DefaultAddressPlaceholder" data-placeholder-checked="@DataDictionaries.DefaultAddressMessage">
+                                                        <span class="d-block user-address-recipient mb-2">
+                                                            @(address.State + "," + address.City)
                                                         </span>
-                                                        <span class="user-contact-item">
-                                                            <i class="ri-phone-line icon"></i>
-                                                            <span class="value">@address.ReceiverPhoneNumber</span>
+                                                        <span class="d-block user-contact-items fa-num mb-3">
+                                                            <span class="user-contact-item">
+                                                                <i class="ri-mail-line icon"></i>
+                                                                <span class="value">@address.PostCode</span>
+                                                            </span>
+                                                            <span class="user-contact-item">
+                                                                <i class="ri-phone-line icon"></i>
+                                                                <span class="value">@address.ReceiverPhoneNumber</span>
+                                                            </span>
+                                                            <span class="user-contact-item">
+                                                                <i class="ri-user-line icon"></i>
+                                                                <span class="value">@address.ReceiverFullName</span>
+                                                            </span>
                                                         </span>
-                                                        <span class="user-contact-item">
-                                                            <i class="ri-user-line icon"></i>
-                                                            <span class="value">@address.ReceiverFullName</span>
+                                                        <span class="d-flex align-items-center justify-content-end">
+                                                            <a onclick="DeleteAddress(@address.AddressId)" class="link border-bottom-0 fs-7 fw-bold">@ButtonCaptions.Delete</a>
+                                                            <span class="text-secondary mx-2">|</span>
+                                                            <a onclick="EditAddress(@address.AddressId)" class="link border-bottom-0 fs-7 fw-bold">@ButtonCaptions.Edit</a>
                                                         </span>
-                                                    </span>
-                                                    <span class="d-flex align-items-center justify-content-end">
-                                                        <a onclick="DeleteAddress(@address.AddressId)" class="link border-bottom-0 fs-7 fw-bold">@ButtonCaptions.Delete</a>
-                                                        <span class="text-secondary mx-2">|</span>
-                                                        <a onclick="EditAddress(@address.AddressId)" class="link border-bottom-0 fs-7 fw-bold">@ButtonCaptions.Edit</a>
-                                                    </span>
-                                                </label>
+                                                    </label>
+                                                </div>
                                             </div>
+                                        }
+                                        <div class="user-address-item user-add-address-btn-container">
+                                            <button id="btnCreateAddress" class="user-add-address-btn">
+                                                <i class="ri-add-line icon"></i>
+                                                <span>@ButtonCaptions.NewAddress</span>
+                                            </button>
                                         </div>
-                                    }
-                                    <div class="user-address-item user-add-address-btn-container">
-                                        <button id="btnCreateAddress" class="user-add-address-btn" data-remodal-target="add-address-modal-fields-with-map">
-                                            <i class="ri-add-line icon"></i>
-                                            <span>@ButtonCaptions.NewAddress</span>
-                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="ui-box bg-white shipment-type mb-3">
-                    <div class="ui-box-content">
-                        <div class="tab-content" id="shipping-type-tabContent">
-                            <div class="tab-pane py-4 fade show active" id="shipping-type-1" role="tabpanel" aria-labelledby="shipping-type-1">
-                                <div class="checkout-pack">
-                                    <div class="checkout-pack-header fa-num">
-                                        <div class="checkout-pack-detail">
-                                            <span>@Model.Cart.CartItems.Count @DataDictionaries.Product</span>
-                                            <span class="divider"></span>
+                    <div class="ui-box bg-white shipment-type mb-3">
+                        <div class="ui-box-content">
+                            <div class="tab-content" id="shipping-type-tabContent">
+                                <div class="tab-pane py-4 fade show active" id="shipping-type-1" role="tabpanel" aria-labelledby="shipping-type-1">
+                                    <div class="checkout-pack">
+                                        <div class="checkout-pack-header fa-num">
+                                            <div class="checkout-pack-detail">
+                                                <span>@Model.Cart.CartItems.Count @DataDictionaries.Product</span>
+                                                <span class="divider"></span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="checkout-pack-content">
-                                        <div class="swiper checkout-pack-swiper-slider mb-5 swiper-initialized swiper-horizontal swiper-pointer-events swiper-rtl">
-                                            <div class="swiper-wrapper" id="swiper-wrapper-f4b51048abcd18c5" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
-                                                @foreach (var item in Model.Cart.CartItems)
-                                                {
-                                                    <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 3" style="width: 191.75px; margin-left: 10px;">
-                                                        <div class="checkout-pack-item">
-                                                            <div class="checkout-pack-item-thumbnail">
-                                                                <a href="#">
-                                                                    <img src="/Products/Images/@item.ImageName" alt="">
-                                                                </a>
-                                                            </div>
-                                                            <div class="checkout-pack-item-detail">
-                                                                <div class="checkout-pack-item-variant">
-                                                                    <span class="color" style="background-color: @item.ColorCode"></span>
-                                                                    <span class="ms-1">@item.ColorName</span>
+                                        <div class="checkout-pack-content">
+                                            <div class="swiper checkout-pack-swiper-slider mb-5 swiper-initialized swiper-horizontal swiper-pointer-events swiper-rtl">
+                                                <div class="swiper-wrapper" id="swiper-wrapper-f4b51048abcd18c5" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
+                                                    @foreach (var item in Model.Cart.CartItems)
+                                                    {
+                                                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 3" style="width: 191.75px; margin-left: 10px;">
+                                                            <div class="checkout-pack-item">
+                                                                <div class="checkout-pack-item-thumbnail">
+                                                                    <a href="#">
+                                                                        <img src="/Products/Images/@item.ImageName" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="checkout-pack-item-detail">
+                                                                    <div class="checkout-pack-item-variant">
+                                                                        <span class="color" style="background-color: @item.ColorCode"></span>
+                                                                        <span class="ms-1">@item.ColorName</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                }
+                                                    }
+                                                </div>
+                                                <div class="swiper-button-prev swiper-button-disabled swiper-button-lock" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-f4b51048abcd18c5" aria-disabled="true"></div>
+                                                <div class="swiper-button-next swiper-button-disabled swiper-button-lock" tabindex="-1" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-f4b51048abcd18c5" aria-disabled="true"></div>
+                                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                                             </div>
-                                            <div class="swiper-button-prev swiper-button-disabled swiper-button-lock" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-f4b51048abcd18c5" aria-disabled="true"></div>
-                                            <div class="swiper-button-next swiper-button-disabled swiper-button-lock" tabindex="-1" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-f4b51048abcd18c5" aria-disabled="true"></div>
-                                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <a href="/Cart" class="link border-bottom-0">
+                        <i class="ri-arrow-right-s-fill"></i> @ButtonCaptions.ReturnToCart
+                    </a>
                 </div>
-                <a href="#" class="link border-bottom-0">
-                    <i class="ri-arrow-right-s-fill"></i> @ButtonCaptions.ReturnToCart
-                </a>
-            </div>
 
-            <div class="col-xl-3 col-lg-4">
-                <div class="ui-sticky ui-sticky-top">
-                    <div class="checkout-bill ui-box bg-white mb-5">
-                        <div class="checkout-bill-row">
-                            <div class="checkout-bill-row-label">قیمت کالاها (۴)</div>
-                            <div class="checkout-bill-row-value">
-                                <span class="fs-6">۴۲,۴۲۰,۰۰۰</span> <span class="currency">@DataDictionaries.Toman</span>
+                <div class="col-xl-3 col-lg-4">
+                    <div class="ui-sticky ui-sticky-top">
+                        <div class="checkout-bill ui-box bg-white mb-5">
+                            <div class="checkout-bill-row">
+                                <div class="checkout-bill-row-label">@DataDictionaries.TotalProductsPrice (@Model.Cart.CartItems.Count)</div>
+                                <div class="checkout-bill-row-value">
+                                    <span class="fs-6">@Model.Cart.TotalCartPrice.ToString("#,0")</span> <span class="currency">@DataDictionaries.Toman</span>
+                                </div>
+                            </div>
+                            <div class="checkout-bill-row">
+                                <div class="checkout-bill-row-label">@DataDictionaries.ProductDiscounts</div>
+                                <div class="checkout-bill-row-value">
+                                    <span class="fs-6 text-danger">@Model.Cart.TotalProductDiscounts.ToString("#,0")</span>
+                                    <span class="currency text-danger">@DataDictionaries.Toman</span>
+                                </div>
+                            </div>
+                            <div class="checkout-bill-row">
+                                <div class="checkout-bill-row-label">@DataDictionaries.TotalCartPrice</div>
+                                <div class="checkout-bill-row-value">
+                                    <span class="fs-6">@Model.Cart.RemainingPrice.ToString("#,0")</span> <span class="currency">@DataDictionaries.Toman</span>
+                                </div>
+                            </div>
+                            <div class="checkout-bill-row checkout-bill-note">
+                                @DataDictionaries.CheckoutMessage
+                            </div>
+                            <div class="checkout-bill-row checkout-bill-action">
+                                <button id="btnContinue" class="btn btn-block btn-primary">@ButtonCaptions.ContinueShoppingProcess</button>
                             </div>
                         </div>
-                        <div class="checkout-bill-row">
-                            <div class="checkout-bill-row-label">تخفیف کالاها</div>
-                            <div class="checkout-bill-row-value">
-                                <span class="fs-6 text-danger">۵,۰۰۰</span>
-                                <span class="currency text-danger">@DataDictionaries.Toman</span>
-                            </div>
-                        </div>
-                        <div class="checkout-bill-row">
-                            <div class="checkout-bill-row-label">جمع سبد خرید</div>
-                            <div class="checkout-bill-row-value">
-                                <span class="fs-6">25,800,000</span> <span class="currency">@DataDictionaries.Toman</span>
-                            </div>
-                        </div>
-                        <div class="checkout-bill-row checkout-bill-note">
-                            @DataDictionaries.CheckoutMessage
-                        </div>
-                        <div class="checkout-bill-row checkout-bill-action">
-                            <a href="payment.html" class="btn btn-block btn-primary">@ButtonCaptions.ContinueShoppingProcess</a>
-                        </div>
-                    </div>
-                    <div class="widget p-0">
-                        <div class="widget-content widget--free-shipping">
-                            <div class="free-shipping--detail">
-                                <div class="title">@DataDictionaries.FreeDelivery</div>
-                                <div class="subtitle">@DataDictionaries.ForSpecialOrders</div>
-                            </div>
-                            <div class="free-shipping--banner">
-                                <img src="./assets/images/theme/free-shipping--banner.png" alt="@DataDictionaries.FreeDelivery">
+                        <div class="widget p-0">
+                            <div class="widget-content widget--free-shipping">
+                                <div class="free-shipping--detail">
+                                    <div class="title">@DataDictionaries.FreeDelivery</div>
+                                    <div class="subtitle">@DataDictionaries.ForSpecialOrders</div>
+                                </div>
+                                <div class="free-shipping--banner">
+                                    <img src="./assets/images/theme/free-shipping--banner.png" alt="@DataDictionaries.FreeDelivery">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </main>
+@section Scripts{
+<script>
+    $(".ui-box-close").click(function() {
+        window.location.reload();
+    });
+    $(".custom-radio-box-input").click(function() {
+        var id=$(this).attr("id");
+        $("#addressId").val(id);
+    });
+</script>
+}

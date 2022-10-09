@@ -104,4 +104,13 @@ public class AddressApplication : IAddressApplication
         _addressRepository.SaveChanges();
         return result.Succeeded();
     }
+
+    public OperationResult CheckAddress(long addressId)
+    {
+        var result = new OperationResult();
+        var address = _addressRepository.GetUserAddress(addressId,_authenticationHelper.GetCurrentUserId());
+        if (address == null)
+            return result.Failed(ApplicationMessages.ProcessFailed);
+        return result.Succeeded();
+    }
 }

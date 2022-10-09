@@ -263,3 +263,8 @@ function ChangeItemCount(type, guid, count) {
         }
     });
 }
+
+//$("#btnContinue").click(function () {
+//    var addressId=$("#addressId").val();
+//    window.location.href="/Shipping/ContinueToPayment?addressId="+addressId;
+//})

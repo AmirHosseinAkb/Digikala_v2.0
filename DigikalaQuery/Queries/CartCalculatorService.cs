@@ -20,7 +20,7 @@ public class CartCalculatorService:ICartCalculatorService
         var cart = new Cart();
         foreach (var cartItem in cartItems)
         {
-            if (inventories.Any(i => i.ProductId == cartItem.Id && i.ProductCount > 0))
+            if (inventories.Any(i => i.ProductId == cartItem.Id && i.ProductCount >= cartItem.Count))//This Section Changed
             {
                 cartItem.IsInStock = true;
             }
