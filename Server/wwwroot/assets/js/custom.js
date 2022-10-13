@@ -70,7 +70,12 @@ function CallBackHandler(data, action, form) {
                 window.location.reload();
 
             } else {
-                alert(data.message);
+                iziToast.warning({
+                    message: data.message,
+                    rtl: true,
+                    position: 'bottomCenter',
+                    timeout: 3000
+                });
             }
             break;
         case "RefereshList":

@@ -187,6 +187,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discount Confirmed Successfully.
+        /// </summary>
+        public static string DiscountConfirmationMessage {
+            get {
+                return ResourceManager.GetString("DiscountConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PasswordChangedSuccessfully.
         /// </summary>
         public static string PasswordChangedSuccessfully {

@@ -105,12 +105,12 @@ public class AddressApplication : IAddressApplication
         return result.Succeeded();
     }
 
-    public OperationResult CheckAddress(long addressId)
+    public bool IsUserAddressExist(long addressId)
     {
         var result = new OperationResult();
         var address = _addressRepository.GetUserAddress(addressId,_authenticationHelper.GetCurrentUserId());
         if (address == null)
-            return result.Failed(ApplicationMessages.ProcessFailed);
-        return result.Succeeded();
+            return false;
+        return true;
     }
 }

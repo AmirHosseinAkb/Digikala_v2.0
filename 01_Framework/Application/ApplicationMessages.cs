@@ -39,5 +39,15 @@ namespace _01_Framework.Application
         public const string InventoryCantBeZero = "موجودی نمی تواند صفر باشد در صورتی که می خواهید ایتم را حذف کنید از دکمه حذف استفاده کنید";
         public const string AddressIsDefault = "ابتدا ادرس پیشفرض برای خود انتخاب کنید سپس می توانید این ادرس را حذف کنید";
 
+        #region Discount
+
+        public const string DiscountNotFound = "کد تخفیف یافت نشد";
+        public const string DiscountNotStarted = "زمان استفاده از این کد تخفیف فرا نرسیده است";
+        public const string DiscountExpired = "زمان استفاده از این کدتخفیف به پایان رسیده است";
+        public const string DiscountFinished = "تعداد استفاده از این کد تخفیف به سقف خود رسیده است";
+        public const string DiscountConfirmed = "کد تخفیف با موفقیت اعمال شد";
+
+        #endregion
+
     }
 }

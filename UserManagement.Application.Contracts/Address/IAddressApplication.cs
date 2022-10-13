@@ -10,6 +10,6 @@ public interface IAddressApplication
     EditAddressCommand GetAddressForEdit(long addressId);
     OperationResult Edit(EditAddressCommand command);
     OperationResult Delete(long addressId);
-    OperationResult CheckAddress(long addressId);
+    bool IsUserAddressExist(long addressId);
 
 }

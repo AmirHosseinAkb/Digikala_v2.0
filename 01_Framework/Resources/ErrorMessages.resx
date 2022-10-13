@@ -123,6 +123,9 @@
   <data name="ActivationErrorTitle" xml:space="preserve">
     <value>Activation operation failed!</value>
   </data>
+  <data name="AddressNotFound" xml:space="preserve">
+    <value>Address Not Found</value>
+  </data>
   <data name="BuyBeforeFinish" xml:space="preserve">
     <value>Buy Before It Runs Out</value>
   </data>

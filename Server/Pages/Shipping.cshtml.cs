@@ -19,7 +19,7 @@ namespace Server.Pages
             _cartCalculatorService = cartCalculatorService;
         }
         public List<AddressViewModel> AddressVm { get; set; }
-        public Cart Cart { get; set; }
+        public  Cart Cart { get; set; }
         public CartAddressCommand CartAddressCommand;
         public IActionResult OnGet()
         {
@@ -43,7 +43,18 @@ namespace Server.Pages
         {
             if (!ModelState.IsValid)
                 return BadRequest();
-            return RedirectToPage("Payment");
+            if (_addressApplication.IsUserAddressExist(cartAddressCommand.AddressId))
+            {
+                var cookieOptions = new CookieOptions() {Expires = DateTime.Now.AddDays(14)};
+                Response.Cookies.Append("User_Current_Address",
+                    new JavaScriptSerializer().Serialize(cartAddressCommand.AddressId), cookieOptions);
+                return RedirectToPage("Payment");
+            }
+            else
+            {
+                ViewData["AddressNotExist"] = true;
+                return RedirectToPage();
+            }
         }
     }
 }

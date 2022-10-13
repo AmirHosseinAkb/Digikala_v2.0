@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\Services\" />
     <Folder Include="Contracts\Order\" />
   </ItemGroup>
 

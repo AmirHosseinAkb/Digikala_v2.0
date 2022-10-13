@@ -123,6 +123,9 @@
   <data name="ActivationErrorTitle" xml:space="preserve">
     <value>عملیات فعالسازی با شکست مواجه شد!</value>
   </data>
+  <data name="AddressNotFound" xml:space="preserve">
+    <value>ادرس مورد نظر یافت نشد</value>
+  </data>
   <data name="BuyBeforeFinish" xml:space="preserve">
     <value>قبل از اتمام بخرید</value>
   </data>

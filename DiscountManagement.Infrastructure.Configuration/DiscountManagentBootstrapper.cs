@@ -1,4 +1,6 @@
-﻿using DiscountManagement.Application;
+﻿using DigikalaQuery.Contracts.Services;
+using DigikalaQuery.Queries;
+using DiscountManagement.Application;
 using DiscountManagement.Application.Contracts.OrderDiscount;
 using DiscountManagement.Application.Contracts.ProductDiscount;
 using DiscountManagement.Domain.OrderDiscountAgg;
@@ -18,6 +20,7 @@ namespace DiscountManagement.Infrastructure.Configuration
             services.AddScoped<IOrderDiscountApplication, OrderDiscountApplication>();
             services.AddScoped<IProductDiscountRepository, ProductDiscountRepository>();
             services.AddScoped<IProductDiscountApplication, ProductDiscountApplication>();
+            services.AddScoped<IDiscountService, DiscountService>();
 
             services.AddDbContext<DiscountContext>(options =>
                 options.UseSqlServer(connectionString));

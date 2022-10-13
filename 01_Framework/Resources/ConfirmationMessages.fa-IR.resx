@@ -159,6 +159,9 @@
   <data name="DeleteUserConfirmationS2" xml:space="preserve">
     <value> را حذف کنید؟</value>
   </data>
+  <data name="DiscountConfirmationMessage" xml:space="preserve">
+    <value>کد تخفیف با موفقیت اعمال شد</value>
+  </data>
   <data name="PasswordChangedSuccessfully" xml:space="preserve">
     <value>رمز عبور شما با موفقیت تغییر یافت از این پس می توانید با استفاده از این رمز عبور وارد سایت شوید</value>
   </data>

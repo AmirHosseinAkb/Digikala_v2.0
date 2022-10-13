@@ -79,6 +79,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address Not Found.
+        /// </summary>
+        public static string AddressNotFound {
+            get {
+                return ResourceManager.GetString("AddressNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Buy Before It Runs Out.
         /// </summary>
         public static string BuyBeforeFinish {

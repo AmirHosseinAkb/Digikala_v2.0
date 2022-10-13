@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{handler?}"
 @model Server.Pages.ShippingModel
 @{
     Layout = "Shared/Layouts/_CartLayout";
@@ -45,7 +45,7 @@
                                         {
                                             <div class="user-address-item">
                                                 <div class="custom-radio-box">
-                                                    <input type="radio" class="custom-radio-box-input" name="userAddress" @((address.IsDefault) ? "checked" : "") id="@address.AddressId">
+                                                    <input type="radio" class="custom-radio-box-input" @((address.IsDefault) ? "checked" : "") id="@address.AddressId">
                                                     <label id="@address.AddressId" for="@address.AddressId" class="custom-radio-box-label addressLabel" data-placeholder="@DataDictionaries.DefaultAddressPlaceholder" data-placeholder-checked="@DataDictionaries.DefaultAddressMessage">
                                                         <span class="d-block user-address-recipient mb-2">
                                                             @(address.State + "," + address.City)
@@ -158,7 +158,7 @@
                                 @DataDictionaries.CheckoutMessage
                             </div>
                             <div class="checkout-bill-row checkout-bill-action">
-                                <button id="btnContinue" class="btn btn-block btn-primary">@ButtonCaptions.ContinueShoppingProcess</button>
+                                <button type="submit" id="btnContinue" class="btn btn-block btn-primary">@ButtonCaptions.ContinueShoppingProcess</button>
                             </div>
                         </div>
                         <div class="widget p-0">
@@ -179,6 +179,19 @@
     </form>
 </main>
 @section Scripts{
+    @if (Convert.ToBoolean(ViewData["AddressNotExist"]))
+    {
+        <text>
+            <script>
+                iziToast.warning({
+                    message: '@Html.Raw(ErrorMessages.AddressNotFound)',
+                    rtl: true,
+                    position: 'bottomCenter',
+                    timeout: 3000
+                });
+            </script>
+        </text>
+    }
 <script>
     $(".ui-box-close").click(function() {
         window.location.reload();
