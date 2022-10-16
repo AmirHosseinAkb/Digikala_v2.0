@@ -486,6 +486,9 @@
   <data name="OrderBy" xml:space="preserve">
     <value>مرتب سازی بر اساس:</value>
   </data>
+  <data name="OrderDiscount" xml:space="preserve">
+    <value>تخفیف روی فاکتور</value>
+  </data>
   <data name="OrderDiscounts" xml:space="preserve">
     <value>تخفیفات روی فاکتور</value>
   </data>

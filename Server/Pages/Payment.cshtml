@@ -371,61 +371,54 @@
                 </a>
             </div>
             <div class="col-xl-3 col-lg-4">
-                <div class="ui-sticky ui-sticky-top">
-                    <!-- checkout-bill -->
-                    <div class="checkout-bill ui-box bg-white mb-5">
-                        <div class="checkout-bill-row">
-                            <div class="checkout-bill-row-label">قیمت کالاها (۴)</div>
-                            <div class="checkout-bill-row-value">
-                                <span class="fs-6">۴۲,۴۲۰,۰۰۰</span> <span class="currency">تومان</span>
+                    <div class="ui-sticky ui-sticky-top">
+                        <div class="checkout-bill ui-box bg-white mb-5">
+                            <div class="checkout-bill-row">
+                                <div class="checkout-bill-row-label">@DataDictionaries.TotalProductsPrice (@PaymentModel.Cart.CartItems.Count)</div>
+                                <div class="checkout-bill-row-value">
+                                    <span class="fs-6">@PaymentModel.Cart.TotalCartPrice.ToString("#,0")</span> <span class="currency">@DataDictionaries.Toman</span>
+                                </div>
+                            </div>
+                            <div class="checkout-bill-row">
+                                <div class="checkout-bill-row-label">@DataDictionaries.ProductDiscounts</div>
+                                <div class="checkout-bill-row-value">
+                                    <span class="fs-6 text-danger">@PaymentModel.Cart.TotalProductDiscounts.ToString("#,0")</span>
+                                    <span class="currency text-danger">@DataDictionaries.Toman</span>
+                                </div>
+                            </div>
+                            <div class="checkout-bill-row">
+                                <div class="checkout-bill-row-label">@DataDictionaries.OrderDiscount</div>
+                                <div class="checkout-bill-row-value">
+                                    <span class="fs-6 text-danger">@((PaymentModel.Cart.TotalOrderDiscount!=null)?PaymentModel.Cart.TotalOrderDiscount.Value.ToString("#,0"):0)</span>
+                                    <span class="currency text-danger">@DataDictionaries.Toman</span>
+                                </div>
+                            </div>
+                            <div class="checkout-bill-row">
+                                <div class="checkout-bill-row-label">@DataDictionaries.TotalCartPrice</div>
+                                <div class="checkout-bill-row-value">
+                                    <span class="fs-6">@PaymentModel.Cart.RemainingPrice.ToString("#,0")</span> <span class="currency">@DataDictionaries.Toman</span>
+                                </div>
+                            </div>
+                            <div class="checkout-bill-row checkout-bill-note">
+                                @DataDictionaries.CheckoutMessage
+                            </div>
+                            <div class="checkout-bill-row checkout-bill-action">
+                                <button type="submit" id="btnContinue" class="btn btn-block btn-primary">@ButtonCaptions.ContinueShoppingProcess</button>
                             </div>
                         </div>
-                        <div class="checkout-bill-row">
-                            <div class="checkout-bill-row-label">تخفیف کالاها</div>
-                            <div class="checkout-bill-row-value">
-                                <span class="fs-6 text-danger">۵,۰۰۰</span>
-                                <span class="currency text-danger">تومان</span>
-                            </div>
-                        </div>
-                        <div class="checkout-bill-row">
-                            <div class="checkout-bill-row-label">جمع سبد خرید</div>
-                            <div class="checkout-bill-row-value">
-                                <span class="fs-6">25,800,000</span> <span class="currency">تومان</span>
-                            </div>
-                        </div>
-                        <div class="checkout-bill-row checkout-bill-note">
-                            هزینه‌ی ارسال در ادامه بر اساس آدرس، زمان و نحوه‌ی ارسال انتخابی شما‌ محاسبه و به
-                            این مبلغ اضافه خواهد شد
-                        </div>
-                        <div class="checkout-bill-row checkout-bill-action">
-                            <a href="profile-my-order-detail.html" class="btn btn-block btn-primary">ادامه فرایند خرید</a>
-                        </div>
-                        <div class="checkout-bill-row checkout-bill-footer">
-                            <div class="checkout-bill-row-label">
-                                <span class="d-flex">
-                                    <i class="ri-copper-coin-fill text-warning me-1"></i>
-                                    <span class="fs-7">امتیاز باشگاه مشتریان</span>
-                                </span>
-                            </div>
-                            <div class="checkout-bill-row-value">۱۵۰ <span class="fs-7 fw-bold text-muted">امتیاز</span></div>
-                        </div>
-                    </div>
-                    <!--  checkout-bill -->
-                    <!-- widget -->
-                    <div class="widget p-0">
-                        <div class="widget-content widget--free-shipping">
-                            <div class="free-shipping--detail">
-                                <div class="title">ارسال رایگان سفارش</div>
-                                <div class="subtitle">سفارش‌های بالای 500 هزار تومان</div>
-                            </div>
-                            <div class="free-shipping--banner">
-                                <img src="./assets/images/theme/free-shipping--banner.png" alt="ارسال رایگان سفارش">
+                        <div class="widget p-0">
+                            <div class="widget-content widget--free-shipping">
+                                <div class="free-shipping--detail">
+                                    <div class="title">@DataDictionaries.FreeDelivery</div>
+                                    <div class="subtitle">@DataDictionaries.ForSpecialOrders</div>
+                                </div>
+                                <div class="free-shipping--banner">
+                                    <img src="./assets/images/theme/free-shipping--banner.png" alt="@DataDictionaries.FreeDelivery">
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!--  widget -->
                 </div>
-            </div>
         </div>
     </div>
 </main>

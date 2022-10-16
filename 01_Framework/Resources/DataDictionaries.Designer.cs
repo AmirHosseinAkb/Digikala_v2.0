@@ -1168,6 +1168,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Order Discount.
+        /// </summary>
+        public static string OrderDiscount {
+            get {
+                return ResourceManager.GetString("OrderDiscount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Order Discounts.
         /// </summary>
         public static string OrderDiscounts {

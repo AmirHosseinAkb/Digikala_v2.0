@@ -61,7 +61,7 @@ function CallBackHandler(data, action, form) {
             alert(data.Message);
             break;
         case "Refresh":
-            if (data.isSucceeded == true) {
+            if (data.isSucceeded == true && data.message == "") {
                 var uri = window.location.toString();
                 if (uri.indexOf("?") > 0) {
                     var clean_uri = uri.substring(0, uri.indexOf("?"));
@@ -69,7 +69,17 @@ function CallBackHandler(data, action, form) {
                 }
                 window.location.reload();
 
-            } else {
+            }
+            else if (data.isSucceeded == true && data.message != "") {
+                iziToast.success({
+                    message: data.message,
+                    rtl: true,
+                    position: 'bottomCenter',
+                    timeout: 3000
+                });
+                setTimeout(Window.location.reload(), 3000)
+            }
+            else {
                 iziToast.warning({
                     message: data.message,
                     rtl: true,

@@ -30,7 +30,7 @@ namespace DigikalaQuery.Queries
                 var discountRate = discount.DiscountRate;
                 cart.OrderDiscountId=discount.DiscountId;
                 cart.TotalOrderDiscount = (cart.RemainingPrice * discountRate) / 100;
-                cart.RemainingPrice -= cart.TotalOrderDiscount;
+                cart.RemainingPrice -= cart.TotalOrderDiscount.Value;
             }
             return result.Succeeded(ApplicationMessages.DiscountConfirmed);
         }

@@ -486,6 +486,9 @@
   <data name="OrderBy" xml:space="preserve">
     <value>Order By:</value>
   </data>
+  <data name="OrderDiscount" xml:space="preserve">
+    <value>Order Discount</value>
+  </data>
   <data name="OrderDiscounts" xml:space="preserve">
     <value>Order Discounts</value>
   </data>

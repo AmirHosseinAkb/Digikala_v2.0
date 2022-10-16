@@ -2,6 +2,7 @@ using DigikalaQuery.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Nancy.Json;
+using Server.Extensions;
 using ShopManagement.Application.Contracts.Order;
 using UserManagement.Application.Contracts.Address;
 
@@ -12,10 +13,10 @@ namespace Server.Pages
         private readonly ICartCalculatorService _cartCalculatorService;
         private readonly IAddressApplication _addressApplication;
         private readonly IDiscountService _discountService;
-        public static Cart Cart { get; set; }
+        public static Cart Cart { get; set; } = new Cart();
         private const string cookieName = "cart_items";
 
-        public PaymentModel(ICartCalculatorService cartCalculatorService,IAddressApplication addressApplication,IDiscountService discountService)
+        public PaymentModel(ICartCalculatorService cartCalculatorService, IAddressApplication addressApplication, IDiscountService discountService)
         {
             _cartCalculatorService = cartCalculatorService;
             _addressApplication = addressApplication;
@@ -28,13 +29,19 @@ namespace Server.Pages
             if (string.IsNullOrEmpty(referUrl))
                 return Redirect("/");
             var serializer = new JavaScriptSerializer();
+            var addressCookie = Request.Cookies["User_Current_Address"];
+            var addressId = serializer.Deserialize<long>(addressCookie);
+            if (!_addressApplication.IsUserAddressExist(addressId))
+                return RedirectToPage("Shipping");
             var cookie = Request.Cookies[cookieName];
             var cartItems = serializer.Deserialize<List<CartItem>>(cookie);
             foreach (var cartItem in cartItems)
             {
                 cartItem.CalculateTotalItemPrice();
             }
-            Cart = _cartCalculatorService.ComputeCart(cartItems);
+
+            if (Cart.OrderDiscountId == null)
+                Cart = _cartCalculatorService.ComputeCart(cartItems);
             return Page();
         }
 
