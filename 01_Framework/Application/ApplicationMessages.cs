@@ -38,6 +38,7 @@ namespace _01_Framework.Application
         public const string ProductDontExistInStockForCurrentCount = "متاسفانه از محصول مورد نظر به اندازه وارد شده در انبار نداریم!";
         public const string InventoryCantBeZero = "موجودی نمی تواند صفر باشد در صورتی که می خواهید ایتم را حذف کنید از دکمه حذف استفاده کنید";
         public const string AddressIsDefault = "ابتدا ادرس پیشفرض برای خود انتخاب کنید سپس می توانید این ادرس را حذف کنید";
+        public const string PaymentTypeNotFound = "لطفا شیوه پرداخت را  بصورت صحیح انتخاب کنید";
 
         #region Discount
 
@@ -46,6 +47,7 @@ namespace _01_Framework.Application
         public const string DiscountExpired = "زمان استفاده از این کدتخفیف به پایان رسیده است";
         public const string DiscountFinished = "تعداد استفاده از این کد تخفیف به سقف خود رسیده است";
         public const string DiscountConfirmed = "کد تخفیف با موفقیت اعمال شد";
+        public const string DiscountUsed = "شما از این کد تخفیف روی این فاکتور استفاده کرده اید";
 
         #endregion
 

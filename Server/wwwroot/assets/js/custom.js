@@ -77,7 +77,7 @@ function CallBackHandler(data, action, form) {
                     position: 'bottomCenter',
                     timeout: 3000
                 });
-                setTimeout(Window.location.reload(), 3000)
+                setTimeout(window.location.reload(), 3000)
             }
             else {
                 iziToast.warning({

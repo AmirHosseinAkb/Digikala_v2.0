@@ -2068,6 +2068,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pay Order With Number .
+        /// </summary>
+        public static string WithdrawTransactionDescription {
+            get {
+                return ResourceManager.GetString("WithdrawTransactionDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Year.
         /// </summary>
         public static string Year {

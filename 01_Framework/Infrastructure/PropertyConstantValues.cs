@@ -42,4 +42,17 @@ namespace _01_Framework.Infrastructure
         public const int EditRole = 202;
         public const int DeleteRole = 203;
     }
+
+    public static class PaymentTypes
+    {
+        public const byte PayFromWallet = 1;
+        public const byte PayFromBank = 2;
+    }
+
+    public static class OrderStatuses
+    {
+        public const byte NotPaid = 1;
+        public const byte IsWaiting = 2;
+        public const byte OrderSent = 3;
+    }
 }

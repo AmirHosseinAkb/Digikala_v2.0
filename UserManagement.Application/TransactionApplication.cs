@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using _01_Framework.Application;
 using _01_Framework.Application.ZarinPal;
+using _01_Framework.Infrastructure;
 using _01_Framework.Resources;
 using UserManagement.Application.Contracts.Transaction;
 using UserManagement.Domain.TransactionAgg;
@@ -39,7 +40,7 @@ namespace UserManagement.Application
 
         public long AddTransaction(TransactionCommand command)
         {
-            var transaction = new Transaction(1, _authenticationHelper.GetCurrentUserId(), command.Amount,
+            var transaction = new Transaction(TransactionTypes.Deposit, _authenticationHelper.GetCurrentUserId(), command.Amount,
                 DataDictionaries.PaymentDescription, false);
             return _transactionRepository.AddTransaction(transaction);
         }
@@ -50,7 +51,7 @@ namespace UserManagement.Application
             var paymentResponse =
                 _zarinpalFactory.CreatePaymentRequest(transactionId, command.Amount,
                     DataDictionaries.PaymentDescription);
-            return paymentResponse;;
+            return paymentResponse;
         }
 
         public VerificationResponse TransactionVerification(long transactionId,string authority)
@@ -65,6 +66,13 @@ namespace UserManagement.Application
             var transaction = _transactionRepository.GetUserTransaction(transactionId,_authenticationHelper.GetCurrentUserId());
             transaction.Confirm();
             _transactionRepository.SaveChanges();
+        }
+
+        public long AddWithdrawTransaction(int amount,long orderId)
+        {
+            var transaction=new Transaction(TransactionTypes.Withdraw,_authenticationHelper.GetCurrentUserId(),amount,DataDictionaries.WithdrawTransactionDescription+orderId.ToString(),false);
+            _transactionRepository.AddTransaction(transaction);
+            return transaction.TransactionId;
         }
     }
 }

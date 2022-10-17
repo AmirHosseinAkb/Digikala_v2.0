@@ -14,5 +14,6 @@ namespace UserManagement.Application.Contracts.Transaction
         PaymentResponse TransactionPayment(TransactionCommand command);
         VerificationResponse TransactionVerification(long transactionId,string authority);
         void ConfirmTransacttion(long transactionId);
+        long AddWithdrawTransaction(int amount,long orderId);
     }
 }

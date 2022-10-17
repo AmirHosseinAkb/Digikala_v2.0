@@ -789,6 +789,9 @@
   <data name="Withdraw" xml:space="preserve">
     <value>برداشت</value>
   </data>
+  <data name="WithdrawTransactionDescription" xml:space="preserve">
+    <value>پرداخت فاکتور شماره </value>
+  </data>
   <data name="Year" xml:space="preserve">
     <value>سال</value>
   </data>

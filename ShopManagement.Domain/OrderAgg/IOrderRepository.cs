@@ -8,5 +8,7 @@ namespace ShopManagement.Domain.OrderAgg
 {
     public interface IOrderRepository
     {
+        Order GetUserOpenOrder(long userId);
+        long AddOrder(Order order);
     }
 }

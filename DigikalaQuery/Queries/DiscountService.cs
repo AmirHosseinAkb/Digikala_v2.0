@@ -25,6 +25,8 @@ namespace DigikalaQuery.Queries
                 return result.Failed(ApplicationMessages.DiscountExpired);
             else if (discount.UsableCount == 0)
                 return result.Failed(ApplicationMessages.DiscountFinished);
+            else if (cart.OrderDiscountId != null)
+                return result.Failed(ApplicationMessages.DiscountUsed);
             else
             {
                 var discountRate = discount.DiscountRate;

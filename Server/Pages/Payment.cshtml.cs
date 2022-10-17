@@ -56,5 +56,13 @@ namespace Server.Pages
                 ViewData["DiscountConfirmed"] = true;
             return new JsonResult(result);
         }
+
+        public CartPaymentCommand CartPaymentCommand { get; set; }
+        public IActionResult OnGetConfirmPaymentTypeForOrder(CartPaymentCommand cartPaymentCommand)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+        }
     }
 }

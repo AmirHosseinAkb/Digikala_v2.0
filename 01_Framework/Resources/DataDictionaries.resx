@@ -786,6 +786,9 @@
   <data name="Withdraw" xml:space="preserve">
     <value>Withdraw</value>
   </data>
+  <data name="WithdrawTransactionDescription" xml:space="preserve">
+    <value>Pay Order With Number </value>
+  </data>
   <data name="Year" xml:space="preserve">
     <value>Year</value>
   </data>

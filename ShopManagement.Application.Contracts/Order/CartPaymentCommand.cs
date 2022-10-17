@@ -6,6 +6,6 @@ namespace ShopManagement.Application.Contracts.Order
     public class CartPaymentCommand
     {
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
-        public byte PaymentType { get; set; }
+        public byte PaymentType { get; set; } = 2;
     }
 }

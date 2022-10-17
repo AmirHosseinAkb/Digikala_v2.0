@@ -21,7 +21,7 @@
             
         }
 
-        public Order(long userId, long? discountId, long? addressId, int orderSum, string trackingNumber, byte paymentType, byte status, bool isClosed, DateTime creationDate, bool isDeleted)
+        public Order(long userId, long? discountId, long? addressId, int orderSum, string trackingNumber, byte paymentType, byte status, bool isClosed, DateTime creationDate)
         {
             UserId = userId;
             DiscountId = discountId;
@@ -32,10 +32,9 @@
             Status = status;
             IsClosed = isClosed;
             CreationDate = creationDate;
-            IsDeleted = isDeleted;
         }
 
-        public void Edit(long userId, long? discountId, long? addressId, int orderSum, string trackingNumber, byte paymentType, byte status, bool isClosed, DateTime creationDate, bool isDeleted)
+        public void Edit(long userId, long? discountId, long? addressId, int orderSum, string trackingNumber, byte paymentType, byte status, bool isClosed, DateTime creationDate)
         {
             UserId = userId;
             DiscountId = discountId;
@@ -46,7 +45,6 @@
             Status = status;
             IsClosed = isClosed;
             CreationDate = creationDate;
-            IsDeleted = isDeleted;
         }
 
         public void Delete()
