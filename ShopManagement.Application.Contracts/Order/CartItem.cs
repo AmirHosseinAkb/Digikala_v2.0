@@ -11,6 +11,7 @@ namespace ShopManagement.Application.Contracts.Order
         public int Count { get; set; }
         public string Brand { get; set; }
         public bool IsInStock { get; set; } = false;
+        public long ColorId { get; set; }
         public string? ColorName { get; set; }
         public string? ColorCode { get; set; }
         public int? DiscountRate { get; set; }

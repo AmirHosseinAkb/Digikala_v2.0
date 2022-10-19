@@ -9,6 +9,7 @@ namespace DiscountManagement.Application.Contracts.OrderDiscount
         Tuple<List<OrderDiscountViewModel>,int,int,int> GetOrderDiscounts(OrderDiscountSearchModel searchModel);
         EditOrderDiscountCommand GetDiscountForEdit(long discountId);
         OperationResult Edit(EditOrderDiscountCommand command);
+        void ReduceDiscountUsableCount(long discountId);
         void Delete(long discountId);
     }
 }

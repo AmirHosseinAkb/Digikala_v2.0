@@ -32,5 +32,10 @@ public class OrderDiscount
     }
 
     public void Delete()=> IsDeleted = true;
+
+    public void ReduceUsableCount(int count)
+    {
+        UsableCount -= count;
+    }
     
 }

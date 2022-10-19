@@ -1,3 +1,5 @@
+using _01_Framework.Application.ZarinPal;
+using _01_Framework.Infrastructure;
 using DigikalaQuery.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,14 +15,20 @@ namespace Server.Pages
         private readonly ICartCalculatorService _cartCalculatorService;
         private readonly IAddressApplication _addressApplication;
         private readonly IDiscountService _discountService;
+        private readonly IZarinpalFactory _zarinpalFactory;
+        private readonly IOrderApplication _orderApplication;
+        public string ErrorMessage { get; set; }
         public static Cart Cart { get; set; } = new Cart();
         private const string cookieName = "cart_items";
 
-        public PaymentModel(ICartCalculatorService cartCalculatorService, IAddressApplication addressApplication, IDiscountService discountService)
+        public PaymentModel(ICartCalculatorService cartCalculatorService, IAddressApplication addressApplication, IDiscountService discountService
+        , IZarinpalFactory zarinpalFactory, IOrderApplication orderApplication)
         {
             _cartCalculatorService = cartCalculatorService;
             _addressApplication = addressApplication;
             _discountService = discountService;
+            _zarinpalFactory = zarinpalFactory;
+            _orderApplication = orderApplication;
         }
         public IActionResult OnGet()
         {
@@ -31,6 +39,7 @@ namespace Server.Pages
             var serializer = new JavaScriptSerializer();
             var addressCookie = Request.Cookies["User_Current_Address"];
             var addressId = serializer.Deserialize<long>(addressCookie);
+            Cart.AddressId = addressId;
             if (!_addressApplication.IsUserAddressExist(addressId))
                 return RedirectToPage("Shipping");
             var cookie = Request.Cookies[cookieName];
@@ -57,12 +66,56 @@ namespace Server.Pages
             return new JsonResult(result);
         }
 
+        [BindProperty]
         public CartPaymentCommand CartPaymentCommand { get; set; }
         public IActionResult OnGetConfirmPaymentTypeForOrder(CartPaymentCommand cartPaymentCommand)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
+            var result = _orderApplication.CreateOrder(cartPaymentCommand, Cart);
+            if (result.Item1.IsSucceeded)
+            {
+                if (cartPaymentCommand.PaymentType == PaymentTypes.PayFromWallet)
+                {
+                    return null;
+                }
+                else
+                {
+                    var paymentResponse = _orderApplication.AddOrderPayment((int)Cart.RemainingPrice,result.Item2);
+                    if (paymentResponse.Status == 100)
+                    {
+                        return Redirect("https://SandBox.Zarinpal.com/pg/StartPay/" + paymentResponse.Authority);
+                    }
+                }
 
+            }
+            ErrorMessage = result.Item1.Message;
+            return Page();
+        }
+
+        public IActionResult OnGetPayOrder(long transactionId,long orderId)
+        {
+            var requestQuery = HttpContext.Request.Query;
+            if (requestQuery["Status"] != ""
+                && requestQuery["Status"].ToString().ToLower() == "ok"
+                && requestQuery["Authority"] != "")
+            {
+                var authority = requestQuery["Authority"];
+                var verificationResponse =
+                    _zarinpalFactory.CreateOrderVerificationRequest((int)Cart.RemainingPrice, authority);
+                if (verificationResponse.Status == 100)
+                {
+                    _orderApplication.ConfirmOrderTransaction(transactionId);
+                    _orderApplication.ConfirmOrder(orderId);
+                    var serializer = new JavaScriptSerializer();
+                    var cookie = Request.Cookies["cart_items"];
+                    var cartItems = serializer.Deserialize<List<CartItem>>(cookie);
+                    _orderApplication.AddOrderItems(cartItems,orderId);
+                    Response.Cookies.Delete("cart_items");
+                    return Redirect("/CheckoutResult?isSuccessfull=true&refId=" + verificationResponse.RefId);
+                }
+            }
+            return Redirect("/CheckoutResult?isSuccessfull=false");
         }
     }
 }

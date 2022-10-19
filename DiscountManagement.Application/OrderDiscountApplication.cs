@@ -144,6 +144,15 @@ namespace DiscountManagement.Application
             return result.Succeeded();
         }
 
+        public void ReduceDiscountUsableCount(long discountId)
+        {
+            var discount = _orderDiscountRepository.GetOrderDiscount(discountId);
+            if (discount.UsableCount >= 1)
+                discount.ReduceUsableCount(1);
+            _orderDiscountRepository.SaveChanges();
+
+        }
+
         public void Delete(long discountId)
         {
             var discount = _orderDiscountRepository.GetOrderDiscount(discountId);

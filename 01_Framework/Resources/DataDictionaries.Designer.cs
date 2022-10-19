@@ -1231,6 +1231,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Payment Gateway.
+        /// </summary>
+        public static string PaymentGateway {
+            get {
+                return ResourceManager.GetString("PaymentGateway", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to If an amount has been deducted from your account, it will be returned to your account within 24 hours..
         /// </summary>
         public static string PaymentRefundMessage {
@@ -2068,7 +2077,7 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pay Order With Number .
+        ///   Looks up a localized string similar to Pay Order Number.
         /// </summary>
         public static string WithdrawTransactionDescription {
             get {
@@ -2082,6 +2091,15 @@ namespace _01_Framework.Resources {
         public static string Year {
             get {
                 return ResourceManager.GetString("Year", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zarinpal.
+        /// </summary>
+        public static string Zarinpal {
+            get {
+                return ResourceManager.GetString("Zarinpal", resourceCulture);
             }
         }
     }

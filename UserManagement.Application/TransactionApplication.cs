@@ -38,18 +38,18 @@ namespace UserManagement.Application
                 }).ToList();
         }
 
-        public long AddTransaction(TransactionCommand command)
+        public long AddTransaction(int amount)
         {
-            var transaction = new Transaction(TransactionTypes.Deposit, _authenticationHelper.GetCurrentUserId(), command.Amount,
+            var transaction = new Transaction(TransactionTypes.Deposit, _authenticationHelper.GetCurrentUserId(), amount,
                 DataDictionaries.PaymentDescription, false);
             return _transactionRepository.AddTransaction(transaction);
         }
 
-        public PaymentResponse TransactionPayment(TransactionCommand command)
+        public PaymentResponse TransactionPayment(int amount)
         {
-            var transactionId = AddTransaction(command);
+            var transactionId = AddTransaction(amount);
             var paymentResponse =
-                _zarinpalFactory.CreatePaymentRequest(transactionId, command.Amount,
+                _zarinpalFactory.CreatePaymentRequest(transactionId, amount,
                     DataDictionaries.PaymentDescription);
             return paymentResponse;
         }
@@ -70,9 +70,22 @@ namespace UserManagement.Application
 
         public long AddWithdrawTransaction(int amount,long orderId)
         {
-            var transaction=new Transaction(TransactionTypes.Withdraw,_authenticationHelper.GetCurrentUserId(),amount,DataDictionaries.WithdrawTransactionDescription+orderId.ToString(),false);
+            var transaction=new Transaction(TransactionTypes.Withdraw,_authenticationHelper.GetCurrentUserId(),amount,DataDictionaries.WithdrawTransactionDescription+orderId,false);
             _transactionRepository.AddTransaction(transaction);
             return transaction.TransactionId;
+        }
+
+        public TransactionViewModel GetTransactionById(long transactionId)
+        {
+            var transaction=_transactionRepository.GetUserTransaction(transactionId, _authenticationHelper.GetCurrentUserId());
+            return new TransactionViewModel()
+            {
+                TypeId = transaction.TypeId,
+                IsSucceeded = transaction.IsSucceeded,
+                Amount = transaction.Amount,
+                CreationDate = transaction.CreationDate.ToShamsi(),
+                Description = transaction.Description,
+            };
         }
     }
 }

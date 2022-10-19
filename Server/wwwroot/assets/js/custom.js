@@ -163,6 +163,7 @@ function AddToCart(id, title, price, discountRate, imageName, brand) {
         products = JSON.parse(products);
     }
     var colorInformations = $('input[name=productColor]:checked').attr("value").split('-');
+    var colorId = $('input[name=productColor]:checked').attr("id")
     var colorName = colorInformations[0];
     var colorCode = colorInformations[1];
     var currentProduct = products.find(p => p.id == id && p.colorName == colorName);
@@ -180,6 +181,7 @@ function AddToCart(id, title, price, discountRate, imageName, brand) {
             imageName,
             count,
             brand,
+            colorId,
             colorName,
             colorCode,
             guid

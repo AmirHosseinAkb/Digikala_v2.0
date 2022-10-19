@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection.Metadata;
 
 namespace _01_Framework.Application.ZarinPal
 {
@@ -10,5 +6,7 @@ namespace _01_Framework.Application.ZarinPal
     {
         PaymentResponse CreatePaymentRequest(long transactionId,int amount, string description);
         VerificationResponse CreateVerificationRequest(int amount,string authority);
+        PaymentResponse CreateOrderPaymentRequest(long transactionId,long orderId, int amount, string description);
+        VerificationResponse CreateOrderVerificationRequest(int amount, string authority);
     }
 }

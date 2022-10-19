@@ -243,6 +243,9 @@
   <data name="Pay" xml:space="preserve">
     <value>پرداخت</value>
   </data>
+  <data name="PayOrder" xml:space="preserve">
+    <value>پرداخت فاکتور</value>
+  </data>
   <data name="ProductDetails" xml:space="preserve">
     <value>مشخصات محصول</value>
   </data>
@@ -257,6 +260,9 @@
   </data>
   <data name="ReturnHome" xml:space="preserve">
     <value>بازگشت به صفحه اصلی</value>
+  </data>
+  <data name="ReturnShipping" xml:space="preserve">
+    <value>بازگشت به نحوه ارسال</value>
   </data>
   <data name="ReturnToCart" xml:space="preserve">
     <value>بازگشت به سبد خرید</value>

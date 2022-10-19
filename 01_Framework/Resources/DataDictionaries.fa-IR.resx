@@ -507,6 +507,9 @@
   <data name="PaymentDescription" xml:space="preserve">
     <value>واریز به کیف پول</value>
   </data>
+  <data name="PaymentGateway" xml:space="preserve">
+    <value>درگاه پرداخت</value>
+  </data>
   <data name="PaymentRefundMessage" xml:space="preserve">
     <value>چنانچه مبلغی از حساب شما کسر شده است، تا ۲۴ ساعت آینده به حساب شما باز خواهد گشت.</value>
   </data>
@@ -794,5 +797,8 @@
   </data>
   <data name="Year" xml:space="preserve">
     <value>سال</value>
+  </data>
+  <data name="Zarinpal" xml:space="preserve">
+    <value>زرین پال</value>
   </data>
 </root>

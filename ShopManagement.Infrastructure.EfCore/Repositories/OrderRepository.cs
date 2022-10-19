@@ -21,5 +21,31 @@ namespace ShopManagement.Infrastructure.EfCore.Repositories
             _shopContext.SaveChanges();
             return order.OrderId;
         }
+
+        public Order GetOrderById(long orderId)
+        {
+            return _shopContext.Orders.Find(orderId);
+        }
+
+        public void Update(Order order)
+        {
+            _shopContext.Orders.Update(order);
+            _shopContext.SaveChanges();
+        }
+
+        public void AddOrderItems(List<OrderItem> orderItems)
+        {
+            foreach (var orderItem in orderItems)
+            {
+                _shopContext.OrderItems.Add(orderItem);
+            }
+
+            _shopContext.SaveChanges();
+        }
+
+        public void SaveChanges()
+        {
+            _shopContext.SaveChanges();
+        }
     }
 }

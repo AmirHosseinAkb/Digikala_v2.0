@@ -25,6 +25,7 @@ using ShopManagement.Domain.ProductImageAgg;
 using ShopManagement.Domain.Services;
 using ShopManagement.Infrastructure.AccountAcl;
 using ShopManagement.Infrastructure.Configuration.Permissions;
+using ShopManagement.Infrastructure.Discount;
 
 namespace ShopManagement.Infrastructure.Configuration
 {
@@ -54,6 +55,9 @@ namespace ShopManagement.Infrastructure.Configuration
             services.AddScoped<IProductGroupQuery,ProductGroupQuery>();
             services.AddScoped<IProductQuery,ProductQuery>();
             services.AddScoped<ICartCalculatorService,CartCalculatorService>();
+            services.AddScoped<IShopTransactionAcl,ShopTransactionAcl>();
+
+            services.AddScoped<IShopDiscountAcl,ShopDiscountAcl>();
 
             services.AddDbContext<ShopContext>(options =>
                 options.UseSqlServer(connectionString),

@@ -23,6 +23,10 @@ namespace Server.Pages
         public CartAddressCommand CartAddressCommand;
         public IActionResult OnGet()
         {
+            var typedHeaders = Request.GetTypedHeaders();
+            var referUrl = typedHeaders.Referer?.AbsoluteUri;
+            if (string.IsNullOrEmpty(referUrl))
+                return Redirect("/");
             AddressVm = _addressApplication.GetUserAddresses();
             if (!AddressVm.Any())
                 return Redirect("/UserPanel/Addresses?isAddressNotFound=true");

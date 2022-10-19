@@ -507,6 +507,9 @@
   <data name="PaymentDescription" xml:space="preserve">
     <value>Pay to wallet</value>
   </data>
+  <data name="PaymentGateway" xml:space="preserve">
+    <value>Payment Gateway</value>
+  </data>
   <data name="PaymentRefundMessage" xml:space="preserve">
     <value>If an amount has been deducted from your account, it will be returned to your account within 24 hours.</value>
   </data>
@@ -787,9 +790,12 @@
     <value>Withdraw</value>
   </data>
   <data name="WithdrawTransactionDescription" xml:space="preserve">
-    <value>Pay Order With Number </value>
+    <value>Pay Order Number</value>
   </data>
   <data name="Year" xml:space="preserve">
     <value>Year</value>
+  </data>
+  <data name="Zarinpal" xml:space="preserve">
+    <value>Zarinpal</value>
   </data>
 </root>

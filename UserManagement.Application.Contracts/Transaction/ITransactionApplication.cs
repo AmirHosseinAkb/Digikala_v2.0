@@ -10,10 +10,11 @@ namespace UserManagement.Application.Contracts.Transaction
     public interface ITransactionApplication
     {
         List<TransactionViewModel> GetUserTransactionsForShow();
-        long AddTransaction(TransactionCommand command);
-        PaymentResponse TransactionPayment(TransactionCommand command);
+        long AddTransaction(int amount);
+        PaymentResponse TransactionPayment(int amount);
         VerificationResponse TransactionVerification(long transactionId,string authority);
         void ConfirmTransacttion(long transactionId);
         long AddWithdrawTransaction(int amount,long orderId);
+
     }
 }

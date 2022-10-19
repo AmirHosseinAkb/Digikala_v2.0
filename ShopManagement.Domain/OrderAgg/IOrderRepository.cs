@@ -10,5 +10,9 @@ namespace ShopManagement.Domain.OrderAgg
     {
         Order GetUserOpenOrder(long userId);
         long AddOrder(Order order);
+        Order GetOrderById(long orderId);
+        void Update(Order order);
+        void AddOrderItems(List<OrderItem> orderItems);
+        void SaveChanges();
     }
 }

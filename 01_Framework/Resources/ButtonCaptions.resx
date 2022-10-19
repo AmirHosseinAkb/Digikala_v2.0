@@ -243,6 +243,9 @@
   <data name="Pay" xml:space="preserve">
     <value>Pay</value>
   </data>
+  <data name="PayOrder" xml:space="preserve">
+    <value>Pay Order</value>
+  </data>
   <data name="ProductDetails" xml:space="preserve">
     <value>Product Details</value>
   </data>
@@ -257,6 +260,9 @@
   </data>
   <data name="ReturnHome" xml:space="preserve">
     <value>Return Home</value>
+  </data>
+  <data name="ReturnShipping" xml:space="preserve">
+    <value>Return Shipping</value>
   </data>
   <data name="ReturnToCart" xml:space="preserve">
     <value>Return To Cart</value>

@@ -28,7 +28,7 @@ namespace Server.Pages.UserPanel.Wallet
         {
             if (!ModelState.IsValid)
                 return RedirectToPage();
-            var paymentResponse=_transactionApplication.TransactionPayment(TransactionCommand);
+            var paymentResponse=_transactionApplication.TransactionPayment(TransactionCommand.Amount);
 
             if (paymentResponse.Status == 100)
                 return Redirect("https://SandBox.Zarinpal.com/pg/StartPay/" + paymentResponse.Authority);

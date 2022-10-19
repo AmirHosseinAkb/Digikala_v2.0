@@ -38,5 +38,28 @@ namespace _01_Framework.Application.ZarinPal
                 RefId = response.RefId
             };
         }
+
+        public PaymentResponse CreateOrderPaymentRequest(long transactionId,long orderId, int amount, string description)
+        {
+            var payment = new ZarinpalSandbox.Payment(amount);
+            var response =
+                payment.PaymentRequest(description, "https://localhost:7458/Payment/PayOrder?transactionId=" + transactionId+"&orderId="+orderId);
+            return new PaymentResponse()
+            {
+                Authority = response.Result.Authority,
+                Status = response.Result.Status
+            };
+        }
+
+        public VerificationResponse CreateOrderVerificationRequest(int amount, string authority)
+        {
+            var payment = new ZarinpalSandbox.Payment(amount);
+            var response = payment.Verification(authority);
+            return new VerificationResponse()
+            {
+                Status = response.Result.Status,
+                RefId = response.Result.RefId
+            };
+        }
     }
 }

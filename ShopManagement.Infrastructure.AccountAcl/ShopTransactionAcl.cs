@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using _01_Framework.Infrastructure;
 using Nancy.Localization;
 using ShopManagement.Domain.Services;
 using UserManagement.Application.Contracts.Transaction;
@@ -13,9 +14,24 @@ namespace ShopManagement.Infrastructure.AccountAcl
         {
             _transactionApplication = transactionApplication;
         }
-        public long AddTransaction(int amount, long orderId)
+        public long AddTransaction(int amount,long orderId)
         {
-            return _transactionApplication.AddWithdrawTransaction(amount, orderId);
+            return _transactionApplication.AddWithdrawTransaction(amount,orderId);
+        }
+
+        public void confirmTransaction(long transactionId)
+        {
+            _transactionApplication.ConfirmTransacttion(transactionId);
+        }
+
+        public long GetUserWalletBallance()
+        {
+            var userTransactions = _transactionApplication.GetUserTransactionsForShow();
+            var deposits= userTransactions.Where(t=> t.TypeId == TransactionTypes.Deposit && t.IsSucceeded)
+                .Sum(t =>t.Amount );
+            var withdraws=userTransactions.Where(t=> t.TypeId == TransactionTypes.Withdraw && t.IsSucceeded)
+                .Sum(t =>t.Amount );
+            return deposits - withdraws;
         }
     }
 }

@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using _01_Framework.Application;
-using Microsoft.AspNetCore.Mvc;
+﻿using _01_Framework.Application;
+using _01_Framework.Application.ZarinPal;
 
 namespace ShopManagement.Application.Contracts.Order
 {
     public interface IOrderApplication
     {
-        OperationResult CreateOrder(CartPaymentCommand command, Cart cart);
+        (OperationResult,long) CreateOrder(CartPaymentCommand command, Cart cart);
+        long AddOrderTransaction(int amount,long orderId);
+        PaymentResponse AddOrderPayment(int amount,long orderId);
+        void ConfirmOrderTransaction(long transactionId);
+        void ConfirmOrder(long orderId);
+        void AddOrderItems(List<CartItem> cartItems,long orderId);
+        OperationResult PayOrderFromWallet(long orderId);
     }
 }

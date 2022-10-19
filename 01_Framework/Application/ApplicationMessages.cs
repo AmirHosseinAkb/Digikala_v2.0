@@ -39,6 +39,7 @@ namespace _01_Framework.Application
         public const string InventoryCantBeZero = "موجودی نمی تواند صفر باشد در صورتی که می خواهید ایتم را حذف کنید از دکمه حذف استفاده کنید";
         public const string AddressIsDefault = "ابتدا ادرس پیشفرض برای خود انتخاب کنید سپس می توانید این ادرس را حذف کنید";
         public const string PaymentTypeNotFound = "لطفا شیوه پرداخت را  بصورت صحیح انتخاب کنید";
+        public const string WalletBallnceIsNotEnough = "موجودی حساب کافی نمی باشد لطفا ابتدا حساب خود را شارژ نمایید";
 
         #region Discount
 

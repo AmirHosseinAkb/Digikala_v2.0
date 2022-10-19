@@ -439,6 +439,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pay Order.
+        /// </summary>
+        public static string PayOrder {
+            get {
+                return ResourceManager.GetString("PayOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Product Details.
         /// </summary>
         public static string ProductDetails {
@@ -480,6 +489,15 @@ namespace _01_Framework.Resources {
         public static string ReturnHome {
             get {
                 return ResourceManager.GetString("ReturnHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return Shipping.
+        /// </summary>
+        public static string ReturnShipping {
+            get {
+                return ResourceManager.GetString("ReturnShipping", resourceCulture);
             }
         }
         
