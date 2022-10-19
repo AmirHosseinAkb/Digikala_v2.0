@@ -64,8 +64,8 @@ namespace UserManagement.Infrastructure.EfCore.Repositories
 
         public long GetUserWalletBalance(long userId)
         {
-            var deposit = _context.Transactions.Where(t => t.UserId == userId && t.TypeId == TransactionTypes.Deposit && t.IsSucceeded).Sum(t => t.Amount);
-            var withdraw = _context.Transactions.Where(t => t.UserId == userId && t.TypeId == TransactionTypes.Withdraw && t.IsSucceeded).Sum(t => t.Amount);
+            var deposit = _context.Transactions.Where(t => t.UserId == userId && t.TypeId == TransactionTypes.Deposit && t.IsSucceeded && !t.IsForPayOrder).Sum(t => t.Amount);
+            var withdraw = _context.Transactions.Where(t => t.UserId == userId && t.TypeId == TransactionTypes.Withdraw && t.IsSucceeded && !t.IsForPayOrder).Sum(t => t.Amount);
             return deposit - withdraw;
         }
 

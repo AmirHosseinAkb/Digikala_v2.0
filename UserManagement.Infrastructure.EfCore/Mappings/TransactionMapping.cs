@@ -21,6 +21,7 @@ namespace UserManagement.Infrastructure.EfCore.Mappings
             builder.Property(t => t.CreationDate);
             builder.Property(t => t.Description).HasMaxLength(200);
             builder.Property(t => t.IsSucceeded);
+            builder.Property(t => t.IsForPayOrder);
 
             builder.HasOne(t => t.User)
                 .WithMany(u => u.Transactions)

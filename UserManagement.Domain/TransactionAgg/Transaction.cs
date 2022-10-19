@@ -16,6 +16,7 @@ namespace UserManagement.Domain.TransactionAgg
         public string Description { get; private set; }
         public DateTime CreationDate { get;private set; }
         public bool IsSucceeded { get; private set; }
+        public bool IsForPayOrder { get; private set; } = false;
         public User User { get; set; }
         public TransactionType TransactionType { get; set; }
 
@@ -37,6 +38,11 @@ namespace UserManagement.Domain.TransactionAgg
         public void Confirm()
         {
             IsSucceeded = true;
+        }
+
+        public void CheckForOrder()
+        {
+            IsForPayOrder = true;
         }
         
     }

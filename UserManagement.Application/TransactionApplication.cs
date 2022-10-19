@@ -71,6 +71,7 @@ namespace UserManagement.Application
         public long AddWithdrawTransaction(int amount,long orderId)
         {
             var transaction=new Transaction(TransactionTypes.Withdraw,_authenticationHelper.GetCurrentUserId(),amount,DataDictionaries.WithdrawTransactionDescription+orderId,false);
+            transaction.CheckForOrder();
             _transactionRepository.AddTransaction(transaction);
             return transaction.TransactionId;
         }

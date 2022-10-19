@@ -77,15 +77,19 @@ namespace Server.Pages
             {
                 if (cartPaymentCommand.PaymentType == PaymentTypes.PayFromWallet)
                 {
-                    return null;
+                    var operationResult = _orderApplication.PayOrderFromWallet(result.Item2);
+                    if (operationResult.IsSucceeded)
+                        return Redirect("/UserPanel/Wallet");
+                    ErrorMessage = operationResult.Message;
+                    return Page();
                 }
                 else
                 {
-                    var paymentResponse = _orderApplication.AddOrderPayment((int)Cart.RemainingPrice,result.Item2);
+                    var paymentResponse = _orderApplication.AddOrderPayment((int)Cart.RemainingPrice, result.Item2);
                     if (paymentResponse.Status == 100)
-                    {
                         return Redirect("https://SandBox.Zarinpal.com/pg/StartPay/" + paymentResponse.Authority);
-                    }
+                    else
+                        return NotFound();
                 }
 
             }
@@ -93,7 +97,7 @@ namespace Server.Pages
             return Page();
         }
 
-        public IActionResult OnGetPayOrder(long transactionId,long orderId)
+        public IActionResult OnGetPayOrder(long transactionId, long orderId)
         {
             var requestQuery = HttpContext.Request.Query;
             if (requestQuery["Status"] != ""
@@ -110,7 +114,7 @@ namespace Server.Pages
                     var serializer = new JavaScriptSerializer();
                     var cookie = Request.Cookies["cart_items"];
                     var cartItems = serializer.Deserialize<List<CartItem>>(cookie);
-                    _orderApplication.AddOrderItems(cartItems,orderId);
+                    _orderApplication.AddOrderItems(cartItems, orderId);
                     Response.Cookies.Delete("cart_items");
                     return Redirect("/CheckoutResult?isSuccessfull=true&refId=" + verificationResponse.RefId);
                 }
