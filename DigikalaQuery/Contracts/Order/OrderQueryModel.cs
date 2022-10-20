@@ -12,8 +12,8 @@ namespace DigikalaQuery.Contracts.Order
         public string CreationDate { get; set; }
         public int OrderTotalPrice { get; set; }
         public int OrderDiscountPrice { get; set; }
-        public int RemainingPrice { get; set; }
+        public int PaidPrice { get; set; }
         public byte Status { get; set; }
-        public bool IsClosed { get; set; }
+        public byte PaymentType { get; set; }
     }
 }

@@ -22,17 +22,18 @@ namespace DigikalaQuery.Queries
         }
         public List<OrderQueryModel> GetUserOrders()
         {
-            return null;
-            //return _shopContext.Orders.Include(o => o.OrderItems)
-            //    .Where(o => o.UserId == _authenticationHelper.GetCurrentUserId())
-            //    .Select(o => new OrderQueryModel()
-            //    {
-            //        TrackingNumber = o.TrackingNumber,
-            //        Status = o.Status,
-            //        CreationDate = o.CreationDate.ToShamsi(),
-            //        OrderTotalPrice = o.OrderSum+
-
-            //    }).ToList();
+            return _shopContext.Orders.Include(o => o.OrderItems)
+                .Where(o => o.UserId == _authenticationHelper.GetCurrentUserId())
+                .Select(o => new OrderQueryModel()
+                {
+                    TrackingNumber = o.TrackingNumber,
+                    Status = o.Status,
+                    CreationDate = o.CreationDate.ToShamsi(),
+                    OrderTotalPrice = o.OrderSum,
+                    OrderDiscountPrice = o.OrderDiscount,
+                    PaidPrice = o.PaidPrice,
+                    PaymentType = o.PaymentType
+                }).ToList();
         }
     }
 }
