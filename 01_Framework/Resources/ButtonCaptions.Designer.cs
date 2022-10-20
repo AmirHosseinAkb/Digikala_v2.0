@@ -214,6 +214,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Payment Type.
+        /// </summary>
+        public static string ChangePaymentType {
+            get {
+                return ResourceManager.GetString("ChangePaymentType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cheapest.
         /// </summary>
         public static string Cheapest {
@@ -480,6 +489,15 @@ namespace _01_Framework.Resources {
         public static string Register {
             get {
                 return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeat Payment.
+        /// </summary>
+        public static string RepeatPayment {
+            get {
+                return ResourceManager.GetString("RepeatPayment", resourceCulture);
             }
         }
         

@@ -786,6 +786,9 @@
   <data name="TrackingId" xml:space="preserve">
     <value>کد پیگیری</value>
   </data>
+  <data name="TrackOrder" xml:space="preserve">
+    <value>پیگیری سفارش</value>
+  </data>
   <data name="TransactionType" xml:space="preserve">
     <value>نوع تراکنش</value>
   </data>

@@ -257,5 +257,23 @@ namespace _01_Framework.Resources {
                 return ResourceManager.GetString("Succeeded", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment was successful. Your order has been successfully placed and will be sent to you at the appointed time. Thank you for choosing us to shop with..
+        /// </summary>
+        public static string SuccessfulCheckoutMessage {
+            get {
+                return ResourceManager.GetString("SuccessfulCheckoutMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your order has been successfully placed.
+        /// </summary>
+        public static string SuccessfulCheckoutTitle {
+            get {
+                return ResourceManager.GetString("SuccessfulCheckoutTitle", resourceCulture);
+            }
+        }
     }
 }

@@ -168,6 +168,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="ChangePaymentType" xml:space="preserve">
+    <value>Change Payment Type</value>
+  </data>
   <data name="Cheapest" xml:space="preserve">
     <value>Cheapest</value>
   </data>
@@ -257,6 +260,9 @@
   </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
+  </data>
+  <data name="RepeatPayment" xml:space="preserve">
+    <value>Repeat Payment</value>
   </data>
   <data name="ResetPassword" xml:space="preserve">
     <value>Reset Password</value>

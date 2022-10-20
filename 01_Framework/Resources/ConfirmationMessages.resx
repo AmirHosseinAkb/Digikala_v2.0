@@ -183,4 +183,10 @@
   <data name="Succeeded" xml:space="preserve">
     <value>Succeeded!</value>
   </data>
+  <data name="SuccessfulCheckoutMessage" xml:space="preserve">
+    <value>Payment was successful. Your order has been successfully placed and will be sent to you at the appointed time. Thank you for choosing us to shop with.</value>
+  </data>
+  <data name="SuccessfulCheckoutTitle" xml:space="preserve">
+    <value>Your order has been successfully placed</value>
+  </data>
 </root>

@@ -180,4 +180,10 @@
   <data name="Succeeded" xml:space="preserve">
     <value>موفق!</value>
   </data>
+  <data name="SuccessfulCheckoutMessage" xml:space="preserve">
+    <value>پرداخت با موفقیت انجام شد. سفارش شما با موفقیت ثبت شد و در زمان تعیین‌شده برای شما ارسال خواهد شد. از اینکه ما را برای خرید انتخاب کردید از شما سپاسگزاریم.</value>
+  </data>
+  <data name="SuccessfulCheckoutTitle" xml:space="preserve">
+    <value>سفارش شما با موفقیت ثبت شد!</value>
+  </data>
 </root>

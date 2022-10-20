@@ -129,6 +129,12 @@
   <data name="BuyBeforeFinish" xml:space="preserve">
     <value>Buy Before It Runs Out</value>
   </data>
+  <data name="CheckoutFailMessage" xml:space="preserve">
+    <value>To avoid the automatic deletion of the order, please pay the amount within the next 59 minutes.</value>
+  </data>
+  <data name="CheckoutFailTitle" xml:space="preserve">
+    <value>Unfortunately, your payment was unsuccessful!</value>
+  </data>
   <data name="DeleteBrandErrorMessage" xml:space="preserve">
     <value>There is some products with this brand so its impossible to delete</value>
   </data>

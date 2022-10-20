@@ -168,6 +168,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>انصراف</value>
   </data>
+  <data name="ChangePaymentType" xml:space="preserve">
+    <value>تغییر روش پرداخت</value>
+  </data>
   <data name="Cheapest" xml:space="preserve">
     <value>ارزان ترین</value>
   </data>
@@ -257,6 +260,9 @@
   </data>
   <data name="Register" xml:space="preserve">
     <value>ثبت نام</value>
+  </data>
+  <data name="RepeatPayment" xml:space="preserve">
+    <value>پرداخت مجدد</value>
   </data>
   <data name="ResetPassword" xml:space="preserve">
     <value>بازیابی رمز عبور</value>

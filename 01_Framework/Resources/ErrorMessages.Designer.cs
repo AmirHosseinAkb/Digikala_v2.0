@@ -97,6 +97,24 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To avoid the automatic deletion of the order, please pay the amount within the next 59 minutes..
+        /// </summary>
+        public static string CheckoutFailMessage {
+            get {
+                return ResourceManager.GetString("CheckoutFailMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unfortunately, your payment was unsuccessful!.
+        /// </summary>
+        public static string CheckoutFailTitle {
+            get {
+                return ResourceManager.GetString("CheckoutFailTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is some products with this brand so its impossible to delete.
         /// </summary>
         public static string DeleteBrandErrorMessage {

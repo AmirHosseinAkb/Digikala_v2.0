@@ -16,16 +16,14 @@
                             <div class="row">
                                 <div class="col-md-8 order-md-1 order-2">
                                     <div class="fs-5 fw-bold text-danger mb-3">
-                                        متاسفانه پرداخت شما ناموفق بود!
+                                        @ErrorMessages.CheckoutFailTitle
                                     </div>
                                     <div class="text-danger mb-3">
-                                        برای جلوگیری از حذف خودکار سفارش، لطفا مبلغ آن را
-                                        تا ۵۹
-                                        دقیقه آینده پرداخت نمایید.
+                                        @ErrorMessages.CheckoutFailMessage
                                     </div>
                                     <div class="d-flex align-items-center flex-wrap">
-                                        <a href="#" class="btn btn-primary me-4">پرداخت مجدد</a>
-                                        <a href="#" class="btn btn-link">تغییر روش پرداخت</a>
+                                        <a href="/Cart" class="btn btn-primary me-4">@ButtonCaptions.RepeatPayment</a>
+                                        <a href="/Payment" class="btn btn-link">@ButtonCaptions.ChangePaymentType</a>
                                     </div>
                                 </div>
                                 <div class="col-md-4 order-md-2 order-1 mb-md-0 mb-4 text-center">
@@ -42,20 +40,17 @@
                             <div class="row">
                                 <div class="col-md-8 order-md-1 order-2">
                                     <div class="fs-5 fw-bold text-success mb-3">
-                                        با موفقیت پرداخت و ثبت گردید.
+                                        @ConfirmationMessages.SuccessfulCheckoutTitle
                                     </div>
                                     <div class="d-flex align-items-center flex-wrap mb-3">
-                                        <div class="text-secondary me-3">شماره سفارش:</div>
+                                        <div class="text-secondary me-3">@DataDictionaries.TrackingId:</div>
                                         <div class="font-en">@ViewData["RefId"].ToString()</div>
                                     </div>
                                     <div class="text-success mb-3">
-                                        پرداخت با موفقیت انجام شد. سفارش شما با موفقیت
-                                        ثبت
-                                        شد و در زمان تعیین‌شده برای شما ارسال خواهد شد. از اینکه ما را برای
-                                        خرید انتخاب کردید از شما سپاسگزاریم.
+                                       @ConfirmationMessages.SuccessfulCheckoutMessage
                                     </div>
                                     <div class="d-flex align-items-center flex-wrap">
-                                        <a href="#" class="btn btn-primary me-4">پیگیری سفارش</a>
+                                        <a href="/UserPanel/Orders" class="btn btn-primary me-4">@DataDictionaries.TrackOrder</a>
                                     </div>
                                 </div>
                                 <div class="col-md-4 order-md-2 order-1 mb-md-0 mb-4 text-center">

@@ -129,6 +129,12 @@
   <data name="BuyBeforeFinish" xml:space="preserve">
     <value>قبل از اتمام بخرید</value>
   </data>
+  <data name="CheckoutFailMessage" xml:space="preserve">
+    <value>برای جلوگیری از حذف خودکار سفارش، لطفا مبلغ آن را تا ۵۹ دقیقه آینده پرداخت نمایید.</value>
+  </data>
+  <data name="CheckoutFailTitle" xml:space="preserve">
+    <value>متاسفانه پرداخت شما نا موفق بود!</value>
+  </data>
   <data name="DeleteBrandErrorMessage" xml:space="preserve">
     <value>محصولاتی شامل این برند می باشند پس امکان حذف این برند وجود ندارد</value>
   </data>

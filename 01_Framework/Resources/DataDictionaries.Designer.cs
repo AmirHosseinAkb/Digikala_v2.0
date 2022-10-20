@@ -2059,6 +2059,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Track Order.
+        /// </summary>
+        public static string TrackOrder {
+            get {
+                return ResourceManager.GetString("TrackOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Transaction Type.
         /// </summary>
         public static string TransactionType {
