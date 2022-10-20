@@ -32,16 +32,20 @@ namespace ShopManagement.Application
             if (!orderStatuses.Contains(command.PaymentType))
                 return (result.Failed(ApplicationMessages.PaymentTypeNotFound),0);
             var order = _orderRepository.GetUserOpenOrder(_authenticationHelper.GetCurrentUserId());
+            var cPriceWithProDiscounts = cart.TotalCartPrice - cart.TotalProductDiscounts;
             var trackingNumber = CodeGenerator.GenerateTrackingNumber();
             if (order == null)
             {
                 order = new Order(_authenticationHelper.GetCurrentUserId(), cart.OrderDiscountId, cart.AddressId,
-                    (int)cart.TotalCartPrice, trackingNumber, command.PaymentType, OrderStatuses.NotPaid, DateTime.Now);
+                    (int)cPriceWithProDiscounts, trackingNumber, command.PaymentType, OrderStatuses.NotPaid, DateTime.Now
+                    ,((cart.TotalOrderDiscount!=null)?(int)cart.TotalOrderDiscount:0),(int)cart.RemainingPrice);
                 long orderId=_orderRepository.AddOrder(order);
                 return (result.Succeeded(),orderId);
             }
-            order.Edit(order.UserId,cart.OrderDiscountId,cart.AddressId,(int)cart.RemainingPrice
-                ,order.TrackingNumber,command.PaymentType,OrderStatuses.NotPaid,false,order.CreationDate); //Because of maybe order informations change
+            order.Edit(order.UserId,cart.OrderDiscountId,cart.AddressId,(int)(int)cPriceWithProDiscounts
+                ,order.TrackingNumber,command.PaymentType,OrderStatuses.NotPaid,false,order.CreationDate
+                , ((cart.TotalOrderDiscount!=null)?(int)cart.TotalOrderDiscount:0),(int)cart.RemainingPrice); //Because of maybe order informations change
+
             _orderRepository.SaveChanges();
             return (result.Succeeded(), order.OrderId);
         }

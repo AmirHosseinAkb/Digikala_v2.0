@@ -9,7 +9,8 @@
         public long RemainingPrice { get; set; }
         public long? AddressId { get; set; }
         public byte? PaymentType { get; set; }
-        public long? OrderDiscountId { get; set; } 
+        public long? OrderDiscountId { get; set; }
+
 
         public Cart()
         {

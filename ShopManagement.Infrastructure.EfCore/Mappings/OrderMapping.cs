@@ -15,6 +15,8 @@ public class OrderMapping:IEntityTypeConfiguration<Order>
         builder.Property(o => o.DiscountId).IsRequired(false);
         builder.Property(o => o.AddressId).IsRequired(false);
         builder.Property(o => o.OrderSum);
+        builder.Property(o => o.OrderDiscount);
+        builder.Property(o => o.PaidPrice);
         builder.Property(o => o.TrackingNumber).HasMaxLength(200);
         builder.Property(o => o.PaymentType);
         builder.Property(o => o.Status);

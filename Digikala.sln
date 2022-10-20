@@ -65,7 +65,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscountManagement.Infrastr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscountManagement.Infrastructure.Configuration", "DiscountManagement.Infrastructure.Configuration\DiscountManagement.Infrastructure.Configuration.csproj", "{D7ED6C23-E6F5-44DE-9D2F-D1FC14816013}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Infrastructure.Discount", "ShopManagement.Infrastructure.Discount\ShopManagement.Infrastructure.Discount.csproj", "{87226246-70BE-41D2-B617-A1921E945180}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Infrastructure.Discount", "ShopManagement.Infrastructure.Discount\ShopManagement.Infrastructure.Discount.csproj", "{87226246-70BE-41D2-B617-A1921E945180}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
