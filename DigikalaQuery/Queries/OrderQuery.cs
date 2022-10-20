@@ -81,5 +81,21 @@ namespace DigikalaQuery.Queries
                 }).ToList()
             };
         }
+
+        public List<OrderQueryModel> GetUserOrdersList()
+        {
+            return _shopContext.Orders.Where(o=>o.UserId==_authenticationHelper.GetCurrentUserId())
+                .OrderByDescending(o=>o.CreationDate)
+                .Take(6)
+                .Select(o => new OrderQueryModel()
+                {
+                    OrderId = o.OrderId,
+                    TrackingNumber = o.TrackingNumber,
+                    Status = o.Status,
+                    CreationDate = o.CreationDate.ToShamsi(),
+                    OrderTotalPrice = o.OrderSum,
+                    PaidPrice = o.PaidPrice,
+                }).AsNoTracking().ToList();
+        }
     }
 }

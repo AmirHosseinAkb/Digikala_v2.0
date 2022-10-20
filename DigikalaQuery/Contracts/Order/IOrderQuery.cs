@@ -4,5 +4,6 @@
     {
         Tuple<List<OrderQueryModel>,List<OrderQueryModel>,List<OrderQueryModel>> GetUserOrders();
         OrderQueryModel GetOrderDetails(long orderId);
+        List<OrderQueryModel> GetUserOrdersList();
     }
 }

@@ -115,16 +115,6 @@ namespace Server.Pages
                 {
                     _orderApplication.ConfirmOrderTransaction(transactionId);
                     _orderApplication.ConfirmOrder(orderId);
-                    var serializer = new JavaScriptSerializer();
-                    var cookie = Request.Cookies["cart_items"];
-                    var cartItems = serializer.Deserialize<List<CartItem>>(cookie);
-                    foreach (var item in cartItems)
-                    {
-                        item.CalculateTotalItemPrice();
-                    }
-
-                    Cart = _cartCalculatorService.ComputeCart(cartItems); // its just for fill cart item price properties not for filling cart
-                    _orderApplication.AddOrderItems(cartItems, orderId);
                     Response.Cookies.Delete("cart_items");
                     return Redirect("/CheckoutResult?isSuccessfull=true&refId=" + verificationResponse.RefId);
                 }

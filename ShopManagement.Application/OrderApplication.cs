@@ -28,25 +28,35 @@ namespace ShopManagement.Application
         public (OperationResult,long) CreateOrder(CartPaymentCommand command, Cart cart)
         {
             var result = new OperationResult();
+
             var orderStatuses = new List<int>() { OrderStatuses.NotPaid, OrderStatuses.IsWaiting, OrderStatuses.OrderSent };
+
             if (!orderStatuses.Contains(command.PaymentType))
                 return (result.Failed(ApplicationMessages.PaymentTypeNotFound),0);
+
             var order = _orderRepository.GetUserOpenOrder(_authenticationHelper.GetCurrentUserId());
             var cPriceWithProDiscounts = cart.TotalCartPrice - cart.TotalProductDiscounts;
             var trackingNumber = CodeGenerator.GenerateTrackingNumber();
+
             if (order == null)
             {
                 order = new Order(_authenticationHelper.GetCurrentUserId(), cart.OrderDiscountId, cart.AddressId,
                     (int)cPriceWithProDiscounts, trackingNumber, command.PaymentType, OrderStatuses.NotPaid, DateTime.Now
                     ,((cart.TotalOrderDiscount!=null)?(int)cart.TotalOrderDiscount:0),(int)cart.RemainingPrice);
                 long orderId=_orderRepository.AddOrder(order);
+                AddOrderItems(cart.CartItems,orderId);
                 return (result.Succeeded(),orderId);
             }
+
             order.Edit(order.UserId,cart.OrderDiscountId,cart.AddressId,(int)(int)cPriceWithProDiscounts
                 ,order.TrackingNumber,command.PaymentType,OrderStatuses.NotPaid,false,order.CreationDate
                 , ((cart.TotalOrderDiscount!=null)?(int)cart.TotalOrderDiscount:0),(int)cart.RemainingPrice); //Because of maybe order informations change
 
-            _orderRepository.SaveChanges();
+            var orderItems =
+                cart.CartItems.Select(i => new OrderItem(order.OrderId, i.Id, i.ColorId,(int)i.PayingPrice/i.Count, (byte) i.Count)).ToList();
+
+            _orderRepository.UpdateOrderItems(orderItems,order.OrderId);
+
             return (result.Succeeded(), order.OrderId);
         }
 

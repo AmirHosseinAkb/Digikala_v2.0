@@ -13,6 +13,7 @@ namespace ShopManagement.Domain.OrderAgg
         Order GetOrderById(long orderId);
         void Update(Order order);
         void AddOrderItems(List<OrderItem> orderItems);
+        void UpdateOrderItems(List<OrderItem> orderItems,long orderId);
         void SaveChanges();
     }
 }

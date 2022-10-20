@@ -519,6 +519,9 @@
   <data name="OrdersHistory" xml:space="preserve">
     <value>تاریخچه سفارشات</value>
   </data>
+  <data name="OrderStatus" xml:space="preserve">
+    <value>وضعیت سفارش</value>
+  </data>
   <data name="OtherLangTitle" xml:space="preserve">
     <value>عنوان به انگلیسی</value>
   </data>

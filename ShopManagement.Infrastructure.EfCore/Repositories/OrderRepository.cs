@@ -43,6 +43,17 @@ namespace ShopManagement.Infrastructure.EfCore.Repositories
             _shopContext.SaveChanges();
         }
 
+        public void UpdateOrderItems(List<OrderItem> orderItems,long orderId)
+        {
+            _shopContext.OrderItems.Where(i=>i.OrderId==orderId).ToList().ForEach(i=>_shopContext.OrderItems.Remove(i));
+            foreach (var orderItem in orderItems)
+            {
+                _shopContext.OrderItems.Add(orderItem);
+            }
+
+            _shopContext.SaveChanges();
+        }
+
         public void SaveChanges()
         {
             _shopContext.SaveChanges();

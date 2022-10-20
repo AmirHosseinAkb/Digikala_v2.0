@@ -176,112 +176,47 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>#</th>
-                                                <th>شماره سفارش</th>
-                                                <th>تاریخ ثبت سفارش</th>
-                                                <th>مبلغ قابل پرداخت</th>
-                                                <th>مبلغ کل</th>
-                                                <th>عملیات پرداخت</th>
-                                                <th>جزییات</th>
+                                                <th>@DataDictionaries.TrackingId</th>
+                                                <th>@DataDictionaries.CreationDate</th>
+                                                <th>@DataDictionaries.PaidPrice</th>
+                                                <th>@DataDictionaries.TotalOrderPrice</th>
+                                                <th>@DataDictionaries.OrderStatus</th>
+                                                <th>@DataDictionaries.Operations</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td class="fa-num">1</td>
-                                                <td class="font-en fw-bold">MSK-546624333</td>
-                                                <td class="fa-num text-muted">12مهر 1401</td>
-                                                <td class="fa-num fs-6 fw-bold">۰</td>
-                                                <td class="fa-num fs-6 fw-bold">21,900,000 <span class="currency">تومان</span></td>
-                                                <td>
-                                                    <span class="badge bg-success rounded-pill fs-7">
-                                                        پرداخت
-                                                        شده
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-light">جزئیات <i class="ri-arrow-left-s-fill"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fa-num">2</td>
-                                                <td class="font-en fw-bold">MSK-546624333</td>
-                                                <td class="fa-num text-muted">12مهر 1401</td>
-                                                <td class="fa-num fs-6 fw-bold">۰</td>
-                                                <td class="fa-num fs-6 fw-bold">21,900,000 <span class="currency">تومان</span></td>
-                                                <td>
-                                                    <span class="badge bg-danger rounded-pill fs-7">
-                                                        لغو
-                                                        شده
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-light">جزئیات <i class="ri-arrow-left-s-fill"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fa-num">3</td>
-                                                <td class="font-en fw-bold">MSK-546624333</td>
-                                                <td class="fa-num text-muted">12مهر 1401</td>
-                                                <td class="fa-num fs-6 fw-bold">۰</td>
-                                                <td class="fa-num fs-6 fw-bold">21,900,000 <span class="currency">تومان</span></td>
-                                                <td>
-                                                    <span class="badge bg-danger rounded-pill fs-7">
-                                                        لغو
-                                                        شده
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-light">جزئیات <i class="ri-arrow-left-s-fill"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fa-num">4</td>
-                                                <td class="font-en fw-bold">MSK-546624333</td>
-                                                <td class="fa-num text-muted">12مهر 1401</td>
-                                                <td class="fa-num fs-6 fw-bold">۰</td>
-                                                <td class="fa-num fs-6 fw-bold">21,900,000 <span class="currency">تومان</span></td>
-                                                <td>
-                                                    <span class="badge bg-info rounded-pill fs-7">
-                                                        در انتظار
-                                                        پرداخت
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-light">جزئیات <i class="ri-arrow-left-s-fill"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fa-num">5</td>
-                                                <td class="font-en fw-bold">MSK-546624333</td>
-                                                <td class="fa-num text-muted">12مهر 1401</td>
-                                                <td class="fa-num fs-6 fw-bold">۰</td>
-                                                <td class="fa-num fs-6 fw-bold">21,900,000 <span class="currency">تومان</span></td>
-                                                <td>
-                                                    <span class="badge bg-danger rounded-pill fs-7">
-                                                        لغو
-                                                        شده
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-light">جزئیات <i class="ri-arrow-left-s-fill"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fa-num">6</td>
-                                                <td class="font-en fw-bold">MSK-546624333</td>
-                                                <td class="fa-num text-muted">12مهر 1401</td>
-                                                <td class="fa-num fs-6 fw-bold">۰</td>
-                                                <td class="fa-num fs-6 fw-bold">21,900,000 <span class="currency">تومان</span></td>
-                                                <td>
-                                                    <span class="badge bg-danger rounded-pill fs-7">
-                                                        لغو
-                                                        شده
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-light">جزئیات <i class="ri-arrow-left-s-fill"></i></a>
-                                                </td>
-                                            </tr>
+                                            @foreach (var order in Model.OrderModels)
+                                            {
+                                                <tr>
+                                                    <td class="font-en fw-bold">@order.TrackingNumber</td>
+                                                    <td class="fa-num text-muted">@order.CreationDate</td>
+                                                    <td class="fa-num fs-6 fw-bold">@order.PaidPrice.ToString("#,0")</td>
+                                                    <td class="fa-num fs-6 fw-bold">@order.OrderTotalPrice<span class="currency">@DataDictionaries.Toman</span></td>
+                                                    <td>
+                                                        @if (order.Status == OrderStatuses.NotPaid)
+                                                        {
+                                                            <span class="badge bg-success rounded-pill fs-7">
+                                                                @DataDictionaries.NotPaid
+                                                            </span>
+                                                        }
+                                                        else if (order.Status == OrderStatuses.IsWaiting)
+                                                        {
+                                                            <span class="badge bg-success rounded-pill fs-7">
+                                                                @DataDictionaries.IsWaiting
+                                                            </span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="badge bg-success rounded-pill fs-7">
+                                                                @DataDictionaries.Sent
+                                                            </span>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        <a href="/UserPanel/OrderDetails/@order.OrderId" class="btn btn-sm btn-outline-light">@DataDictionaries.OrderDetails <i class="ri-arrow-left-s-fill"></i></a>
+                                                    </td>
+                                                </tr>
+                                            }
                                         </tbody>
                                     </table>
                                 </div>

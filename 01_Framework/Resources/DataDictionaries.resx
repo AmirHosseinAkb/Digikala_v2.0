@@ -519,6 +519,9 @@
   <data name="OrdersHistory" xml:space="preserve">
     <value>Orders History</value>
   </data>
+  <data name="OrderStatus" xml:space="preserve">
+    <value>Order Status</value>
+  </data>
   <data name="OtherLangTitle" xml:space="preserve">
     <value>Other Language Title</value>
   </data>
