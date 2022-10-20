@@ -117,13 +117,6 @@
                                                             <span>@item.TotalPrice.ToString("#,0")</span>
                                                             <span class="currency">@DataDictionaries.Toman</span>
                                                         </div>
-                                                     @if (item.UnitPrice != item.RealPrice)
-                                                     {
-                                                         <div class="cart-item--discount">
-                                                             <del>@((item.RealPrice*item.Count).ToString("#,0"))</del>
-                                                             <span class="currency">@DataDictionaries.Toman</span>
-                                                         </div>
-                                                     }
                                                     </div>
                                                 </div>
                                             </div>

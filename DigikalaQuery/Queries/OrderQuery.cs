@@ -73,7 +73,6 @@ namespace DigikalaQuery.Queries
                     Title = i.Product.Title,
                     Count = i.Count,
                     UnitPrice = i.UnitPrice,
-                    RealPrice = i.Product.Price,
                     ColorCode = i.ProductColor.ColorCode,
                     ColorName = i.ProductColor.ColorName,
                     ImageName = i.Product.ImageName,
