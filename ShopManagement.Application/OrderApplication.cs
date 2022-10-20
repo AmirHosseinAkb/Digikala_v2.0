@@ -79,7 +79,7 @@ namespace ShopManagement.Application
         public void AddOrderItems(List<CartItem> cartItems,long orderId)
         {
             var orderItems =
-                cartItems.Select(i => new OrderItem(orderId, i.Id, i.ColorId, i.UnitPrice, (byte) i.Count)).ToList();
+                cartItems.Select(i => new OrderItem(orderId, i.Id, i.ColorId,(int)i.PayingPrice/i.Count, (byte) i.Count)).ToList();
             _orderRepository.AddOrderItems(orderItems);
         }
 

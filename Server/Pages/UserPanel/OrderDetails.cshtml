@@ -1,0 +1,141 @@
+﻿@page "{orderId}"
+@model Server.Pages.UserPanel.OrderDetailsModel
+@{
+    var order = Model.OrderModel;
+}
+
+<main class="page-content">
+    <div class="container">
+        <div class="row">
+            <partial name="Shared/PartialViews/_UserPanelSideBar"/>
+            <div class="col-xl-9 col-lg-8 col-md-7">
+                <div class="ui-box bg-white">
+                    <div class="ui-box-title">
+                        <a href="#" class="link border-bottom-0 fs-3 me-2"><i class="ri-arrow-right-fill"></i></a>
+                        <span class="me-3">@DataDictionaries.OrderDetails</span>
+                        <span class="fs-7 fa-num">@order.CreationDate</span>
+                        <i class="ri-record-circle-fill fs-7 text-muted mx-2"></i>
+                        <span class="font-en">@order.TrackingNumber</span>
+                    </div>
+                    <div class="ui-box-content">
+                        <!-- user-order-items -->
+                        <div class="user-order-items">
+                            <!-- user-order-item -->
+                            <div class="user-order-item">
+                                <div class="user-order-item-header">
+                                    <div class="mb-3">
+                                        <span class="user-order-meta fa-num"><span class="text-muted me-1">@DataDictionaries.Receiver:</span>@order.ReceiverName </span>
+                                        <span class="user-order-meta fa-num">@order.CreationDate</span>
+                                        <span class="user-order-meta">@order.TrackingNumber</span>
+                                        @if (order.Status == OrderStatuses.NotPaid)
+                                        {
+                                            <span class="user-order-meta text-danger">@DataDictionaries.NotPaid</span>
+                                        }
+                                        else if (order.Status == OrderStatuses.IsWaiting)
+                                        {
+                                            <span class="user-order-meta text-danger">@DataDictionaries.IsWaiting</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="user-order-meta text-danger">@DataDictionaries.Sent</span>
+                                        }
+                                        
+                                    </div>
+                                    <div>
+                                        <span class="text-muted fw-bold">@DataDictionaries.TotalOrderPrice :</span>
+                                        <span class="fw-bold fa-num">
+                                            @order.OrderTotalPrice.ToString("#,0")
+                                            <span>@DataDictionaries.Toman</span>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="text-danger fw-bold">@DataDictionaries.DiscountPrice :</span>
+                                        <span class="fw-bold fa-num">
+                                            @order.OrderDiscountPrice.ToString("#,0")
+                                            <span>@DataDictionaries.Toman</span>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="text-primary fw-bold">@DataDictionaries.PaidPrice :</span>
+                                        <span class="fw-bold fa-num">
+                                            @order.PaidPrice.ToString("#,0")
+                                            <span>@DataDictionaries.Toman</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="user-order-item-content">
+                                    <div class="cart-items">
+                                        @foreach (var item in order.OrderItems)
+                                        {
+                                            <div class="cart-item">
+                                            <div class="cart-item--thumbnail">
+                                                <a href="#">
+                                                    <img src="~/Products/Images/@item.ImageName" alt="ProductImage">
+                                                </a>
+                                            </div>
+                                            <div class="cart-item--detail">
+                                                <h2 class="cart-item--title mb-2">
+                                                    <a href="#">
+                                                        @item.Title
+                                                    </a>
+                                                </h2>
+                                                <div class="cart-item--variant mb-2">
+                                                    <span class="color" style="background-color: @item.ColorCode;"></span>
+                                                    <span class="ms-1">@item.ColorName</span>
+                                                </div>
+                                                <div class="cart-item--data mb-4">
+                                                    <ul>
+                                                        <li>
+                                                            <i class="ri-shield-check-fill text-secondary"></i>
+                                                            <span>
+                                                                @DataDictionaries.AuthenticityWarranty
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <i class="ri-store-3-fill text-secondary"></i>
+                                                            <span>
+                                                                @DataDictionaries.ShopName
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <i class="ri-number-@item.Count text-primary"></i>
+                                                            <span>
+                                                                @DataDictionaries.Piece
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <i class="ri-price-tag-fill text-warning"></i>
+                                                            <span>
+                                                                @item.UnitPrice.ToString("#,0")
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="cart-item--price--actions justify-content-end">
+                                                    <div class="cart-item--price fa-num d-flex align-items-center flex-wrap">
+                                                        <div class="cart-item--price-now me-3">
+                                                            <span>@item.TotalPrice.ToString("#,0")</span>
+                                                            <span class="currency">@DataDictionaries.Toman</span>
+                                                        </div>
+                                                     @if (item.UnitPrice != item.RealPrice)
+                                                     {
+                                                         <div class="cart-item--discount">
+                                                             <del>@((item.RealPrice*item.Count).ToString("#,0"))</del>
+                                                             <span class="currency">@DataDictionaries.Toman</span>
+                                                         </div>
+                                                     }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

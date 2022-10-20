@@ -549,6 +549,9 @@
   <data name="PhoneNumber" xml:space="preserve">
     <value>Phone Number</value>
   </data>
+  <data name="Piece" xml:space="preserve">
+    <value>Piece</value>
+  </data>
   <data name="PostCode" xml:space="preserve">
     <value>Post Code</value>
   </data>
@@ -611,6 +614,9 @@
   </data>
   <data name="Reason" xml:space="preserve">
     <value>Reason</value>
+  </data>
+  <data name="Receiver" xml:space="preserve">
+    <value>Receiver</value>
   </data>
   <data name="ReceiverFirstName" xml:space="preserve">
     <value>Receiver First Name</value>

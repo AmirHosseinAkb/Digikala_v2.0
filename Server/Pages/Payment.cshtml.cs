@@ -117,6 +117,12 @@ namespace Server.Pages
                     var serializer = new JavaScriptSerializer();
                     var cookie = Request.Cookies["cart_items"];
                     var cartItems = serializer.Deserialize<List<CartItem>>(cookie);
+                    foreach (var item in cartItems)
+                    {
+                        item.CalculateTotalItemPrice();
+                    }
+
+                    Cart = _cartCalculatorService.ComputeCart(cartItems); // its just for fill cart item properties not for filling cart
                     _orderApplication.AddOrderItems(cartItems, orderId);
                     Response.Cookies.Delete("cart_items");
                     return Redirect("/CheckoutResult?isSuccessfull=true&refId=" + verificationResponse.RefId);

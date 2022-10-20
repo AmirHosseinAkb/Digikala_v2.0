@@ -19,7 +19,5 @@ namespace Server.Pages.UserPanel
         {
             OrderQueryModels = _orderQuery.GetUserOrders();
         }
-
-        public IActionResult OnGetShowOrderDetails(long orderId)
     }
 }

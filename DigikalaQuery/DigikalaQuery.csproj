@@ -10,6 +10,7 @@
     <ProjectReference Include="..\DiscountManagement.Infrastructure.EfCore\DiscountManagement.Infrastructure.EfCore.csproj" />
     <ProjectReference Include="..\ShopManagement.Application.Contracts\ShopManagement.Application.Contracts.csproj" />
     <ProjectReference Include="..\ShopManagement.Infrastructure.EfCore\ShopManagement.Infrastructure.EfCore.csproj" />
+    <ProjectReference Include="..\UserManagement.Infrastructure.EfCore\UserManagement.Infrastructure.EfCore.csproj" />
   </ItemGroup>
 
 </Project>

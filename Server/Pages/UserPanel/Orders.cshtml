@@ -15,7 +15,7 @@
 
             <div class="col-xl-9 col-lg-8 col-md-7">
                 <div class="ui-box bg-white">
-                    <div class="ui-box-title">تاریخچه سفارشات</div>
+                    <div class="ui-box-title">@DataDictionaries.OrdersHistory</div>
                     <div class="ui-box-content">
                         <!-- order-tabs -->
                         <div class="order-tabs">
@@ -64,16 +64,16 @@
                                                             <span>@DataDictionaries.Toman</span>
                                                         </span>
                                                     </div>
-                                                    <a href="#" class="btn btn-link fw-bold user-order-detail-link">
+                                                    <a href="./OrderDetails/@order.OrderId" class="btn btn-link fw-bold user-order-detail-link">
                                                         @DataDictionaries.OrderDetails<i class="ri-arrow-left-s-fill"></i>
                                                     </a>
                                                 </div>
                                                 <div class="user-order-item-content">
                                                     <div class="user-order-item-products">
-                                                        @foreach (var imageName in order.ImageNames)
+                                                        @foreach (var imageName in order.OrderItems.Select(i => i.ImageName))
                                                         {
                                                             <a href="#">
-                                                                <img src="/Products/Images/@imageName" alt="ProductImage">
+                                                                <img src="~/Products/Images/@imageName" alt="ProductImage" asp-append-version="true">
                                                             </a>
                                                         }
                                                     </div>
@@ -98,7 +98,7 @@
                             <!--  tab-pane -->
                             <!-- tab-pane -->
                             <div class="tab-pane fade" id="paid-in-progress" role="tabpanel" aria-labelledby="paid-in-progress-tab">
-                                @if (Model.OrderQueryModels.Item1.Any())
+                                @if (Model.OrderQueryModels.Item2.Any())
                                 {
                                     foreach (var order in Model.OrderQueryModels.Item2)
                                     {
@@ -125,16 +125,16 @@
                                                             <span>@DataDictionaries.Toman</span>
                                                         </span>
                                                     </div>
-                                                    <a href="#" class="btn btn-link fw-bold user-order-detail-link">
+                                                    <a href="./OrderDetails/@order.OrderId" class="btn btn-link fw-bold user-order-detail-link">
                                                         @DataDictionaries.OrderDetails<i class="ri-arrow-left-s-fill"></i>
                                                     </a>
                                                 </div>
                                                 <div class="user-order-item-content">
                                                     <div class="user-order-item-products">
-                                                        @foreach (var imageName in order.ImageNames)
+                                                        @foreach (var imageName in order.OrderItems.Select(i => i.ImageName))
                                                         {
                                                             <a href="#">
-                                                                <img src="/Products/Images/@imageName" alt="ProductImage">
+                                                                <img src="~/Products/Images/@imageName" alt="ProductImage" asp-append-version="true">
                                                             </a>
                                                         }
                                                     </div>
@@ -157,7 +157,7 @@
                                 }
                             </div>
                             <div class="tab-pane fade" id="delivered" role="tabpanel" aria-labelledby="delivered-tab">
-                               @if (Model.OrderQueryModels.Item3.Any())
+                                @if (Model.OrderQueryModels.Item3.Any())
                                 {
                                     foreach (var order in Model.OrderQueryModels.Item3)
                                     {
@@ -184,16 +184,16 @@
                                                             <span>@DataDictionaries.Toman</span>
                                                         </span>
                                                     </div>
-                                                    <a href="#" class="btn btn-link fw-bold user-order-detail-link">
+                                                    <a href="./OrderDetails/@order.OrderId" class="btn btn-link fw-bold user-order-detail-link">
                                                         @DataDictionaries.OrderDetails<i class="ri-arrow-left-s-fill"></i>
                                                     </a>
                                                 </div>
                                                 <div class="user-order-item-content">
                                                     <div class="user-order-item-products">
-                                                        @foreach (var imageName in order.ImageNames)
+                                                        @foreach (var imageName in order.OrderItems.Select(i => i.ImageName))
                                                         {
                                                             <a href="#">
-                                                                <img src="/Products/Images/@imageName" alt="ProductImage">
+                                                                <img src="~/Products/Images/@imageName" alt="ProductImage" asp-append-version="true">
                                                             </a>
                                                         }
                                                     </div>

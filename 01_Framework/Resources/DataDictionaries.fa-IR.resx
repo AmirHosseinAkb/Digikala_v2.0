@@ -549,6 +549,9 @@
   <data name="PhoneNumber" xml:space="preserve">
     <value>شماره همراه</value>
   </data>
+  <data name="Piece" xml:space="preserve">
+    <value>عدد</value>
+  </data>
   <data name="PostCode" xml:space="preserve">
     <value>کد پستی</value>
   </data>
@@ -611,6 +614,9 @@
   </data>
   <data name="Reason" xml:space="preserve">
     <value>دلیل</value>
+  </data>
+  <data name="Receiver" xml:space="preserve">
+    <value>گیرنده</value>
   </data>
   <data name="ReceiverFirstName" xml:space="preserve">
     <value>نام گیرنده</value>

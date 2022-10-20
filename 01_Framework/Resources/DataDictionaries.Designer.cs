@@ -1357,6 +1357,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Piece.
+        /// </summary>
+        public static string Piece {
+            get {
+                return ResourceManager.GetString("Piece", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Post Code.
         /// </summary>
         public static string PostCode {
@@ -1542,6 +1551,15 @@ namespace _01_Framework.Resources {
         public static string Reason {
             get {
                 return ResourceManager.GetString("Reason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receiver.
+        /// </summary>
+        public static string Receiver {
+            get {
+                return ResourceManager.GetString("Receiver", resourceCulture);
             }
         }
         
