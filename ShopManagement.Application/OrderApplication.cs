@@ -83,7 +83,7 @@ namespace ShopManagement.Application
             _orderRepository.AddOrderItems(orderItems);
         }
 
-        public OperationResult PayOrderFromWallet(long orderId)
+        public OperationResult PayOrderFromWallet(long orderId,List<CartItem> cartItems)
         {
             //Fix This For Order
             var result = new OperationResult();
@@ -94,6 +94,7 @@ namespace ShopManagement.Application
             _shopTransactionAcl.AddtransactionForPayOrder(order.OrderSum,orderId);
             order.Confirm();
             _orderRepository.SaveChanges();
+            AddOrderItems(cartItems,order.OrderId);
             return result.Succeeded();
         }
     }

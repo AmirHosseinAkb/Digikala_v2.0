@@ -77,7 +77,7 @@ namespace Server.Pages
             {
                 if (cartPaymentCommand.PaymentType == PaymentTypes.PayFromWallet)
                 {
-                    var operationResult = _orderApplication.PayOrderFromWallet(result.Item2);
+                    var operationResult = _orderApplication.PayOrderFromWallet(result.Item2,Cart.CartItems);
                     if (operationResult.IsSucceeded)
                     {
                         Response.Cookies.Delete("cart_items");
@@ -122,7 +122,7 @@ namespace Server.Pages
                         item.CalculateTotalItemPrice();
                     }
 
-                    Cart = _cartCalculatorService.ComputeCart(cartItems); // its just for fill cart item properties not for filling cart
+                    Cart = _cartCalculatorService.ComputeCart(cartItems); // its just for fill cart item price properties not for filling cart
                     _orderApplication.AddOrderItems(cartItems, orderId);
                     Response.Cookies.Delete("cart_items");
                     return Redirect("/CheckoutResult?isSuccessfull=true&refId=" + verificationResponse.RefId);
