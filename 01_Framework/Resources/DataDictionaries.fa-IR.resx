@@ -297,6 +297,9 @@
   <data name="DiscountPercent" xml:space="preserve">
     <value>درصد تخفیف</value>
   </data>
+  <data name="DiscountPrice" xml:space="preserve">
+    <value>مبلغ تخفیف</value>
+  </data>
   <data name="EditDiscount" xml:space="preserve">
     <value>ویرایش کد تخفیف</value>
   </data>
@@ -329,6 +332,9 @@
   </data>
   <data name="EmptyCardMessage" xml:space="preserve">
     <value>می‌توانید برای مشاهده محصولات بیشتر به صفحات زیر بروید</value>
+  </data>
+  <data name="EmptyOrderAreaMessage" xml:space="preserve">
+    <value>هیچ سفاشی در این بخش وجود ندارد</value>
   </data>
   <data name="EndDate" xml:space="preserve">
     <value>تاریخ پایان</value>
@@ -399,6 +405,9 @@
   <data name="IsActive" xml:space="preserve">
     <value>فعال</value>
   </data>
+  <data name="IsWaiting" xml:space="preserve">
+    <value>در انتظار ارسال</value>
+  </data>
   <data name="January" xml:space="preserve">
     <value>دی</value>
   </data>
@@ -465,6 +474,9 @@
   <data name="NotAvailable" xml:space="preserve">
     <value>ناموجود</value>
   </data>
+  <data name="NotPaid" xml:space="preserve">
+    <value>پرداخت نشده</value>
+  </data>
   <data name="November" xml:space="preserve">
     <value>آبان</value>
   </data>
@@ -477,6 +489,9 @@
   <data name="Of" xml:space="preserve">
     <value>از</value>
   </data>
+  <data name="OnlinePayment" xml:space="preserve">
+    <value>پرداخت اینترنتی</value>
+  </data>
   <data name="Operations" xml:space="preserve">
     <value>عملیات</value>
   </data>
@@ -485,6 +500,9 @@
   </data>
   <data name="OrderBy" xml:space="preserve">
     <value>مرتب سازی بر اساس:</value>
+  </data>
+  <data name="OrderDetails" xml:space="preserve">
+    <value>جزئیات سفارش</value>
   </data>
   <data name="OrderDiscount" xml:space="preserve">
     <value>تخفیف روی فاکتور</value>
@@ -498,11 +516,20 @@
   <data name="OrderPendingPayment" xml:space="preserve">
     <value>سفارش شما در انتظار پرداخت است. برای جلوگیری از لغو سفارش، لطفا پرداخت را انجام دهید.</value>
   </data>
+  <data name="OrdersHistory" xml:space="preserve">
+    <value>تاریخچه سفارشات</value>
+  </data>
   <data name="OtherLangTitle" xml:space="preserve">
     <value>عنوان به انگلیسی</value>
   </data>
+  <data name="PaidPrice" xml:space="preserve">
+    <value>مبلغ پرداخت شده</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>رمز عبور</value>
+  </data>
+  <data name="PayFromWallet" xml:space="preserve">
+    <value>پرداخت از طریق کیف پول</value>
   </data>
   <data name="PaymentDescription" xml:space="preserve">
     <value>واریز به کیف پول</value>
@@ -690,6 +717,9 @@
   <data name="Seller" xml:space="preserve">
     <value>فروشنده</value>
   </data>
+  <data name="Sent" xml:space="preserve">
+    <value>ارسال شده</value>
+  </data>
   <data name="September" xml:space="preserve">
     <value>شهریور</value>
   </data>
@@ -737,6 +767,9 @@
   </data>
   <data name="TotalCartPrice" xml:space="preserve">
     <value>جمع کل سبد خرید</value>
+  </data>
+  <data name="TotalOrderPrice" xml:space="preserve">
+    <value>مبلغ کل سفارش</value>
   </data>
   <data name="TotalProductsDiscount" xml:space="preserve">
     <value>تخفیف کالاها</value>

@@ -231,6 +231,9 @@
   <data name="MostPopular" xml:space="preserve">
     <value>Most Popular</value>
   </data>
+  <data name="MyOrders" xml:space="preserve">
+    <value>My Orders</value>
+  </data>
   <data name="NewAddress" xml:space="preserve">
     <value>New Address</value>
   </data>

@@ -8,6 +8,7 @@ namespace DigikalaQuery.Contracts.Order
 {
     public class OrderQueryModel
     {
+        public long OrderId { get; set; }
         public string TrackingNumber { get; set; }
         public string CreationDate { get; set; }
         public int OrderTotalPrice { get; set; }
@@ -15,5 +16,7 @@ namespace DigikalaQuery.Contracts.Order
         public int PaidPrice { get; set; }
         public byte Status { get; set; }
         public byte PaymentType { get; set; }
+        public List<string> ImageNames { get; set; }
+
     }
 }

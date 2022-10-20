@@ -1,4 +1,5 @@
 ﻿using _01_Framework.Infrastructure;
+using DigikalaQuery.Contracts.Order;
 using DigikalaQuery.Contracts.Product;
 using DigikalaQuery.Contracts.ProductGroup;
 using DigikalaQuery.Contracts.Services;
@@ -51,13 +52,12 @@ namespace ShopManagement.Infrastructure.Configuration
             services.AddScoped<IProductBrandApplication, ProductBrandApplication>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderApplication, OrderApplication>();
-
             services.AddScoped<IProductGroupQuery,ProductGroupQuery>();
             services.AddScoped<IProductQuery,ProductQuery>();
             services.AddScoped<ICartCalculatorService,CartCalculatorService>();
             services.AddScoped<IShopTransactionAcl,ShopTransactionAcl>();
-
             services.AddScoped<IShopDiscountAcl,ShopDiscountAcl>();
+            services.AddScoped<IOrderQuery,OrderQuery>();
 
             services.AddDbContext<ShopContext>(options =>
                 options.UseSqlServer(connectionString),

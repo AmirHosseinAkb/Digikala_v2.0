@@ -403,6 +403,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Orders.
+        /// </summary>
+        public static string MyOrders {
+            get {
+                return ResourceManager.GetString("MyOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Address.
         /// </summary>
         public static string NewAddress {

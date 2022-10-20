@@ -601,6 +601,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discount Price.
+        /// </summary>
+        public static string DiscountPrice {
+            get {
+                return ResourceManager.GetString("DiscountPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Discount.
         /// </summary>
         public static string EditDiscount {
@@ -696,6 +705,15 @@ namespace _01_Framework.Resources {
         public static string EmptyCardMessage {
             get {
                 return ResourceManager.GetString("EmptyCardMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is No Order.
+        /// </summary>
+        public static string EmptyOrderAreaMessage {
+            get {
+                return ResourceManager.GetString("EmptyOrderAreaMessage", resourceCulture);
             }
         }
         
@@ -907,6 +925,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Is Waiting.
+        /// </summary>
+        public static string IsWaiting {
+            get {
+                return ResourceManager.GetString("IsWaiting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to January.
         /// </summary>
         public static string January {
@@ -1105,6 +1132,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not Paid.
+        /// </summary>
+        public static string NotPaid {
+            get {
+                return ResourceManager.GetString("NotPaid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to November.
         /// </summary>
         public static string November {
@@ -1141,6 +1177,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Online Payment.
+        /// </summary>
+        public static string OnlinePayment {
+            get {
+                return ResourceManager.GetString("OnlinePayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operations.
         /// </summary>
         public static string Operations {
@@ -1164,6 +1209,15 @@ namespace _01_Framework.Resources {
         public static string OrderBy {
             get {
                 return ResourceManager.GetString("OrderBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order Details.
+        /// </summary>
+        public static string OrderDetails {
+            get {
+                return ResourceManager.GetString("OrderDetails", resourceCulture);
             }
         }
         
@@ -1204,6 +1258,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Orders History.
+        /// </summary>
+        public static string OrdersHistory {
+            get {
+                return ResourceManager.GetString("OrdersHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Other Language Title.
         /// </summary>
         public static string OtherLangTitle {
@@ -1213,11 +1276,29 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Paid Price.
+        /// </summary>
+        public static string PaidPrice {
+            get {
+                return ResourceManager.GetString("PaidPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pay From Wallet.
+        /// </summary>
+        public static string PayFromWallet {
+            get {
+                return ResourceManager.GetString("PayFromWallet", resourceCulture);
             }
         }
         
@@ -1780,6 +1861,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sent.
+        /// </summary>
+        public static string Sent {
+            get {
+                return ResourceManager.GetString("Sent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to September.
         /// </summary>
         public static string September {
@@ -1911,6 +2001,15 @@ namespace _01_Framework.Resources {
         public static string TotalCartPrice {
             get {
                 return ResourceManager.GetString("TotalCartPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Order Price.
+        /// </summary>
+        public static string TotalOrderPrice {
+            get {
+                return ResourceManager.GetString("TotalOrderPrice", resourceCulture);
             }
         }
         

@@ -8,6 +8,6 @@ namespace DigikalaQuery.Contracts.Order
 {
     public interface IOrderQuery
     {
-        List<OrderQueryModel> GetUserOrders();
+        Tuple<List<OrderQueryModel>,List<OrderQueryModel>,List<OrderQueryModel>> GetUserOrders();
     }
 }

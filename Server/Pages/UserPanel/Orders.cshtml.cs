@@ -14,10 +14,12 @@ namespace Server.Pages.UserPanel
             _orderQuery = orderQuery;
         }
 
-        public List<OrderQueryModel> OrderQueryModels { get; set; }
+        public Tuple<List<OrderQueryModel>,List<OrderQueryModel>,List<OrderQueryModel>> OrderQueryModels { get; set; }
         public void OnGet()
         {
             OrderQueryModels = _orderQuery.GetUserOrders();
         }
+
+        public IActionResult OnGetShowOrderDetails(long orderId)
     }
 }

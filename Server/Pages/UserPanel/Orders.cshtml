@@ -1,4 +1,224 @@
 ﻿@page
 @model Server.Pages.UserPanel.OrdersModel
 @{
+    var notPaidOrders = Model.OrderQueryModels.Item1;
+    var waitingOrders = Model.OrderQueryModels.Item2;
+    var sentOrders = Model.OrderQueryModels.Item3;
 }
+
+
+<main class="page-content">
+    <div class="container">
+        <div class="row mb-5">
+
+            <partial name="PartialViews/_UserPanelSideBar"></partial>
+
+            <div class="col-xl-9 col-lg-8 col-md-7">
+                <div class="ui-box bg-white">
+                    <div class="ui-box-title">تاریخچه سفارشات</div>
+                    <div class="ui-box-content">
+                        <!-- order-tabs -->
+                        <div class="order-tabs">
+                            <ul class="nav nav-tabs fa-num" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link d-inline-flex align-items-center active" id="wait-for-payment-tab" data-bs-toggle="tab" data-bs-target="#wait-for-payment" type="button" role="tab" aria-controls="wait-for-payment" aria-selected="true">
+                                        @DataDictionaries.NotPaid
+                                        <span class="badge rounded-pill bg-danger ms-1">@notPaidOrders.Count</span>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link d-inline-flex align-items-center" id="paid-in-progress-tab" data-bs-toggle="tab" data-bs-target="#paid-in-progress" type="button" role="tab" aria-controls="paid-in-progress" aria-selected="false">
+                                        @DataDictionaries.IsWaiting
+                                        <span class="badge rounded-pill bg-danger ms-1">@waitingOrders.Count</span>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link d-inline-flex align-items-center" id="delivered-tab" data-bs-toggle="tab" data-bs-target="#delivered" type="button" role="tab" aria-controls="delivered" aria-selected="false">
+                                        @DataDictionaries.Sent
+                                        <span class="badge rounded-pill bg-danger ms-1">@sentOrders.Count</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--  order-tabs -->
+                        <!-- tab-content -->
+                        <div class="tab-content" id="myTabContent">
+                            <!-- tab-pane -->
+                            <div class="tab-pane fade active show" id="wait-for-payment" role="tabpanel" aria-labelledby="wait-for-payment-tab">
+                                @if (Model.OrderQueryModels.Item1.Any())
+                                {
+                                    foreach (var order in Model.OrderQueryModels.Item1)
+                                    {
+                                        <div class="user-order-items">
+                                            <div class="user-order-item">
+                                                <div class="user-order-item-header">
+                                                    <div class="mb-3">
+                                                        <span class="user-order-meta fa-num">@order.CreationDate</span>
+                                                        <span class="user-order-meta">@order.TrackingNumber</span>
+                                                        <span class="user-order-meta">@DataDictionaries.NotPaid</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="text-muted fw-bold">@DataDictionaries.PaidPrice</span>
+                                                        <span class="fw-bold fa-num">
+                                                            @order.PaidPrice.ToString("#,0")
+                                                            <span>@DataDictionaries.Toman</span>
+                                                        </span>
+                                                    </div>
+                                                    <a href="#" class="btn btn-link fw-bold user-order-detail-link">
+                                                        @DataDictionaries.OrderDetails<i class="ri-arrow-left-s-fill"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="user-order-item-content">
+                                                    <div class="user-order-item-products">
+                                                        @foreach (var imageName in order.ImageNames)
+                                                        {
+                                                            <a href="#">
+                                                                <img src="/Products/Images/@imageName" alt="ProductImage">
+                                                            </a>
+                                                        }
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="ui-box-empty-content">
+                                        <div class="ui-box-empty-content-icon">
+                                            <img src="~/assets/images/theme/orders.svg" alt="">
+                                        </div>
+                                        <div class="ui-box-empty-content-message">
+                                            @DataDictionaries.EmptyOrderAreaMessage
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <!--  tab-pane -->
+                            <!-- tab-pane -->
+                            <div class="tab-pane fade" id="paid-in-progress" role="tabpanel" aria-labelledby="paid-in-progress-tab">
+                                @if (Model.OrderQueryModels.Item1.Any())
+                                {
+                                    foreach (var order in Model.OrderQueryModels.Item2)
+                                    {
+                                        <div class="user-order-items">
+                                            <div class="user-order-item">
+                                                <div class="user-order-item-header">
+                                                    <div class="mb-3">
+                                                        <span class="user-order-meta fa-num">@order.CreationDate</span>
+                                                        <span class="user-order-meta">@order.TrackingNumber</span>
+                                                        <span class="user-order-meta">@DataDictionaries.IsWaiting</span>
+                                                        @if (order.PaymentType == PaymentTypes.PayFromWallet)
+                                                        {
+                                                            <span class="user-order-meta">@DataDictionaries.PayFromWallet</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="user-order-meta">@DataDictionaries.OnlinePayment</span>
+                                                        }
+                                                    </div>
+                                                    <div>
+                                                        <span class="text-muted fw-bold">@DataDictionaries.PaidPrice</span>
+                                                        <span class="fw-bold fa-num">
+                                                            @order.PaidPrice.ToString("#,0")
+                                                            <span>@DataDictionaries.Toman</span>
+                                                        </span>
+                                                    </div>
+                                                    <a href="#" class="btn btn-link fw-bold user-order-detail-link">
+                                                        @DataDictionaries.OrderDetails<i class="ri-arrow-left-s-fill"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="user-order-item-content">
+                                                    <div class="user-order-item-products">
+                                                        @foreach (var imageName in order.ImageNames)
+                                                        {
+                                                            <a href="#">
+                                                                <img src="/Products/Images/@imageName" alt="ProductImage">
+                                                            </a>
+                                                        }
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="ui-box-empty-content">
+                                        <div class="ui-box-empty-content-icon">
+                                            <img src="~/assets/images/theme/orders.svg" alt="">
+                                        </div>
+                                        <div class="ui-box-empty-content-message">
+                                            @DataDictionaries.EmptyOrderAreaMessage
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="tab-pane fade" id="delivered" role="tabpanel" aria-labelledby="delivered-tab">
+                               @if (Model.OrderQueryModels.Item3.Any())
+                                {
+                                    foreach (var order in Model.OrderQueryModels.Item3)
+                                    {
+                                        <div class="user-order-items">
+                                            <div class="user-order-item">
+                                                <div class="user-order-item-header">
+                                                    <div class="mb-3">
+                                                        <span class="user-order-meta fa-num">@order.CreationDate</span>
+                                                        <span class="user-order-meta">@order.TrackingNumber</span>
+                                                        <span class="user-order-meta">@DataDictionaries.Sent</span>
+                                                        @if (order.PaymentType == PaymentTypes.PayFromWallet)
+                                                        {
+                                                            <span class="user-order-meta">@DataDictionaries.PayFromWallet</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="user-order-meta">@DataDictionaries.OnlinePayment</span>
+                                                        }
+                                                    </div>
+                                                    <div>
+                                                        <span class="text-muted fw-bold">@DataDictionaries.PaidPrice</span>
+                                                        <span class="fw-bold fa-num">
+                                                            @order.PaidPrice.ToString("#,0")
+                                                            <span>@DataDictionaries.Toman</span>
+                                                        </span>
+                                                    </div>
+                                                    <a href="#" class="btn btn-link fw-bold user-order-detail-link">
+                                                        @DataDictionaries.OrderDetails<i class="ri-arrow-left-s-fill"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="user-order-item-content">
+                                                    <div class="user-order-item-products">
+                                                        @foreach (var imageName in order.ImageNames)
+                                                        {
+                                                            <a href="#">
+                                                                <img src="/Products/Images/@imageName" alt="ProductImage">
+                                                            </a>
+                                                        }
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="ui-box-empty-content">
+                                        <div class="ui-box-empty-content-icon">
+                                            <img src="~/assets/images/theme/orders.svg" alt="">
+                                        </div>
+                                        <div class="ui-box-empty-content-message">
+                                            @DataDictionaries.EmptyOrderAreaMessage
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

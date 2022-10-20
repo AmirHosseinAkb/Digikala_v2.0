@@ -297,6 +297,9 @@
   <data name="DiscountPercent" xml:space="preserve">
     <value>Discount Percent</value>
   </data>
+  <data name="DiscountPrice" xml:space="preserve">
+    <value>Discount Price</value>
+  </data>
   <data name="EditDiscount" xml:space="preserve">
     <value>Edit Discount</value>
   </data>
@@ -329,6 +332,9 @@
   </data>
   <data name="EmptyCardMessage" xml:space="preserve">
     <value>You can go to the following pages to see more products</value>
+  </data>
+  <data name="EmptyOrderAreaMessage" xml:space="preserve">
+    <value>There is No Order</value>
   </data>
   <data name="EndDate" xml:space="preserve">
     <value>End Date</value>
@@ -399,6 +405,9 @@
   <data name="IsActive" xml:space="preserve">
     <value>Is Active</value>
   </data>
+  <data name="IsWaiting" xml:space="preserve">
+    <value>Is Waiting</value>
+  </data>
   <data name="January" xml:space="preserve">
     <value>January</value>
   </data>
@@ -465,6 +474,9 @@
   <data name="NotAvailable" xml:space="preserve">
     <value>Not Available</value>
   </data>
+  <data name="NotPaid" xml:space="preserve">
+    <value>Not Paid</value>
+  </data>
   <data name="November" xml:space="preserve">
     <value>November</value>
   </data>
@@ -477,6 +489,9 @@
   <data name="Of" xml:space="preserve">
     <value>of</value>
   </data>
+  <data name="OnlinePayment" xml:space="preserve">
+    <value>Online Payment</value>
+  </data>
   <data name="Operations" xml:space="preserve">
     <value>Operations</value>
   </data>
@@ -485,6 +500,9 @@
   </data>
   <data name="OrderBy" xml:space="preserve">
     <value>Order By:</value>
+  </data>
+  <data name="OrderDetails" xml:space="preserve">
+    <value>Order Details</value>
   </data>
   <data name="OrderDiscount" xml:space="preserve">
     <value>Order Discount</value>
@@ -498,11 +516,20 @@
   <data name="OrderPendingPayment" xml:space="preserve">
     <value>Your order is pending payment. To avoid order cancellation, please complete the payment.</value>
   </data>
+  <data name="OrdersHistory" xml:space="preserve">
+    <value>Orders History</value>
+  </data>
   <data name="OtherLangTitle" xml:space="preserve">
     <value>Other Language Title</value>
   </data>
+  <data name="PaidPrice" xml:space="preserve">
+    <value>Paid Price</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="PayFromWallet" xml:space="preserve">
+    <value>Pay From Wallet</value>
   </data>
   <data name="PaymentDescription" xml:space="preserve">
     <value>Pay to wallet</value>
@@ -690,6 +717,9 @@
   <data name="Seller" xml:space="preserve">
     <value>Seller</value>
   </data>
+  <data name="Sent" xml:space="preserve">
+    <value>Sent</value>
+  </data>
   <data name="September" xml:space="preserve">
     <value>September</value>
   </data>
@@ -734,6 +764,9 @@
   </data>
   <data name="TotalCartPrice" xml:space="preserve">
     <value>Total Cart Price</value>
+  </data>
+  <data name="TotalOrderPrice" xml:space="preserve">
+    <value>Total Order Price</value>
   </data>
   <data name="TotalProductsDiscount" xml:space="preserve">
     <value>Total Products Discount</value>
