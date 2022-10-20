@@ -34,7 +34,8 @@ namespace UserManagement.Application
                     Amount = t.Amount,
                     IsSucceeded = t.IsSucceeded,
                     CreationDate = t.CreationDate.ToShamsi(),
-                    Description = t.Description
+                    Description = t.Description,
+                    IsForPayOrder = t.IsForPayOrder
                 }).ToList();
         }
 
@@ -74,6 +75,12 @@ namespace UserManagement.Application
             transaction.CheckForOrder();
             _transactionRepository.AddTransaction(transaction);
             return transaction.TransactionId;
+        }
+
+        public void AddTransactionForPayOrder(int orderSum, long orderId)
+        {
+            var transaction=new Transaction(TransactionTypes.Withdraw,_authenticationHelper.GetCurrentUserId(),orderSum,DataDictionaries.WithdrawTransactionDescription+orderId,true);
+            _transactionRepository.AddTransaction(transaction);
         }
 
         public TransactionViewModel GetTransactionById(long transactionId)

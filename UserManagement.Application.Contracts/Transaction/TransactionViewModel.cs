@@ -13,6 +13,7 @@ namespace UserManagement.Application.Contracts.Transaction
         public string Description { get; set; }
         public bool IsSucceeded { get; set; }
         public string CreationDate { get; set; }
+        public bool IsForPayOrder { get; set; }
 
     }
 }

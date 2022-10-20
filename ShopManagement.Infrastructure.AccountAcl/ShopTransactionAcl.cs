@@ -27,11 +27,16 @@ namespace ShopManagement.Infrastructure.AccountAcl
         public long GetUserWalletBallance()
         {
             var userTransactions = _transactionApplication.GetUserTransactionsForShow();
-            var deposits= userTransactions.Where(t=> t.TypeId == TransactionTypes.Deposit && t.IsSucceeded)
+            var deposits= userTransactions.Where(t=> t.TypeId == TransactionTypes.Deposit && t.IsSucceeded && !t.IsForPayOrder)
                 .Sum(t =>t.Amount );
-            var withdraws=userTransactions.Where(t=> t.TypeId == TransactionTypes.Withdraw && t.IsSucceeded)
+            var withdraws=userTransactions.Where(t=> t.TypeId == TransactionTypes.Withdraw && t.IsSucceeded && !t.IsForPayOrder)
                 .Sum(t =>t.Amount );
             return deposits - withdraws;
+        }
+
+        public void AddtransactionForPayOrder(int amount, long orderId)
+        {
+            _transactionApplication.AddTransactionForPayOrder(amount, orderId);
         }
     }
 }

@@ -79,7 +79,10 @@ namespace Server.Pages
                 {
                     var operationResult = _orderApplication.PayOrderFromWallet(result.Item2);
                     if (operationResult.IsSucceeded)
+                    {
+                        Response.Cookies.Delete("cart_items");
                         return Redirect("/UserPanel/Wallet");
+                    }
                     ErrorMessage = operationResult.Message;
                     return Page();
                 }

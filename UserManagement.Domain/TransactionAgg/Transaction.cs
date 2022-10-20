@@ -33,6 +33,7 @@ namespace UserManagement.Domain.TransactionAgg
             Description = description;
             IsSucceeded=isSucceeded;
             CreationDate = DateTime.Now;
+            IsForPayOrder = false;
         }
 
         public void Confirm()

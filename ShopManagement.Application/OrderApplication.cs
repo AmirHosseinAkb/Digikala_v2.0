@@ -81,12 +81,15 @@ namespace ShopManagement.Application
 
         public OperationResult PayOrderFromWallet(long orderId)
         {
+            //Fix This For Order
             var result = new OperationResult();
             var order = _orderRepository.GetOrderById(orderId);
             var userWalletBallance = _shopTransactionAcl.GetUserWalletBallance();
             if (order.OrderSum > userWalletBallance)
                 return result.Failed(ApplicationMessages.WalletBallnceIsNotEnough);
-            _shopTransactionAcl.AddTransaction(order.OrderSum,orderId);
+            _shopTransactionAcl.AddtransactionForPayOrder(order.OrderSum,orderId);
+            order.Confirm();
+            _orderRepository.SaveChanges();
             return result.Succeeded();
         }
     }

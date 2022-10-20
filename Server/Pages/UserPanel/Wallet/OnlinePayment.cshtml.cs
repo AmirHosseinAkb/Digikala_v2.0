@@ -12,7 +12,7 @@ namespace Server.Pages.UserPanel.Wallet
         {
             _transactionApplication = transactionApplication;
         }
-        public void OnGet(int transactionId)
+        public void OnGet(long transactionId)
         {
             var requestQuery = HttpContext.Request.Query;
             if (requestQuery["Status"] != ""
