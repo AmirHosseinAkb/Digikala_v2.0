@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using UserManagement.Application.Contracts.Transaction;
 
 namespace Server.Pages.UserPanel.Wallet
 {
+    [Authorize]
     public class OnlinePaymentModel : PageModel
     {
         private readonly ITransactionApplication _transactionApplication;

@@ -1,10 +1,10 @@
 using DigikalaQuery.Contracts.Order;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Server.Pages.UserPanel
 {
+    [Authorize]
     public class OrdersModel : PageModel
     {
         private readonly IOrderQuery _orderQuery;

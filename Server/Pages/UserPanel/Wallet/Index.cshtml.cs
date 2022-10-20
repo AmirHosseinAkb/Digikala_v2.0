@@ -1,13 +1,11 @@
-using _01_Framework.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using UserManagement.Application;
 using UserManagement.Application.Contracts.Transaction;
-using UserManagement.Application.Contracts.User;
 
 namespace Server.Pages.UserPanel.Wallet
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly ITransactionApplication _transactionApplication;

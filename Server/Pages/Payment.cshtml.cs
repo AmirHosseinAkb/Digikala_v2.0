@@ -1,15 +1,16 @@
 using _01_Framework.Application.ZarinPal;
 using _01_Framework.Infrastructure;
 using DigikalaQuery.Contracts.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Nancy.Json;
-using Server.Extensions;
 using ShopManagement.Application.Contracts.Order;
 using UserManagement.Application.Contracts.Address;
 
 namespace Server.Pages
 {
+    [Authorize]
     public class PaymentModel : PageModel
     {
         private readonly ICartCalculatorService _cartCalculatorService;
