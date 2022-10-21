@@ -168,6 +168,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>انصراف</value>
   </data>
+  <data name="CancelOrder" xml:space="preserve">
+    <value>لغو سفارش</value>
+  </data>
   <data name="ChangePaymentType" xml:space="preserve">
     <value>تغییر روش پرداخت</value>
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="Clear" xml:space="preserve">
     <value>پاک کردن</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>تایید</value>
   </data>
   <data name="ConfirmUserInformations" xml:space="preserve">
     <value>تکمیل اطلاعات کاربری</value>
@@ -245,6 +251,9 @@
   </data>
   <data name="Newest" xml:space="preserve">
     <value>جدید ترین</value>
+  </data>
+  <data name="OrderDetails" xml:space="preserve">
+    <value>جزئیات فاکتور</value>
   </data>
   <data name="Pay" xml:space="preserve">
     <value>پرداخت</value>

@@ -151,6 +151,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        public static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Addresses.
         /// </summary>
         public static string Addresses {
@@ -1267,11 +1276,29 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Orders List.
+        /// </summary>
+        public static string OrdersList {
+            get {
+                return ResourceManager.GetString("OrdersList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Order Status.
         /// </summary>
         public static string OrderStatus {
             get {
                 return ResourceManager.GetString("OrderStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OrderUser.
+        /// </summary>
+        public static string OrderUser {
+            get {
+                return ResourceManager.GetString("OrderUser", resourceCulture);
             }
         }
         
@@ -1870,6 +1897,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select User.
+        /// </summary>
+        public static string SelectUserMessage {
+            get {
+                return ResourceManager.GetString("SelectUserMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Im The Receiver.
         /// </summary>
         public static string SelfAddressMessage {
@@ -2041,6 +2077,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Price.
+        /// </summary>
+        public static string TotalPrice {
+            get {
+                return ResourceManager.GetString("TotalPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total Products Discount.
         /// </summary>
         public static string TotalProductsDiscount {
@@ -2082,6 +2127,15 @@ namespace _01_Framework.Resources {
         public static string TransactionType {
             get {
                 return ResourceManager.GetString("TransactionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit Price.
+        /// </summary>
+        public static string UnitPrice {
+            get {
+                return ResourceManager.GetString("UnitPrice", resourceCulture);
             }
         }
         

@@ -113,4 +113,17 @@ public class AddressApplication : IAddressApplication
             return false;
         return true;
     }
+
+    public FullAddressViewModel GetAddress(long addressId)
+    {
+        var address = _addressRepository.GetAddressById(addressId);
+        return new FullAddressViewModel()
+        {
+            State = address.State,
+            City = address.City,
+            NeighborHood = address.NeighborHood,
+            Number = address.Number,
+            PostCode = address.PostCode
+        };
+    }
 }

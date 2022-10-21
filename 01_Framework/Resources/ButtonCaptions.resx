@@ -168,6 +168,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="CancelOrder" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="ChangePaymentType" xml:space="preserve">
     <value>Change Payment Type</value>
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="Clear" xml:space="preserve">
     <value>Clear</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
   </data>
   <data name="ConfirmUserInformations" xml:space="preserve">
     <value>Confirm Your Informations</value>
@@ -245,6 +251,9 @@
   </data>
   <data name="Newest" xml:space="preserve">
     <value>Newest</value>
+  </data>
+  <data name="OrderDetails" xml:space="preserve">
+    <value>Order Details</value>
   </data>
   <data name="Pay" xml:space="preserve">
     <value>Pay</value>

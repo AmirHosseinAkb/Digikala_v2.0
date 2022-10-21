@@ -12,5 +12,8 @@ namespace ShopManagement.Application.Contracts.Order
         void ConfirmOrder(long orderId);
         void AddOrderItems(List<CartItem> cartItems,long orderId);
         OperationResult PayOrderFromWallet(long orderId,List<CartItem> cartItems);
+
+        Tuple<List<OrderViewModel>, int, int, int> GetOrders(OrderSearchModel searchModel);
+        List<OrderItemViewModel> GetOrderItems(long orderId);
     }
 }

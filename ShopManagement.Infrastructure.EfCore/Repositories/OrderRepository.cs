@@ -1,14 +1,19 @@
-﻿using ShopManagement.Domain.OrderAgg;
+﻿using Microsoft.EntityFrameworkCore;
+using ShopManagement.Domain.OrderAgg;
+using UserManagement.Domain.UserAgg;
+using UserManagement.Infrastructure.EfCore;
 
 namespace ShopManagement.Infrastructure.EfCore.Repositories
 {
     public class OrderRepository:IOrderRepository
     {
         private readonly ShopContext _shopContext;
+        private readonly AccountContext _accountContext;
 
-        public OrderRepository(ShopContext shopContext)
+        public OrderRepository(ShopContext shopContext, AccountContext accountContext)
         {
             _shopContext = shopContext;
+            _accountContext = accountContext;
         }
         public Order GetUserOpenOrder(long userId)
         {
@@ -52,6 +57,29 @@ namespace ShopManagement.Infrastructure.EfCore.Repositories
             }
 
             _shopContext.SaveChanges();
+        }
+
+        public IQueryable<Order> GetOrders(byte status=0, string trackingNumber="", long userId=0)
+        {
+            IQueryable<Order> orders = _shopContext.Orders;
+
+            if (!string.IsNullOrEmpty(trackingNumber))
+                orders = orders.Where(o => o.TrackingNumber.Contains(trackingNumber));
+            if (userId!=0)
+            {
+                orders = orders.Where(o => o.UserId==userId);
+            }
+            if(status!=0)
+                orders = orders.Where(o => o.Status==status);
+            return orders;
+        }
+
+        public List<OrderItem> GetOrderItems(long orderId)
+        {
+            return _shopContext.OrderItems
+                .Include(i=>i.Product)
+                .Include(i=>i.ProductColor)
+                .Where(i => i.OrderId == orderId).ToList();
         }
 
         public void SaveChanges()

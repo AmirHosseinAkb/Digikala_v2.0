@@ -147,6 +147,9 @@
   <data name="AddNewUser" xml:space="preserve">
     <value>Add new user</value>
   </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
   <data name="Addresses" xml:space="preserve">
     <value>Addresses</value>
   </data>
@@ -519,8 +522,14 @@
   <data name="OrdersHistory" xml:space="preserve">
     <value>Orders History</value>
   </data>
+  <data name="OrdersList" xml:space="preserve">
+    <value>Orders List</value>
+  </data>
   <data name="OrderStatus" xml:space="preserve">
     <value>Order Status</value>
+  </data>
+  <data name="OrderUser" xml:space="preserve">
+    <value>OrderUser</value>
   </data>
   <data name="OtherLangTitle" xml:space="preserve">
     <value>Other Language Title</value>
@@ -720,6 +729,9 @@
   <data name="SelectProductMessage" xml:space="preserve">
     <value>Please select a product</value>
   </data>
+  <data name="SelectUserMessage" xml:space="preserve">
+    <value>Select User</value>
+  </data>
   <data name="SelfAddressMessage" xml:space="preserve">
     <value>Im The Receiver</value>
   </data>
@@ -777,6 +789,9 @@
   <data name="TotalOrderPrice" xml:space="preserve">
     <value>Total Order Price</value>
   </data>
+  <data name="TotalPrice" xml:space="preserve">
+    <value>Total Price</value>
+  </data>
   <data name="TotalProductsDiscount" xml:space="preserve">
     <value>Total Products Discount</value>
   </data>
@@ -791,6 +806,9 @@
   </data>
   <data name="TransactionType" xml:space="preserve">
     <value>Transaction Type</value>
+  </data>
+  <data name="UnitPrice" xml:space="preserve">
+    <value>Unit Price</value>
   </data>
   <data name="UsableCount" xml:space="preserve">
     <value>Usable Count</value>

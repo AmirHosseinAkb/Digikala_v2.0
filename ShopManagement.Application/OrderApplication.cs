@@ -15,15 +15,17 @@ namespace ShopManagement.Application
         private readonly IShopTransactionAcl _shopTransactionAcl;
         private readonly IZarinpalFactory _zarinpalFactory;
         private readonly IShopDiscountAcl _shopDiscountAcl;
+        private readonly IShopAccountAcl _shopAccountAcl;
 
         public OrderApplication(IOrderRepository orderRepository, IAuthenticationHelper authenticationHelper
-            , IShopTransactionAcl shopTransactionAcl, IZarinpalFactory zarinpalFactory,IShopDiscountAcl shopDiscountAcl)
+            , IShopTransactionAcl shopTransactionAcl, IZarinpalFactory zarinpalFactory,IShopDiscountAcl shopDiscountAcl, IShopAccountAcl shopAccountAcl)
         {
             _orderRepository = orderRepository;
             _authenticationHelper = authenticationHelper;
             _shopTransactionAcl = shopTransactionAcl;
             _zarinpalFactory = zarinpalFactory;
             _shopDiscountAcl = shopDiscountAcl;
+            _shopAccountAcl = shopAccountAcl;
         }
         public (OperationResult,long) CreateOrder(CartPaymentCommand command, Cart cart)
         {
@@ -106,6 +108,41 @@ namespace ShopManagement.Application
             _orderRepository.SaveChanges();
             AddOrderItems(cartItems,order.OrderId);
             return result.Succeeded();
+        }
+
+        public Tuple<List<OrderViewModel>, int, int, int> GetOrders(OrderSearchModel searchModel)
+        {
+            var orders = _orderRepository.GetOrders(searchModel.Status, searchModel.TrackingNumber, searchModel.Status);
+            var skip = (searchModel.PageId - 1) * searchModel.Take;
+            var pageCount = orders.Count() / searchModel.Take;
+            if (orders.Count() % searchModel.Take != 0)
+                pageCount += 1;
+            var query = orders.Skip(skip).Take(searchModel.Take).Select(o => new OrderViewModel()
+            {
+                OrderId = o.OrderId,
+                UserId = o.UserId,
+                OrderSum = o.OrderSum,
+                TrackingNumber = o.TrackingNumber,
+                Status = o.Status,
+                CreationDate = o.CreationDate.ToShamsi(),
+                OrderDiscount = o.OrderDiscount,
+                PaidPrice = o.PaidPrice,
+                UserName = _shopAccountAcl.GetUser(o.UserId).fullName,
+                Address = _shopAccountAcl.GetFullAddress(o.AddressId!.Value)
+            });
+            return Tuple.Create(query.ToList(), searchModel.PageId, pageCount, searchModel.Take);
+        }
+
+        public List<OrderItemViewModel> GetOrderItems(long orderId)
+        {
+            return _orderRepository.GetOrderItems(orderId).Select(i => new OrderItemViewModel()
+            {
+                 ProductTitle = i.Product.Title,
+                 ColorName = i.ProductColor.ColorName,
+                 Count = i.Count,
+                 UnitPrice = i.UnitPrice,
+                 TotalPrice = i.UnitPrice*i.Count
+            }).ToList();
         }
     }
 }

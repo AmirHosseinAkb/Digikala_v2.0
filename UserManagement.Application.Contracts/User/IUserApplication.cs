@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _01_Framework.Application;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using UserManagement.Application.Contracts.User.Administration;
 using UserManagement.Application.Contracts.User.UserPanel;
 
@@ -33,6 +34,8 @@ namespace UserManagement.Application.Contracts.User
         OperationResult ConfirmUserPassword(PasswordCommand command);
         OperationResult ConfirmUserRefundType(RefundCommand command);
         bool IsUserInformationsConfirmed();
+
+        List<SelectListItem> GetUsersForSelect();
 
         #endregion
 

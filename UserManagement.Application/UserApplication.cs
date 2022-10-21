@@ -4,6 +4,7 @@ using _01_Framework.Application.Email;
 using _01_Framework.Infrastructure;
 using _01_Framework.Resources;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using UserManagement.Application.Contracts.User;
 using UserManagement.Application.Contracts.User.Administration;
 using UserManagement.Application.Contracts.User.UserPanel;
@@ -304,6 +305,15 @@ namespace UserManagement.Application
             }
 
             return true;
+        }
+
+        public List<SelectListItem> GetUsersForSelect()
+        {
+            return _userRepository.GetUsers().Select(u => new SelectListItem()
+            {
+                Text = u.FirstName+" "+u.LastName,
+                Value = u.UserId.ToString()
+            }).ToList();
         }
 
         public Tuple<List<UserAdminInformationsViewModel>, int, int, int> GetUsersAdminInformationsForShow(int pageId = 1, string fullName = "", string email = "", string phoneNumber = "", int take = 20)

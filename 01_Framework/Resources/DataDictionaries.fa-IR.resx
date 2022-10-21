@@ -147,6 +147,9 @@
   <data name="AddNewUser" xml:space="preserve">
     <value>افزودن کاربر جدید</value>
   </data>
+  <data name="Address" xml:space="preserve">
+    <value>آدرس</value>
+  </data>
   <data name="Addresses" xml:space="preserve">
     <value>آدرس ها</value>
   </data>
@@ -519,8 +522,14 @@
   <data name="OrdersHistory" xml:space="preserve">
     <value>تاریخچه سفارشات</value>
   </data>
+  <data name="OrdersList" xml:space="preserve">
+    <value>لیست سفارشات</value>
+  </data>
   <data name="OrderStatus" xml:space="preserve">
     <value>وضعیت سفارش</value>
+  </data>
+  <data name="OrderUser" xml:space="preserve">
+    <value>کاربر سفارش</value>
   </data>
   <data name="OtherLangTitle" xml:space="preserve">
     <value>عنوان به انگلیسی</value>
@@ -720,6 +729,9 @@
   <data name="SelectProductMessage" xml:space="preserve">
     <value>لطفا محصولی را انتخاب کنید</value>
   </data>
+  <data name="SelectUserMessage" xml:space="preserve">
+    <value>کاربری را انتخاب کنید</value>
+  </data>
   <data name="SelfAddressMessage" xml:space="preserve">
     <value>گیرنده ی مرسوله خودم هستم</value>
   </data>
@@ -780,6 +792,9 @@
   <data name="TotalOrderPrice" xml:space="preserve">
     <value>مبلغ کل سفارش</value>
   </data>
+  <data name="TotalPrice" xml:space="preserve">
+    <value>جمع کل</value>
+  </data>
   <data name="TotalProductsDiscount" xml:space="preserve">
     <value>تخفیف کالاها</value>
   </data>
@@ -794,6 +809,9 @@
   </data>
   <data name="TransactionType" xml:space="preserve">
     <value>نوع تراکنش</value>
+  </data>
+  <data name="UnitPrice" xml:space="preserve">
+    <value>قیمت واحد</value>
   </data>
   <data name="UsableCount" xml:space="preserve">
     <value>تعداد استفاه</value>

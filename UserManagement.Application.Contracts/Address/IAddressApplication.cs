@@ -11,5 +11,6 @@ public interface IAddressApplication
     OperationResult Edit(EditAddressCommand command);
     OperationResult Delete(long addressId);
     bool IsUserAddressExist(long addressId);
+    FullAddressViewModel GetAddress(long addressId);
 
 }

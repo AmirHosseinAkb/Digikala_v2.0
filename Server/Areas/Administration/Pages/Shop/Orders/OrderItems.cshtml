@@ -1,0 +1,47 @@
+﻿@model List<ShopManagement.Application.Contracts.Order.OrderItemViewModel>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">@DataDictionaries.OrdersList</h3>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                            <div class="row m-t-10">
+                                <div class="col-sm-12">
+                                    <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th>@DataDictionaries.ProductTitle</th>
+                                                <th>@DataDictionaries.Color</th>
+                                                <th>@DataDictionaries.Count</th>
+                                                <th>@DataDictionaries.UnitPrice</th>
+                                                <th>@DataDictionaries.TotalPrice</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr role="row">
+                                                    <td>@item.ProductTitle</td>
+                                                    <td>@item.ColorName</td>
+                                                    <td>@item.Count</td>
+                                                    <td>@item.UnitPrice</td>
+                                                    <td>@item.TotalPrice</td>
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

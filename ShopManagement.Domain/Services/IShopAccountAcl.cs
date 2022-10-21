@@ -8,6 +8,7 @@ namespace ShopManagement.Domain.Services
 {
     public interface IShopAccountAcl
     {
-        public (string fullName, string roleTitle) GetUser(long userId);
+        (string fullName, string roleTitle) GetUser(long userId);
+        string GetFullAddress(long addressId);
     }
 }
