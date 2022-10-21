@@ -70,6 +70,24 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are You Sure You Want Cancel This Order?.
+        /// </summary>
+        public static string CancelOrderMessage {
+            get {
+                return ResourceManager.GetString("CancelOrderMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are You Sure You Want Confirm This Order?.
+        /// </summary>
+        public static string ConfirmOrderMessage {
+            get {
+                return ResourceManager.GetString("ConfirmOrderMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Account Has Been Created.
         /// </summary>
         public static string ConfirmRegister {

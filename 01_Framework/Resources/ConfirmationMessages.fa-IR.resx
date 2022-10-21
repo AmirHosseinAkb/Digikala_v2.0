@@ -120,6 +120,12 @@
   <data name="AddedToCart" xml:space="preserve">
     <value>به سبد خرید اضافه شد</value>
   </data>
+  <data name="CancelOrderMessage" xml:space="preserve">
+    <value>آیا مطمئنید که می خواهید این سفارش را لغو کنید؟</value>
+  </data>
+  <data name="ConfirmOrderMessage" xml:space="preserve">
+    <value>آیا مطمئنید که می خواهید این سفارش را تایید کنید؟</value>
+  </data>
   <data name="ConfirmRegister" xml:space="preserve">
     <value>حساب کاربری شما ساخته شد</value>
   </data>

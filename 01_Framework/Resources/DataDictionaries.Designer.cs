@@ -286,6 +286,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel Order.
+        /// </summary>
+        public static string CancelOrder {
+            get {
+                return ResourceManager.GetString("CancelOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change Address.
         /// </summary>
         public static string ChangeAddress {
@@ -345,6 +354,15 @@ namespace _01_Framework.Resources {
         public static string Colors {
             get {
                 return ResourceManager.GetString("Colors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Order.
+        /// </summary>
+        public static string ConfirmOrder {
+            get {
+                return ResourceManager.GetString("ConfirmOrder", resourceCulture);
             }
         }
         

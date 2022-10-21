@@ -192,6 +192,9 @@
   <data name="BrandsList" xml:space="preserve">
     <value>لیست برند محصولات</value>
   </data>
+  <data name="CancelOrder" xml:space="preserve">
+    <value>لغو سفارش</value>
+  </data>
   <data name="ChangeAddress" xml:space="preserve">
     <value>تغیییر یا ویرایش آدرس</value>
   </data>
@@ -212,6 +215,9 @@
   </data>
   <data name="Colors" xml:space="preserve">
     <value>رنگ ها</value>
+  </data>
+  <data name="ConfirmOrder" xml:space="preserve">
+    <value>تایید سفارش</value>
   </data>
   <data name="ConfirmUserInformations" xml:space="preserve">
     <value>تکمیل اطلاعات کاربری</value>

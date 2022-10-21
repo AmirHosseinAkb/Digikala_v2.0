@@ -63,5 +63,10 @@
             Status = 2;
             IsClosed = true;
         }
+
+        public void ConfirmForSent()
+        {
+            Status = 3;
+        }
     }
 }

@@ -33,5 +33,18 @@ namespace Server.Areas.Administration.Pages.Shop.Orders
             var orderItems = _orderApplication.GetOrderItems(orderId);
             return Partial("./OrderItems",orderItems);
         }
+
+        public IActionResult OnGetConfirmOrder(long orderId)
+        {
+            return Partial("./Confirm",orderId);
+        }
+
+        public IActionResult OnPostConfirmOrder(long orderId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            var result = _orderApplication.ConfirmOrderForSent(orderId);
+            return new JsonResult(result);
+        }
     }
 }

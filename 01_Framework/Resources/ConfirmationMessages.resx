@@ -120,6 +120,12 @@
   <data name="AddedToCart" xml:space="preserve">
     <value>AddedToCart</value>
   </data>
+  <data name="CancelOrderMessage" xml:space="preserve">
+    <value>Are You Sure You Want Cancel This Order?</value>
+  </data>
+  <data name="ConfirmOrderMessage" xml:space="preserve">
+    <value>Are You Sure You Want Confirm This Order?</value>
+  </data>
   <data name="ConfirmRegister" xml:space="preserve">
     <value>Your Account Has Been Created</value>
   </data>

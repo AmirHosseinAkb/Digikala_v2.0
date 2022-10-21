@@ -144,5 +144,17 @@ namespace ShopManagement.Application
                  TotalPrice = i.UnitPrice*i.Count
             }).ToList();
         }
+
+        public OperationResult ConfirmOrderForSent(long orderId)
+        {
+            var result = new OperationResult();
+            var order = _orderRepository.GetOrderById(orderId);
+            if (order == null)
+                return result.Failed(ApplicationMessages.ProcessFailed);
+            order.ConfirmForSent();
+            _orderRepository.SaveChanges();
+
+            return result.Succeeded();
+        }
     }
 }

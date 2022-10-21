@@ -147,6 +147,10 @@ function GetOrderItems(orderId) {
     $("#ModalContent").load('/Administration/Shop/Orders/ShowOrderItems?orderId='+orderId);
     $("#MainModal").modal('show');
 }
+function ConfirmOrder(orderId) {
+    $("#ModalContent").load('/Administration/Shop/Orders/ConfirmOrder?orderId='+orderId);
+    $("#MainModal").modal('show');
+}
 
 
 function GetBrandForDelete(brandId) {
