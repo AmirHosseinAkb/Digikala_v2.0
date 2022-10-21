@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{handler?}"
 @using ShopManagement.Infrastructure.EfCore.Repositories
 @model Server.Areas.Administration.Pages.Shop.Orders.IndexModel
 @{
@@ -112,7 +112,7 @@
                                                         }
                                                     </td>
                                                     <td>
-                                                        <a  class="btn btn-primary btn-block smallModal">@ButtonCaptions.OrderDetails</a>
+                                                        <a onclick="GetOrderItems(@order.OrderId)"  class="btn btn-primary btn-block largeModal">@ButtonCaptions.OrderDetails</a>
                                                         <a  class="btn btn-danger btn-block smallModal">@ButtonCaptions.Confirm</a>
                                                         <a  class="btn btn-danger btn-block smallModal">@ButtonCaptions.CancelOrder</a>
                                                     </td>

@@ -2,10 +2,6 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">@DataDictionaries.OrdersList</h3>
-            </div>
-
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -18,8 +14,8 @@
                                                 <th>@DataDictionaries.ProductTitle</th>
                                                 <th>@DataDictionaries.Color</th>
                                                 <th>@DataDictionaries.Count</th>
-                                                <th>@DataDictionaries.UnitPrice</th>
-                                                <th>@DataDictionaries.TotalPrice</th>
+                                                <th>@(DataDictionaries.UnitPrice+$"({DataDictionaries.Toman})")</th>
+                                                <th>@(DataDictionaries.TotalPrice+$"({DataDictionaries.Toman})")</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -29,11 +25,10 @@
                                                     <td>@item.ProductTitle</td>
                                                     <td>@item.ColorName</td>
                                                     <td>@item.Count</td>
-                                                    <td>@item.UnitPrice</td>
-                                                    <td>@item.TotalPrice</td>
+                                                    <td>@item.UnitPrice.ToString("#,0")</td>
+                                                    <td>@item.TotalPrice.ToString("#,0")</td>
                                                 </tr>
                                             }
-
                                         </tbody>
                                     </table>
                                 </div>

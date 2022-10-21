@@ -28,10 +28,10 @@ namespace Server.Areas.Administration.Pages.Shop.Orders
             OrderVMs = _orderApplication.GetOrders(searchModel);
         }
 
-        public IActionResult OnGetShowOrderDetails(long orderId)
+        public IActionResult OnGetShowOrderItems(long orderId)
         {
-
-            return Partial("./OrderDetails");
+            var orderItems = _orderApplication.GetOrderItems(orderId);
+            return Partial("./OrderItems",orderItems);
         }
     }
 }

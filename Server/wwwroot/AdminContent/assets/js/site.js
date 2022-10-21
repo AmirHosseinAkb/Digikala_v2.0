@@ -143,6 +143,12 @@ function DeleteProductDiscount(discountId) {
     $("#ModalContent").load('/Administration/Discounts/ProductDiscounts/Delete?discountId='+discountId);
     $("#MainModal").modal('show');
 }
+function GetOrderItems(orderId) {
+    $("#ModalContent").load('/Administration/Shop/Orders/ShowOrderItems?orderId='+orderId);
+    $("#MainModal").modal('show');
+}
+
+
 function GetBrandForDelete(brandId) {
     $.ajax({
         url: '/Administration/Shop/ProductBrands/Delete?brandId=' + brandId,
@@ -157,6 +163,7 @@ function GetBrandForDelete(brandId) {
 
     })
 }
+
 
 var IsForEditDetail = false;
 $(document).on("submit", 'form[id="frmDetail"]', function (e) {
