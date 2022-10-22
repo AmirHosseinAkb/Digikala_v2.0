@@ -59,17 +59,17 @@ namespace ShopManagement.Infrastructure.EfCore.Repositories
             _shopContext.SaveChanges();
         }
 
-        public IQueryable<Order> GetOrders(byte status=0, string trackingNumber="", long userId=0)
+        public IQueryable<Order> GetOrders(byte? status=0, string trackingNumber="", long? userId=0)
         {
             IQueryable<Order> orders = _shopContext.Orders;
 
             if (!string.IsNullOrEmpty(trackingNumber))
                 orders = orders.Where(o => o.TrackingNumber.Contains(trackingNumber));
-            if (userId!=0)
+            if (userId!=0 && userId!=null)
             {
                 orders = orders.Where(o => o.UserId==userId);
             }
-            if(status!=0)
+            if(status!=0 && status!=null)
                 orders = orders.Where(o => o.Status==status);
             return orders;
         }

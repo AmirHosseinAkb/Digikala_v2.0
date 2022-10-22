@@ -74,50 +74,53 @@
                                 <div class="col-sm-12">
                                     <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
                                         <thead>
-                                        <tr role="row">
-                                            <th>@DataDictionaries.OrderUser</th>
-                                            <th>@DataDictionaries.Address</th>
-                                            <th>@(DataDictionaries.TotalOrderPrice+$"({DataDictionaries.Toman})")</th>
-                                            <th>@(DataDictionaries.DiscountPrice+$"({DataDictionaries.Toman})")</th>
-                                            <th>@(DataDictionaries.PaidPrice+$"({DataDictionaries.Toman})")</th>
-                                            <th>@DataDictionaries.TrackingId</th>
-                                            <th>@DataDictionaries.CreationDate</th>
-                                            <th>@DataDictionaries.OrderStatus</th>
-                                            <th>@DataDictionaries.Operations</th>
-                                        </tr>
+                                            <tr role="row">
+                                                <th>@DataDictionaries.OrderUser</th>
+                                                <th>@DataDictionaries.Address</th>
+                                                <th>@(DataDictionaries.TotalOrderPrice+$"({DataDictionaries.Toman})")</th>
+                                                <th>@(DataDictionaries.DiscountPrice+$"({DataDictionaries.Toman})")</th>
+                                                <th>@(DataDictionaries.PaidPrice+$"({DataDictionaries.Toman})")</th>
+                                                <th>@DataDictionaries.TrackingId</th>
+                                                <th>@DataDictionaries.CreationDate</th>
+                                                <th>@DataDictionaries.OrderStatus</th>
+                                                <th>@DataDictionaries.Operations</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach (var order in Model.OrderVMs.Item1)
-                                        {
-                                            <tr role="row">
-                                                <td>@order.UserName</td>
-                                                <td>@order.Address</td>
-                                                <td>@order.OrderSum.ToString("#,0")</td>
-                                                <td>@order.OrderDiscount.ToString("#,0")</td>
-                                                <td>@order.PaidPrice.ToString("#,0")</td>
-                                                <td>@order.TrackingNumber</td>
-                                                <td>@order.CreationDate</td>
-                                                <td>
-                                                    @if (order.Status == OrderStatuses.NotPaid)
-                                                    {
-                                                        <p class="text-danger">@DataDictionaries.NotPaid</p>
-                                                    }
-                                                    else if (order.Status == OrderStatuses.IsWaiting)
-                                                    {
-                                                        <p class="text-warning">@DataDictionaries.IsWaiting</p>
-                                                    }
-                                                    else
-                                                    {
-                                                        <p class="text-success">@DataDictionaries.Sent</p>
-                                                    }
-                                                </td>
-                                                <td>
-                                                    <a onclick="GetOrderItems(@order.OrderId)"  class="btn btn-primary btn-block largeModal">@ButtonCaptions.OrderDetails</a>
-                                                    <a onclick="ConfirmOrder(@order.OrderId)" class="btn btn-success btn-block smallModal">@ButtonCaptions.Confirm</a>
-                                                    <a  class="btn btn-danger btn-block smallModal">@ButtonCaptions.CancelOrder</a>
-                                                </td>
-                                            </tr>
-                                        }
+                                            @foreach (var order in Model.OrderVMs.Item1)
+                                            {
+                                                <tr role="row">
+                                                    <td>@order.UserName</td>
+                                                    <td>@order.Address</td>
+                                                    <td>@order.OrderSum.ToString("#,0")</td>
+                                                    <td>@order.OrderDiscount.ToString("#,0")</td>
+                                                    <td>@order.PaidPrice.ToString("#,0")</td>
+                                                    <td>@order.TrackingNumber</td>
+                                                    <td>@order.CreationDate</td>
+                                                    <td>
+                                                        @if (order.Status == OrderStatuses.NotPaid)
+                                                        {
+                                                            <p class="text-danger">@DataDictionaries.NotPaid</p>
+                                                        }
+                                                        else if (order.Status == OrderStatuses.IsWaiting)
+                                                        {
+                                                            <p class="text-warning">@DataDictionaries.IsWaiting</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p class="text-success">@DataDictionaries.Sent</p>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        <a onclick="GetOrderItems(@order.OrderId)" class="btn btn-primary btn-block largeModal">@ButtonCaptions.OrderDetails</a>
+                                                        @if (order.Status != OrderStatuses.OrderSent)
+                                                        {
+                                                            <a onclick="ConfirmOrder(@order.OrderId)" class="btn btn-success btn-block smallModal">@ButtonCaptions.Confirm</a>
+                                                            <a class="btn btn-danger btn-block smallModal">@ButtonCaptions.CancelOrder</a>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
 
                                         </tbody>
                                     </table>

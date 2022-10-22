@@ -112,7 +112,7 @@ namespace ShopManagement.Application
 
         public Tuple<List<OrderViewModel>, int, int, int> GetOrders(OrderSearchModel searchModel)
         {
-            var orders = _orderRepository.GetOrders(searchModel.Status, searchModel.TrackingNumber, searchModel.Status);
+            var orders = _orderRepository.GetOrders(searchModel.Status, searchModel.TrackingNumber, searchModel.UserId);
             var skip = (searchModel.PageId - 1) * searchModel.Take;
             var pageCount = orders.Count() / searchModel.Take;
             if (orders.Count() % searchModel.Take != 0)

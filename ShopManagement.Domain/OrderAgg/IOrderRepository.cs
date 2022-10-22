@@ -14,7 +14,7 @@ namespace ShopManagement.Domain.OrderAgg
         void Update(Order order);
         void AddOrderItems(List<OrderItem> orderItems);
         void UpdateOrderItems(List<OrderItem> orderItems,long orderId);
-        IQueryable<Order> GetOrders(byte status=0, string trackingNumber="",  long userId=0);
+        IQueryable<Order> GetOrders(byte? status=0, string trackingNumber="",  long? userId=0);
         List<OrderItem> GetOrderItems(long orderId);
         void SaveChanges();
     }
