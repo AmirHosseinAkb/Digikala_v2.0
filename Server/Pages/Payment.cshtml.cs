@@ -115,6 +115,7 @@ namespace Server.Pages
                 {
                     _orderApplication.ConfirmOrderTransaction(transactionId);
                     _orderApplication.ConfirmOrder(orderId);
+                    Cart=new Cart();
                     Response.Cookies.Delete("cart_items");
                     return Redirect("/CheckoutResult?isSuccessfull=true&refId=" + verificationResponse.RefId);
                 }
