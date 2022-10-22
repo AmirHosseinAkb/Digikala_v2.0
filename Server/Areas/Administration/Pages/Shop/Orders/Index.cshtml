@@ -106,9 +106,13 @@
                                                         {
                                                             <p class="text-warning">@DataDictionaries.IsWaiting</p>
                                                         }
-                                                        else
+                                                        else if(order.Status==OrderStatuses.OrderSent)
                                                         {
                                                             <p class="text-success">@DataDictionaries.Sent</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p class="text-success">@DataDictionaries.Cancelled</p>
                                                         }
                                                     </td>
                                                     <td>

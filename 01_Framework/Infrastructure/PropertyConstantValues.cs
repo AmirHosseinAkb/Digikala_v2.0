@@ -54,5 +54,6 @@ namespace _01_Framework.Infrastructure
         public const byte NotPaid = 1;
         public const byte IsWaiting = 2;
         public const byte OrderSent = 3;
+        public const byte Cancelled = 4;
     }
 }

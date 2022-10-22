@@ -270,6 +270,9 @@
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
+  <data name="RemoveDiscount" xml:space="preserve">
+    <value>Remove Discount</value>
+  </data>
   <data name="RepeatPayment" xml:space="preserve">
     <value>Repeat Payment</value>
   </data>

@@ -58,26 +58,30 @@
                 </div>
                 <!--  payment-methods -->
                 <!-- coupon-gift -->
-                <div class="ui-box bg-white mb-5">
-                    <div class="ui-box-title">تخفیف و کارت هدیه</div>
-                    <div class="ui-box-content">
-                        <div class="coupon-gift--container">
-                            <div class="coupon">
-                                <form asp-page="Payment"
+                @if (PaymentModel.Cart.OrderDiscountId == null)
+                {
+                    <div class="ui-box bg-white mb-5">
+                        <div class="ui-box-title">تخفیف</div>
+                        <div class="ui-box-content">
+                            <div class="coupon-gift--container">
+                                <div class="coupon">
+                                    <form asp-page="Payment"
                                       asp-page-handler="ConfirmDiscount"
                                       data-ajax="true"
                                       data-action="Refresh"
                                       class="coupon-form"
                                       method="post">
-                                    <div class="form-element-row with-btn">
-                                        <input asp-for="CartDiscountCommand.DiscountCode" type="text" class="form-control" placeholder="افزودن کد تخفیف">
-                                        <button class="btn btn-primary btn-action">ثبت</button>
-                                    </div>
-                                </form>
+                                        <div class="form-element-row with-btn">
+                                            <input asp-for="CartDiscountCommand.DiscountCode" type="text" class="form-control" placeholder="افزودن کد تخفیف">
+                                            <button class="btn btn-primary btn-action">@ButtonCaptions.Save</button>
+                                        </div>
+                                    </form>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
                 <a href="#" class="link border-bottom-0">
                     <i class="ri-arrow-right-s-fill"></i> @ButtonCaptions.ReturnShipping
                 </a>
@@ -120,6 +124,10 @@
                                 <button type="submit" id="btnContinue" class="btn btn-block btn-primary">@ButtonCaptions.PayOrder</button>
                             </div>
                         </form>
+                        @if (PaymentModel.Cart.OrderDiscountId != null)
+                        {
+                            <a asp-page-handler="RemoveDiscount" class="btn btn-outline-danger btn-block">@ButtonCaptions.RemoveDiscount</a> 
+                        }
                     </div>
                     <div class="widget p-0">
                         <div class="widget-content widget--free-shipping">
@@ -155,16 +163,16 @@
     }
     @if (!string.IsNullOrEmpty(Model.ErrorMessage))
     {
-        <text>
-            <script>
-                iziToast.warning({
-                    message: '@Html.Raw(Model.ErrorMessage)',
-                    rtl: true,
-                    position: 'bottomCenter',
-                    timeout: 3000
-                });
-            </script>
-        </text>
+<text>
+    <script>
+        iziToast.warning({
+            message: '@Html.Raw(Model.ErrorMessage)',
+            rtl: true,
+            position: 'bottomCenter',
+            timeout: 3000
+        });
+    </script>
+</text>
     }
 <script>
     $("#checkoutPayment01").click(function() {

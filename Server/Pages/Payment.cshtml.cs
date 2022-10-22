@@ -121,5 +121,12 @@ namespace Server.Pages
             }
             return Redirect("/CheckoutResult?isSuccessfull=false");
         }
+
+        public IActionResult OnGetRemoveDiscount()
+        {
+            Cart.OrderDiscountId = null;
+            Cart.TotalOrderDiscount = 0;
+            return RedirectToPage();
+        }
     }
 }

@@ -520,6 +520,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Discount.
+        /// </summary>
+        public static string RemoveDiscount {
+            get {
+                return ResourceManager.GetString("RemoveDiscount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Repeat Payment.
         /// </summary>
         public static string RepeatPayment {

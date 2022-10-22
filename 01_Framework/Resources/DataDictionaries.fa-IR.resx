@@ -192,6 +192,9 @@
   <data name="BrandsList" xml:space="preserve">
     <value>لیست برند محصولات</value>
   </data>
+  <data name="Cancelled" xml:space="preserve">
+    <value>لغو شده</value>
+  </data>
   <data name="CancelOrder" xml:space="preserve">
     <value>لغو سفارش</value>
   </data>

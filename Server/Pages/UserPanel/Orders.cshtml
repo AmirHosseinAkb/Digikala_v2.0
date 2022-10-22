@@ -4,6 +4,7 @@
     var notPaidOrders = Model.OrderQueryModels.Item1;
     var waitingOrders = Model.OrderQueryModels.Item2;
     var sentOrders = Model.OrderQueryModels.Item3;
+    var cancelledOrders = Model.OrderQueryModels.Item4;
 }
 
 
@@ -38,6 +39,12 @@
                                         <span class="badge rounded-pill bg-danger ms-1">@sentOrders.Count</span>
                                     </button>
                                 </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link d-inline-flex align-items-center" id="cancelled-tab" data-bs-toggle="tab" data-bs-target="#cancelled" type="button" role="tab" aria-controls="cancelled" aria-selected="false">
+                                        @DataDictionaries.Cancelled
+                                        <span class="badge rounded-pill bg-danger ms-1">@cancelledOrders.Count</span>
+                                    </button>
+                                </li>
                             </ul>
                         </div>
                         <!--  order-tabs -->
@@ -45,9 +52,9 @@
                         <div class="tab-content" id="myTabContent">
                             <!-- tab-pane -->
                             <div class="tab-pane fade active show" id="wait-for-payment" role="tabpanel" aria-labelledby="wait-for-payment-tab">
-                                @if (Model.OrderQueryModels.Item1.Any())
+                                @if (notPaidOrders.Any())
                                 {
-                                    foreach (var order in Model.OrderQueryModels.Item1)
+                                    foreach (var order in notPaidOrders)
                                     {
                                         <div class="user-order-items">
                                             <div class="user-order-item">
@@ -98,9 +105,9 @@
                             <!--  tab-pane -->
                             <!-- tab-pane -->
                             <div class="tab-pane fade" id="paid-in-progress" role="tabpanel" aria-labelledby="paid-in-progress-tab">
-                                @if (Model.OrderQueryModels.Item2.Any())
+                                @if (waitingOrders.Any())
                                 {
-                                    foreach (var order in Model.OrderQueryModels.Item2)
+                                    foreach (var order in waitingOrders)
                                     {
                                         <div class="user-order-items">
                                             <div class="user-order-item">
@@ -157,9 +164,9 @@
                                 }
                             </div>
                             <div class="tab-pane fade" id="delivered" role="tabpanel" aria-labelledby="delivered-tab">
-                                @if (Model.OrderQueryModels.Item3.Any())
+                                @if (sentOrders.Any())
                                 {
-                                    foreach (var order in Model.OrderQueryModels.Item3)
+                                    foreach (var order in sentOrders)
                                     {
                                         <div class="user-order-items">
                                             <div class="user-order-item">
@@ -168,6 +175,65 @@
                                                         <span class="user-order-meta fa-num">@order.CreationDate</span>
                                                         <span class="user-order-meta">@order.TrackingNumber</span>
                                                         <span class="user-order-meta">@DataDictionaries.Sent</span>
+                                                        @if (order.PaymentType == PaymentTypes.PayFromWallet)
+                                                        {
+                                                            <span class="user-order-meta">@DataDictionaries.PayFromWallet</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="user-order-meta">@DataDictionaries.OnlinePayment</span>
+                                                        }
+                                                    </div>
+                                                    <div>
+                                                        <span class="text-muted fw-bold">@DataDictionaries.PaidPrice</span>
+                                                        <span class="fw-bold fa-num">
+                                                            @order.PaidPrice.ToString("#,0")
+                                                            <span>@DataDictionaries.Toman</span>
+                                                        </span>
+                                                    </div>
+                                                    <a href="./OrderDetails/@order.OrderId" class="btn btn-link fw-bold user-order-detail-link">
+                                                        @DataDictionaries.OrderDetails<i class="ri-arrow-left-s-fill"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="user-order-item-content">
+                                                    <div class="user-order-item-products">
+                                                        @foreach (var imageName in order.OrderItems.Select(i => i.ImageName))
+                                                        {
+                                                            <a href="#">
+                                                                <img src="~/Products/Images/@imageName" alt="ProductImage" asp-append-version="true">
+                                                            </a>
+                                                        }
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="ui-box-empty-content">
+                                        <div class="ui-box-empty-content-icon">
+                                            <img src="~/assets/images/theme/orders.svg" alt="">
+                                        </div>
+                                        <div class="ui-box-empty-content-message">
+                                            @DataDictionaries.EmptyOrderAreaMessage
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="tab-pane fade" id="cancelled" role="tabpanel" aria-labelledby="cancelled-tab">
+                                @if (cancelledOrders.Any())
+                                {
+                                    foreach (var order in cancelledOrders)
+                                    {
+                                        <div class="user-order-items">
+                                            <div class="user-order-item">
+                                                <div class="user-order-item-header">
+                                                    <div class="mb-3">
+                                                        <span class="user-order-meta fa-num">@order.CreationDate</span>
+                                                        <span class="user-order-meta">@order.TrackingNumber</span>
+                                                        <span class="user-order-meta">@DataDictionaries.Cancelled</span>
                                                         @if (order.PaymentType == PaymentTypes.PayFromWallet)
                                                         {
                                                             <span class="user-order-meta">@DataDictionaries.PayFromWallet</span>

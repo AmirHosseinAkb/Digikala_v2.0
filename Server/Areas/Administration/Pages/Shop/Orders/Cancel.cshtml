@@ -1,0 +1,21 @@
+﻿@model long
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">@DataDictionaries.ConfirmOrder</h4>
+</div>
+<form asp-page="./Index"
+      asp-page-handler="DeleteOrder"
+      data-ajax="true"
+      data-action="Refresh"
+      enctype="multipart/form-data"
+      method="post">
+    <div class="modal-body">
+        @ConfirmationMessages.CancelOrderMessage
+    </div>
+    <input type="hidden" name="orderId" value="@Model" />
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-danger waves-effect waves-light">@ButtonCaptions.Delete</button>
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">@ButtonCaptions.Cancel</button>
+    </div>
+
+</form>

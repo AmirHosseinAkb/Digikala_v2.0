@@ -270,6 +270,9 @@
   <data name="Register" xml:space="preserve">
     <value>ثبت نام</value>
   </data>
+  <data name="RemoveDiscount" xml:space="preserve">
+    <value>لغو تخفیف</value>
+  </data>
   <data name="RepeatPayment" xml:space="preserve">
     <value>پرداخت مجدد</value>
   </data>

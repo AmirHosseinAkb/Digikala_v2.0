@@ -192,6 +192,9 @@
   <data name="BrandsList" xml:space="preserve">
     <value>Brands List</value>
   </data>
+  <data name="Cancelled" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
   <data name="CancelOrder" xml:space="preserve">
     <value>Cancel Order</value>
   </data>

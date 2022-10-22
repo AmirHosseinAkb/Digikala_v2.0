@@ -19,7 +19,7 @@ namespace DigikalaQuery.Queries
             _authenticationHelper = authenticationHelper;
             _accountContext = accountContext;
         }
-        public Tuple<List<OrderQueryModel>,List<OrderQueryModel>,List<OrderQueryModel>> GetUserOrders()
+        public Tuple<List<OrderQueryModel>,List<OrderQueryModel>,List<OrderQueryModel>,List<OrderQueryModel>> GetUserOrders()
         {
             var orders=_shopContext.Orders
                 .Include(o => o.OrderItems)
@@ -39,7 +39,8 @@ namespace DigikalaQuery.Queries
             var notPidOrders = orders.Where(o => o.Status == OrderStatuses.NotPaid).ToList();
             var isWaitingOrders = orders.Where(o => o.Status == OrderStatuses.IsWaiting).ToList();
             var sentOrders = orders.Where(o => o.Status == OrderStatuses.OrderSent).ToList();
-            return Tuple.Create(notPidOrders, isWaitingOrders, sentOrders);
+            var cancelledOrders = orders.Where(o => o.Status == OrderStatuses.Cancelled).ToList();
+            return Tuple.Create(notPidOrders, isWaitingOrders, sentOrders,cancelledOrders);
         }
 
         public OrderQueryModel GetOrderDetails(long orderId)
