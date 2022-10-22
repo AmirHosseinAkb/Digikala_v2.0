@@ -1285,6 +1285,15 @@ namespace _01_Framework.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Order Management.
+        /// </summary>
+        public static string OrderManagement {
+            get {
+                return ResourceManager.GetString("OrderManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your order is pending payment. To avoid order cancellation, please complete the payment..
         /// </summary>
         public static string OrderPendingPayment {

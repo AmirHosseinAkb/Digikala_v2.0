@@ -68,5 +68,10 @@
         {
             Status = 3;
         }
+
+        public void CancelOrder()
+        {
+            Status = 4;
+        }
     }
 }

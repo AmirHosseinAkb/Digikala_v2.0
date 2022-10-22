@@ -16,5 +16,6 @@ namespace ShopManagement.Application.Contracts.Order
         Tuple<List<OrderViewModel>, int, int, int> GetOrders(OrderSearchModel searchModel);
         List<OrderItemViewModel> GetOrderItems(long orderId);
         OperationResult ConfirmOrderForSent(long orderId);
+        OperationResult CancelOrder(long orderId);
     }
 }

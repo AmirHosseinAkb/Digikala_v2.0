@@ -122,11 +122,11 @@ $("#btnCreateDiscount").click(function () {
     $("#MainModal").modal('show');
 });
 function EditDiscount(discountId) {
-    $("#ModalContent").load('/Administration/Discounts/OrderDiscounts/Edit?discountId='+discountId);
+    $("#ModalContent").load('/Administration/Discounts/OrderDiscounts/Edit?discountId=' + discountId);
     $("#MainModal").modal('show');
 }
 function DeleteDiscount(discountId) {
-    $("#ModalContent").load('/Administration/Discounts/OrderDiscounts/Delete?discountId='+discountId);
+    $("#ModalContent").load('/Administration/Discounts/OrderDiscounts/Delete?discountId=' + discountId);
     $("#MainModal").modal('show');
 }
 
@@ -136,19 +136,24 @@ $("#btnCreateProductDiscount").click(function () {
 })
 
 function EditProductDiscount(discountId) {
-    $("#ModalContent").load('/Administration/Discounts/ProductDiscounts/Edit?discountId='+discountId);
+    $("#ModalContent").load('/Administration/Discounts/ProductDiscounts/Edit?discountId=' + discountId);
     $("#MainModal").modal('show');
 }
 function DeleteProductDiscount(discountId) {
-    $("#ModalContent").load('/Administration/Discounts/ProductDiscounts/Delete?discountId='+discountId);
+    $("#ModalContent").load('/Administration/Discounts/ProductDiscounts/Delete?discountId=' + discountId);
     $("#MainModal").modal('show');
 }
 function GetOrderItems(orderId) {
-    $("#ModalContent").load('/Administration/Shop/Orders/ShowOrderItems?orderId='+orderId);
+    $("#ModalContent").load('/Administration/Shop/Orders/ShowOrderItems?orderId=' + orderId);
     $("#MainModal").modal('show');
 }
 function ConfirmOrder(orderId) {
-    $("#ModalContent").load('/Administration/Shop/Orders/ConfirmOrder?orderId='+orderId);
+    $("#ModalContent").load('/Administration/Shop/Orders/ConfirmOrder?orderId=' + orderId);
+    $("#MainModal").modal('show');
+}
+
+function CancelOrder(orderId) {
+    $("#ModalContent").load('/Administration/Shop/Orders/CancelOrder?orderId=' + orderId);
     $("#MainModal").modal('show');
 }
 
@@ -162,7 +167,7 @@ function GetBrandForDelete(brandId) {
             $("#MainModal").modal('show');
         },
         error: function (error) {
-            sweetAlert("پیغام",error.responseText, "error");
+            sweetAlert("پیغام", error.responseText, "error");
         }
 
     })

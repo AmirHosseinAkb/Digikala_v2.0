@@ -100,19 +100,19 @@
                                                     <td>
                                                         @if (order.Status == OrderStatuses.NotPaid)
                                                         {
-                                                            <p class="text-danger">@DataDictionaries.NotPaid</p>
+                                                            <p class="text-secondary">@DataDictionaries.NotPaid</p>
                                                         }
                                                         else if (order.Status == OrderStatuses.IsWaiting)
                                                         {
                                                             <p class="text-warning">@DataDictionaries.IsWaiting</p>
                                                         }
-                                                        else if(order.Status==OrderStatuses.OrderSent)
+                                                        else if (order.Status == OrderStatuses.OrderSent)
                                                         {
                                                             <p class="text-success">@DataDictionaries.Sent</p>
                                                         }
                                                         else
                                                         {
-                                                            <p class="text-success">@DataDictionaries.Cancelled</p>
+                                                            <p class="text-danger">@DataDictionaries.Cancelled</p>
                                                         }
                                                     </td>
                                                     <td>
@@ -120,7 +120,10 @@
                                                         @if (order.Status != OrderStatuses.OrderSent)
                                                         {
                                                             <a onclick="ConfirmOrder(@order.OrderId)" class="btn btn-success btn-block smallModal">@ButtonCaptions.Confirm</a>
-                                                            <a class="btn btn-danger btn-block smallModal">@ButtonCaptions.CancelOrder</a>
+                                                            @if (order.Status != OrderStatuses.Cancelled)
+                                                            {
+                                                                <a onclick="CancelOrder(@order.OrderId)" class="btn btn-danger btn-block smallModal">@ButtonCaptions.CancelOrder</a>
+                                                            }
                                                         }
                                                     </td>
                                                 </tr>

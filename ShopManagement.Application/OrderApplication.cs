@@ -156,5 +156,16 @@ namespace ShopManagement.Application
 
             return result.Succeeded();
         }
+
+        public OperationResult CancelOrder(long orderId)
+        {
+            var result = new OperationResult();
+            var order = _orderRepository.GetOrderById(orderId);
+            if (order == null)
+                return result.Failed(ApplicationMessages.ProcessFailed);
+            order.CancelOrder();
+            _orderRepository.SaveChanges();
+            return result.Succeeded();
+        }
     }
 }

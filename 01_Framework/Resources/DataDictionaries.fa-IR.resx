@@ -525,6 +525,9 @@
   <data name="OrderDiscountsList" xml:space="preserve">
     <value>لیست تخفیفات روی فاکتور</value>
   </data>
+  <data name="OrderManagement" xml:space="preserve">
+    <value>مدیریت سفارشات</value>
+  </data>
   <data name="OrderPendingPayment" xml:space="preserve">
     <value>سفارش شما در انتظار پرداخت است. برای جلوگیری از لغو سفارش، لطفا پرداخت را انجام دهید.</value>
   </data>

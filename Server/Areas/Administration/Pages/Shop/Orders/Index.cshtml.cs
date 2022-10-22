@@ -46,5 +46,18 @@ namespace Server.Areas.Administration.Pages.Shop.Orders
             var result = _orderApplication.ConfirmOrderForSent(orderId);
             return new JsonResult(result);
         }
+
+        public IActionResult OnGetCancelOrder(long orderId)
+        {
+            return Partial("./Cancel", orderId);
+        }
+
+        public IActionResult OnPostCancelOrder(long orderId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            var result = _orderApplication.CancelOrder(orderId);
+            return new JsonResult(result);
+        }
     }
 }
